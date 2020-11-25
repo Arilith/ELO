@@ -7,13 +7,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ELO;
 
-
 namespace Front_End
 {
     public partial class About : Page
     {
         private Class1 test;
-
+        private Cijfer cijfer;
         protected void Page_Load(object sender, EventArgs e)
         {
             test = new Class1();
@@ -22,6 +21,8 @@ namespace Front_End
         protected void Button1_Click(object sender, EventArgs e)
         {
             Label1.Text = this.test.testString;
+
+           
         }
     }
 }
