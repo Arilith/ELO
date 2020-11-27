@@ -18,14 +18,14 @@ namespace ELO
         {
             this.Name = name;
             this.Age = age;
-            this.RegistrationDate = new DateTime().ToLongDateString();
+            this.RegistrationDate = DateTime.Now.ToString();
             this.School = school;
         }
 
 
         public override string ToString()
         {
-            return $"Mijn naam is: {Age} en ik ben {Name} jaar oud. Ik heb mijn account aangemaakt op: {RegistrationDate} en zit op de school: {School}";
+            return $"Mijn naam is: {Name} en ik ben {Age} jaar oud. Ik heb mijn account aangemaakt op: {RegistrationDate} en zit op de school: {School}";
         }
     }
 }
