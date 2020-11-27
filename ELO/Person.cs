@@ -8,54 +8,29 @@ namespace ELO
     public class Person
     {
 
-        private readonly string _name;
-        private readonly int _age;
-        private readonly string _registrationDate;
-        private readonly string _school;
-        private readonly string _type;
-        private readonly int _userID;
+        private static int _nextUserID = 1;
 
-        private static int nextUserID = 1;
+        public string Name { get; private set;  }
+        public int Age { get; }
 
-        public string Name
-        {
-            get { return _name;  }
-        }
-        public int Age
-        {
-            get { return _age; }
-        }
+        public string RegistrationDate { get; }
 
-        public string RegistrationDate
-        {
-            get { return _registrationDate; }
-        }
+        public string School { get; }
 
-        public string School
-        {
-            get { return _school; }
-        }
+        public string Type { get; }
 
-        public string Type
-        {
-            get { return _type; }
-        }
-
-        public int UserID
-        {
-            get { return _userID; }
-        }
+        public int UserId { get; }
 
         public Person(string name, int age, string school, string type)
         {
-            _name = name;
-            _age = age;
-            _registrationDate = DateTime.Now.ToString();
-            _school = school;
-            _userID = nextUserID;
-            _type = type;
+            this.Name = name;
+            this.Age = age;
+            this.RegistrationDate = DateTime.Now.ToString();
+            this.School = school;
+            this.UserId = _nextUserID;
+            this.Type = type;
 
-            nextUserID++;
+            _nextUserID++;
         }
 
 

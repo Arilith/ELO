@@ -54,6 +54,7 @@
                         <li><a runat="server" href="~/Rooster">Rooster</a></li>
                         <li><a runat="server" href="~/Huiswerk">Huiswerk</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
                     </ul>
                 </div>
             </div>
