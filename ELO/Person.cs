@@ -8,8 +8,11 @@ namespace ELO
     {
 
         public string Name { get; private set; }
+        public int Age { get; private set; }
 
+        public string registrationDate { get; }
 
+        public string school { get; }
 
         public Person(string _name, int _age)
         {
