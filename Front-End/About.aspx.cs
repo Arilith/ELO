@@ -5,24 +5,24 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 using ELO;
 
 namespace Front_End
 {
     public partial class About : Page
     {
-        private Class1 test;
-        private Cijfer cijfer;
+        private Person henk;
+       
         protected void Page_Load(object sender, EventArgs e)
         {
-            test = new Class1();
+           henk = new Person("Henk", 32);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Label1.Text = this.test.testString;
-
-           
+            Label1.Text = henk.ToString();
         }
+
     }
 }
