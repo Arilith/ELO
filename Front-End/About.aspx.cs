@@ -16,7 +16,7 @@ namespace Front_End
        
         protected void Page_Load(object sender, EventArgs e)
         {
-           henk = new Person("Henk", 32);
+           henk = new Person("Henk", 32, "Markland College");
         }
 
         protected void Button1_Click(object sender, EventArgs e)

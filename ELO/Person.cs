@@ -10,24 +10,22 @@ namespace ELO
         public string Name { get; private set; }
         public int Age { get; private set; }
 
-        public string registrationDate { get; }
+        public string RegistrationDate { get; private set; }
 
-        public string school { get; }
+        public string School { get; }
 
-        public Person(string _name, int _age)
+        public Person(string name, int age, string school)
         {
-            this.Name = _name;
-            this.Age = _age;
+            this.Name = name;
+            this.Age = age;
+            this.RegistrationDate = new DateTime().ToLongDateString();
+            this.School = school;
         }
 
-        public Person(string _name)
-        {
-            this.Name = _name;
-        }
 
         public override string ToString()
         {
-            return $"Mijn naam is: {name} en ik ben {age} jaar oud.";
+            return $"Mijn naam is: {Age} en ik ben {Name} jaar oud. Ik heb mijn account aangemaakt op: {RegistrationDate} en zit op de school: {School}";
         }
     }
 }
