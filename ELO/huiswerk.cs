@@ -1,27 +1,32 @@
-﻿// using System;
-// using System.Collections.Generic;
-// using System.Text;
-//
-// namespace ELO
-// {
-//     class huiswerk
-//     {
-//         private int _cijfers;
-//
-//         public string SetDueDate()
-//         {
-//
-//             return _cijfers;
-//         }
-//
-//         public string SetGroup()
-//         {
-//
-//         }
-//
-//         public void SetCijfers(int cijfers)
-//         {
-//             _cijfers = cijfers;
-//         }
-//     }
-// }
+﻿ using System;
+ using System.Collections.Generic;
+using System.Text;
+
+ namespace ELO
+ {
+    class huiswerk
+    {
+        public string Work { get; private set; }
+
+        public int DueDate { get; private set; }
+
+        public string Description { get; private set; }
+
+        public string Group { get; }
+
+        public Homework(string work, string description, string dueDate, string group)
+        {
+            this.Work = work;
+            this.Description = description;
+            this.DueDate = dueDate;
+            this.Group = group;
+        }
+        public override string ToString()
+        {
+            return $"Voor klas: {Group} moet voor {DueDate} {Work} af zijn, waarbij {Description}";
+        }
+
+
+
+    }
+}
