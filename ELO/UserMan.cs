@@ -39,5 +39,19 @@ namespace ELO
             return personList.OfType<Teacher>().ToList();
         }
 
+        public Teacher GetTeacher(string name)
+        {
+            return (Teacher)GetPersonList().Find(x => x.Name == name);
+        }
+
+        public Student GetStudent(string name)
+        {
+            return (Student)GetPersonList().Find(x => x.Name == name);
+        }
+
+        public Person GetPerson(string name)
+        {
+            return GetPersonList().Find(x => x.Name == name);
+        }
     }
 }

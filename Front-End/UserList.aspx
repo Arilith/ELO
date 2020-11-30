@@ -79,7 +79,7 @@
         </tr>
         </thead>
         <tbody>
-        <% foreach (Class clazz in ClassList){ %> 
+        <% foreach (Class clazz in classMan.classList){ %> 
             <tr>
                 <td><%: clazz.Name %></td>
                 <td><%: clazz.AmountOfStudents %></td>
