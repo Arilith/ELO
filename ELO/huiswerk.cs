@@ -8,13 +8,13 @@ using System.Text;
     {
         public string Work { get; private set; }
 
-        public int DueDate { get; private set; }
+        public string DueDate { get; private set; }
 
         public string Description { get; private set; }
 
         public string Group { get; }
 
-        public Homework(string work, string description, string dueDate, string group)
+        public huiswerk(string work, string description, string dueDate, string group)
         {
             this.Work = work;
             this.Description = description;
