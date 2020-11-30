@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using ELO;
 
 namespace Front_End
 {
-    public partial class About : Page
+    public partial class AddUser : System.Web.UI.Page
     {
-       
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(IsPostBack)
+            {
+                Label1.Text = "Test";
+            }
         }
-
-
-
     }
 }

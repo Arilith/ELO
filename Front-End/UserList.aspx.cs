@@ -11,17 +11,26 @@ namespace Front_End
 {
     public partial class UserList : System.Web.UI.Page
     {
+        public UserMan userMan;
 
-        public Teacher[] personList =
+        public static readonly Class[] ClassList =
         {
-            new Teacher("Niels Vissers", 18, "DaVinci College", "Student", true, "Aardrijkskunde", new Class("PD-B-18", 20)),
-            new Teacher("Tristan van Triest", 18, "Markland College", "Student", true, "Wiskunde", new Class("PD-B-17", 15)),
-            new Teacher("Teun Spithoven", 17, "JTC", "Student", true, "Natuurkunde", new Class("PD-B-16", 23)),
+            new Class("PD-B-18", 20),
+            new Class("PD-B-17", 12),
+            new Class("PD-B-16", 24)
         };
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            userMan = new UserMan();
+            userMan.AddTeacherToPersonList("Rob Broeren", 67, "Markland College",  true, "Engels", ClassList[0]);
+            userMan.AddTeacherToPersonList("Jos Antens", 50, "Markland College",  true, "Lichamelijke Opvoeding", ClassList[1]);
+            userMan.AddTeacherToPersonList("Tristan van der Wal", 32, "Markland College",  true, "Economie", ClassList[2]);
             
+            userMan.AddStudentToPersonList("Tristan van Triest", 18, "Markland College",  ClassList[0], (Teacher)userMan.GetPersonList().Find(x => x.Name == "Tristan van der Wal"));
+            userMan.AddStudentToPersonList("Christian Schets", 18, "Markland College", ClassList[1], (Teacher)userMan.GetPersonList().Find(x => x.Name == "Rob Broeren"));
+            userMan.AddStudentToPersonList("Remco Broos", 18, "Markland College", ClassList[2], (Teacher)userMan.GetPersonList().Find(x => x.Name == "Jos Antens"));
+
         }
     }
 }
