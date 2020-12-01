@@ -109,7 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddClass.aspx" />
     <Content Include="AddHomework.aspx" />
+    <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -166,12 +168,26 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddClass.aspx.cs">
+      <DependentUpon>AddClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddClass.aspx.designer.cs">
+      <DependentUpon>AddClass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddHomework.aspx.cs">
       <DependentUpon>AddHomework.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddHomework.aspx.designer.cs">
       <DependentUpon>AddHomework.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddTeacher.aspx.cs">
+      <DependentUpon>AddTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddTeacher.aspx.designer.cs">
+      <DependentUpon>AddTeacher.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddUser.aspx.cs">
       <DependentUpon>AddUser.aspx</DependentUpon>
