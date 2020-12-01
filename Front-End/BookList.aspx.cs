@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 using ELO;
 
 namespace Front_End
 {
-    public partial class About : Page
+    public partial class BookList : System.Web.UI.Page
     {
-        private Person henk;
-       
+        public string Boek1;
+        private int nummer = 1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-           henk = new Person("Henk", 32, "Markland College", "Student");
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
+            Boek boek = new Boek(TextBoxTitle.Text, nummer);
+            Label1.Text = boek.Title;
+            nummer++;
         }
-
     }
 }
