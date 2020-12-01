@@ -9,7 +9,7 @@
             <p>
                 Huiswerk:
             </p>
-            <form method="post" id="addstudent" name="addstudent">
+            <form method="post" id="addstudent" name="homework">
                 <label for="subject">Vak</label><br/>
                 <input id="subject" class="form-control" name="subject" type="text" required/>
 
@@ -20,8 +20,8 @@
                     <option>PD-B-16</option>
                 </select>
 
-                <label for="date">Datum</label><br/>
-                <input id="date" class="form-control" name="date" type="text" required/>
+                <label for="dueDate">Datum</label><br/>
+                <input id="dueDate" class="form-control" name="dueDate" type="text" required/>
 
                 <label for="homework">Huiswerk</label><br/>
                 <input id="homework" class="form-control" name="homework" type="text" required/>      
