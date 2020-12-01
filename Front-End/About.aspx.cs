@@ -12,17 +12,13 @@ namespace Front_End
 {
     public partial class About : Page
     {
-        private Person henk;
        
         protected void Page_Load(object sender, EventArgs e)
         {
-           henk = new Person("Henk", 32, "Markland College", "Student");
+
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-           
-        }
+
 
     }
 }
