@@ -113,6 +113,7 @@
     <Content Include="AddHomework.aspx" />
     <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
+    <Content Include="BookList.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

@@ -20,7 +20,7 @@ namespace Front_End
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Boek boek = new Boek(TextBoxTitle.Text, nummer);
+            Book boek = new Book(TextBoxTitle.Text, nummer);
             Label1.Text = boek.Title;
             nummer++;
         }
