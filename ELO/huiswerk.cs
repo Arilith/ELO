@@ -10,20 +10,20 @@ using System.Text;
 
         public string DueDate { get; private set; }
 
-        public string Description { get; private set; }
+        public string Subject { get; private set; }
 
         public string Group { get; }
 
-        public huiswerk(string work, string description, string dueDate, string group)
+        public huiswerk(string work, string subject, string dueDate, string group)
         {
             this.Work = work;
-            this.Description = description;
+            this.Subject = subject;
             this.DueDate = dueDate;
             this.Group = group;
         }
         public override string ToString()
         {
-            return $"Voor klas: {Group} moet voor {DueDate} {Work} af zijn, waarbij {Description}";
+            return $"Voor klas: {Group} moet voor het vak {Subject} op {DueDate}, {Work} af zijn.";
         }
 
 
