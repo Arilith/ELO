@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-            <% foreach (Student student in userMan.GetStudentList()){ %> 
+            <% foreach (Student student in Manager.userMan.GetStudentList()){ %> 
                 <tr>
                     <td><%: student.Name %></td>
                     <td><%: student.Age %></td>
@@ -40,7 +40,7 @@
                 </tr>     
             <% } %>
         </tbody>
-    </table>
+    </table><br/>
     <table class="table-striped table-bordered">
         <thead>
             <tr>
@@ -56,7 +56,7 @@
             </tr>
         </thead>
         <tbody>
-            <% foreach (Teacher teacher in userMan.GetTeacherList()){ %> 
+            <% foreach (Teacher teacher in Manager.userMan.GetTeacherList()){ %> 
                 <tr>
                     <td><%: teacher.Name %></td>
                     <td><%: teacher.Age %></td>
@@ -65,24 +65,34 @@
                     <td><%: teacher.Type %></td>
                     <td><%: teacher.UserId %></td>
                     <td><%: teacher.Subject %></td>
-                    <td><%: teacher.MentorForClass.Name %></td>
-                    <td><%: teacher.MentorForClass.AmountOfStudents %></td>
+                    <td><% if(teacher.MentorForClass != null) { %> <%: teacher.MentorForClass.Name %> <% }  %></td>
+                    <td><% if(teacher.MentorForClass != null) { %> <%: teacher.MentorForClass.AmountOfStudents %> <% }  %></td>
                 </tr>     
             <% } %>
         </tbody>
-    </table>
+    </table><br/>
     <table class="table-striped table-bordered">
         <thead>
         <tr>
             <th>Klasnaam</th>
             <th>Aantal leerlingen</th>
+            <th>Leshuis</th>
+            <th>Stream</th>
+            <th>Cluster</th>
+            <th>Mentor</th>
+            <th>Jaargang</th>
         </tr>
         </thead>
         <tbody>
-        <% foreach (Class clazz in classMan.classList){ %> 
+        <% foreach (Class _class in Manager.classMan.GetClassList()){ %> 
             <tr>
-                <td><%: clazz.Name %></td>
-                <td><%: clazz.AmountOfStudents %></td>
+                <td><%: _class.Name %></td>
+                <td><%: _class.AmountOfStudents %></td>
+                <td><%: _class.LesHuis %></td>
+                <td><%: _class.Stream %></td>
+                <td><%: _class.Cluster %></td>
+                <td><%: _class.Mentor.Name %></td>
+                <td><%: _class.StudyYear %></td>
 
             </tr>     
         <% } %>

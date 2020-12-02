@@ -7,21 +7,27 @@ namespace ELO
 {
     public class UserMan
     {
-        public List<Person> personList;
-
+        public static List<Person> personList { get; private set; }
+        
         public UserMan()
         {
             personList = new List<Person>();
+            
         }
 
-        public void AddStudentToPersonList(string name, int age, string school, Class clazz, Teacher mentor)
+        public void AddStudentToPersonList(string name, int age, string school, Class _class, Teacher mentor)
         {
-            personList.Add(new Student(name, age, school, "Student", clazz, mentor));
+            personList.Add(new Student(name, age, school, "Student", _class, mentor));
         }
 
-        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, string subject, Class clazz)
+        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, string subject, Class _class)
         {
-            personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject, clazz));
+            personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject, _class));
+        }
+
+        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, string subject)
+        {
+            personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject));
         }
 
         public List<Person> GetPersonList()

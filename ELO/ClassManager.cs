@@ -13,9 +13,6 @@ namespace ELO
         {
             classList = new List<Class>();
 
-            classList.Add(new Class("PD-B-18", 20));
-            classList.Add(new Class("PD-B-16", 15));
-            classList.Add(new Class("PD-B-17", 24));
         }
 
         public List<Class> GetClassList()
@@ -28,9 +25,14 @@ namespace ELO
             return classList[index];
         }
 
-        public void AddNewClass(string name, int amountOfStudents)
+        public Class GetClass(string name)
         {
-            classList.Add(new Class(name, amountOfStudents));
+            return classList.Find(x => x.Name == name);
+        }
+
+        public void AddNewClass(string name, int amountOfStudents, string leshuis, string stream, string cluster, int studyYear, Teacher mentorTeacher)
+        {
+            classList.Add(new Class(name, amountOfStudents, cluster, leshuis, stream, studyYear, mentorTeacher));
         }
 
     }

@@ -11,13 +11,9 @@ namespace Front_End
 {
     public partial class AddUser : System.Web.UI.Page
     {
-        private UserMan userMan;
-        private ClassManager classMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            userMan = new UserMan();
-
             if(IsPostBack)
             {
                 ConvertAndInsertData();
@@ -26,18 +22,21 @@ namespace Front_End
 
         private void ConvertAndInsertData()
         {
-            //Add validation / HTMLSpecialchars?
 
-            string studentName = Request.Form["name"];
-            int age = Convert.ToInt32(Request.Form["age"]);
-            string school = Request.Form["school"];
-            string mentor = Request.Form["mentor"];
-            string klas = Request.Form["klas"];
+                string studentName = Request.Form["name"];
+                int age = Convert.ToInt32(Request.Form["age"]);
+                string school = Request.Form["school"];
+                string mentor = Request.Form["mentor"];
+                string klas = Request.Form["class"];
 
-            Teacher mentorTeacher = (Teacher)userMan.GetPersonList().Find(x => x.Name == mentor);
+                Teacher mentorTeacher = Manager.userMan.GetTeacher(mentor);
+                Class _class = Manager.classMan.GetClass(klas);
 
-            //userMan.AddStudentToPersonList();
-            Label1.Text = Request.Form["name"];
+                Manager.userMan.AddStudentToPersonList(studentName, age, school, _class, mentorTeacher);
+
+                Label1.Text = "leerling Succesvol toegevoegd!";
+
         }
+
     }
 }
