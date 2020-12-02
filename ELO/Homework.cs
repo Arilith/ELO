@@ -4,7 +4,7 @@ using System.Text;
 
  namespace ELO
  {
-    class huiswerk
+    public class Homework
     {
         public string Work { get; private set; }
 
@@ -15,7 +15,7 @@ using System.Text;
         public string Class { get; }
 
 
-        private huiswerk(string work, string subject, string dueDate, string _class)
+        public Homework(string work, string subject, string dueDate, string _class)
         {
             this.Work = work;
             this.Subject = subject;

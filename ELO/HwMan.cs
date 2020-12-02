@@ -1,20 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-public class HwMan
+namespace ELO
 {
-	public HwMan()
-	{
-		 public List<huiswerk> huiswerkList;
+    public class HwMan
+    {
+
+        public static List<Homework> homeworkList { get; private set; }
 
         public HwMan()
         {
-            huiswerkList = new List<huiswerk>();
+            homeworkList = new List<Homework>();
         }
 
-    public void AddHomeworkToList(string work, string subject, string dueDate, string _class)
-    {
-        huiswerkList.Add(new Homework(subject, work, dueDate, "Huiswerk", _class));
-    }
+        public void AddHomeworkToList(string work, string subject, string dueDate, string _class)
+        {
+            homeworkList.Add(new Homework(subject, work, dueDate, _class));
+        }
+        public List<Homework> GetHomeworkList()
+        {
+            return homeworkList;
+        }
+       
 
-}
+
+    }
 }
