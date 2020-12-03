@@ -11,5 +11,13 @@ namespace ELO
         {
             gradelist = new List<Grade>();
         }
+        public void AddGradeToList(Student student, Class _class, decimal grade, string date, string subject, decimal weight)
+        {
+            gradelist.Add(new Grade(student, _class , grade, date, subject, weight));
+        }
+        public List<Grade> GetGradeList()
+        {
+            return gradelist;
+        }
     }
 }
