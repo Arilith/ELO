@@ -8,6 +8,7 @@ namespace ELO
     {
         public static ClassManager classMan = new ClassManager();
         public static UserMan userMan = new UserMan();
+		private static BookMan bookMan = new BookMan();
         public static HwMan hwMan = new HwMan();
     }
 
