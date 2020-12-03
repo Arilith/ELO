@@ -10,8 +10,8 @@ namespace Front_End
 {
     public partial class BookList : System.Web.UI.Page
     {
-        public string Boek1;
-        private static int nummer = 1;
+        public string Book1;
+        private static int number = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,8 +20,8 @@ namespace Front_End
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Manager.bookMan.AddBook(TextBoxTitle.Text, nummer);
-            nummer++;
+            Manager.bookMan.AddBook(TextBoxTitle.Text, number);
+            number++;
             
         }
     }
