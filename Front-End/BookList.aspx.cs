@@ -22,7 +22,7 @@ namespace Front_End
         {
             Manager.bookMan.AddBook(TextBoxTitle.Text, number);
             number++;
-            
+            TextBoxTitle.Text = "";
         }
     }
 }
