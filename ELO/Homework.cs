@@ -4,7 +4,7 @@ using System.Text;
 
  namespace ELO
  {
-    class huiswerk
+    public class Homework
     {
         public string Work { get; private set; }
 
@@ -12,18 +12,20 @@ using System.Text;
 
         public string Subject { get; private set; }
 
-        public string Group { get; }
+        public string Class { get; }
 
-        public huiswerk(string work, string subject, string dueDate, string group)
+
+        public Homework(string work, string subject, string dueDate, string _class)
         {
             this.Work = work;
             this.Subject = subject;
             this.DueDate = dueDate;
-            this.Group = group;
+            this.Class = _class;
         }
+
         public override string ToString()
         {
-            return $"Voor klas: {Group} moet voor het vak {Subject} op {DueDate}, {Work} af zijn.";
+            return $"Voor klas: {Class} moet voor het vak {Subject} op {DueDate}, {Work} af zijn.";
         }
 
 

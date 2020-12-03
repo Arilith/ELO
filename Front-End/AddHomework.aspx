@@ -13,8 +13,8 @@
                 <label for="subject">Vak</label><br/>
                 <input id="subject" class="form-control" name="subject" type="text" required/>
 
-                <label for="group">Klas</label><br/>
-                <select id="group" class="form-control" name="group">
+                <label for="_class">Klas</label><br/>
+                <select id="_class" class="form-control" name="_class">
                     <option>PD-B-18</option>
                     <option>PD-B-17</option>
                     <option>PD-B-16</option>
@@ -23,8 +23,8 @@
                 <label for="dueDate">Datum</label><br/>
                 <input id="dueDate" class="form-control" name="dueDate" type="text" required/>
 
-                <label for="homework">Huiswerk</label><br/>
-                <input id="homework" class="form-control" name="homework" type="text" required/>      
+                <label for="work">Huiswerk</label><br/>
+                <input id="work" class="form-control" name="work" type="text" required/>      
                 <br/>
                 <button style="width: auto" type="submit" class="form-control">Verstuur</button>
             </form>
