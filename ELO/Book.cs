@@ -7,15 +7,15 @@ namespace ELO
     public class Book
     {
         private string title;
-        private int nummer;
+        private int number;
 
         public string Title { get { return title; } }
-        public int Nummer { get { return nummer; } }
+        public int Number { get { return number; } }
 
-        public Book(string title, int nummer)
+        public Book(string title, int number)
         {
             this.title = title;
-            this.nummer = nummer;
+            this.number = number;
         }
     }
 }
