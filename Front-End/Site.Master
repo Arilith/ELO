@@ -51,10 +51,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Huiswerk">Huiswerk</a></li>
-                        <li><a runat="server" href="~/Rooster">Rooster</a></li>
-                        <li><a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
                         <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
                         <li><a runat="server" href="~/AddTeacher">Leraar Toevoegen</a></li>
                         <li><a runat="server" href="~/AddUser">Leerling Toevoegen</a></li>
@@ -67,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container body-content" style="margin-top: 50px;">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

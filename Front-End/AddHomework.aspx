@@ -24,7 +24,8 @@
                 </select>
 
                 <label for="dueDate">Datum</label><br/>
-                <input id="dueDate" class="form-control" name="dueDate" type="text" required/>
+                <input id="dueDate" class="form-control" name="dueDate" type="date"  required/>
+               
 
                 <label for="work">Huiswerk</label><br/>
                 <input id="work" class="form-control" name="work" type="text" required/>      
