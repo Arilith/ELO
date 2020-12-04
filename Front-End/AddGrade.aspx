@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGrade.aspx.cs" Inherits="Front_End.AddGrade" %>
+<%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
 	<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -11,16 +12,20 @@
             <form method="post" id="addstudent" name="homework">
 
                 <label for="studentName">Naam student</label><br/>
-                <input id="studentName" class="form-control" name="studentName" type="text" required/>
+                <select id="name" class="form-control" name="name">
+                    <% foreach (Student student in Manager.userMan.GetStudentList()) {  %>
+                        <option><%: student.Name %></option>
+                    <% } %>
+                </select>
 
                 <label for="subject">Vak</label><br/>
                 <input id="subject" class="form-control" name="subject" type="text" required/>
 
                 <label for="_class">Klas</label><br/>
                 <select id="_class" class="form-control" name="_class">
-                    <option>PD-B-18</option>
-                    <option>PD-B-17</option>
-                    <option>PD-B-16</option>
+                <% foreach (Class _class in Manager.classMan.GetClassList()) {  %>
+                        <option><%: _class.Name %></option>
+                    <% } %>
                 </select>
 
                 <label for="date">Datum</label><br/>
