@@ -1,27 +1,31 @@
-﻿<%@ Page Title="BookList" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookList.aspx.cs" Inherits="Front_End.BookList" %>
-
+﻿<%@ Page Title="My books" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookList.aspx.cs" Inherits="Front_End.BookList" %>
+<%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 style="margin-left: 10px"><%: Title %>My books</h2>
-    <h2><asp:TextBox ID="TextBoxTitle" runat="server" Height="28px" BackColor="#666666" style="margin-left: 7px; margin-right: 7px" Width="218px"></asp:TextBox>
-        <asp:Button ID="ButtonAddBook" runat="server" OnClick="Button1_Click" Text="Add New" Height="35px" Width="131px" BackColor="#666666" ForeColor="White" style="margin-left: 5px" />
+    <h2><%: Title %></h2>
+    <h2><asp:TextBox ID="TextBoxTitle" runat="server" Height="33px" BackColor="#999999" style="margin-right: 7px" Width="218px" ForeColor="White"></asp:TextBox>
+        <asp:Button ID="ButtonAddBook" runat="server" OnClick="Button1_Click" Text="Add New" Height="33px" Width="131px" BackColor="#999999" ForeColor="White" />
     </h2>
 
-        <table style="width: 97%; height: 89px; margin-top: 10px; margin-bottom: 10px; margin-left: 10px;" border="1">
+        <table style="width: 97%; height: 89px; margin-top: 10px; margin-bottom: 10px;" border="1">
             <tr>
-                <td style="height: 36px; width: 1316px;">Title</td>
-                <td style="height: 36px">Number</td>
+                <td style="height: 15px; font-weight: bold; width: 1316px;">Title</td>
+                <td style="height: 15px; font-weight: bold;">Number</td>
             </tr>
-            <tr>
-                <td class="modal-lg" style="width: 1316px">
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <% foreach (Book book in Manager.bookMan.GetBookList()) { %>
+                    
+                <tr>
+                <td class="modal-lg" style="width: 1316px; height: 10px;">
+                    <%: book.Title %>
                 </td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td class="modal-lg" style="width: 1316px">Boek2</td>
-                <td>2</td>
-            </tr>
+                <td style="height: 10px"> <%: book.Number %> </td>
+                </tr>       
+
+               <% }  %>
+            
         </table>
     
-    <p>Use this area to provide additional information.</p>
+    <p>Aan deze lijst kun je de boeken die in je tas zitten toevoegen zodat je zeker weet dat je ze allemaal bij je hebt.<br />
+        Zo kun je dus niet een boek vergeten mee te nemen!<br />
+        Vul gewoon de naam in van het boek en klik op de knop.</p>
+
 </asp:Content>
