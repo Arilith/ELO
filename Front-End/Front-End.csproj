@@ -110,6 +110,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AddClass.aspx" />
+    <Content Include="AddGrade.aspx" />
     <Content Include="AddHomework.aspx" />
     <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
@@ -133,6 +134,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Gradelist.aspx" />
     <Content Include="HwList.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -176,6 +178,13 @@
     </Compile>
     <Compile Include="AddClass.aspx.designer.cs">
       <DependentUpon>AddClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddGrade.aspx.cs">
+      <DependentUpon>AddGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddGrade.aspx.designer.cs">
+      <DependentUpon>AddGrade.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddHomework.aspx.cs">
       <DependentUpon>AddHomework.aspx</DependentUpon>
@@ -230,13 +239,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="HwList.aspx.cs">
-      <DependentUpon>HwList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HwList.aspx.designer.cs">
-      <DependentUpon>HwList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
