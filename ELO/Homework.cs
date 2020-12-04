@@ -12,20 +12,20 @@ using System.Text;
 
         public string Subject { get; private set; }
 
-        public string Class { get; }
+        public Class _class { get; }
 
 
-        public Homework(string work, string subject, string dueDate, string _class)
+        public Homework(string work, string subject, string dueDate, Class _class)
         {
             this.Work = work;
             this.Subject = subject;
             this.DueDate = dueDate;
-            this.Class = _class;
+            this._class = _class;
         }
 
         public override string ToString()
         {
-            return $"Voor klas: {Class} moet voor het vak {Subject} op {DueDate}, {Work} af zijn.";
+            return $"Voor klas: {_class.Name} moet voor het vak {Subject} op {DueDate}, {Work} af zijn.";
         }
 
 

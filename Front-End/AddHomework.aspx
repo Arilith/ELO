@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="Huiswerk toevoegen" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddHomework.aspx.cs" Inherits="Front_End.AddHomework" %>
-
+<%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-	<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-       <h2>Huiswerk</h2>
+
+    
+       <h2>Huiswerk
+	</h2>
     <div class="row">
         <div class="col-lg-6">
             <p>
@@ -15,9 +16,11 @@
 
                 <label for="_class">Klas</label><br/>
                 <select id="_class" class="form-control" name="_class">
-                    <option>PD-B-18</option>
-                    <option>PD-B-17</option>
-                    <option>PD-B-16</option>
+
+                   <% foreach (Class _class in Manager.classMan.GetClassList()) { %>
+                        <option><%: _class.Name %></option>
+                    <% } %>
+
                 </select>
 
                 <label for="dueDate">Datum</label><br/>
@@ -28,6 +31,7 @@
                 <br/>
                 <button style="width: auto" type="submit" class="form-control">Verstuur</button>
             </form>
+            <asp:Label ID="OutputLabel" runat="server"></asp:Label>
             <%
                 
             %>

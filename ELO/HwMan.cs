@@ -15,9 +15,10 @@ namespace ELO
             homeworkList = new List<Homework>();
         }
 
-        public void AddHomeworkToList(string work, string subject, string dueDate, string _class)
+        public void AddHomework(string work, string subject, string dueDate, Class _class)
         {
-            homeworkList.Add(new Homework(subject, work, dueDate, _class));
+            Homework homework = new Homework(subject, work, dueDate, _class);
+            homeworkList.Add(homework);
         }
         public List<Homework> GetHomeworkList()
         {
