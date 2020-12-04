@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGrade.aspx.cs" Inherits="Front_End.AddGrade" %>
 <%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-	<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+
        <h2>Cijfers</h2>
     <div class="row">
         <div class="col-lg-6">
