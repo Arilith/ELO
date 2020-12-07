@@ -40,5 +40,10 @@ namespace ELO
             return Subjects;
         }
 
+        public List<Teacher> GetTeacherListBySubject(Subject subject)
+        {
+            return Subjects.Find(x => x.Name == subject.Name).Teachers;
+        }
+
     }
 }

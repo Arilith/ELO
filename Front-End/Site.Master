@@ -7,7 +7,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Study Cluster</title>
-
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -61,6 +60,8 @@
                         <li><a runat="server" href="~/Gradelist">Cijferlijst</a></li>
                         <li><a runat="server" href="~/HwList">Huiswerk</a></li>
                         <li><a runat="server" href="~/BookList">Boeken</a></li>
+                        <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
+                        <li><a runat="server" href="~/SubjectList">Subject List</a></li>
                     </ul>
                 </div>
             </div>
