@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ELO
 {
-    class FileManager
+    public class FileManager
     {
         public List<File> files { get; private set; }
 

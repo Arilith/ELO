@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ELO;
+using File = System.IO.File;
 
 namespace Front_End
 {
@@ -43,6 +45,11 @@ namespace Front_End
                 {
                     //Sla het bestand op.
                     uploadedFile.PostedFile.SaveAs(filePath);
+
+                    //Voeg het toe aan de filemanager.
+
+                    Manager.fileMan.AddFile(new ELO.File(fileNameWithDate, filePath, currentDateTime));
+
                     lblUploadResult.Text = "Je hebt met succes het bestand " + fileNameWithDate + " geuploaded! Je leraar zal er snel naar kijken!";
                 }
             }
