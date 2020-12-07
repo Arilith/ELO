@@ -16,9 +16,12 @@
                 <input id="school" class="form-control" name="school" type="text" required/>
         
                 <label for="subject">Vak</label><br/>
-                <input type="text" name="subject" id="subject" class="form-control" required />
-        
-                <label for="mentorclass">Mentorklas</label><br/>
+                <select name="subject" id="subject" class="form-control" required>
+                    <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %>
+                        <option><%: subject.Name %></option>
+                    <% } %>
+                </select>
+               <label for="mentorclass">Mentorklas</label><br/>
                 <select id="mentorclass" class="form-control" name="mentorclass">
                     <% foreach (Class _class in Manager.classMan.GetClassList()) { %>
                         <option><%: _class.Name %></option>

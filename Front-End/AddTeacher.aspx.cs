@@ -25,7 +25,8 @@ namespace Front_End
             string teacherName = Request.Form["name"];
             int age = Convert.ToInt32(Request.Form["age"]);
             string school = Request.Form["school"];
-            string subject = Request.Form["subject"];
+            Subject subject = Manager.subjectMan.FindSubject(Request.Form["subject"]);
+
 
             Class mentorClass = Manager.classMan.GetClass(Request.Form["mentorclass"]);
 

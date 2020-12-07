@@ -4,7 +4,16 @@ using System.Text;
 
 namespace ELO
 {
-    class Subject
+    public class Subject
     {
+        public String Name { get; private set; }
+
+        public List<Teacher> Teachers { get; private set; }
+
+        public Subject(string name)
+        {
+            this.Name = name;
+        }
+
     }
 }

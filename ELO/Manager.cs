@@ -13,6 +13,7 @@ namespace ELO
         public static HwMan hwMan = new HwMan();
         public static DB db = new DB();
         public static FileManager fileMan = new FileManager();
+        public static SubjectManager subjectMan = new SubjectManager();
     }
 
 

@@ -20,12 +20,12 @@ namespace ELO
             personList.Add(new Student(name, age, school, "Student", _class, mentor));
         }
 
-        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, string subject, Class _class)
+        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, Subject subject, Class _class)
         {
             personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject, _class));
         }
 
-        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, string subject)
+        public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, Subject subject)
         {
             personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject));
         }
