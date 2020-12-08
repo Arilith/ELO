@@ -15,25 +15,10 @@ namespace Front_End
         {
             if (IsPostBack)
             {
-                AddNewSubject();
+                Manager.subjectMan.AddNewSubjectForm(Request.Form["name"], Request.Form["teachers"]);
             }
         }
 
-        private void AddNewSubject()
-        {
-            //Escape??
-            string subjectName = Request.Form["name"];
-            string teachers = Request.Form["teachers"];
-
-            Subject newSubject = new Subject(subjectName);
-
-            string[] teacherList = teachers.Split(',');
-            foreach (string teacher in teacherList)
-            {
-                Teacher newTeacher = Manager.userMan.GetTeacher(teacher);
-                Manager.subjectMan.AddTeacherToSubject(newTeacher, newSubject);
-            }
-
-        }
+ 
     }
 }

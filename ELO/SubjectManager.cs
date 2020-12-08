@@ -20,13 +20,16 @@ namespace ELO
 
         public void AddTeacherToSubject(Teacher teacher, Subject subject)
         {
-            Subjects.Find(x => x.Name == subject.Name).Teachers.Add(teacher);
+
+            Subject foundSubject = Subjects.Find(x => x.Name == subject.Name);
+
+            //Check of er wel een leraar is ingevuld. Anders niet invoegen.
+            if(teacher != null)
+            {
+                foundSubject.Teachers.Add(teacher);
+            }
         }
 
-        public void AddSubject(Subject subject)
-        {
-            Subjects.Add(subject);
-        }
 
         public Subject FindSubject(Teacher teacher)
         {
@@ -43,6 +46,19 @@ namespace ELO
         public List<Teacher> GetTeacherListBySubject(Subject subject)
         {
             return Subjects.Find(x => x.Name == subject.Name).Teachers;
+        }
+
+        public void AddNewSubjectForm(string subjectName, string teachers)
+        {
+            Subject newSubject = new Subject(subjectName);
+            Subjects.Add(newSubject);
+
+            string[] teacherList = teachers.Split(',');
+            foreach (string teacher in teacherList)
+            {
+                Teacher newTeacher = Manager.userMan.GetTeacher(teacher);
+                AddTeacherToSubject(newTeacher, newSubject);
+            }
         }
 
     }
