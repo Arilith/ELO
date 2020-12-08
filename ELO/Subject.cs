@@ -12,6 +12,7 @@ namespace ELO
 
         public Subject(string name)
         {
+            Teachers = new List<Teacher>();
             this.Name = name;
         }
 
