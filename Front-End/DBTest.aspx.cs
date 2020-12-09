@@ -16,7 +16,8 @@ namespace Front_End
         protected void Page_Load(object sender, EventArgs e)
         {
             userSQL = new UserSQL();
-            Label1.Text = userSQL.ReadUser();
+            Label1.Text = userSQL.GetUserList();
+            userSQL.AddUser("Henk", "password", "henk@henk.com", "Today", "SysAdmin");
         }
     }
 }

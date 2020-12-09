@@ -32,11 +32,11 @@ namespace Front_End
 
             if (mentorClass != null)
             {
-                Manager.userMan.AddTeacherToPersonList(teacherName, age, school, true, subject, mentorClass);
+               // Manager.userMan.AddTeacherToPersonList(teacherName, age, school, true, subject, mentorClass);
             }
             else
             {
-                Manager.userMan.AddTeacherToPersonList(teacherName, age, school, true, subject);
+               // Manager.userMan.AddTeacherToPersonList(teacherName, age, school, true, subject);
             }
 
             

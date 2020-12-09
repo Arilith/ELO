@@ -1,0 +1,34 @@
+﻿using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using ELO;
+using ELO.Managers;
+
+namespace Front_End
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        
+        public SchoolManager schoolManager;
+        public UserMan userManager;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+            schoolManager = new SchoolManager();
+            userManager = new UserMan();
+
+            if (IsPostBack)
+            {
+                Person results = userManager.FindUserInDataBase(Request.Form["username"], Request.Form["password"], Convert.ToInt32(Request.Form["leerlingnummer"]), Request.Form["school"]);
+                Label1.Text = results.ToString();
+                Session["person"] = results;
+            }
+
+        }
+    }
+}
