@@ -15,6 +15,7 @@ namespace Front_End
         
         public SchoolManager schoolManager;
         public UserMan userManager;
+        public Person results;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,8 +25,7 @@ namespace Front_End
 
             if (IsPostBack)
             {
-                Person results = userManager.FindUserInDataBase(Request.Form["username"], Request.Form["password"], Convert.ToInt32(Request.Form["leerlingnummer"]), Request.Form["school"]);
-                Label1.Text = results.ToString();
+                results = userManager.FindUserInDataBase("", Request.Form["password"], Convert.ToInt32(Request.Form["leerlingnummer"]), Request.Form["school"], "Leerling");
                 Session["person"] = results;
             }
 

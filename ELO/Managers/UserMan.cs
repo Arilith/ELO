@@ -79,17 +79,9 @@ namespace ELO
             return GetPersonList().Find(x => x.Name == name);
         }
 
-        public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school)
+        public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school, string type)
         {
-            if (leerlingnummer == 0)
-            {
-                return userSQL.FindUserInDataBase(username, password, school);
-            }
-            else
-            {
-                return userSQL.FindUserInDataBase(leerlingnummer, password, school);
-            }
-            
+            return userSQL.FindUserInDataBase(username, password, leerlingnummer, school, type);
         }
 
     }

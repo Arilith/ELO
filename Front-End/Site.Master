@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Front_End.SiteMaster" %>
-
+<%@ Import Namespace="ELO" %>
 <!DOCTYPE html>
-
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
@@ -10,12 +9,14 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
 </head>
 <body>
+    <% if (Session["person"] == null) { %>
+        <meta http-equiv="refresh" content="3;url=login.aspx" />
+        U bent niet ingelogd. Doorsturen...
+    <% } else { %>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -48,20 +49,27 @@
                     <%-- <a class="navbar-brand" runat="server" href="~/">Study Cluster</a> --%>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/AddTeacher">Leraar Invoeren</a></li>
-                        <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
-                        <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
-                        <li><a runat="server" href="~/AddGrade">Cijfers Invoeren</a></li>
-                        <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
-                        <li><a runat="server" href="~/Schedule">Rooster</a></li>
-                        <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
-                        <li><a runat="server" href="~/Gradelist">Cijferlijst</a></li>
-                        <li><a runat="server" href="~/HwList">Huiswerk</a></li>
-                        <li><a runat="server" href="~/BookList">Boeken</a></li>
-                        <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
-                        <li><a runat="server" href="~/SubjectList">Subject List</a></li>
+                    <ul class="nav navbar-nav">                        
+                        <% if (loggedInPerson.Type == "SysAdmin") { %>
+                                <li><a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a></li>
+                                <li><a runat="server" href="~/">Home</a></li>
+                                <li><a runat="server" href="~/AddTeacher">Leraar Invoeren</a></li>
+                                <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
+                                <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
+                                <li><a runat="server" href="~/AddGrade">Cijfers Invoeren</a></li>
+                                <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
+                                <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
+                                <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
+                        <% } else if (loggedInPerson.Type == "Leerling") { %>
+                                <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
+                                <li><a runat="server" href="~/">Home</a></li>
+                                <li><a runat="server" href="~/Schedule">Rooster</a></li>
+                                <li><a runat="server" href="~/Gradelist">Cijfers</a></li>
+                                <li><a runat="server" href="~/BookList">Boeken</a></li>
+                                <li><a runat="server" href="~/SubjectList">Vakken</a></li>
+                                <li><a runat="server" href="~/HwList">Huiswerk</a></li>
+                        <% } %>
+                        <li><a runat="server" href="~/Logout">Uitloggen</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,5 +84,6 @@
         </div>
 
     </form>
+    <% } %>
 </body>
 </html>

@@ -71,10 +71,11 @@
                 <label for="password">Wachtwoord</label><br />
                 <input id="password" type="password" name="password" class="form-control" /><br /><br />
                 <button type="submit" class="btn btn-success">Log in</button>
-            </form>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            </form><br/><br/>
             Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in
-
+            <% if (results != null) { %>
+                <meta http-equiv="refresh" content="0;url=Home.aspx" />
+            <% } %>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>

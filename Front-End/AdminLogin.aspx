@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="Front_End.AdminLogin" %>
+<%@ Import Namespace="ELO" %>
 
 <!DOCTYPE html>
 
@@ -59,13 +60,21 @@
             
             <form method="post" action="AdminLogin.aspx" name="login">
                 Voer je inloggegevens in.<br /><br />
+                <label for="school">School</label><br />
+                <select id="school" name="school" class="form-control">
+                    <% foreach (School school in schoolManager.GetSchoolList()) { %>
+                        <option><%: school.Name %></option>
+                    <% } %>
+                </select>
                 <label for="username">Gebruikersnaam</label><br />
                 <input id="username" type="text" name="username" class="form-control" /><br />
                 <label for="password">Wachtwoord</label><br />
                 <input id="password" type="password" name="password" class="form-control" /><br /><br />
                 <button type="submit" class="btn btn-success">Log in</button>
             </form>
-
+            <% if (results != null) { %>
+                <meta http-equiv="refresh" content="0;url=Home.aspx" />
+            <% } %>
             (VERBORGEN) Systeembeheer account aanmaken <a href="~/AdminRegister" runat="server">hier</a>.
 
             <hr />
