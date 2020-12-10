@@ -16,7 +16,7 @@ namespace ELO
         public Class MentorForClass { get; private set; } 
 
 
-        public Teacher(string name, int age, string school, string type, bool hasGroup, Subject subject, Class _mentorClass, int userId, int leerLingNummer, string registrationDate, string userName) : base(name, age, school, type, userName, userId, registrationDate)
+        public Teacher(string name, int age, string school, string type, bool hasGroup, Subject subject, Class _mentorClass, string userId, int leerLingNummer, string registrationDate, string userName, string email) : base(name, age, school, type, userName, userId, registrationDate, email)
         {
             this.HasGroup = hasGroup;
 
@@ -26,7 +26,7 @@ namespace ELO
 
         }
 
-        public Teacher(string name, int age, string school, string type, bool hasGroup, Subject subject, int userId, int leerLingNummer, string registrationDate, string userName) : base(name, age, school, type, userName, userId, registrationDate)
+        public Teacher(string name, int age, string school, string type, bool hasGroup, Subject subject, string userId, int leerLingNummer, string registrationDate, string userName, string email) : base(name, age, school, type, userName, userId, registrationDate, email)
         {
             this.HasGroup = hasGroup;
 

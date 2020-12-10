@@ -57,23 +57,27 @@
         </div>
         <div class="container body-content" style="margin-top: 50px;">
             
-            <form method="post" action="Login.aspx" name="login">
+            <form method="post" action="AdminRegister.aspx" name="login">
                 Nieuw administratoraccount aanmaken<br /><br />
                 <label for="school">School</label><br />
-                <select id="school" class="form-control">
+                <select id="school" class="form-control" name="school">
                     <% foreach (School school in schoolManager.GetSchoolList()) { %>
                         <option><%: school.Name %></option>
                     <% } %>
                 </select>
-                <label for="username">Leerlingnummer</label><br />
+                <label for="username">Gebruikersnaam</label><br />
                 <input id="username" type="text" name="username" class="form-control" /><br />
+                <label for="name">Naam</label><br />
+                <input id="name" type="text" name="name" class="form-control" /><br />
+                <label for="email">Email Adres</label><br />
+                <input id="email" type="email" name="email" class="form-control" /><br />
                 <label for="password">Wachtwoord</label><br />
                 <input id="password" type="password" name="password" class="form-control" /><br /><br />
                 <button type="submit" class="btn btn-success">Log in</button>
             </form>
 
-            Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in
-
+            Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in<br/><br/>
+            <asp:Label ID="MessageLabel" runat="server" Text="Label"></asp:Label>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
