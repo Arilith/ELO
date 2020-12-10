@@ -5,16 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ELO;
+using ELO.Managers;
 
 namespace Front_End
 {
-    public partial class SiteMaster : MasterPage
+    public partial class AdminRegister : System.Web.UI.Page
     {
-        public Person loggedInPerson;
+        public SchoolManager schoolManager;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            loggedInPerson = (Person)Session["person"];
+            schoolManager = new SchoolManager();
         }
     }
 }

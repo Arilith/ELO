@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ELO
 {
-    public class Book
+    public class Day
     {
         private string title;
         private int number;
@@ -12,7 +12,7 @@ namespace ELO
         public string Title { get { return title; } }
         public int Number { get { return number; } }
 
-        public Book(string title, int number)
+        public Day(string title, int number)
         {
             this.title = title;
             this.number = number;

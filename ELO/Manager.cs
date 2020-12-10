@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using ELO.Managers;
 
 namespace ELO
 {
@@ -14,6 +14,7 @@ namespace ELO
         public static HwMan hwMan = new HwMan();
         public static FileManager fileMan = new FileManager();
         public static SubjectManager subjectMan = new SubjectManager();
+        public static SchoolManager schoolManager = new SchoolManager();
     }
 
 
