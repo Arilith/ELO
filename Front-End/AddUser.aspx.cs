@@ -32,7 +32,7 @@ namespace Front_End
                 Teacher mentorTeacher = Manager.userMan.GetTeacher(mentor);
                 Class _class = Manager.classMan.GetClass(klas);
 
-                Manager.userMan.AddStudentToPersonList(studentName, age, school, _class, mentorTeacher);
+                //Manager.userMan.AddStudentToPersonList(studentName, age, school, _class, mentorTeacher);
 
                 Label1.Text = "leerling Succesvol toegevoegd!";
 

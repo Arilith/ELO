@@ -5,16 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ELO;
-//using MySql.Data;
-//using MySql.Data.MySqlClient;
+using ELO.SQLClasses;
 
 namespace Front_End
 {
     public partial class DBTest : System.Web.UI.Page
     {
+        UserSQL userSQL;
+ 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //using var con = new MySql
+            userSQL = new UserSQL();
+            Label1.Text = userSQL.GetUserList();
+            userSQL.AddUser("Henk", "password", "henk@henk.com", "Today", "SysAdmin");
         }
     }
 }

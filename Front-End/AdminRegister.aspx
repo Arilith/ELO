@@ -1,6 +1,8 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Front_End.SiteMaster" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRegister.aspx.cs" Inherits="Front_End.AdminRegister" %>
 <%@ Import Namespace="ELO" %>
+<%@ Import Namespace="ELO.Managers" %>
 <!DOCTYPE html>
+
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
@@ -9,14 +11,12 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
 </head>
 <body>
-    <% if (Session["person"] == null) { %>
-        <meta http-equiv="refresh" content="3;url=login.aspx" />
-        U bent niet ingelogd. Doorsturen...
-    <% } else { %>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -46,37 +46,34 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <%-- <a class="navbar-brand" runat="server" href="~/">Study Cluster</a> --%>
+                     <a class="navbar-brand" runat="server" href="~/">Study Cluster</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">                        
-                        <% if (loggedInPerson.Type == "SysAdmin") { %>
-                                <li><a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a></li>
-                                <li><a runat="server" href="~/">Home</a></li>
-                                <li><a runat="server" href="~/AddTeacher">Leraar Invoeren</a></li>
-                                <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
-                                <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
-                                <li><a runat="server" href="~/AddGrade">Cijfers Invoeren</a></li>
-                                <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
-                                <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
-                                <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
-                        <% } else if (loggedInPerson.Type == "Leerling") { %> 
-                                <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
-                                <li><a runat="server" href="~/">Home</a></li>
-                                <li><a runat="server" href="~/Schedule">Rooster</a></li>
-                                <li><a runat="server" href="~/Gradelist">Cijfers</a></li>
-                                <li><a runat="server" href="~/BookList">Boeken</a></li>
-                                <li><a runat="server" href="~/SubjectList">Vakken</a></li>
-                                <li><a runat="server" href="~/HwList">Huiswerk</a></li>
-                        <% } %>
-                        <li><a runat="server" href="~/Logout">Uitloggen</a></li>
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Login">Inloggen</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container body-content" style="margin-top: 50px;">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+            
+            <form method="post" action="Login.aspx" name="login">
+                Nieuw administratoraccount aanmaken<br /><br />
+                <label for="school">School</label><br />
+                <select id="school" class="form-control">
+                    <% foreach (School school in schoolManager.GetSchoolList()) { %>
+                        <option><%: school.Name %></option>
+                    <% } %>
+                </select>
+                <label for="username">Leerlingnummer</label><br />
+                <input id="username" type="text" name="username" class="form-control" /><br />
+                <label for="password">Wachtwoord</label><br />
+                <input id="password" type="password" name="password" class="form-control" /><br /><br />
+                <button type="submit" class="btn btn-success">Log in</button>
+            </form>
+
+            Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in
+
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
@@ -84,6 +81,5 @@
         </div>
 
     </form>
-    <% } %>
 </body>
 </html>

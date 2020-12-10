@@ -8,8 +8,6 @@ namespace ELO
     public class Person
     {
 
-        private static int _nextUserID = 1;
-
         public string Name { get; private set;  }
         public int Age { get; }
 
@@ -21,34 +19,24 @@ namespace ELO
 
         public int UserId { get; }
 
-        public Person(string name, int age, string school, string type)
+        public string UserName { get; private set; }
+
+        public Person(string name, int age, string school, string type, string userName, int userId, string registrationDate)
         {
             this.Name = name;
             this.Age = age;
-            this.RegistrationDate = DateTime.Now.ToString();
+            this.RegistrationDate = registrationDate;
             this.School = school;
-            this.UserId = _nextUserID;
+            this.UserId = userId;
             this.Type = type;
+            this.UserName = userName;
 
-            _nextUserID++;
         }
 
-
-        public string ToString(string type)
+        public override string ToString()
         {
-            if (type == "long")
-            {
-                return $"Mijn naam is: {Name} en ik ben {Age} jaar oud. Ik heb mijn account aangemaakt op: {RegistrationDate} en zit op de school: {School}";
-            } else if (type == "short")
-            {
-                return $"{Name}, {Age}, {RegistrationDate}, {School}";
-            }
-
-            return null;
-
+            return $"Mijn naam is: {Name} en ik ben {Age} jaar oud. Ik heb mijn account aangemaakt op: {RegistrationDate} en zit op de school: {School}. Hier heb ik de rol {Type}";
         }
-
-
 
     }
 }
