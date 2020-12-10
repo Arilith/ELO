@@ -39,6 +39,8 @@ namespace ELO
         //     personList.Add(new SysAdmin(name, age, school, "SysAdmin"));
         // }
 
+
+
         public List<Person> GetPersonList()
         {
             return personList;
@@ -82,6 +84,23 @@ namespace ELO
         public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school, string type)
         {
             return userSQL.FindUserInDataBase(username, password, leerlingnummer, school, type);
+        }
+
+        // public Person AddUserToDataBase(string username, string password, int leerlingnummer, string school, string type, string naam, string email)
+        // {
+        //     Person newPerson = userSQL.AddUser(username, password, leerlingnummer, school, type, naam, email);
+        //     personList.Add(newPerson);
+        //
+        //     return newPerson;
+        // }
+
+        public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email)
+        {
+            SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email);
+
+            personList.Add(newAdmin);
+
+            return newAdmin;
         }
 
     }
