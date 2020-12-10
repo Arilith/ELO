@@ -6,27 +6,27 @@ namespace ELO
 {
     public class BookMan
     {
-        public static List<Book> bookList { get; private set; }
+        public static List<Day> bookList { get; private set; }
 
         public BookMan()
         {
-            bookList = new List<Book>();
+            bookList = new List<Day>();
         }
 
 
-        public Book GetBook(string name)
+        public Day GetBook(string name)
         {
             return bookList.Find(bookItem => bookItem.Title.Contains(name));
         }
 
         public void AddBook(string titel, int nummer)
         {
-            Book boek = new Book(titel, nummer);
+            Day boek = new Day(titel, nummer);
 
             bookList.Add(boek);
         }
 
-        public List<Book> GetBookList()
+        public List<Day> GetBookList()
         {
             return bookList;
         }
