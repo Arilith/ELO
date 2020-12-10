@@ -6,7 +6,7 @@ namespace ELO.SQLClasses
 {
     public static class MySqlManager
     {
-        public static string connectionString = @"server=localhost;userid=root;password=;database=ELO";
+        public static string connectionString = @"server=145.220.75.138;userid=usr;password=banaan3306;database=ELO";
 
         public static MySqlConnection con;
 
