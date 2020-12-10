@@ -159,6 +159,7 @@
     <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="BookList.aspx" />
+    <Content Include="CheckAttendance.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="BookList.aspx.designer.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckAttendance.aspx.cs">
+      <DependentUpon>CheckAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckAttendance.aspx.designer.cs">
+      <DependentUpon>CheckAttendance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
