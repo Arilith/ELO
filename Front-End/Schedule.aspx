@@ -1,21 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Schedule.aspx.cs" Inherits="Front_End.Schedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <p>
-        Rooster voor 08/12/2020<table border="1" style="width: 50%;">
+                <input id="name0" class="form-control" name="name0" type="text" required style="width: 32%; height: 25px"/><input id="name1" class="form-control" name="name1" type="text" required style="width: 32%; height: 25px"/><input id="name2" class="form-control" name="name2" type="text" required style="width: 32%; height: 25px"/><input id="name3" class="form-control" name="name3" type="text" required style="width: 32%; height: 25px"/><input id="name4" class="form-control" name="name4" type="text" required style="width: 32%; height: 25px"/><input id="name5" class="form-control" name="name5" type="text" required style="width: 32%; height: 25px"/><input id="name7" class="form-control" name="name7" type="text" required style="width: 32%; height: 25px"/>Rooster voor 08/12/2020<table border="1" style="width: 50%;">
             <tr>
-                <td style="height: 20px; width: 195px">Vak 1</td>
-                <td style="height: 20px; width: 164px">lok. 40</td>
-                <td style="height: 20px">12.00-13.00</td>
+                <td style="height: 20px; width: 195px">Vak</td>
+                <td style="height: 20px; width: 164px">lok.</td>
+                <td style="height: 20px">Tijd</td>
             </tr>
             <tr>
-                <td style="width: 195px">&nbsp;</td>
-                <td style="width: 164px">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td style="width: 195px">&nbsp;</td>
-                <td style="width: 164px">&nbsp;</td>
-                <td>&nbsp;</td>
+                <%//krijg hier de datum
+                //voor de datum die is opgeroepen doe foreach(Appointment appointment in Manager.AppointmentMan.AppointmentList()){
+                //<td> :Appointment.Subject </td>
+                //<td> :Appointment.Classroom </td>
+                //<td> :Appointment.DateTime </td>
+                //} %>
             </tr>
         </table>
     </p>

@@ -6,11 +6,11 @@ namespace ELO
 {
     class TodayMan
     {
-        public static List<Day> LessonList { get; private set; }
+        public static List<Appointment> AppointmentList { get; private set; }
 
         public TodayMan()
         {
-            LessonList = new List<Day>();
+            AppointmentList = new List<Appointment>();
         }
     }
 }
