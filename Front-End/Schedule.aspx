@@ -1,14 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Schedule.aspx.cs" Inherits="Front_End.Schedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<%@ Import Namespace="ELO" %>
+
+    <% DateTime now = DateTime.Now; %>
+
     <p>
-                <input id="name0" class="form-control" name="name0" type="text" required style="width: 32%; height: 25px"/><input id="name1" class="form-control" name="name1" type="text" required style="width: 32%; height: 25px"/><input id="name2" class="form-control" name="name2" type="text" required style="width: 32%; height: 25px"/><input id="name3" class="form-control" name="name3" type="text" required style="width: 32%; height: 25px"/><input id="name4" class="form-control" name="name4" type="text" required style="width: 32%; height: 25px"/><input id="name5" class="form-control" name="name5" type="text" required style="width: 32%; height: 25px"/><input id="name7" class="form-control" name="name7" type="text" required style="width: 32%; height: 25px"/>Rooster voor 08/12/2020<table border="1" style="width: 50%;">
+                <asp:Label ID="LabelTeacher" runat="server" Text="Teacher"></asp:Label>
+                <input id="teacher" class="form-control" name="teacher" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
+                <asp:Label ID="LabelSubject" runat="server" Text="Subject"></asp:Label>
+                <input id="subject" class="form-control" name="subject" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
+                <asp:Label ID="LabelClassroom" runat="server" Text="Classroom"></asp:Label>
+                <input id="classroom" class="form-control" name="classroom" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
+                <asp:Label ID="LabelClass" runat="server" Text="Class"></asp:Label>
+                <input id="_class" class="form-control" name="_class" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="LabelDate" runat="server" Text="Date"></asp:Label>
+                <input id="Date" class="form-control" name="date" type="text" required style="width: 16%; height: 25px"/>
+  
+                <asp:Label ID="LabelTime" runat="server" Text="Time"></asp:Label>
+                <input id="Time" class="form-control" name="time" type="text" required style="width: 16%; height: 25px"/></p>
+     <button style="width: auto" type="submit" class="form-control">voer cijfer in</button>
+    <asp:Label ID="OutputLabel" runat="server" Text="---"></asp:Label>
+    <br />
+
+                Rooster voor ow.ToString("D")%><table border="1" style="width: 50%;">
             <tr>
                 <td style="height: 20px; width: 195px">Vak</td>
                 <td style="height: 20px; width: 164px">lok.</td>
                 <td style="height: 20px">Tijd</td>
             </tr>
             <tr>
-                <%//krijg hier de datum
+                <%
                 //voor de datum die is opgeroepen doe foreach(Appointment appointment in Manager.AppointmentMan.AppointmentList()){
                 //<td> :Appointment.Subject </td>
                 //<td> :Appointment.Classroom </td>
@@ -16,5 +38,4 @@
                 //} %>
             </tr>
         </table>
-    </p>
 </asp:Content>

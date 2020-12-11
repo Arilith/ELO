@@ -34,5 +34,9 @@ namespace ELO
 
         }
 
+        public static implicit operator Teacher(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

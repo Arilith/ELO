@@ -53,6 +53,7 @@
                         <% if (loggedInPerson.Type == "SysAdmin") { %>
                                 <li><a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a></li>
                                 <li><a runat="server" href="~/">Home</a></li>
+                                <li><a runat="server" href="~/Schedule">Rooster</a></li>
                                 <li><a runat="server" href="~/AddTeacher">Leraar Invoeren</a></li>
                                 <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
                                 <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
