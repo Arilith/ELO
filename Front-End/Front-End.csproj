@@ -156,6 +156,7 @@
     <Content Include="AddClass.aspx" />
     <Content Include="AddGrade.aspx" />
     <Content Include="AddHomework.aspx" />
+    <Content Include="AddLeermiddel.aspx" />
     <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="AdminLogin.aspx" />
@@ -186,6 +187,7 @@
     <Content Include="Gradelist.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="HwList.aspx" />
+    <Content Include="LeermiddelList.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Schedule.aspx" />
@@ -247,6 +249,13 @@
     </Compile>
     <Compile Include="AddHomework.aspx.designer.cs">
       <DependentUpon>AddHomework.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddLeermiddel.aspx.cs">
+      <DependentUpon>AddLeermiddel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddLeermiddel.aspx.designer.cs">
+      <DependentUpon>AddLeermiddel.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddTeacher.aspx.cs">
       <DependentUpon>AddTeacher.aspx</DependentUpon>
@@ -329,6 +338,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LeermiddelList.aspx.cs">
+      <DependentUpon>LeermiddelList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LeermiddelList.aspx.designer.cs">
+      <DependentUpon>LeermiddelList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
