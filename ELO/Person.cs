@@ -17,11 +17,13 @@ namespace ELO
 
         public string Type { get; }
 
-        public int UserId { get; }
+        public string UserId { get; }
 
         public string UserName { get; private set; }
 
-        public Person(string name, int age, string school, string type, string userName, int userId, string registrationDate)
+        public string Email { get; private set; }
+
+        public Person(string name, int age, string school, string type, string userName, string userId, string registrationDate, string email)
         {
             this.Name = name;
             this.Age = age;
@@ -30,7 +32,7 @@ namespace ELO
             this.UserId = userId;
             this.Type = type;
             this.UserName = userName;
-
+            this.Email = email;
         }
 
         public override string ToString()
