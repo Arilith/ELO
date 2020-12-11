@@ -1,7 +1,17 @@
 ﻿body {
+    background-image: url("Pictures/backgroundBeter.jpg")!important;
+    color:#000000!important;
 }
 
-.form-control{
-    background:pink;
-    height:100px;
+
+.form-control {
+    background-color:white!important;
+}
+
+.header-img {
+    margin: -8px 0 0 -8px
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+   background-color:#E5FEFF!important;
 }

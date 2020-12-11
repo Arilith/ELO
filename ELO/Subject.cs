@@ -16,5 +16,9 @@ namespace ELO
             this.Name = name;
         }
 
+        public static implicit operator Subject(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

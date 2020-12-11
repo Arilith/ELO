@@ -10,12 +10,12 @@ using System.Text;
 
         public string DueDate { get; private set; }
 
-        public string Subject { get; private set; }
+        public Subject Subject { get; private set; }
 
         public Class _class { get; }
 
 
-        public Homework(string work, string subject, string dueDate, Class _class)
+        public Homework(string work, Subject subject, string dueDate, Class _class)
         {
             this.Work = work;
             this.Subject = subject;
