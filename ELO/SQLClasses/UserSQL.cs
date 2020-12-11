@@ -67,6 +67,30 @@ namespace ELO.SQLClasses
 
         }
 
+        public Teacher AddTeacher(string username, string password, string school, string name, string email)
+        {
+
+            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school)";
+            MySqlCommand addTeacherCommand;
+
+            addTeacherCommand = new MySqlCommand(addTeacherSQL, MySqlManager.con);
+
+            addTeacherCommand.Parameters.AddWithValue("@username", username);
+            addTeacherCommand.Parameters.AddWithValue("@password", password);
+            addTeacherCommand.Parameters.AddWithValue("@email", email);
+            addTeacherCommand.Parameters.AddWithValue("@registrationdate", date);
+            addTeacherCommand.Parameters.AddWithValue("@role", "Teacher");
+            addTeacherCommand.Parameters.AddWithValue("@name", name);
+            addTeacherCommand.Parameters.AddWithValue("@uuid", userUUID);
+            addTeacherCommand.Parameters.AddWithValue("@school", school);
+
+            addTeacherCommand.Prepare();
+            addTeacherCommand.ExecuteNonQuery();
+
+            return new Teacher(name, 0, school, "Teacher", userUUID, date, username, email);
+
+        }
+
         // public Student AddStudent(string username, string password, int leerlingnummer, string school, string type, string name, string email, string className, string mentorName)
         // {
         //
@@ -134,9 +158,17 @@ namespace ELO.SQLClasses
                     string returnUserId = Convert.ToString(reader["uuid"]);
                     string returnRegistrationdate = reader["registrationdate"].ToString();
                     string email = reader["email"].ToString();
+                    //TO BE DONE
+                    string mentorClass = reader["className"].ToString();
+                    string subject = reader["subject"].ToString();
 
                     reader.Close();
-                    return new SysAdmin(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email);
+
+                    if(returnType == "SysAdmin")
+                        return new SysAdmin(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email);
+                    else if(returnType == "Teacher")
+                        return new Teacher(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email);
+
                 }
 
                 reader.Close();
@@ -168,10 +200,7 @@ namespace ELO.SQLClasses
                 }
 
                 reader.Close();
-            } else if (type == "Teacher")
-            {
-
-            }
+            } 
             
 
             return null;
