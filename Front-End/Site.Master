@@ -5,6 +5,9 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
+        <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
+    </meta>
     <title><%: Page.Title %> - Study Cluster</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -51,23 +54,26 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">                        
                         <% if (loggedInPerson.Type == "SysAdmin") { %>
-                                <li><a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a></li>
-                                <li><a runat="server" href="~/">Home</a></li>
-                                <li><a runat="server" href="~/AddTeacher">Leraar Invoeren</a></li>
-                                <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
-                                <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
-                                <li><a runat="server" href="~/AddGrade">Cijfers Invoeren</a></li>
-                                <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
-                                <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
-                                <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
+                            <li><a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a></li>
+                            <li><a runat="server" href="~/">Home</a></li>
+                            <li><a runat="server" href="~/AddTeacher">Leraar Invoeren</a></li>
+                            <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
+                            <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
+                            <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
                         <% } else if (loggedInPerson.Type == "Leerling") { %> 
-                                <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
-                                <li><a runat="server" href="~/">Home</a></li>
-                                <li><a runat="server" href="~/Schedule">Rooster</a></li>
-                                <li><a runat="server" href="~/Gradelist">Cijfers</a></li>
-                                <li><a runat="server" href="~/BookList">Boeken</a></li>
-                                <li><a runat="server" href="~/SubjectList">Vakken</a></li>
-                                <li><a runat="server" href="~/HwList">Huiswerk</a></li>
+                            <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
+                            <li><a runat="server" href="~/">Home</a></li>
+                            <li><a runat="server" href="~/Schedule">Rooster</a></li>
+                            <li><a runat="server" href="~/Gradelist">Cijfers</a></li>
+                            <li><a runat="server" href="~/BookList">Boeken</a></li>
+                            <li><a runat="server" href="~/SubjectList">Vakken</a></li>
+                            <li><a runat="server" href="~/HwList">Huiswerk</a></li>
+                            <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
+                        <% } else if (loggedInPerson.Type == "Teacher") { %>
+                            <li><a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a></li>
+                            <li><a runat="server" href="~/">Home</a></li>
+                            <li><a runat="server" href="~/AddGrade">Cijfers Invoeren</a></li>
+                            <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
                         <% } %>
                         <li><a runat="server" href="~/Logout">Uitloggen</a></li>
                     </ul>

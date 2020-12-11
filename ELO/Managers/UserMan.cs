@@ -86,21 +86,19 @@ namespace ELO
             return userSQL.FindUserInDataBase(username, password, leerlingnummer, school, type);
         }
 
-        // public Person AddUserToDataBase(string username, string password, int leerlingnummer, string school, string type, string naam, string email)
-        // {
-        //     Person newPerson = userSQL.AddUser(username, password, leerlingnummer, school, type, naam, email);
-        //     personList.Add(newPerson);
-        //
-        //     return newPerson;
-        // }
 
         public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email)
         {
             SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email);
 
-            personList.Add(newAdmin);
-
             return newAdmin;
+        }
+
+        public Teacher AddTeacherToDataBase(string username, string password, string school, string name, string email)
+        {
+            Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email);
+            
+            return newTeacher;
         }
 
     }
