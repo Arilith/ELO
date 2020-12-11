@@ -5,14 +5,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ELO;
+using ELO.Managers;
 
 namespace Front_End
 {
     public partial class AddTeacher : System.Web.UI.Page
     {
 
+        public UserMan userManager;
+        public SchoolManager schoolManager;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            userManager = new UserMan();
+            schoolManager = new SchoolManager();
+
             if (IsPostBack)
             {
                 ConvertAndInsertData();
@@ -21,24 +28,13 @@ namespace Front_End
 
         private void ConvertAndInsertData()
         {
-
+            string username = Request.Form["username"];
             string teacherName = Request.Form["name"];
-            int age = Convert.ToInt32(Request.Form["age"]);
+            string password = Request.Form["password"];
+            string email = Request.Form["email"];
             string school = Request.Form["school"];
-            Subject subject = Manager.subjectMan.FindSubject(Request.Form["subject"]);
 
-
-            Class mentorClass = Manager.classMan.GetClass(Request.Form["mentorclass"]);
-
-            if (mentorClass != null)
-            {
-               // Manager.userMan.AddTeacherToPersonList(teacherName, age, school, true, subject, mentorClass);
-            }
-            else
-            {
-               // Manager.userMan.AddTeacherToPersonList(teacherName, age, school, true, subject);
-            }
-
+            userManager.AddTeacherToDataBase(username, password, school, teacherName, email);
             
 
             OutputLabel.Text = "Docent Succesvol toegevoegd!";
