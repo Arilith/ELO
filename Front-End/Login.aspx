@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                     <a class="navbar-brand" runat="server" href="~/">Study Cluster</a>
+                     <a class="navbar-brand" runat="server" href="~/"><img class="header-img" src="Content/Pictures/Logo-ELO2Best.png" width="130" height`="130"></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
