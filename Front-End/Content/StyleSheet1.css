@@ -1,7 +1,7 @@
 ﻿body {
+    background-image: url("Pictures/backgroundBeter.jpg")!important;
 }
 
-.form-control{
-    background:pink;
-    height:100px;
+.form-control {
+    background-color:white!important;
 }
