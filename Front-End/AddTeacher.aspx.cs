@@ -22,23 +22,13 @@ namespace Front_End
 
             if (IsPostBack)
             {
-                ConvertAndInsertData();
+                Person loggedInPerson = (Person)Session["person"];
+
+                userManager.AddTeacherToDataBase(Request.Form["username"], Request.Form["password"], loggedInPerson, Request.Form["name"], Request.Form["email"]);
+
+                OutputLabel.Text = "Docent Succesvol toegevoegd!";
             }
         }
 
-        private void ConvertAndInsertData()
-        {
-            string username = Request.Form["username"];
-            string teacherName = Request.Form["name"];
-            string password = Request.Form["password"];
-            string email = Request.Form["email"];
-            string school = Request.Form["school"];
-
-            userManager.AddTeacherToDataBase(username, password, school, teacherName, email);
-            
-
-            OutputLabel.Text = "Docent Succesvol toegevoegd!";
-
-        }
     }
 }

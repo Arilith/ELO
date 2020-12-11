@@ -10,31 +10,20 @@ namespace Front_End
 {
     public partial class AddClass : System.Web.UI.Page
     {
+        private ClassManager classManager;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            classManager = new ClassManager();
+
             if (IsPostBack)
             {
-                ConvertAndInsertData();
+                Person loggedInPerson = (Person) Session["person"];
+                classManager.AddNewClassToDatabase(Request.Form["name"], Request.Form["leshuis"], Request.Form["stream"], Request.Form["cluster"], Convert.ToInt32(Request.Form["studyyear"]), loggedInPerson);
+
+                OutputLabel.Text = "Klas Succesvol toegevoegd!";
             }
         }
 
-        private void ConvertAndInsertData()
-        {
-            //Escape??
-            string className = Request.Form["name"];
-            string cluster = Request.Form["cluster"];
-            string stream = Request.Form["stream"];
-            string leshuis = Request.Form["leshuis"];
-            int amountOfStudents = Convert.ToInt32(Request.Form["amountofstudents"]);
-            int studyYear = Convert.ToInt32(Request.Form["studyyear"]);
-            string mentor = Request.Form["mentor"];
-
-            Teacher mentorTeacher = Manager.userMan.GetTeacher(mentor);
-
-            Manager.classMan.AddNewClass(className, amountOfStudents, leshuis, stream, cluster, studyYear, mentorTeacher);
-
-            OutputLabel.Text = "Klas Succesvol toegevoegd!";
-
-        }
     }
 }

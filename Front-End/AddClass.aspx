@@ -9,9 +9,6 @@
                 <label for="name">Klasnaam</label><br/>
                 <input id="name" class="form-control" name="name" type="text" required/>
                 <br/>
-                <label for="amountofstudents">Aantal leerlingen</label><br/>
-                <input id="amountofstudents" class="form-control" name="amountofstudents" type="number" min="1" max="99" required/>
-                <br/>
                 <label for="cluster">Cluster</label><br/>
                 <input id="cluster" class="form-control" name="cluster" type="text" required/>
                 <br/>
@@ -24,12 +21,6 @@
                 <label for="studyyear">Studiejaar</label><br/>
                 <input id="studyyear" class="form-control" name="studyyear" type="number" min="1" max="6" required/>
                 <br/>
-                <label for="mentor">Mentor</label><br/>
-                <select id="mentor" class="form-control" name="mentor">
-                    <% foreach (Teacher teacher in Manager.userMan.GetTeacherList()) { %>
-                        <option><%: teacher.Name %></option>
-                    <% } %>
-                </select>
                 <button style="width: auto" type="submit" class="form-control">Verstuur</button>
             </form>
         </div>

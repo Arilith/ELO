@@ -86,7 +86,10 @@ namespace ELO
             return userSQL.FindUserInDataBase(username, password, leerlingnummer, school, type);
         }
 
-
+        public Person FindUserInDataBase(string uuid)
+        {
+            return userSQL.FindUserInDataBase(uuid);
+        }
         public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email)
         {
             SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email);
@@ -94,11 +97,24 @@ namespace ELO
             return newAdmin;
         }
 
-        public Teacher AddTeacherToDataBase(string username, string password, string school, string name, string email)
+        public Teacher AddTeacherToDataBase(string username, string password, Person loggedInperson, string name, string email)
         {
+            string school = loggedInperson.School;
+
             Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email);
             
             return newTeacher;
+        }
+
+        public Student AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, string mentorUUID, Person loggedInPerson)
+        {
+
+            string school = loggedInPerson.School;
+            string userName = name.Replace(" ", "");
+            Student newStudent = userSQL.AddStudent(userName, password, leerlingnummer, school, name, email, classUUID, mentorUUID);
+
+            return newStudent;
+
         }
 
     }

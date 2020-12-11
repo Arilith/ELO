@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ELO.SQLClasses;
 
 namespace ELO
 {
@@ -9,10 +10,12 @@ namespace ELO
 
         public List<Class> classList { get; private set; }
 
+        private ClassSQL classSql;
+
         public ClassManager()
         {
             classList = new List<Class>();
-
+            classSql = new ClassSQL();
         }
 
         public List<Class> GetClassList()
@@ -30,9 +33,20 @@ namespace ELO
             return classList.Find(x => x.Name == name);
         }
 
-        public void AddNewClass(string name, int amountOfStudents, string leshuis, string stream, string cluster, int studyYear, Teacher mentorTeacher)
+        // public void AddNewClass(string name, int amountOfStudents, string leshuis, string stream, string cluster, int studyYear, Teacher mentorTeacher)
+        // {
+        //     classList.Add(new Class(name, amountOfStudents, cluster, leshuis, stream, studyYear, mentorTeacher));
+        // }
+
+        public void AddNewClassToDatabase(string name, string leshuis, string stream, string cluster, int studyYear, Person loggedInPerson)
         {
-            classList.Add(new Class(name, amountOfStudents, cluster, leshuis, stream, studyYear, mentorTeacher));
+            string school = loggedInPerson.School;
+            classSql.CreateClass(name, stream, cluster, leshuis, studyYear, school);
+        }
+
+        public Class GetClassFromDatabase(string uuid)
+        {
+            return classSql.GetClass(uuid);
         }
 
     }
