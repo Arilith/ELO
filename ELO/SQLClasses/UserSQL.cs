@@ -119,7 +119,7 @@ namespace ELO.SQLClasses
             addStudentCommand.Prepare();
             addStudentCommand.ExecuteNonQuery();
 
-
+            
             Class returnClass = classManager.GetClassFromDatabase(classUUID);
             Teacher mentorTeacher = (Teacher)FindUserInDataBase(mentorUUID);
 
@@ -151,10 +151,12 @@ namespace ELO.SQLClasses
                 string returnSubjectUUID = reader["subjectUUID"].ToString();
                 string returnMentorUUID = reader["mentorUUID"].ToString();
 
+                reader.Close();
+
                 Class returnClass = classManager.GetClass(returnClassUUID);
                 Teacher returnTeacher = (Teacher)FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
-                reader.Close();
+                
 
                 if(returnType == "Student")
                     return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail);
@@ -164,6 +166,7 @@ namespace ELO.SQLClasses
                     return new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail);
             }
 
+            reader.Close();
             return null;
         }
 
@@ -221,17 +224,22 @@ namespace ELO.SQLClasses
                     int returnLeerlingNummer = Convert.ToInt32(reader["leerlingnummer"]);
                     string returnRegistrationdate = reader["registrationdate"].ToString();
                     string email = reader["email"].ToString();
-                    Class returnClass = classManager.GetClassFromDatabase(reader["classUUID"].ToString());
-                    Teacher returnTeacher = (Teacher)FindUserInDataBase(reader["classUUID"].ToString());
+
+                    string classUUID = reader["classUUID"].ToString();
 
                     reader.Close();
+
+                    Class returnClass = classManager.GetClassFromDatabase(classUUID);
+                    Teacher returnTeacher = (Teacher)FindUserInDataBase(classUUID);
+
+                    
                     return new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email);
                 }
 
                 reader.Close();
             } 
             
-
+            
             return null;
         }
         

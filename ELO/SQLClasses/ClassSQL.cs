@@ -51,6 +51,8 @@ namespace ELO.SQLClasses
                 string mentorUUID = reader["mentorUUID"].ToString();
                 int studyYear = Convert.ToInt32(reader["studyYear"]);
 
+                reader.Close();
+
                 Teacher mentor = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 
                 return new Class(className, cluster, leshuis, stream, studyYear, mentor);

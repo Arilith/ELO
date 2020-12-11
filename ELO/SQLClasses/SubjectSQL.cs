@@ -24,10 +24,13 @@ namespace ELO.SQLClasses
                 string subjectName = reader["subjectName"].ToString();
                 string teacherUUIDs = reader["teacherUUIDs"].ToString();
 
+                reader.Close();
+
                 return new Subject(subjectName);
 
             }
 
+            reader.Close();
             return null;
         }
 
