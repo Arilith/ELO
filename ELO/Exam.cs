@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ELO
 {
-    class Exam
+    public class Exam
     {
         private Subject subject;
         private int weight;

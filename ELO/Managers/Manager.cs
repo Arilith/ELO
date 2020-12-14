@@ -15,8 +15,9 @@ namespace ELO
         public static FileManager fileMan = new FileManager();
         public static SubjectManager subjectMan = new SubjectManager();
         public static SchoolManager schoolManager = new SchoolManager();
-        public static LeermiddelMan leermiddelMan = new LeermiddelMan();
+        public static TodayMan todayMan = new TodayMan();
+        public static ClassroomMan classroomMan = new ClassroomMan();
+
+
     }
-
-
 }

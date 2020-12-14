@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ELO;
 
 namespace ELO
 {
-    class Classroom
+    public class Classroom
     {
-        private string name;
-        private bool available;
-        private int floor;
+        public string Name { get; private set; }
+        public bool Available { get; private set; }
+        public int Floor { get; private set; }
 
         public Classroom(string name, int floor, bool available)
         {
-            this.name = name;
-            this.floor = floor;
-            this.available = available;
+            this.Name = name;
+            this.Floor = floor;
+            this.Available = available;
         }
     }
 }
