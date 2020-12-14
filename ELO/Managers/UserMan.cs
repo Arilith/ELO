@@ -45,6 +45,10 @@ namespace ELO
         {
             return personList;
         }
+        public List<Person> GetPersonListFromDB(string school, string type)
+        {
+            return userSQL.GetList(school, type);
+        }
 
         public List<Student> GetStudentList()
         {

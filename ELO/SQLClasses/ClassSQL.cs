@@ -8,6 +8,8 @@ namespace ELO.SQLClasses
 {
     class ClassSQL
     {
+        private MySqlManager mysqlManager;
+
         private string uuid;
         private string date;
 
@@ -15,6 +17,7 @@ namespace ELO.SQLClasses
 
         public ClassSQL()
         {
+            mysqlManager = new MySqlManager();
             uuid = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
             date = DateTime.Now.ToString("u");
         }
@@ -38,7 +41,7 @@ namespace ELO.SQLClasses
         {
             string findClassSql = "SELECT * FROM classes WHERE school = '" + school + "' AND className = '" + name + "'";
 
-            MySqlCommand findClassCommand = new MySqlCommand(findClassSql, MySqlManager.con);
+            MySqlCommand findClassCommand = new MySqlCommand(findClassSql, mysqlManager.con);
 
             MySqlDataReader reader = findClassCommand.ExecuteReader();
 
@@ -69,6 +72,29 @@ namespace ELO.SQLClasses
 
         public Class GetClass(string uuid)
         {
+            string findClassSql = "SELECT * FROM classes WHERE uuid = '" + uuid + "'";
+
+            MySqlCommand findClassCommand = new MySqlCommand(findClassSql, mysqlManager.con);
+
+            MySqlDataReader reader = findClassCommand.ExecuteReader();
+
+            if (reader.Read())
+            {
+                string className = reader["className"].ToString();
+                string cluster = reader["cluster"].ToString();
+                string stream = reader["level"].ToString();
+                string leshuis = reader["leshuis"].ToString();
+                string mentorUUID = reader["mentorUUID"].ToString();
+                int studyYear = Convert.ToInt32(reader["studyYear"]);
+
+                reader.Close();
+
+                Teacher mentor = (Teacher)userSql.FindUserInDataBase(mentorUUID);
+
+                return new Class(className, cluster, leshuis, stream, studyYear, mentor);
+
+            }
+
             return null;
         }
 
@@ -79,7 +105,7 @@ namespace ELO.SQLClasses
 
 
 
-            AddClassCmd = new MySqlCommand(AddClassSql, MySqlManager.con);
+            AddClassCmd = new MySqlCommand(AddClassSql, mysqlManager.con);
 
             AddClassCmd.Parameters.AddWithValue("@className", className);
             AddClassCmd.Parameters.AddWithValue("@level", level);

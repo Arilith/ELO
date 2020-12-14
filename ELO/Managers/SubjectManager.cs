@@ -13,6 +13,7 @@ namespace ELO
 
         public SubjectManager()
         {
+            subjectSql = new SubjectSQL();
             Subjects = new List<Subject>();
         }
 

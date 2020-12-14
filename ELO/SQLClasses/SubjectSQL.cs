@@ -7,15 +7,16 @@ namespace ELO.SQLClasses
 {
     public class SubjectSQL
     {
+        private MySqlManager mySqlManager;
         public SubjectSQL()
         {
-
+            mySqlManager = new MySqlManager();
         }
         public Subject GetSubject(string uuid)
         {
             string findSubjectSql = "SELECT * FROM subjects WHERE subjectUUID = '" + uuid + "'";
 
-            MySqlCommand findSubjectCmd = new MySqlCommand(findSubjectSql, MySqlManager.con);
+            MySqlCommand findSubjectCmd = new MySqlCommand(findSubjectSql, mySqlManager.con);
 
             MySqlDataReader reader = findSubjectCmd.ExecuteReader();
 

@@ -14,11 +14,12 @@ namespace ELO.SQLClasses
         private ClassManager classManager;
         private UserMan userManager;
         private SubjectManager subjectManager;
-
+        private MySqlManager mySqlManager;
         private string date;
         private string userUUID;
         public UserSQL()
-        { 
+        {
+            mySqlManager = new MySqlManager();
             classManager = new ClassManager(); 
             //userManager = new UserMan();
             subjectManager = new SubjectManager();
@@ -27,16 +28,52 @@ namespace ELO.SQLClasses
             userUUID = new Random().Next().ToString() + DateTime.Now.ToString("ddMMYYYYhhiiss");
         }
 
-        public string ReadUser()
+        public List<Person> GetList(string school, string type)
         {
-            return MySqlManager.con.ServerVersion;
+            List<Person> returnList = new List<Person>();
+
+            MySqlCommand getStudentsCommand = new MySqlCommand("SELECT * FROM users WHERE role = '"+type+"' AND school = '"+ school+ "'", mySqlManager.con);
+            MySqlDataReader Studentsreader = getStudentsCommand.ExecuteReader();
+
+            while (Studentsreader.Read())
+            {
+                string returnName = Studentsreader["name"].ToString();
+                string returnUsername = Studentsreader["username"].ToString();
+                int returnAge = Convert.ToInt32(Studentsreader["age"]);
+                string returnType = Studentsreader["role"].ToString();
+                string returnSchool = Studentsreader["school"].ToString();
+                string returnUserId = Convert.ToString(Studentsreader["uuid"]);
+                string returnRegistrationdate = Studentsreader["registrationdate"].ToString();
+                string returnEmail = Studentsreader["email"].ToString();
+                int returnLeerlingnummer = Convert.ToInt32(Studentsreader["leerlingnummer"]);
+                //TO BE DONE
+                string returnClassUUID = Studentsreader["classUUID"].ToString();
+                string returnSubjectUUID = Studentsreader["subjectUUID"].ToString();
+                string returnMentorUUID = Studentsreader["mentorUUID"].ToString();
+
+                
+                Class returnClass = classManager.GetClass(returnClassUUID);
+                Teacher returnTeacher = (Teacher)new UserSQL().FindUserInDataBase(returnMentorUUID);
+                Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
+
+                if (returnType == "Student") 
+                    returnList.Add(new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail));
+                if (returnType == "Teacher")
+                    returnList.Add(new Teacher(returnName, returnAge, returnSchool, "Teacher", returnSubject, returnClass, returnUserId, returnRegistrationdate, returnUsername, returnEmail));
+                if (returnType == "SysAdmin")
+                    returnList.Add(new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail));
+            }
+
+            
+
+            return returnList;
         }
 
         public string GetUserList()
         {
             string finalstring = "";
 
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", MySqlManager.con);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", mySqlManager.con);
             MySqlDataReader reader = cmd.ExecuteReader();
 
             while(reader.Read())
@@ -54,7 +91,7 @@ namespace ELO.SQLClasses
             string AddAdminSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school)";
             MySqlCommand AddAdminCommand;
 
-            AddAdminCommand = new MySqlCommand(AddAdminSQL, MySqlManager.con);
+            AddAdminCommand = new MySqlCommand(AddAdminSQL, mySqlManager.con);
 
             AddAdminCommand.Parameters.AddWithValue("@username", username);
             AddAdminCommand.Parameters.AddWithValue("@password", CreateMD5(password));
@@ -78,7 +115,7 @@ namespace ELO.SQLClasses
             string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school)";
             MySqlCommand addTeacherCommand;
 
-            addTeacherCommand = new MySqlCommand(addTeacherSQL, MySqlManager.con);
+            addTeacherCommand = new MySqlCommand(addTeacherSQL, mySqlManager.con);
 
             addTeacherCommand.Parameters.AddWithValue("@username", username);
             addTeacherCommand.Parameters.AddWithValue("@password", CreateMD5(password));
@@ -104,7 +141,7 @@ namespace ELO.SQLClasses
             string addStudentSql = "INSERT INTO users(username, leerlingnummer, password, email, registrationdate, role, name, uuid, school, classUUID, mentorUUID) VALUES (@username, @leerlingnummer, @password, @email, @registrationdate, @role, @name, @uuid, @school, @classUUID, @mentorUUID)";
             MySqlCommand addStudentCommand;
 
-            addStudentCommand = new MySqlCommand(addStudentSql, MySqlManager.con);
+            addStudentCommand = new MySqlCommand(addStudentSql, mySqlManager.con);
 
             addStudentCommand.Parameters.AddWithValue("@leerlingnummer", leerlingnummer);
             addStudentCommand.Parameters.AddWithValue("@username", username);
@@ -132,7 +169,7 @@ namespace ELO.SQLClasses
         public Person FindUserInDataBase(string uuid)
         {
             string findUserSql = $"SELECT * FROM users WHERE uuid = '" + uuid + "'";
-            MySqlCommand findUserCommand = new MySqlCommand(findUserSql, MySqlManager.con);
+            MySqlCommand findUserCommand = new MySqlCommand(findUserSql, mySqlManager.con);
 
             MySqlDataReader reader = findUserCommand.ExecuteReader();
 
@@ -149,7 +186,7 @@ namespace ELO.SQLClasses
                 string returnEmail = reader["email"].ToString();
                 int returnLeerlingnummer = Convert.ToInt32(reader["leerlingnummer"]);
                 //TO BE DONE
-                string returnClassUUID = reader["className"].ToString();
+                string returnClassUUID = reader["classUUID"].ToString();
                 string returnSubjectUUID = reader["subjectUUID"].ToString();
                 string returnMentorUUID = reader["mentorUUID"].ToString();
 
@@ -181,7 +218,7 @@ namespace ELO.SQLClasses
             if (type == "SysAdmin")
             {
                 string findUserSql = $"SELECT * FROM users WHERE username='{username}' AND password='{password}' AND school = '{school}'";
-                MySqlCommand findUserCommand = new MySqlCommand(findUserSql, MySqlManager.con);
+                MySqlCommand findUserCommand = new MySqlCommand(findUserSql, mySqlManager.con);
 
                 MySqlDataReader reader = findUserCommand.ExecuteReader();
 
@@ -212,7 +249,7 @@ namespace ELO.SQLClasses
             } else if (type == "Student")
             {
                 string findUserSql = $"SELECT * FROM users WHERE leerlingnummer='{leerlingnummer}' AND password='{password}' AND school = '{school}'";
-                MySqlCommand findUserCommand = new MySqlCommand(findUserSql, MySqlManager.con);
+                MySqlCommand findUserCommand = new MySqlCommand(findUserSql, mySqlManager.con);
 
                 MySqlDataReader reader = findUserCommand.ExecuteReader();
 

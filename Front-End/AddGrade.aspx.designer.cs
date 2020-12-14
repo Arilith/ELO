@@ -11,61 +11,7 @@ namespace Front_End
 {
 
 
-	public partial class AddGrade
-	{
-
-		/// <summary>
-		/// CheckBoxOA control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBoxOA;
-
-		/// <summary>
-		/// CheckBoxWA control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBoxWA;
-
-		/// <summary>
-		/// CheckBoxTLO control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBoxTLO;
-
-		/// <summary>
-		/// CheckBoxTLW control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBoxTLW;
-
-		/// <summary>
-		/// CheckBoxHWV control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBoxHWV;
-
-		/// <summary>
-		/// CheckBoxVW control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBoxVW;
-	}
+    public partial class AddGrade
+    {
+    }
 }
