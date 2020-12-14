@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ELO.SQLClasses;
 
 namespace ELO
 {
     public class GradeMan
     {
         public static List<Grade> gradelist {get; private set;}
+
+        public GradeSQL GradeSql;
+
         public GradeMan()
         {
             gradelist = new List<Grade>();
@@ -19,5 +23,11 @@ namespace ELO
         {
             return gradelist;
         }
+
+        public void AddGradeToDataBase()
+        {
+
+        }
+
     }
 }

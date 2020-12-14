@@ -31,5 +31,7 @@ namespace Front_End
             Manager.gradeMan.AddGradeToList(studentName, _class, grade, date, subject, weight);
 
         }
-    }
+
+	
+	}
 }

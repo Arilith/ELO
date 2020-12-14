@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ELO.SQLClasses;
 
 namespace ELO
 {
     public class SubjectManager
     {
+        private SubjectSQL subjectSql;
+
         public List<Subject> Subjects { get; private set; }
 
         public SubjectManager()
@@ -59,6 +62,11 @@ namespace ELO
                 Teacher newTeacher = Manager.userMan.GetTeacher(teacher);
                 AddTeacherToSubject(newTeacher, newSubject);
             }
+        }
+
+        public Subject FindSubjectInDatabase(string uuid)
+        {
+            return subjectSql.GetSubject(uuid);
         }
 
     }

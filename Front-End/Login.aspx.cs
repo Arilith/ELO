@@ -25,7 +25,7 @@ namespace Front_End
 
             if (IsPostBack)
             {
-                results = userManager.FindUserInDataBase("", Request.Form["password"], Convert.ToInt32(Request.Form["leerlingnummer"]), Request.Form["school"], "Leerling");
+                results = userManager.FindUserInDataBase("", Request.Form["password"], Convert.ToInt32(Request.Form["leerlingnummer"]), Request.Form["school"], "Student");
                 Session["person"] = results;
             }
 

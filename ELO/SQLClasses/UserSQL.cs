@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using SshNet.Security.Cryptography;
+
 namespace ELO.SQLClasses
 {
     public class UserSQL
@@ -11,12 +13,15 @@ namespace ELO.SQLClasses
 
         private ClassManager classManager;
         private UserMan userManager;
+        private SubjectManager subjectManager;
+
         private string date;
         private string userUUID;
         public UserSQL()
         { 
             classManager = new ClassManager(); 
             //userManager = new UserMan();
+            subjectManager = new SubjectManager();
 
             date = DateTime.Now.ToString();
             userUUID = new Random().Next().ToString() + DateTime.Now.ToString("ddMMYYYYhhiiss");
@@ -52,7 +57,7 @@ namespace ELO.SQLClasses
             AddAdminCommand = new MySqlCommand(AddAdminSQL, MySqlManager.con);
 
             AddAdminCommand.Parameters.AddWithValue("@username", username);
-            AddAdminCommand.Parameters.AddWithValue("@password", password);
+            AddAdminCommand.Parameters.AddWithValue("@password", CreateMD5(password));
             AddAdminCommand.Parameters.AddWithValue("@email", email);
             AddAdminCommand.Parameters.AddWithValue("@registrationdate", date);
             AddAdminCommand.Parameters.AddWithValue("@role", "SysAdmin");
@@ -76,7 +81,7 @@ namespace ELO.SQLClasses
             addTeacherCommand = new MySqlCommand(addTeacherSQL, MySqlManager.con);
 
             addTeacherCommand.Parameters.AddWithValue("@username", username);
-            addTeacherCommand.Parameters.AddWithValue("@password", password);
+            addTeacherCommand.Parameters.AddWithValue("@password", CreateMD5(password));
             addTeacherCommand.Parameters.AddWithValue("@email", email);
             addTeacherCommand.Parameters.AddWithValue("@registrationdate", date);
             addTeacherCommand.Parameters.AddWithValue("@role", "Teacher");
@@ -91,55 +96,87 @@ namespace ELO.SQLClasses
 
         }
 
-        // public Student AddStudent(string username, string password, int leerlingnummer, string school, string type, string name, string email, string className, string mentorName)
-        // {
-        //
-        // }
-        //
-        // public Teacher AddTeacher(string username, string password, string school, string type, string name, string email, string mentorClass)
-        // {
-        //
-        // }
-        //
-        // public Person AddUser(string username, string password, int leerlingnummer, string school, string type, string name, string email, string className, string mentorName)
-        // {
-        //     string AddUserSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, leerlingnummer, className, mentorName) VALUES (@username, @password, @email, @registrationdate, @role, @uuid, @leerlingnummer, @className, @mentorName)";
-        //     MySqlCommand AddUserCommand;
-        //
-        //     
-        //
-        //
-        //
-        //     AddUserCommand = new MySqlCommand(AddUserSQL, MySqlManager.con);
-        //     AddUserCommand.Parameters.AddWithValue("@username", username);
-        //     AddUserCommand.Parameters.AddWithValue("@password", password);
-        //     AddUserCommand.Parameters.AddWithValue("@email", email);
-        //     AddUserCommand.Parameters.AddWithValue("@registrationdate", date);
-        //     AddUserCommand.Parameters.AddWithValue("@role", type);
-        //     AddUserCommand.Parameters.AddWithValue("@name", name);
-        //     AddUserCommand.Parameters.AddWithValue("@leerlingnummer", userUUID);
-        //     AddUserCommand.Parameters.AddWithValue("@className", userUUID);
-        //     AddUserCommand.Parameters.AddWithValue("@mentorName", userUUID);
-        //     
-        //     AddUserCommand.Prepare();
-        //     AddUserCommand.ExecuteNonQuery();
-        //
-        //
-        //     if (type == "Leerling")
-        //     {
-        //         Class studentClass = classManager.GetClass(className);
-        //         Teacher mentorTeacher = userManager.GetTeacher(mentorName);
-        //         return new Student(name, 0, school, type, studentClass, mentorTeacher, userUUID, leerlingnummer, date, username, email);
-        //     }
-        //         
-        //     if(type == "SysAdmin")
-        //         return new SysAdmin();
-        //     if(type == "Teacher")
-        //         return new Teacher();
-        // }
+        
+
+        public Student AddStudent(string username, string password, int leerlingnummer, string school, string name, string email, string classUUID, string mentorUUID)
+        {
+
+            string addStudentSql = "INSERT INTO users(username, leerlingnummer, password, email, registrationdate, role, name, uuid, school, classUUID, mentorUUID) VALUES (@username, @leerlingnummer, @password, @email, @registrationdate, @role, @name, @uuid, @school, @classUUID, @mentorUUID)";
+            MySqlCommand addStudentCommand;
+
+            addStudentCommand = new MySqlCommand(addStudentSql, MySqlManager.con);
+
+            addStudentCommand.Parameters.AddWithValue("@leerlingnummer", leerlingnummer);
+            addStudentCommand.Parameters.AddWithValue("@username", username);
+            addStudentCommand.Parameters.AddWithValue("@password", CreateMD5(password));
+            addStudentCommand.Parameters.AddWithValue("@email", email);
+            addStudentCommand.Parameters.AddWithValue("@registrationdate", date);
+            addStudentCommand.Parameters.AddWithValue("@role", "Student");
+            addStudentCommand.Parameters.AddWithValue("@name", name);
+            addStudentCommand.Parameters.AddWithValue("@uuid", userUUID);
+            addStudentCommand.Parameters.AddWithValue("@school", school);
+            addStudentCommand.Parameters.AddWithValue("@classUUID", classUUID);
+            addStudentCommand.Parameters.AddWithValue("@mentorUUID", mentorUUID);
+
+            addStudentCommand.Prepare();
+            addStudentCommand.ExecuteNonQuery();
+
+            
+            Class returnClass = classManager.GetClassFromDatabase(classUUID);
+            Teacher mentorTeacher = (Teacher)FindUserInDataBase(mentorUUID);
+
+            return new Student(name, 0, school, "Student", returnClass, mentorTeacher, userUUID, leerlingnummer, date, username, email);
+
+        }
+
+        public Person FindUserInDataBase(string uuid)
+        {
+            string findUserSql = $"SELECT * FROM users WHERE uuid = '" + uuid + "'";
+            MySqlCommand findUserCommand = new MySqlCommand(findUserSql, MySqlManager.con);
+
+            MySqlDataReader reader = findUserCommand.ExecuteReader();
+
+            if (reader.Read())
+            {
+                
+                string returnName = reader["name"].ToString();
+                string returnUsername = reader["username"].ToString();
+                int returnAge = Convert.ToInt32(reader["age"]);
+                string returnType = reader["role"].ToString();
+                string returnSchool = reader["school"].ToString();
+                string returnUserId = Convert.ToString(reader["uuid"]);
+                string returnRegistrationdate = reader["registrationdate"].ToString();
+                string returnEmail = reader["email"].ToString();
+                int returnLeerlingnummer = Convert.ToInt32(reader["leerlingnummer"]);
+                //TO BE DONE
+                string returnClassUUID = reader["className"].ToString();
+                string returnSubjectUUID = reader["subjectUUID"].ToString();
+                string returnMentorUUID = reader["mentorUUID"].ToString();
+
+                reader.Close();
+
+                Class returnClass = classManager.GetClass(returnClassUUID);
+                Teacher returnTeacher = (Teacher)FindUserInDataBase(returnMentorUUID);
+                Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
+                
+
+                if(returnType == "Student")
+                    return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail);
+                if(returnType == "Teacher")
+                    return new Teacher(returnName, returnAge, returnSchool, "Teacher", returnSubject, returnClass, returnUserId, returnRegistrationdate, returnUsername, returnEmail);
+                if(returnType == "SysAdmin")
+                    return new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail);
+            }
+
+            reader.Close();
+            return null;
+        }
 
         public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school, string type)
         {
+
+            password = CreateMD5(password);
+
 
             if (type == "SysAdmin")
             {
@@ -159,8 +196,8 @@ namespace ELO.SQLClasses
                     string returnRegistrationdate = reader["registrationdate"].ToString();
                     string email = reader["email"].ToString();
                     //TO BE DONE
-                    string mentorClass = reader["className"].ToString();
-                    string subject = reader["subject"].ToString();
+                    string mentorClass = reader["classUUID"].ToString();
+                    //string subject = reader["subjectUUID"].ToString();
 
                     reader.Close();
 
@@ -172,7 +209,7 @@ namespace ELO.SQLClasses
                 }
 
                 reader.Close();
-            } else if (type == "Leerling")
+            } else if (type == "Student")
             {
                 string findUserSql = $"SELECT * FROM users WHERE leerlingnummer='{leerlingnummer}' AND password='{password}' AND school = '{school}'";
                 MySqlCommand findUserCommand = new MySqlCommand(findUserSql, MySqlManager.con);
@@ -192,19 +229,42 @@ namespace ELO.SQLClasses
                     int returnLeerlingNummer = Convert.ToInt32(reader["leerlingnummer"]);
                     string returnRegistrationdate = reader["registrationdate"].ToString();
                     string email = reader["email"].ToString();
-                    Class returnClass = Manager.classMan.GetClass(reader["className"].ToString());
-                    Teacher returnTeacher = Manager.userMan.GetTeacher(reader["mentorName"].ToString());
+
+                    string classUUID = reader["classUUID"].ToString();
 
                     reader.Close();
+
+                    Class returnClass = classManager.GetClassFromDatabase(classUUID);
+                    Teacher returnTeacher = (Teacher)FindUserInDataBase(classUUID);
+
+                    
                     return new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email);
                 }
 
                 reader.Close();
             } 
             
-
+            
             return null;
         }
-        
+
+        public static string CreateMD5(string input)
+        {
+            // Use input string to calculate MD5 hash
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
+
     }
 }

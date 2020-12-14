@@ -17,15 +17,7 @@
                 
                 <label for="password">Wachtwoord</label><br/>
                 <input id="password" class="form-control" name="password" type="password" required />
-
-                <label for="school">School</label><br/>
-                <select id="school" name="school" class="form-control">
-                    <% foreach (School school in schoolManager.GetSchoolList()) { %>
-                        <option><%: school.Name %></option>
-                    <% } %>
-                </select>
-        
-               <%--  <label for="subject">Vak</label><br/> --%>
+                <%--  <label for="subject">Vak</label><br/> --%>
                <%--  <select name="subject" id="subject" class="form-control"> --%>
                <%--      <option value="">Geen vak</option> --%>
                <%--      <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %> --%>
