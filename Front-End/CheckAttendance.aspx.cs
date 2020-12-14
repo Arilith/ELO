@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ELO;
 
 namespace Front_End
 {
@@ -11,13 +12,20 @@ namespace Front_End
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			
 		}
 
-		protected void CheckBoxList1_SelectedIndexChanged(object sender, EventArgs e)
+
+
+		protected void CheckBoxOA_CheckedChanged(object sender, EventArgs e)
 		{
-
+			CheckBoxWA.Checked = false;
 		}
-       
-        }
+
+		protected void CheckBoxWA_CheckedChanged(object sender, EventArgs e)
+		{
+			CheckBoxOA.Checked = false;
+			
+		}
+	}
 }
