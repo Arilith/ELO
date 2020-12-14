@@ -42,24 +42,9 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                     <a class="navbar-brand" runat="server" href="~/"><img class="header-img" src="Content/Pictures/Logo-ELO2Best.png" width="130" height`="130"></a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Login">Inloggen</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container body-content" style="margin-top: 50px;">
+        <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block" />
+                
+        <div class="container body-content" style="margin-top: 50px; text-align:center">
             
             <form method="post" action="Login.aspx" name="login">
                 Voer je inloggegevens in.<br /><br />
@@ -69,6 +54,7 @@
                         <option><%: school.Name %></option>
                     <% } %>
                 </select>
+                <br />
                 <label for="leerlingnummer">Leerlingnummer</label><br />
                 <input id="leerlingnummer" type="text" name="leerlingnummer" class="form-control" /><br />
                 <label for="password">Wachtwoord</label><br />

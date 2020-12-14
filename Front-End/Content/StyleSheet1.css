@@ -1,6 +1,7 @@
 ﻿body {
     background-image: url("Pictures/backgroundBeter.jpg")!important;
     color:#000000!important;
+    text-align:center`;
 }
 
 
@@ -14,8 +15,4 @@
 
 .navbar.navbar-inverse.navbar-fixed-top {
    background-color:#C9DEF1!important;
-}
-
-p {
-    
 }
