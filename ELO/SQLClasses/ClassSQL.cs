@@ -36,7 +36,7 @@ namespace ELO.SQLClasses
             {
                 string returnName = classReader["className"].ToString();
                 string level = classReader["className"].ToString();
-                string uuid = classReader["className"].ToString();
+                string uuid = classReader["uuid"].ToString();
                 string mentorUUID = classReader["className"].ToString();
                 int studyYear = Convert.ToInt32(classReader["studyYear"]);
                 string cluster = classReader["className"].ToString();
@@ -158,5 +158,31 @@ namespace ELO.SQLClasses
             //return new Class(className, cluster, leshuis, level, studyYear);
         }
 
+        public int GetAmountOfStudents(string classUUID)
+        {
+            MySqlCommand amountOfStudentsCmd = new MySqlCommand($"SELECT Id FROM users WHERE classUUID = '{classUUID}'", mysqlManager.con);
+            MySqlDataReader amountOfStudentsReader = amountOfStudentsCmd.ExecuteReader();
+            return amountOfStudentsReader.RowCount();
+        }
+
+        public List<Student> GetStudentsInClass(string classUUID)
+        {
+            MySqlCommand studentsInClassCmd = new MySqlCommand($"SELECT * FROM users WHERE classUUID = '{classUUID}'", mysqlManager.con);
+            MySqlDataReader studentsInClassReader = studentsInClassCmd.ExecuteReader();
+
+            List<Student> returnList = new List<Student>();
+
+            userSql = new UserSQL();
+
+            while (studentsInClassReader.Read())
+            {
+                string studentUUID = studentsInClassReader["uuid"].ToString();
+
+                returnList.Add((Student)userSql.FindUserInDataBase(studentUUID));
+            }
+
+            return returnList;
+
+        }
     }
 }

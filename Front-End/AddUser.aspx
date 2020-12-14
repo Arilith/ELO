@@ -27,7 +27,7 @@
                 <br/>
                 <button style="width: auto" type="submit" class="form-control">Verstuur</button>
             </form>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
         </div>
     </div>
 </asp:Content>

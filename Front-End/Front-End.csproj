@@ -163,6 +163,7 @@
     <Content Include="AdminRegister.aspx" />
     <Content Include="BookList.aspx" />
     <Content Include="CheckAttendance.aspx" />
+    <Content Include="ClassList.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -221,6 +222,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="StudentsByClass.aspx" />
     <Content Include="SubjectList.aspx" />
     <Content Include="test.aspx" />
     <Content Include="UploadFile.aspx" />
@@ -310,6 +312,13 @@
     <Compile Include="CheckAttendance.aspx.designer.cs">
       <DependentUpon>CheckAttendance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -383,6 +392,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StudentsByClass.aspx.cs">
+      <DependentUpon>StudentsByClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentsByClass.aspx.designer.cs">
+      <DependentUpon>StudentsByClass.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubjectList.aspx.cs">
       <DependentUpon>SubjectList.aspx</DependentUpon>

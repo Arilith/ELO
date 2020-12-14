@@ -24,27 +24,19 @@ namespace Front_End
 
             if(IsPostBack)
             {
-               // userManager.AddStudentToDataBase();
+
+                string studentName = Request.Form["name"];
+                string password = Request.Form["password"];
+                string email = Request.Form["email"];
+                int leerlingnummer = Convert.ToInt32(Request.Form["leerlingnummer"]);
+                string postClass = Request.Form["class"];
+
+                ErrorLabel.Text = userManager.AddStudentToDataBase(leerlingnummer, password, studentName, email, postClass, loggedInUser);
             }
         }
 
-        private void ConvertAndInsertData()
-        {
 
-                string studentName = Request.Form["name"];
-                int age = Convert.ToInt32(Request.Form["age"]);
-                string school = Request.Form["school"];
-                string mentor = Request.Form["mentor"];
-                string klas = Request.Form["class"];
 
-                Teacher mentorTeacher = Manager.userMan.GetTeacher(mentor);
-                Class _class = Manager.classMan.GetClass(klas);
-
-                //Manager.userMan.AddStudentToPersonList(studentName, age, school, _class, mentorTeacher);
-
-                Label1.Text = "leerling Succesvol toegevoegd!";
-
-        }
 
     }
 }
