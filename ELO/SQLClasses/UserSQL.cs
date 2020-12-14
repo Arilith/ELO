@@ -20,7 +20,7 @@ namespace ELO.SQLClasses
         public UserSQL()
         {
             mySqlManager = new MySqlManager();
-            classManager = new ClassManager(); 
+             
             //userManager = new UserMan();
             subjectManager = new SubjectManager();
 
@@ -30,6 +30,8 @@ namespace ELO.SQLClasses
 
         public List<Person> GetList(string school, string type)
         {
+            classManager = new ClassManager();
+
             List<Person> returnList = new List<Person>();
 
             MySqlCommand getStudentsCommand = new MySqlCommand("SELECT * FROM users WHERE role = '"+type+"' AND school = '"+ school+ "'", mySqlManager.con);
@@ -64,7 +66,7 @@ namespace ELO.SQLClasses
                     returnList.Add(new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail));
             }
 
-            
+            classManager = null;
 
             return returnList;
         }
@@ -137,6 +139,7 @@ namespace ELO.SQLClasses
 
         public Student AddStudent(string username, string password, int leerlingnummer, string school, string name, string email, string classUUID, string mentorUUID)
         {
+            classManager = new ClassManager();
 
             string addStudentSql = "INSERT INTO users(username, leerlingnummer, password, email, registrationdate, role, name, uuid, school, classUUID, mentorUUID) VALUES (@username, @leerlingnummer, @password, @email, @registrationdate, @role, @name, @uuid, @school, @classUUID, @mentorUUID)";
             MySqlCommand addStudentCommand;
@@ -162,12 +165,16 @@ namespace ELO.SQLClasses
             Class returnClass = classManager.GetClassFromDatabase(classUUID);
             Teacher mentorTeacher = (Teacher)FindUserInDataBase(mentorUUID);
 
+            classManager = null;
+
             return new Student(name, 0, school, "Student", returnClass, mentorTeacher, userUUID, leerlingnummer, date, username, email);
 
         }
 
         public Person FindUserInDataBase(string uuid)
         {
+            classManager = new ClassManager();
+
             string findUserSql = $"SELECT * FROM users WHERE uuid = '" + uuid + "'";
             MySqlCommand findUserCommand = new MySqlCommand(findUserSql, mySqlManager.con);
 
@@ -206,6 +213,9 @@ namespace ELO.SQLClasses
             }
 
             reader.Close();
+
+            classManager = null;
+
             return null;
         }
 
@@ -257,6 +267,9 @@ namespace ELO.SQLClasses
 
                 if (reader.Read())
                 {
+
+                    classManager = new ClassManager();
+
                     string returnUsername = reader["username"].ToString();
                     string returnName = reader["name"].ToString();
                     int returnAge = Convert.ToInt32(reader["age"]);
@@ -277,6 +290,8 @@ namespace ELO.SQLClasses
                     
                     return new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email);
                 }
+
+                classManager = null;
 
                 reader.Close();
             } 

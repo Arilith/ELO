@@ -18,13 +18,41 @@ namespace ELO.SQLClasses
         public ClassSQL()
         {
             mysqlManager = new MySqlManager();
+            
             uuid = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
             date = DateTime.Now.ToString("u");
         }
 
         public List<Class> GetClassList(string school)
         {
-            return null;
+            userSql = new UserSQL();
+
+            List<Class> returnList = new List<Class>();
+
+            MySqlCommand getClassListCommand = new MySqlCommand($"SELECT * FROM classes WHERE school = '{school}'", mysqlManager.con);
+            MySqlDataReader classReader = getClassListCommand.ExecuteReader();
+
+            while (classReader.Read())
+            {
+                string returnName = classReader["className"].ToString();
+                string level = classReader["className"].ToString();
+                string uuid = classReader["className"].ToString();
+                string mentorUUID = classReader["className"].ToString();
+                int studyYear = Convert.ToInt32(classReader["studyYear"]);
+                string cluster = classReader["className"].ToString();
+                string leshuis = classReader["className"].ToString();
+
+                Teacher foundTeacher = (Teacher)userSql.FindUserInDataBase(mentorUUID);
+
+                returnList.Add(new Class(returnName, cluster, leshuis, level, studyYear, foundTeacher, uuid));
+
+            }
+
+            classReader.Close();
+
+            userSql = null;
+
+            return returnList;
         }
 
         public List<Class> GetClassList(string school, string level)
@@ -39,6 +67,8 @@ namespace ELO.SQLClasses
 
         public Class GetClass(string school, string name)
         {
+            userSql = new UserSQL();
+
             string findClassSql = "SELECT * FROM classes WHERE school = '" + school + "' AND className = '" + name + "'";
 
             MySqlCommand findClassCommand = new MySqlCommand(findClassSql, mysqlManager.con);
@@ -52,15 +82,18 @@ namespace ELO.SQLClasses
                 string stream = reader["level"].ToString();
                 string leshuis = reader["leshuis"].ToString();
                 string mentorUUID = reader["mentorUUID"].ToString();
+                string classUUID = reader["uuid"].ToString();
                 int studyYear = Convert.ToInt32(reader["studyYear"]);
 
                 reader.Close();
 
                 Teacher mentor = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 
-                return new Class(className, cluster, leshuis, stream, studyYear, mentor);
+                return new Class(className, cluster, leshuis, stream, studyYear, mentor, classUUID);
 
             }
+
+            userSql = null;
 
             return null;
         }
@@ -72,6 +105,8 @@ namespace ELO.SQLClasses
 
         public Class GetClass(string uuid)
         {
+            userSql = new UserSQL();
+
             string findClassSql = "SELECT * FROM classes WHERE uuid = '" + uuid + "'";
 
             MySqlCommand findClassCommand = new MySqlCommand(findClassSql, mysqlManager.con);
@@ -91,9 +126,11 @@ namespace ELO.SQLClasses
 
                 Teacher mentor = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 
-                return new Class(className, cluster, leshuis, stream, studyYear, mentor);
+                return new Class(className, cluster, leshuis, stream, studyYear, mentor, uuid);
 
             }
+
+            userSql = null;
 
             return null;
         }

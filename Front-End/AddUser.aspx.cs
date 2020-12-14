@@ -12,11 +12,19 @@ namespace Front_End
     public partial class AddUser : System.Web.UI.Page
     {
 
+        public UserMan userManager;
+        public ClassManager classManager;
+        public Person loggedInUser;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            loggedInUser = (Person)Session["person"];
+            userManager = new UserMan();
+            classManager = new ClassManager();
+
             if(IsPostBack)
             {
-                ConvertAndInsertData();
+               // userManager.AddStudentToDataBase();
             }
         }
 

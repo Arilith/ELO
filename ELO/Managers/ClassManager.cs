@@ -54,6 +54,10 @@ namespace ELO
         {
             return classSql.GetClassList(school, level);
         }
+        public List<Class> GetClassListFromDatabase(string school)
+        {
+            return classSql.GetClassList(school);
+        }
 
     }
 }
