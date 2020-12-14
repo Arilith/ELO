@@ -9,9 +9,13 @@
 }
 
 .header-img {
-    margin: -8px 0 0 -8px
+    margin: -8px 0 0 -8px!important;
 }
 
 .navbar.navbar-inverse.navbar-fixed-top {
-   background-color:#E5FEFF!important;
+   background-color:#C9DEF1!important;
+}
+
+p {
+    
 }
