@@ -22,9 +22,9 @@ namespace ELO
         public string UserName { get; private set; }
 
         public string Email { get; private set; }
-        public int Points { get; private set; }
+        
 
-        public Person(string name, int age, string school, string type, string userName, string userId, string registrationDate, string email, int points)
+        public Person(string name, int age, string school, string type, string userName, string userId, string registrationDate, string email)
         {
             this.Name = name;
             this.Age = age;
@@ -34,7 +34,7 @@ namespace ELO
             this.Type = type;
             this.UserName = userName;
             this.Email = email;
-            this.Points = points;
+            
         }
 
         public override string ToString()

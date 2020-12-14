@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Attendance" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddGrade.aspx.cs" Inherits="Front_End.AddGrade" %>
+﻿<%@ Page Title="Attendance" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CheckAttendance.aspx.cs" Inherits="Front_End.CheckAttendance" %>
 <%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -21,12 +21,12 @@
           <% foreach (Student student in Manager.userMan.GetStudentList()){ %> 
          <tr>
              <td><%: student.Name %></td>
-             <td> <asp:CheckBox ID="CheckBox1" runat="server" /></td>
-             <td> <asp:CheckBox ID="CheckBox2" runat="server" /></td>
-             <td> <asp:CheckBox ID="CheckBox3" runat="server" /></td>
-             <td> <asp:CheckBox ID="CheckBox4" runat="server" /></td>
-             <td> <asp:CheckBox ID="CheckBox5" runat="server" /></td>
-             <td> <asp:CheckBox ID="CheckBox6" runat="server" /></td>
+             <td> <asp:CheckBox ID="CheckBoxOA" runat="server" OnCheckedChanged="CheckBoxOA_CheckedChanged"  /></td>
+             <td> <asp:CheckBox ID="CheckBoxWA" runat="server" OnCheckedChanged="CheckBoxWA_CheckedChanged"  /></td>
+             <td> <asp:CheckBox ID="CheckBoxTLO" runat="server" /></td>
+             <td> <asp:CheckBox ID="CheckBoxTLW" runat="server" /></td>
+             <td> <asp:CheckBox ID="CheckBoxHWV" runat="server" /></td>
+             <td> <asp:CheckBox ID="CheckBoxVW" runat="server" /></td>
 
              </tr>
          <% } %>
