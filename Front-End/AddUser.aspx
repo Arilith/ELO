@@ -13,7 +13,11 @@
                 <input id="age" class="form-control" name="age" type="number" min="10" max="99" required/>
 
                 <label for="school">School</label><br/>
-                <input id="school" class="form-control" name="school" type="text" required/>
+                <select id="school" class="form-control" name="school">
+                    <% foreach (School school in Manager.schoolManager.GetSchoolList()) { %>
+                        <option><%: school.Name %></option>
+                    <% } %>
+                </select>
         
                 <label for="mentor">Mentor</label><br/>
                 <select id="mentor" class="form-control" name="mentor">
