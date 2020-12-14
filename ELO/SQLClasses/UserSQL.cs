@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using SshNet.Security.Cryptography;
+
 namespace ELO.SQLClasses
 {
     public class UserSQL
@@ -55,7 +57,7 @@ namespace ELO.SQLClasses
             AddAdminCommand = new MySqlCommand(AddAdminSQL, MySqlManager.con);
 
             AddAdminCommand.Parameters.AddWithValue("@username", username);
-            AddAdminCommand.Parameters.AddWithValue("@password", password);
+            AddAdminCommand.Parameters.AddWithValue("@password", CreateMD5(password));
             AddAdminCommand.Parameters.AddWithValue("@email", email);
             AddAdminCommand.Parameters.AddWithValue("@registrationdate", date);
             AddAdminCommand.Parameters.AddWithValue("@role", "SysAdmin");
@@ -79,7 +81,7 @@ namespace ELO.SQLClasses
             addTeacherCommand = new MySqlCommand(addTeacherSQL, MySqlManager.con);
 
             addTeacherCommand.Parameters.AddWithValue("@username", username);
-            addTeacherCommand.Parameters.AddWithValue("@password", password);
+            addTeacherCommand.Parameters.AddWithValue("@password", CreateMD5(password));
             addTeacherCommand.Parameters.AddWithValue("@email", email);
             addTeacherCommand.Parameters.AddWithValue("@registrationdate", date);
             addTeacherCommand.Parameters.AddWithValue("@role", "Teacher");
@@ -106,7 +108,7 @@ namespace ELO.SQLClasses
 
             addStudentCommand.Parameters.AddWithValue("@leerlingnummer", leerlingnummer);
             addStudentCommand.Parameters.AddWithValue("@username", username);
-            addStudentCommand.Parameters.AddWithValue("@password", password);
+            addStudentCommand.Parameters.AddWithValue("@password", CreateMD5(password));
             addStudentCommand.Parameters.AddWithValue("@email", email);
             addStudentCommand.Parameters.AddWithValue("@registrationdate", date);
             addStudentCommand.Parameters.AddWithValue("@role", "Student");
@@ -172,6 +174,9 @@ namespace ELO.SQLClasses
 
         public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school, string type)
         {
+
+            password = CreateMD5(password);
+
 
             if (type == "SysAdmin")
             {
@@ -242,6 +247,24 @@ namespace ELO.SQLClasses
             
             return null;
         }
-        
+
+        public static string CreateMD5(string input)
+        {
+            // Use input string to calculate MD5 hash
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
+
     }
 }
