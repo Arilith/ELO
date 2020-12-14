@@ -18,6 +18,7 @@
                 <th>Huiswerk</th>
                 <th>Datum</th>
                 <th>Vak</th>
+                <th>voortgang</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +28,17 @@
                     <td><%: homework.Subject %></td>
                     <td><%: homework.DueDate %></td>
                     <td><%: homework.Work %></td>
+
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                             <asp:ListItem Selected="True">done</asp:ListItem>
+                            <asp:ListItem>in progress</asp:ListItem>
+                            <asp:ListItem>not done</asp:ListItem>
+                        </asp:RadioButtonList>
+
                 </tr>     
             <% } %>
         </tbody>
-    </table><br/>
+    </table>
+    <br/>
     
 </asp:Content>

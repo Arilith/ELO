@@ -61,6 +61,7 @@
                             <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
                             <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
                             <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
+                            <li><a runat="server" href="~/AddLeermiddel">leermiddel toevoegen</a></li>
                         <% } else if (loggedInPerson.Type == "Student") { %> 
                             <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
                             <li><a runat="server" href="~/">Home</a></li>
@@ -70,6 +71,7 @@
                             <li><a runat="server" href="~/SubjectList">Vakken</a></li>
                             <li><a runat="server" href="~/HwList">Huiswerk</a></li>
                             <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
+                            <li><a runat="server" href="~/LeermiddelList">leermiddelen</a></li>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
                             <li><a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a></li>
                             <li><a runat="server" href="~/">Home</a></li>
