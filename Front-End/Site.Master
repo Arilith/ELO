@@ -61,6 +61,7 @@
                             <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
                             <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
                             <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
+                            <li><a runat="server" href="~/AddLeermiddel">leermiddel toevoegen</a></li>
                         <% } else if (loggedInPerson.Type == "Student") { %> 
                             <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
                             <li><a runat="server" href="~/">Home</a></li>
