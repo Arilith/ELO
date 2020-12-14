@@ -8,13 +8,8 @@ using ELO;
 
 namespace Front_End
 {
-    public partial class Schedule : System.Web.UI.Page
+    public partial class AddSchedule : System.Web.UI.Page
     {
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Manager.todayMan.AddAppointment();  
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
