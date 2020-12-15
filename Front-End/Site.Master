@@ -69,7 +69,6 @@
                             <li><a runat="server" href="~/">Home</a></li>
                             <li><a runat="server" href="~/Schedule">Rooster</a></li>
                             <li><a runat="server" href="~/Gradelist">Cijfers</a></li>
-                            <li><a runat="server" href="~/BookList">Boeken</a></li>
                             <li><a runat="server" href="~/SubjectList">Vakken</a></li>
                             <li><a runat="server" href="~/HwList">Huiswerk</a></li>
                             <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
