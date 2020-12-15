@@ -10,8 +10,12 @@ namespace Front_End
 {
     public partial class AddGrade : System.Web.UI.Page
     {
+        public ClassManager classMan;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            classMan = new ClassManager();
+
             if (IsPostBack)
             {
                 ConvertAndInsertData();

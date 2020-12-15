@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddSchedule.aspx.cs" Inherits="Front_End.AddSchedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<%@ Import Namespace="ELO" %>
+    <%@ Import Namespace="ELO" %>
 
     <% DateTime now = DateTime.Now; %>
 
@@ -13,14 +13,12 @@
                 <input id="classroom" class="form-control" name="classroom" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
                 <asp:Label ID="LabelClass" runat="server" Text="Class"></asp:Label>
                 <input id="_class" class="form-control" name="_class" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
-
                 
-                <label for="DateTime">Datum+Tijd</label><br/>
-                <input id="DateTime" class="form-control" name="DateTime" type="dateTime"  required/>
+                
+                <label for="Date">Datum+Tijd</label><br/>
+                <input id="Date" class="form-control" name="Date" type="datetime"  required/>
 
-
-                <input type="text" value="9/23/2009" style="width: 141px;" readonly="readonly" name="Date" id="Date" class="hasDatepicker"/>
-                <button style="width: auto" type="submit" class="form-control">voer cijfer in</button>
+                <button style="width: auto" type="submit" class="form-control">Voeg Toe</button>
                 <asp:Label ID="OutputLabel" runat="server" Text="---"></asp:Label>
                 <br />
                 Rooster voor <%: now.ToString("D")%><table border="1" style="width: 50%;">

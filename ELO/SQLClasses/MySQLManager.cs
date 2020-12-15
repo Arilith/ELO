@@ -4,13 +4,13 @@ using System.Text;
 using MySql.Data.MySqlClient;
 namespace ELO.SQLClasses
 {
-    public static class MySqlManager
+    public class MySqlManager
     {
-        public static string connectionString = @"server=145.220.75.138;userid=usr;password=banaan3306;database=ELO";
+        public string connectionString = @"server=145.220.75.138;userid=usr;password=banaan3306;database=ELO";
 
-        public static MySqlConnection con;
+        public MySqlConnection con;
 
-        static MySqlManager()
+        public MySqlManager()
         {
             con = new MySqlConnection(connectionString);
             con.Open();

@@ -12,31 +12,31 @@ namespace Front_End
     public partial class AddUser : System.Web.UI.Page
     {
 
+        public UserMan userManager;
+        public ClassManager classManager;
+        public Person loggedInUser;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            loggedInUser = (Person)Session["person"];
+            userManager = new UserMan();
+            classManager = new ClassManager();
+
             if(IsPostBack)
             {
-                ConvertAndInsertData();
+
+                string studentName = Request.Form["name"];
+                string password = Request.Form["password"];
+                string email = Request.Form["email"];
+                int leerlingnummer = Convert.ToInt32(Request.Form["leerlingnummer"]);
+                string postClass = Request.Form["class"];
+
+                ErrorLabel.Text = userManager.AddStudentToDataBase(leerlingnummer, password, studentName, email, postClass, loggedInUser);
             }
         }
 
-        private void ConvertAndInsertData()
-        {
 
-                string studentName = Request.Form["name"];
-                int age = Convert.ToInt32(Request.Form["age"]);
-                string school = Request.Form["school"];
-                string mentor = Request.Form["mentor"];
-                string klas = Request.Form["class"];
 
-                Teacher mentorTeacher = Manager.userMan.GetTeacher(mentor);
-                Class _class = Manager.classMan.GetClass(klas);
-
-                //Manager.userMan.AddStudentToPersonList(studentName, age, school, _class, mentorTeacher);
-
-                Label1.Text = "leerling Succesvol toegevoegd!";
-
-        }
 
     }
 }

@@ -8,30 +8,26 @@
             <form method="post" id="addstudent" name="addstudent">
                 <label for="name">Naam</label><br/>
                 <input id="name" class="form-control" name="name" type="text" required/>
+                
+                <label for="leerlingnummer">Leerlingnummer</label><br/>
+                <input id="leerlingnummer" class="form-control" name="leerlingnummer" type="number" required/>
 
-                <label for="age">Leeftijd</label><br/>
-                <input id="age" class="form-control" name="age" type="number" min="10" max="99" required/>
+                <label for="password">Wachtwoord</label><br/>
+                <input id="password" class="form-control" name="password" type="password" required/>
+                
+                <label for="email">Email</label><br/>
+                <input id="email" class="form-control" name="email" type="email" required/>
 
-                <label for="school">School</label><br/>
-                <input id="school" class="form-control" name="school" type="text" required/>
-        
-                <label for="mentor">Mentor</label><br/>
-                <select id="mentor" class="form-control" name="mentor">
-                    <% foreach (Teacher teacher in Manager.userMan.GetTeacherList()) { %>
-                        <option><%: teacher.Name %></option>
-                    <% } %>
-                </select>
-        
                 <label for="class">Klas</label><br/>
                 <select id="class" class="form-control" name="class">
-                    <% foreach (Class _class in Manager.classMan.GetClassList()) { %>
-                        <option><%: _class.Name %></option>
+                    <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInUser.School)) { %>
+                        <option value="<%: _class.UUID %>"><%: _class.Name %></option>
                     <% } %>
                 </select>
                 <br/>
                 <button style="width: auto" type="submit" class="form-control">Verstuur</button>
             </form>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
         </div>
     </div>
 </asp:Content>
