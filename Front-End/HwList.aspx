@@ -2,7 +2,7 @@
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-	<h2 draggable="auto"><%: Title %></h2>
+	<h2 draggable="auto">Huiswerk</h2>
     <style>
         td {
             padding: 10px;
