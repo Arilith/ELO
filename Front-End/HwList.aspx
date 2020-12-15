@@ -18,7 +18,6 @@
                 <th>Vak</th>
                 <th>Datum</th>
                 <th>Huiswerk</th>
-                <th>voortgang</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +27,7 @@
                     <td><%: homework.Subject %></td>
                     <td><%: homework.DueDate %></td>
                     <td><%: homework.Work %></td>
+
 
                 </tr>     
             <% } %>
