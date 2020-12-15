@@ -10,6 +10,8 @@ namespace ELO
     {
         private UserSQL userSQL;
 
+        private ClassManager classMan;
+
         public static List<Person> personList { get; private set; }
         
         public UserMan()
@@ -45,15 +47,19 @@ namespace ELO
         {
             return personList;
         }
+        public List<Person> GetPersonListFromDB(string school, string type)
+        {
+            return userSQL.GetList(school, type);
+        }
 
         public List<Student> GetStudentList()
         {
             return personList.OfType<Student>().ToList();
         }
 
-        public List<Teacher> GetTeacherList()
+        public List<Person> GetPersonList(string type, string school)
         {
-            return personList.OfType<Teacher>().ToList();
+            return userSQL.GetUserList(type, school);
         }
 
         public List<SysAdmin> GetAdminList()
@@ -106,14 +112,27 @@ namespace ELO
             return newTeacher;
         }
 
-        public Student AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, string mentorUUID, Person loggedInPerson)
+        public string AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, Person loggedInPerson)
         {
+            classMan = new ClassManager();
 
             string school = loggedInPerson.School;
             string userName = name.Replace(" ", "");
+
+            string mentorUUID;
+
+            Class fetchedClass = classMan.GetClassFromDatabase(classUUID);
+            if (fetchedClass.Mentor != null)
+                mentorUUID = fetchedClass.Mentor.UserId;
+            else
+                return "Je moet eerst een mentor invoeren bij deze klas voordat je er leerlingen bij kan voegen!";
+
             Student newStudent = userSQL.AddStudent(userName, password, leerlingnummer, school, name, email, classUUID, mentorUUID);
 
-            return newStudent;
+            if (newStudent != null)
+                return "Student met success toegevoegd!";
+            else
+                return "Er is iets fout gegaan met het toevoegen bij de studenten.";
 
         }
 

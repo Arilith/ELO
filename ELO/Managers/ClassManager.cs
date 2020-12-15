@@ -49,5 +49,31 @@ namespace ELO
             return classSql.GetClass(uuid);
         }
 
+
+        public List<Class> GetClassListFromDatabase(string school, string level)
+        {
+            return classSql.GetClassList(school, level);
+        }
+        public List<Class> GetClassListFromDatabase(string school)
+        {
+            return classSql.GetClassList(school);
+        }
+
+        public int GetAmountOfStudentsInClass(string classUUID)
+        {
+
+            return classSql.GetAmountOfStudents(classUUID);
+        }
+
+        public List<Student> GetStudentsInClass(string classUUID)
+        {
+            return classSql.GetStudentsInClass(classUUID);
+        }
+
+        public void UpdateMentor(string classUUID, string mentorUUID)
+        {
+            classSql.UpdateMentor(classUUID, mentorUUID);
+        }
+
     }
 }
