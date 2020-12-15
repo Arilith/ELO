@@ -15,16 +15,30 @@ namespace Front_End
 			
 		}
 
-
+		
 
 		protected void CheckBoxOA_CheckedChanged(object sender, EventArgs e)
 		{
+			int points;
 			CheckBoxWA.Checked = false;
+			points =  - 5;
 		}
 
 		protected void CheckBoxWA_CheckedChanged(object sender, EventArgs e)
 		{
 			CheckBoxOA.Checked = false;
+			
+		}
+		protected void CheckBoxTLO_CheckedChanged(object sender, EventArgs e)
+		{
+			int points;
+			CheckBoxTLO.Checked = false;
+			points = -5;
+		}
+		protected void CheckBoxTLW_CheckedChanged(object sender, EventArgs e)
+		{
+			
+			CheckBoxTLO.Checked = false;
 			
 		}
 	}

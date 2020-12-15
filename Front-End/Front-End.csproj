@@ -162,6 +162,7 @@
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminRegister.aspx" />
     <Content Include="BookList.aspx" />
+    <Content Include="ChangeSubject.aspx" />
     <Content Include="CheckAttendance.aspx" />
     <Content Include="ClassList.aspx" />
     <Content Include="Contact.aspx" />
@@ -303,6 +304,13 @@
     </Compile>
     <Compile Include="BookList.aspx.designer.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSubject.aspx.cs">
+      <DependentUpon>ChangeSubject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangeSubject.aspx.designer.cs">
+      <DependentUpon>ChangeSubject.aspx</DependentUpon>
     </Compile>
     <Compile Include="CheckAttendance.aspx.cs">
       <DependentUpon>CheckAttendance.aspx</DependentUpon>

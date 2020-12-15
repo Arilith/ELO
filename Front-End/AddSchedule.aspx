@@ -1,13 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddSchedule.aspx.cs" Inherits="Front_End.AddSchedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%@ Import Namespace="ELO" %>
+    <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
+        <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
+    </meta>
 
     <% DateTime now = DateTime.Now; %>
 
-    <p>
+    <strong>
                 <asp:Label ID="LabelTeacher" runat="server" Text="Teacher"></asp:Label>
                 <input id="teacher" class="form-control" name="teacher" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
-                <asp:Label ID="LabelSubject" runat="server" Text="Subject"></asp:Label>
+                <asp:Label ID="LabelSubject" runat="server" Text="Subject" style="margin-top:100px"></asp:Label>
                 <input id="subject" class="form-control" name="subject" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
                 <asp:Label ID="LabelClassroom" runat="server" Text="Classroom"></asp:Label>
                 <input id="classroom" class="form-control" name="classroom" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
