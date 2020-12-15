@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="gradelist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Gradelist.aspx.cs" Inherits="Front_End.UserList" %>
 <%@ Import Namespace="ELO" %>
-
+    
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 draggable="auto"><%: Title %>cijferlijst</h2>
+    <h2 draggable="auto">Cijferlijst</h2>
     <style>
         td {
             padding: 10px;
@@ -10,8 +10,12 @@
         th {
             padding: 10px;
         }
+
+        table, th, td {
+            border:1px solid black;
+        }
     </style>
-    <table class="table-striped table-bordered ">
+    <table class="tablecijfers">
         <thead>
             <tr>
                 <th>Naam</th>

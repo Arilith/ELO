@@ -44,7 +44,7 @@
 
         <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block" />
                 
-        <div class="container body-content" style="margin-top: 50px; text-align:center">
+        <div class="container body-content" style="margin-top: 50px">
             
             <form method="post" action="Login.aspx" name="login">
                 Voer je inloggegevens in.<br /><br />
