@@ -222,7 +222,6 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="SubjectList.aspx" />
-    <Content Include="test.aspx" />
     <Content Include="UploadFile.aspx" />
     <Content Include="UserList.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -390,13 +389,6 @@
     </Compile>
     <Compile Include="SubjectList.aspx.designer.cs">
       <DependentUpon>SubjectList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadFile.aspx.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>
