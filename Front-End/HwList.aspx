@@ -2,7 +2,7 @@
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-	<h2 draggable="auto"><%: Title %></h2>
+	<h2 draggable="auto">Huiswerk</h2>
     <style>
         td {
             padding: 10px;
@@ -10,14 +10,18 @@
         th {
             padding: 10px;
         }
+        table, th, td {
+            border:1px solid black;
+        }
     </style>
-    <table class="table-striped table-bordered ">
+    <table>
         <thead>
             <tr>
                 <th>Klas</th>
-                <th>Huiswerk</th>
-                <th>Datum</th>
                 <th>Vak</th>
+                <th>Datum</th>
+                <th>Huiswerk</th>
+                <th>Voortgang</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +31,11 @@
                     <td><%: homework.Subject %></td>
                     <td><%: homework.DueDate %></td>
                     <td><%: homework.Work %></td>
+
                 </tr>     
             <% } %>
         </tbody>
-    </table><br/>
+    </table>
+    <br/>
     
 </asp:Content>

@@ -6,9 +6,21 @@
     <div class="row">
         <div class="col-lg-6">
             <p>
-               Cijfers:
+               Cijfer Invoeren:
             </p>
-            <form method="post" id="addstudent" name="homework">
+            
+            <form method="get" id="class">
+                <label for="_class">Selecteer een Klas</label><br/>
+                <select id="_class" class="form-control" name="_class">
+                    <% foreach (Class _class in classMan.GetClassList()) {  %>
+                        <option><%: _class.Name %></option>
+                    <% } %>
+                </select>
+
+
+            </form>
+
+            <form method="post" id="addgrade" name="addgrade">
 
                 <label for="studentName">Naam student</label><br/>
                 <select id="name" class="form-control" name="name">
@@ -19,13 +31,6 @@
 
                 <label for="subject">Vak</label><br/>
                 <input id="subject" class="form-control" name="subject" type="text" required/>
-
-                <label for="_class">Klas</label><br/>
-                <select id="_class" class="form-control" name="_class">
-                <% foreach (Class _class in Manager.classMan.GetClassList()) {  %>
-                        <option><%: _class.Name %></option>
-                    <% } %>
-                </select>
 
                 <label for="date">Datum</label><br/>
                 <input id="date" class="form-control" name="date" type="text" required/>

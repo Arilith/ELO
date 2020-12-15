@@ -13,6 +13,7 @@ namespace ELO
 
         public SubjectManager()
         {
+            subjectSql = new SubjectSQL();
             Subjects = new List<Subject>();
         }
 
@@ -41,32 +42,43 @@ namespace ELO
             return null;
         }
 
-        public List<Subject> GetSubjectList()
-        {
-            return Subjects;
-        }
 
         public List<Teacher> GetTeacherListBySubject(Subject subject)
         {
             return Subjects.Find(x => x.Name == subject.Name).Teachers;
         }
 
-        public void AddNewSubjectForm(string subjectName, string teachers)
-        {
-            Subject newSubject = new Subject(subjectName);
-            Subjects.Add(newSubject);
+        // public void AddNewSubjectForm(string subjectName, string teachers)
+        // {
+        //     Subject newSubject = new Subject(subjectName);
+        //     Subjects.Add(newSubject);
+        //
+        //     string[] teacherList = teachers.Split(',');
+        //     foreach (string teacher in teacherList)
+        //     {
+        //         Teacher newTeacher = Manager.userMan.GetTeacher(teacher);
+        //         AddTeacherToSubject(newTeacher, newSubject);
+        //     }
+        // }
 
-            string[] teacherList = teachers.Split(',');
-            foreach (string teacher in teacherList)
-            {
-                Teacher newTeacher = Manager.userMan.GetTeacher(teacher);
-                AddTeacherToSubject(newTeacher, newSubject);
-            }
+        public void AddNewSubjectToDataBase(string subjectName, string school, string teachers)
+        {
+            subjectSql.AddSubject(subjectName, teachers, school);
+        }
+
+        public void UpdateSubjectTeachers(string subjectUUID, string teachers)
+        {
+            subjectSql.UpdateTeachers(teachers, subjectUUID);
         }
 
         public Subject FindSubjectInDatabase(string uuid)
         {
             return subjectSql.GetSubject(uuid);
+        }
+
+        public List<Subject> GetSubjectList(string school)
+        {
+            return subjectSql.GetSubjectList(school);
         }
 
     }

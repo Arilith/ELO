@@ -11,11 +11,18 @@ namespace Front_End
 {
     public partial class SubjectList : System.Web.UI.Page
     {
+        public Person loggedInPerson;
+        public UserMan userManager;
+        public SubjectManager subjectManager;
         protected void Page_Load(object sender, EventArgs e)
         {
+            loggedInPerson = (Person)Session["person"];
+            userManager = new UserMan();
+            subjectManager = new SubjectManager();
+
             if (IsPostBack)
             {
-                Manager.subjectMan.AddNewSubjectForm(Request.Form["name"], Request.Form["teachers"]);
+                subjectManager.AddNewSubjectToDataBase(Request.Form["name"], loggedInPerson.School, Request.Form["teachers"]);
             }
         }
 

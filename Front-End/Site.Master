@@ -40,8 +40,18 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+            
+        <style>
+            .buttonrand {
+                border-right: 0px!important;
+            }
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+            li {
+                border-right: 1px solid black;
+            }
+        </style>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="border:0px">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,15 +71,18 @@
                             <li><a runat="server" href="~/AddClass">Klas Invoeren</a></li>
                             <li><a runat="server" href="~/AddUser">Leerling Invoeren</a></li>
                             <li><a runat="server" href="~/UserList">Gebruikerslijst</a></li>
+                            <li><a runat="server" href="~/AddLeermiddel">leermiddel toevoegen</a></li>
+                            <li><a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a></li>
+                            <li><a runat="server" href="~/ClassList">Klassenlijst</a></li>
                         <% } else if (loggedInPerson.Type == "Student") { %> 
                             <li><a href="#">Hallo, <%: loggedInPerson.Name %></a></li>
                             <li><a runat="server" href="~/">Home</a></li>
                             <li><a runat="server" href="~/Schedule">Rooster</a></li>
                             <li><a runat="server" href="~/Gradelist">Cijfers</a></li>
-                            <li><a runat="server" href="~/BookList">Boeken</a></li>
                             <li><a runat="server" href="~/SubjectList">Vakken</a></li>
                             <li><a runat="server" href="~/HwList">Huiswerk</a></li>
                             <li><a runat="server" href="~/UploadFile">Bestand Uploaden</a></li>
+                            <li><a runat="server" href="~/LeermiddelList">leermiddelen</a></li>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
                             <li><a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a></li>
                             <li><a runat="server" href="~/">Home</a></li>
@@ -77,7 +90,7 @@
                             <li><a runat="server" href="~/AddHomework">Hw Toevoegen</a></li>
                         <li><a runat="server" href="~/CheckAttendance">Aanwezigheid</a></li>
                         <% } %>
-                        <li><a runat="server" href="~/Logout">Uitloggen</a></li>
+                        <li class="buttonrand"><a runat="server" href="~/Logout">Uitloggen</a></li>
                     </ul>
                 </div>
             </div>
@@ -85,7 +98,7 @@
         <div class="container body-content" style="margin-top: 50px;">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+            <hr style="border-top: 1px solid black!important" />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
             </footer>
