@@ -21,7 +21,7 @@
                 <label for="teachers">Selecteer de leraren van dit vak</label><br/>
                 <select data-placeholder="Typ een naam in..." multiple class="chosen-select form-control" name="teachers" id="teachers">
                     <option value="">Geen leraar invoegen.</option>
-                    <% foreach (Teacher teacher in Manager.userMan.GetTeacherList()) { %>
+                    <% foreach (Teacher teacher in userManager.GetPersonListFromDB(loggedInPerson.School, "Teacher")) { %>
                         <option><%: teacher.Name %></option>
                     <% } %>
                 </select><br/><br/>
