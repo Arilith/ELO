@@ -37,7 +37,7 @@ namespace ELO.SQLClasses
                 string returnName = classReader["className"].ToString();
                 string level = classReader["className"].ToString();
                 string uuid = classReader["uuid"].ToString();
-                string mentorUUID = classReader["className"].ToString();
+                string mentorUUID = classReader["mentorUUID"].ToString();
                 int studyYear = Convert.ToInt32(classReader["studyYear"]);
                 string cluster = classReader["className"].ToString();
                 string leshuis = classReader["className"].ToString();
@@ -183,6 +183,19 @@ namespace ELO.SQLClasses
 
             return returnList;
 
+        }
+
+        public void UpdateMentor(string classUUID, string mentorUUID)
+        {
+            string changeMentorSql = $"UPDATE classes SET mentorUUID = @mentorUUID WHERE uuid = '{classUUID}'";
+            MySqlCommand changeMentorCmd;
+
+            changeMentorCmd = new MySqlCommand(changeMentorSql, mysqlManager.con);
+
+            changeMentorCmd.Parameters.AddWithValue("@mentorUUID", mentorUUID);
+
+            changeMentorCmd.Prepare();
+            changeMentorCmd.ExecuteNonQuery();
         }
     }
 }

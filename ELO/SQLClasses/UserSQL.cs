@@ -71,21 +71,25 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
-        public string GetUserList()
+        public List<Person> GetUserList(string type, string school)
         {
-            string finalstring = "";
+            userManager = new UserMan();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users", mySqlManager.con);
+            MySqlCommand cmd = new MySqlCommand($"SELECT * FROM users WHERE role = '{type}' AND school = '{school}'", mySqlManager.con);
             MySqlDataReader reader = cmd.ExecuteReader();
+
+            List<Person> returnList = new List<Person>();
 
             while(reader.Read())
             {
-                finalstring += "Row: " + reader.GetInt32(0) + "Username:" + reader.GetString(1);
+                string userUUID = reader["uuid"].ToString();
+
+                returnList.Add(userManager.FindUserInDataBase(userUUID));
             }
 
             reader.Close();
 
-            return finalstring;
+            return returnList;
         }
 
         public SysAdmin AddAdmin(string username, string password, string school, string name, string email)
@@ -175,7 +179,7 @@ namespace ELO.SQLClasses
         {
             classManager = new ClassManager();
 
-            string findUserSql = $"SELECT * FROM users WHERE uuid = '" + uuid + "'";
+            string findUserSql = $"SELECT * FROM users WHERE uuid = '{uuid}'";
             MySqlCommand findUserCommand = new MySqlCommand(findUserSql, mySqlManager.con);
 
             MySqlDataReader reader = findUserCommand.ExecuteReader();

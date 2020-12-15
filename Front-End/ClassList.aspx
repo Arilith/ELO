@@ -26,7 +26,7 @@
         <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School)){ %> 
             <tr>
                 <td><%: _class.Name %></td>
-                <td><% if (_class.Mentor != null) { %><%: _class.Mentor %><% } else { %> Geen mentor<% } %></td>
+                <td><% if (_class.Mentor != null) { %><%: _class.Mentor.Name %><% } else { %> Geen mentor<% } %></td>
                 <td><%: _class.Level %></td>
                 <td><%: _class.LesHuis %></td>
                 <td><%: _class.Cluster %></td>

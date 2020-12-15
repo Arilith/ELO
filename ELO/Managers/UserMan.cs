@@ -57,9 +57,9 @@ namespace ELO
             return personList.OfType<Student>().ToList();
         }
 
-        public List<Teacher> GetTeacherList()
+        public List<Person> GetPersonList(string type, string school)
         {
-            return personList.OfType<Teacher>().ToList();
+            return userSQL.GetUserList(type, school);
         }
 
         public List<SysAdmin> GetAdminList()

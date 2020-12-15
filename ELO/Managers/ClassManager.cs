@@ -70,5 +70,10 @@ namespace ELO
             return classSql.GetStudentsInClass(classUUID);
         }
 
+        public void UpdateMentor(string classUUID, string mentorUUID)
+        {
+            classSql.UpdateMentor(classUUID, mentorUUID);
+        }
+
     }
 }

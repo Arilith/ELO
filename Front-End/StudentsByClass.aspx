@@ -3,16 +3,19 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2 draggable="auto"><%: Title %></h2>
+    <% if (!IsPostBack) { %>
     <form method="post" id="classform" name="classform">
         <label for="class">Selecteer een klas</label>
         <select id="class" name="class" class="form-control">
-            <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School)) { %>
+            <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School))
+               { %>
                 <option value="<%: _class.UUID %>"><%: _class.Name %></option>
             <% } %>
         </select><br/><br/>
         <button class="btn btn-success" type="submit">Verstuur</button>
     </form>
-    <% if (IsPostBack) { %>
+    <% } %>
+    <% if (IsPostBack && Request.Form["mentor"] == null) { %>
         <div class="row">
             <div class="col-lg-6">
                 <style>
@@ -53,7 +56,18 @@
                 </table>
             </div>
             <div class="col-lg-6">
-
+                <h2>Mentor veranderen</h2>
+                <form method="post" name="addmentor" id="addmentor">
+                    <input type="hidden" value="<%: Request.Form["class"] %>" name="class" id="class" class="form-control"/>
+                    <label for="mentor">Mentor</label><br/>
+                    <select name="mentor" id="mentor" class="form-control">
+                        <% foreach (Teacher mentor in userManager.GetPersonList("Teacher", loggedInPerson.School)) { %>
+                            <option value="<%: mentor.UserId %>"><%: mentor.Name %></option>    
+                        <% } %>
+                    </select><br/>
+                    <button type="submit" class="btn btn-info">Verander</button>
+                    <asp:Label ID="OutputLabel" runat="server" Text=""></asp:Label>
+                </form>
             </div>
         </div>
     <% } %>
