@@ -27,10 +27,16 @@ namespace ELO.SQLClasses
         //     return finalstring;
         // }
         //
-        // public string GetGradeList(string school, string subject)
-        // {
-        //     
-        // }
+        public List<Grade> GetGradeList(string school, string subjectUUID, string classUUID)
+        {
+
+
+            return null;
+        }
+
+       
+
+
 
     }
 }

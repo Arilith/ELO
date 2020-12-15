@@ -11,7 +11,16 @@ namespace Front_End
 {
 
 
-    public partial class test
+    public partial class ChangeSubject
     {
+
+        /// <summary>
+        /// OutputLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OutputLabel;
     }
 }

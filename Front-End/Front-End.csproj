@@ -162,6 +162,7 @@
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminRegister.aspx" />
     <Content Include="BookList.aspx" />
+    <Content Include="ChangeSubject.aspx" />
     <Content Include="CheckAttendance.aspx" />
     <Content Include="ClassList.aspx" />
     <Content Include="Contact.aspx" />
@@ -224,7 +225,6 @@
     <Content Include="Site.Master" />
     <Content Include="StudentsByClass.aspx" />
     <Content Include="SubjectList.aspx" />
-    <Content Include="test.aspx" />
     <Content Include="UploadFile.aspx" />
     <Content Include="UserList.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -304,6 +304,13 @@
     </Compile>
     <Compile Include="BookList.aspx.designer.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSubject.aspx.cs">
+      <DependentUpon>ChangeSubject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangeSubject.aspx.designer.cs">
+      <DependentUpon>ChangeSubject.aspx</DependentUpon>
     </Compile>
     <Compile Include="CheckAttendance.aspx.cs">
       <DependentUpon>CheckAttendance.aspx</DependentUpon>
@@ -406,13 +413,6 @@
     </Compile>
     <Compile Include="SubjectList.aspx.designer.cs">
       <DependentUpon>SubjectList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadFile.aspx.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>

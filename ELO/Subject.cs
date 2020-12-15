@@ -10,15 +10,19 @@ namespace ELO
 
         public List<Teacher> Teachers { get; private set; }
 
-        public Subject(string name)
+        public string uuid { get; private set; }
+
+        public Subject(string name, string uuid)
         {
-            Teachers = new List<Teacher>();
+            this.Teachers = new List<Teacher>();
             this.Name = name;
+            this.uuid = uuid;
         }
 
-        public static implicit operator Subject(string v)
+        public void SetTeachers(List<Teacher> teachers)
         {
-            throw new NotImplementedException();
+            this.Teachers = teachers;
         }
+
     }
 }
