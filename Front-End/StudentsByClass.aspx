@@ -17,7 +17,7 @@
     <% } %>
     <% if (IsPostBack && Request.Form["mentor"] == null) { %>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-9">
                 <style>
                     td {
                         padding: 10px;
@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <h2>Mentor veranderen</h2>
                 <form method="post" name="addmentor" id="addmentor">
                     <input type="hidden" value="<%: Request.Form["class"] %>" name="class" id="class" class="form-control"/>
