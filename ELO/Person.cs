@@ -41,6 +41,5 @@ namespace ELO
         {
             return $"Mijn naam is: {Name} en ik ben {Age} jaar oud. Ik heb mijn account aangemaakt op: {RegistrationDate} en zit op de school: {School}. Hier heb ik de rol {Type}";
         }
-
     }
 }

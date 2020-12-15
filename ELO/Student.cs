@@ -18,7 +18,5 @@ namespace ELO
             this.Mentor = mentor;
             this.LeerlingNummer = leerLingNummer;
         }
-
-
     }
 }

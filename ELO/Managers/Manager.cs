@@ -19,6 +19,5 @@ namespace ELO
         public static ClassroomMan classroomMan = new ClassroomMan();
         public static LeermiddelMan leermiddelMan = new LeermiddelMan();
 
-
     }
 }
