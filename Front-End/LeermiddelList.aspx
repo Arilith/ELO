@@ -16,11 +16,11 @@
     <table>
         <thead>
             <tr>
-                <th>vak</th>
-                <th>niveau</th>
-                <th>leerjaar</th>
-                <th>link</th>
-                <th>beschrijving</th>
+                <th>Vak</th>
+                <th>Niveau</th>
+                <th>Leerjaar</th>
+                <th>Link</th>
+                <th>Beschrijving</th>
             </tr>
         </thead>
         <tbody>

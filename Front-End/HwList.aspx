@@ -21,7 +21,7 @@
                 <th>Vak</th>
                 <th>Datum</th>
                 <th>Huiswerk</th>
-                <th>voortgang</th>
+                <th>Voortgang</th>
             </tr>
         </thead>
         <tbody>

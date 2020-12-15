@@ -65,7 +65,7 @@
             <% if (results != null) { %>
                 <meta http-equiv="refresh" content="0;url=Home.aspx" />
             <% } %>
-            <hr />
+            <hr style="border-top: 1px solid black!important" />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
             </footer>

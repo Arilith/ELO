@@ -20,10 +20,10 @@
             <tr>
                 <th>Naam</th>
                 <th>Klasnaam</th>
-                <th>vak</th>
+                <th>Vak</th>
                 <th>Datum</th>
-                <th>weging</th>
-                <th>cijfer</th>
+                <th>Weging</th>
+                <th>Cijfer</th>
 
             </tr>
         </thead>
