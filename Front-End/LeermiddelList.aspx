@@ -9,8 +9,11 @@
         th {
             padding: 10px;
         }
+        table, th, td {
+            border:1px solid black;
+        }
     </style>
-    <table class="table-striped table-bordered ">
+    <table>
         <thead>
             <tr>
                 <th>vak</th>

@@ -15,7 +15,7 @@
             border:1px solid black;
         }
     </style>
-    <table class="tablecijfers">
+    <table>
         <thead>
             <tr>
                 <th>Naam</th>
