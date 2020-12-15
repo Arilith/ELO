@@ -10,8 +10,15 @@ namespace Front_End
 {
 	public partial class CheckAttendance : System.Web.UI.Page
 	{
+		public ClassManager classManager;
+		public UserMan userManager;
+		public Person loggedInPerson;
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			classManager = new ClassManager();
+			userManager = new UserMan();
+
+			loggedInPerson = (Person)Session["person"];
 			
 		}
 
@@ -19,9 +26,12 @@ namespace Front_End
 
 		protected void CheckBoxOA_CheckedChanged(object sender, EventArgs e)
 		{
-			int points;
-			CheckBoxWA.Checked = false;
-			points =  - 5;
+			if (CheckBoxA.Checked == true)
+			{
+				CheckBoxOA.Checked = false;
+				CheckBoxWA.Checked = false;
+			}
+
 		}
 
 		protected void CheckBoxWA_CheckedChanged(object sender, EventArgs e)
@@ -31,9 +41,7 @@ namespace Front_End
 		}
 		protected void CheckBoxTLO_CheckedChanged(object sender, EventArgs e)
 		{
-			int points;
 			CheckBoxTLO.Checked = false;
-			points = -5;
 		}
 		protected void CheckBoxTLW_CheckedChanged(object sender, EventArgs e)
 		{
