@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRegister.aspx.cs" Inherits="Front_End.AdminRegister" %>
 <%@ Import Namespace="ELO" %>
-<%@ Import Namespace="ELO.Managers" %>
 <!DOCTYPE html>
 
 <html lang="en">

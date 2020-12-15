@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Front_End.Login" %>
 <%@ Import Namespace="ELO" %>
-<%@ Import Namespace="ELO.Managers" %>
 
 <!DOCTYPE html>
 

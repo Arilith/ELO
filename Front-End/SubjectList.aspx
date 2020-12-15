@@ -34,28 +34,28 @@
                 })
             </script>
         </div>
-        <div class="col-lg-6">
-            <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %>
-                Lerarenlijst voor <%: subject.Name %>
-                <table class="table-striped table-bordered ">
-                    <thead>
-                    <tr>
-                        <th>Naam leraar</th>
-                        <th>School leraar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% foreach (Teacher teacher in Manager.subjectMan.GetTeacherListBySubject(subject))
-                       { %> 
-                        <tr>
-                            <td><%: teacher.Name %></td>
-                            <td><%: teacher.School %></td>
-                        </tr>     
-                    <% } %>
-                    </tbody>
-                </table><br /><br />
-            <% }  %>
-        </div>
+<%--         <div class="col-lg-6"> --%>
+<%--             <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %> --%>
+<%--                 Lerarenlijst voor <%: subject.Name %> --%>
+<%--                 <table class="table-striped table-bordered "> --%>
+<%--                     <thead> --%>
+<%--                     <tr> --%>
+<%--                         <th>Naam leraar</th> --%>
+<%--                         <th>School leraar</th> --%>
+<%--                     </tr> --%>
+<%--                     </thead> --%>
+<%--                     <tbody> --%>
+<%--                     <% foreach (Teacher teacher in Manager.subjectMan.GetTeacherListBySubject(subject)) --%>
+<%--                        { %>  --%>
+<%--                         <tr> --%>
+<%--                             <td><%: teacher.Name %></td> --%>
+<%--                             <td><%: teacher.School %></td> --%>
+<%--                         </tr>      --%>
+<%--                     <% } %> --%>
+<%--                     </tbody> --%>
+<%--                 </table><br /><br /> --%>
+<%--             <% }  %> --%>
+<%--         </div> --%>
     </div>
     
 </asp:Content>
