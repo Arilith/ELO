@@ -32,6 +32,7 @@
                     <td><%: homework.DueDate %></td>
                     <td><%: homework.Work %></td>
 
+
                 </tr>     
             <% } %>
         </tbody>

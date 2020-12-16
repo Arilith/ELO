@@ -29,8 +29,9 @@
                     <td><%: leermiddel.subject %></td>
                     <td><%: leermiddel.niveau %></td>
                     <td><%: leermiddel.leerjaar %></td>
-                    <td><%: leermiddel.link %></td>
+                    <td><a href="<%: leermiddel.link %>">click</a></td>
                     <td><%: leermiddel.description %></td>
+
                 </tr>     
             <% } %>
         </tbody>
