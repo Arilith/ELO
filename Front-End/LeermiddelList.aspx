@@ -21,7 +21,6 @@
                 <th>Leerjaar</th>
                 <th>Link</th>
                 <th>Beschrijving</th>
-                <th>voortgang</th>
             </tr>
         </thead>
         <tbody>
