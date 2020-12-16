@@ -25,9 +25,9 @@
                     <% } %>
                 </select>
                 <br/>
-                <button style="width: auto" type="submit" class="form-control">Verstuur</button>
+                <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
             </form>
-            <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="ErrorLabel" runat="server" Text=""></asp:Label>
         </div>
     </div>
 </asp:Content>
