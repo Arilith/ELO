@@ -62,7 +62,7 @@
             </form>
             <% if (results != null) { %>
                 <meta http-equiv="refresh" content="0;url=Home.aspx" />
-            <% } %>
+            <% } %><br/><br/>
             (VERBORGEN) Systeembeheer account aanmaken <a href="~/AdminRegister" runat="server">hier</a>.
 
             <hr />

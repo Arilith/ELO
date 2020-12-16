@@ -1,34 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddSchedule.aspx.cs" Inherits="Front_End.AddSchedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%@ Import Namespace="ELO" %>
-    <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
-        <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
-    </meta>
+    <div class="container-form">
+        <%@ Import Namespace="ELO" %>
+            <% DateTime now = DateTime.Now; %>
+        <h2>Rooster veranderen</h2>
+            <asp:Label ID="LabelTeacher" runat="server" Text="Teacher"></asp:Label><br/>
+            <input id="teacher" class="form-control" name="teacher" type="text" required aria-autocomplete="list"/><br/>
+            <asp:Label ID="LabelSubject" runat="server" Text="Subject"></asp:Label><br/>
+            <input id="subject" class="form-control" name="subject" type="text" required aria-autocomplete="list"/><br/>
+            <asp:Label ID="LabelClassroom" runat="server" Text="Classroom"></asp:Label><br/>
+            <input id="classroom" class="form-control" name="classroom" type="text" required aria-autocomplete="list"/><br/>
+            <asp:Label ID="LabelClass" runat="server" Text="Class"></asp:Label><br/>
+            <input id="_class" class="form-control" name="_class" type="text" required  aria-autocomplete="list"/><br/>
+            
+            
+            <label for="Date">Datum</label><br/>
+            <input id="Date" class="form-control" name="Date" type="date"  required/><br/>
 
-    <% DateTime now = DateTime.Now; %>
-
-    <strong>
-                <asp:Label ID="LabelTeacher" runat="server" Text="Teacher"></asp:Label>
-                <input id="teacher" class="form-control" name="teacher" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
-                <asp:Label ID="LabelSubject" runat="server" Text="Subject" style="margin-top:100px"></asp:Label>
-                <input id="subject" class="form-control" name="subject" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
-                <asp:Label ID="LabelClassroom" runat="server" Text="Classroom"></asp:Label>
-                <input id="classroom" class="form-control" name="classroom" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
-                <asp:Label ID="LabelClass" runat="server" Text="Class"></asp:Label>
-                <input id="_class" class="form-control" name="_class" type="text" required style="width: 32%; height: 25px" aria-autocomplete="list"/>
-                
-                
-                <label for="Date">Datum+Tijd</label><br/>
-                <input id="Date" class="form-control" name="Date" type="datetime"  required/>
-
-                <button style="width: auto" type="submit" class="form-control">Voeg Toe</button>
-                <asp:Label ID="OutputLabel" runat="server" Text="---"></asp:Label>
-                <br />
-                Rooster voor <%: now.ToString("D")%><table border="1" style="width: 50%;">
+            <button style="width: auto" type="submit" class="btn btn-success">Voeg Toe</button><br/><br/><br/>
+            <asp:Label ID="OutputLabel" runat="server" Text="---------------------------------"></asp:Label>
+            <br />
+            Rooster voor <%: now.ToString("D")%><table>
             <tr>
-                <td style="height: 20px; width: 195px">Vak</td>
-                <td style="height: 20px; width: 164px">lok.</td>
-                <td style="height: 20px">Tijd</td>
+                <td>Vak</td>
+                <td>lok.</td>
+                <td>Tijd</td>
             </tr>
             <tr>
                 <%
@@ -39,4 +35,5 @@
                 //} %>
             </tr>
         </table>
+    </div>
 </asp:Content>

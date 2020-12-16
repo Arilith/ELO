@@ -7,16 +7,16 @@
         <div class="col-lg-6">
             <form method="post" id="addstudent" name="addstudent">
                 <label for="name">Naam</label><br/>
-                <input id="name" class="form-control" name="name" type="text" required/>
+                <input id="name" class="form-control" name="name" type="text" placeholder="Joep Pieters" required/><br/>
                 
                 <label for="leerlingnummer">Leerlingnummer</label><br/>
-                <input id="leerlingnummer" class="form-control" name="leerlingnummer" type="number" required/>
+                <input id="leerlingnummer" class="form-control" name="leerlingnummer" type="number" placeholder="123456" required/><br/>
 
                 <label for="password">Wachtwoord</label><br/>
-                <input id="password" class="form-control" name="password" type="password" required/>
+                <input id="password" class="form-control" name="password" type="password" placeholder="Wachtwoord123" required/><br/>
                 
                 <label for="email">Email</label><br/>
-                <input id="email" class="form-control" name="email" type="email" required/>
+                <input id="email" class="form-control" name="email" type="email" placeholder="j.pieters@student.school.nl" required/><br/>
 
                 <label for="class">Klas</label><br/>
                 <select id="class" class="form-control" name="class">

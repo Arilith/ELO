@@ -70,7 +70,7 @@
                         </button>
                         <div class="dropdown-content">
                             <a runat="server" href="~/AddSchedule">Rooster Items Toevoegen</a>
-                            <a runat="server" href="~/AddLeermiddel">leermiddel toevoegen</a>
+                            <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
                             <a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                     <a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a>
                     <a runat="server" class="active" href="~/Home">Home</a>
                     <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
-                    <a runat="server" href="~/AddHomework">Hw Toevoegen</a>
+                    <a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a>
                 <% } %>
                 <a runat="server" style="float: right;" href="~/Logout">Uitloggen</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
