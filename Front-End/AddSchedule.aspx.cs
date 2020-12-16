@@ -30,7 +30,7 @@ namespace Front_End
             //
             //
             //
-            // Manager.todayMan.AddAppointment(teacher, subject, date, time, linkedClassroom, linkedClass, homework);
+            // Manager.todayMan.AddAppointmentToDB(teacher, subject, date, time, linkedClassroom, linkedClass, homework);
             //
             // OutputLabel.Text = "Item ingevoerd!";
         }

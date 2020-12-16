@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ELO.SQLClasses;
 
 namespace ELO
 {
     public class TodayMan
     {
         public static List<Appointment> AppointmentList { get; private set; }
+
+        private AppointmentSQL appointmentSql;
 
         public TodayMan()
         {
@@ -19,9 +22,14 @@ namespace ELO
             //AppointmentList.Add(Appointment);
         }
 
-        public void AddAppointment()
+        public void AddAppointment(string school, string title, string dueDate, string content, string classUUID, string subject)
         {
-            throw new NotImplementedException();
+           appointmentSql.AddAppointmentToDB(school, title, dueDate, content, classUUID, subject);
+        }
+
+        public void GetAppointmentListFromDatabase(string school, string _classUUID)
+        {
+           appointmentSql.GetAppointmentList(school, _classUUID);
         }
     }
 }
