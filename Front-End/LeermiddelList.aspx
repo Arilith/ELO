@@ -21,6 +21,7 @@
                 <th>Leerjaar</th>
                 <th>Link</th>
                 <th>Beschrijving</th>
+                <th>voortgang</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                     <td><%: leermiddel.leerjaar %></td>
                     <td><a href="<%: leermiddel.link %>">click</a></td>
                     <td><%: leermiddel.description %></td>
+
                 </tr>     
             <% } %>
         </tbody>
