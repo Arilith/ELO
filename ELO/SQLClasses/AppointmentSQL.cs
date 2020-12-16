@@ -14,7 +14,7 @@ namespace ELO.SQLClasses
         private UserMan userManager;
         private HwMan homeworkManager;
         private SchoolManager schoolMan;
-        //private ExamMan examManager;
+        private ExamMan examManager;
 
         public AppointmentSQL()
         {
@@ -47,11 +47,11 @@ namespace ELO.SQLClasses
                 Subject insertSubject = subjectManager.FindSubject(returnSubjectUUID);
                 Classroom insertClassroom = classroomManager.GetClassroom(returnClassroomUUID);
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
-                //Homework insertHomework = homeworkManager.GetHomeWork(returnHomeworkUUID);
+                Homework insertHomework = homeworkManager.GetHomework(returnHomeworkUUID);
                 School insertSchool = schoolMan.GetSchool(returnSchool);
-               // Exam insertExam = examManager.GetExam(returnExamUUID);
+                Exam insertExam = examManager.GetExam(returnExamUUID);
 
-              //  returnList.Add(new Appointment(insertTeacher, insertSubject, returnTime, insertClassroom, insertClass, insertSchool, insertHomework, returnCancelled, returnExamUUID, returnUUID));
+                returnList.Add(new Appointment(insertTeacher, insertSubject, returnTime, insertClassroom, insertClass, insertSchool, insertHomework, returnCancelled, insertExam, returnUUID));
 
             }
 

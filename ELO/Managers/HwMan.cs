@@ -30,9 +30,9 @@ namespace ELO
             return homeworkList;
         }
 
-        public Homework GetHomework(string name)
+        public Homework GetHomework(string homeworkUUID)
         {
-            return homeworkList.Find(x => x.Work == name);
+            return homeworkList.Find(x => x.Work == homeworkUUID);
         }
 
         public List<Homework> GetHomeWorkFromDB(string school, string subject)
