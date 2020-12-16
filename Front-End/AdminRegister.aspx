@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRegister.aspx.cs" Inherits="Front_End.AdminRegister" %>
 <%@ Import Namespace="ELO" %>
-<%@ Import Namespace="ELO.Managers" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -41,23 +40,6 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                     <a class="navbar-brand" runat="server" href="~/">Study Cluster</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Login">Inloggen</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="container body-content" style="margin-top: 50px;">
             
             <form method="post" action="AdminRegister.aspx" name="login">
@@ -67,7 +49,7 @@
                     <% foreach (School school in schoolManager.GetSchoolList()) { %>
                         <option><%: school.Name %></option>
                     <% } %>
-                </select>
+                </select><br/>
                 <label for="username">Gebruikersnaam</label><br />
                 <input id="username" type="text" name="username" class="form-control" /><br />
                 <label for="name">Naam</label><br />
@@ -76,11 +58,17 @@
                 <input id="email" type="email" name="email" class="form-control" /><br />
                 <label for="password">Wachtwoord</label><br />
                 <input id="password" type="password" name="password" class="form-control" /><br /><br />
-                <button type="submit" class="btn btn-success">Log in</button>
+                <div class="row">
+                    <div class="col-lg-1"><a class="btn btn-info" href="AdminLogin">Inloggen</a></div>
+                    <div class="col-lg-1"><button type="submit" class="btn btn-success">Account aanmaken</button></div>
+                </div>
+                
+                
             </form>
-
-            Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in<br/><br/>
-            <asp:Label ID="MessageLabel" runat="server" Text="Label"></asp:Label>
+            <br/><br/>
+            
+            
+            <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>

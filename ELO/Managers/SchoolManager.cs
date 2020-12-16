@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ELO.SQLClasses;
 
-namespace ELO.Managers
+namespace ELO//.Managers
 {
     public class SchoolManager
     {
@@ -22,6 +22,11 @@ namespace ELO.Managers
         public List<School> GetSchoolList()
         {
             return schoolSQL.GetSchools();
+        }
+
+        public School GetSchool(string name)
+        {
+            return schools.Find(x => x.Name == name);
         }
 
     }

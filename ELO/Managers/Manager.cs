@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ELO.Managers;
+using ELO;
 
 namespace ELO
 {
@@ -18,7 +18,6 @@ namespace ELO
         public static TodayMan todayMan = new TodayMan();
         public static ClassroomMan classroomMan = new ClassroomMan();
         public static LeermiddelMan leermiddelMan = new LeermiddelMan();
-
 
     }
 }

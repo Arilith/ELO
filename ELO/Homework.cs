@@ -13,6 +13,8 @@ using System.Text;
         public Subject Subject { get; private set; }
 
         public Class _class { get; }
+        public string UUID { get; private set; }
+        public string subjectUUID { get; private set; }
 
 
         public Homework(string work, Subject subject, string dueDate, Class _class)

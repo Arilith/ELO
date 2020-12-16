@@ -13,10 +13,10 @@ namespace ELO
             AppointmentList = new List<Appointment>();
         }
 
-        public void AddAppointment(Teacher teacher, Subject subject, string date, string time, Classroom classroom, Class _class, Homework homework)
+        public void AddAppointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)
         {
-            Appointment Appointment = new Appointment(teacher, subject, date, time, classroom, _class, homework);
-            AppointmentList.Add(Appointment);
+           // Appointment Appointment = new Appointment(teacher, subject, time, classroom, _class, homework, cancelled, exam);
+            //AppointmentList.Add(Appointment);
         }
 
         public void AddAppointment()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ELO.SQLClasses;
+using ELO;
 
 namespace ELO
 {
@@ -29,6 +30,10 @@ namespace ELO
             return homeworkList;
         }
 
+        public Homework GetHomework(string name)
+        {
+            return homeworkList.Find(x => x.Work == name);
+        }
 
         public List<Homework> GetHomeWorkFromDB(string school, string subject)
         {

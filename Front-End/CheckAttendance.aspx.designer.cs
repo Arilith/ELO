@@ -15,6 +15,15 @@ namespace Front_End
 	{
 
 		/// <summary>
+		/// CheckBoxA control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox CheckBoxA;
+
+		/// <summary>
 		/// CheckBoxOA control.
 		/// </summary>
 		/// <remarks>

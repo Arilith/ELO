@@ -41,23 +41,8 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top" style="border:0px">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                     <a class="navbar-brand" runat="server" href="~/">Study Cluster</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/AdminLogin">Admin Inloggen</a></li>
-                        <li><a runat="server" href="~/AdminRegister">Registreren</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="topnav">
+            <a runat="server" class="active" href="~/Login">Leerlingen Login</a>
         </div>
         <div class="container body-content" style="margin-top: 50px;">
             
