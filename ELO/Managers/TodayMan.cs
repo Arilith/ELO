@@ -22,9 +22,9 @@ namespace ELO
             //AppointmentList.Add(Appointment);
         }
 
-        public void AddAppointment(string school, string title, string dueDate, string content, string classUUID, string subject)
+        public void AddAppointment(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string homeworkUUID, bool cancelled, string examUUID, string UUID)
         {
-           appointmentSql.AddAppointmentToDB(school, title, dueDate, content, classUUID, subject);
+           appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID,dateTime,  classroomUUID,  classUUID,  school,  homeworkUUID,  cancelled,  examUUID,  UUID);
         }
 
         public void GetAppointmentListFromDatabase(string school, string _classUUID)
