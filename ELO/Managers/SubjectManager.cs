@@ -81,5 +81,9 @@ namespace ELO
             return subjectSql.GetSubjectList(school);
         }
 
+        public Subject FindSubjectUUID(string uuid)
+        {
+            return Subjects.Find(x => x.uuid == uuid);
+        }
     }
 }

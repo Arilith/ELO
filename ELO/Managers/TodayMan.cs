@@ -8,12 +8,14 @@ namespace ELO
     public class TodayMan
     {
         public static List<Appointment> AppointmentList { get; private set; }
+        private string UUID;
 
         private AppointmentSQL appointmentSql;
 
         public TodayMan()
         {
             AppointmentList = new List<Appointment>();
+            UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
         }
 
         public void AddAppointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)

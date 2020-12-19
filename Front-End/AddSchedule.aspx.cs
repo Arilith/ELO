@@ -12,32 +12,48 @@ namespace Front_End
     public partial class AddSchedule : System.Web.UI.Page
     {
         private AppointmentSQL appointmentSql;
-        
+        private TodayMan todayMan;
+        private SubjectManager subjectManager;
+        private ExamMan examMan;
+        private UserMan userMan;
+        private ClassroomMan classroomMan;
+        private HwMan hwMan;
+        private string returnUUID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            // if (IsPostBack)
-            // {
-            //     ConvertAndInsertData();
-            // }
+            if (IsPostBack)
+            {
+                ConvertAndInsertData();
+                returnUUID = appointmentSql.GetUUID();
+            }
         }
 
-        // private void ConvertAndInsertData()
-        // {
-        //     Teacher teacher = Request.Form["teacher"];
-        //     Subject subject = Request.Form["subject"];
-        //     string dateTime = Request.Form["dateTime"];
-        //     bool cancelled = false;
-        //
-        //     Exam exam = new Exam();
-        //     Classroom linkedClassroom = Manager.classroomMan.GetClassroom(Request.Form["Classroom"]);
-        //     Class linkedClass = Manager.classMan.GetClass(Request.Form["_class"]);
-        //     Homework homework = new Homework("Lezen", subject, "Dan", linkedClass);
-        //     
-        //     
-        //     
-        //     appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateTime, classroomUUID, classUUID, school, homeworkUUID, cancelled, examUUID, UUID);
-        //     
-        //     OutputLabel.Text = "Item ingevoerd!";
-        // }
+        private void ConvertAndInsertData()
+        {
+            string returnTeacherUUID = Request.Form["teacher"];
+            string returnSubjectName = Request.Form["subject"];
+            string returnDateTime = Request.Form["dateTime"];
+            string returnExamUUID = "none";
+            bool cancelled = false;
+            string returnHomeworkUUID = "blank";
+
+            Person loggedInPerson = (Person)Session["person"];
+            string insertUUID = GetUUID();
+
+            Subject insertSubject = subjectManager.FindSubject(returnSubjectName);
+            Exam insertExam = examMan.GetExam(returnExamUUID);
+            Classroom insertClassroom = classroomMan.GetClassroom(Request.Form["Classroom"]);
+            Class insertClass = Manager.classMan.GetClass(Request.Form["_class"]);
+            Homework insertHomework = hwMan.GetHomework(returnHomeworkUUID);
+            Teacher insertTeacher = userMan.GetTeacher(returnTeacherUUID);
+            
+            todayMan.AddAppointment(insertTeacher.UserId, insertSubject.uuid, returnDateTime, insertClassroom.UUID, insertClass.UUID, loggedInPerson.School, insertHomework.UUID, cancelled, insertExam.UUID, insertUUID);
+        }
+
+        public string GetUUID()
+        {
+            return returnUUID;
+        }
     }
 } 
