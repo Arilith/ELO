@@ -15,6 +15,7 @@ namespace ELO.SQLClasses
         private HwMan homeworkManager;
         private SchoolManager schoolMan;
         private ExamMan examManager;
+        private string UUID;
 
         public AppointmentSQL()
         {
@@ -60,10 +61,16 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
-        public void AddAppointmentToDB(string school, string title, string duedate, string content, string classUUID, string subject)
+        public void AddAppointmentToDatabase(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string homeworkUUID, bool cancelled, string examUUID, string UUID)
         {
-            MySqlCommand addAppointmentCommand = new MySqlCommand($"INSERT INTO appointments (subject, school, title, content, duedate, classUUID, subject) VALUES ({subject}, {school}, {title}, {content}, {duedate}, {classUUID}, {subject})", MySqlManager.con);
+            MySqlCommand addAppointmentCommand = new MySqlCommand($"INSERT INTO appointments (teacherUUID, subjectUUID, dateTime, classroomUUID, classUUID, school, homeworkUUID, cancelled, examUUID, UUID) VALUES ({teacherUUID}, {subjectUUID}, {dateTime}, {classroomUUID}, {classUUID}, {classUUID}, {school}, {homeworkUUID}, {cancelled}, {examUUID}, {UUID})", MySqlManager.con);
             addAppointmentCommand.ExecuteNonQuery();
+        }
+
+        public string GetUUID()
+        {
+            UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
+            return UUID;
         }
     }
 }
