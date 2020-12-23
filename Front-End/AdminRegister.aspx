@@ -40,6 +40,9 @@
             </Scripts>
         </asp:ScriptManager>
 
+        <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block" />
+            <br/>
+
         <div class="container body-content" style="margin-top: 50px;">
             
             <form method="post" action="AdminRegister.aspx" name="login">
@@ -69,7 +72,7 @@
             
             
             <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
-            <hr />
+            <hr style="border-top: 1px solid black!important"/>
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
             </footer>

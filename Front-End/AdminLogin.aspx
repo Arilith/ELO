@@ -45,6 +45,9 @@
             <a runat="server" class="active" href="~/Login">Leerlingen Login</a>
         </div>
         <div class="container body-content" style="margin-top: 50px;">
+
+             <img src="Content/Pictures/Logo-ELO2Best.png" width=25% style="margin-left:auto; margin-right:auto; display:block" />
+            <br/>
             
             <form method="post" action="AdminLogin.aspx" name="login">
                 Voer je inloggegevens in.<br /><br />
