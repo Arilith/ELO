@@ -169,15 +169,15 @@
 }
 
 .container-form {
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(180,180,180,0.4);
+    backdrop-filter: blur(20px);
     padding: 10px 10px 10px 10px;
     margin-top: 10px;
     width: fit-content;
     min-width: 500px;
-    color: rgba(200, 200, 200, 1);
+    color: rgba(50, 50, 50, 1);
     border-radius: 5px;
-    
+    border: 1px solid #707070;
 }
 
 .btn-success:hover {
