@@ -37,7 +37,6 @@
 
 .topnav a {
     float: left;
-    display: block;
     color: rgba(200, 200, 200, 1);
     text-align: center;
     padding: 14px 16px;
@@ -102,7 +101,6 @@
     font-size: 16px;
     border: none;
     outline: none;
-    border-radius: 0px;
     color: rgba(200, 200, 200, 1);
     padding: 14px 16px;
     background-color: inherit;
@@ -110,7 +108,7 @@
     margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.topnav a:hover, .dropdown:hover .dropbtn {
     background-color: white;
     color: black;
 }
@@ -122,7 +120,8 @@
     backdrop-filter: blur(10px);
     color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px
+    rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -186,4 +185,18 @@
 
 .btn-info:hover {
     background: rgba(0, 75, 255, 0.7)!important;
+}
+
+.col-lg-4 {
+    background: rgba(180,180,180,0.4);
+    backdrop-filter: blur(20px);
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+    width: fit-content;
+    min-width: 500px;
+    color: rgba(50, 50, 50, 1);
+    border-radius: 5px;
+    border: 1px solid #707070;
+    margin-left: 10px;
+    margin-right: 10px;
 }
