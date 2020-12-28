@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
         <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server">
     </meta>
     <title><%: Page.Title %> - Study Cluster</title>
     <asp:PlaceHolder runat="server">
@@ -41,34 +42,34 @@
                     <%--Site Scripts--%>
                 </Scripts>
             </asp:ScriptManager>
-            <div class="topnav">
+            <div class="topbar" id="myTopnav">
                 <% if (loggedInPerson.Type == "SysAdmin") { %>
                     <a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a>
                     <a runat="server" class="active" href="~/Home">Home</a>
-                    <div class="dropdown">
+                    <div class="dropdown2">
                         <button class="dropbtn">Klassen 
                             <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content2">
                             <a runat="server" href="~/AddClass">Klas Invoeren</a>
                             <a runat="server" href="~/ClassList">Klassenlijst</a>
                         </div>
                     </div> 
-                    <div class="dropdown">
+                    <div class="dropdown2">
                         <button class="dropbtn">Gebruikers 
                             <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content2">
                             <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
                             <a runat="server" href="~/AddUser">Leerling Invoeren</a>
                             <a runat="server" href="~/UserList">Gebruikerslijst</a>
                         </div>
                     </div>
-                    <div class="dropdown">
+                    <div class="dropdown2">
                         <button class="dropbtn">Overig 
                             <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content2">
                             <a runat="server" href="~/AddSchedule">Rooster Items Toevoegen</a>
                             <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
                             <a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a>
@@ -109,4 +110,14 @@
         <% } %>
     </div>
 </body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topbar") {
+            x.className += " responsive";
+        } else {
+            x.className = "topbar";
+        }
+    }
+</script>
 </html>

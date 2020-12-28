@@ -16,7 +16,7 @@
 
                     <label for="studentName">Naam student</label><br/>
                     <select id="name" class="form-control" name="name">
-                        <% foreach (Student student in Manager.userMan.GetStudentList()) {  %>
+                        <% foreach (Student student in userMan.GetStudentList()) {  %>
                             <option><%: student.Name %></option>
                         <% } %>
                     </select><br/>

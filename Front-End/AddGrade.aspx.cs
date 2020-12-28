@@ -11,10 +11,12 @@ namespace Front_End
     public partial class AddGrade : System.Web.UI.Page
     {
         public ClassManager classMan;
+        public UserMan userMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             classMan = new ClassManager();
+            userMan = new UserMan();
 
             if (IsPostBack)
             {

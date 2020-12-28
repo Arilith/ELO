@@ -27,13 +27,15 @@
             <div class="container-info">
                 <div class="container-title">Meldingen</div>
                 <div class="container-content">
-                    <div class="message">
-                        <div class="message-title">Aula Gesloten</div>
-                        <div class="message-content">M. Hendriks <br/> <br/> Volgende week (7dec - 14dec) is de aula gesloten i.v.m. de toetsweek. Eten kan... </div>
-                    </div>
-                    <div class="message">
-                        <div class="message-title">Aanmelden Romereis</div>
-                        <div class="message-content">M. Veldman <br/> <br/> Beste leerlingen klassieke talen (verrekte kuthomos), het aanmelden voor de Romereis kan nog... </div>
+                    <div class="message-holder">
+                        <div class="message">
+                            <div class="message-title">Aula Gesloten</div>
+                            <div class="message-content">M. Hendriks <br/> <br/> Volgende week (7dec - 14dec) is de aula gesloten i.v.m. de toetsweek. Eten kan... </div>
+                        </div>
+                        <div class="message">
+                            <div class="message-title">Aanmelden Romereis</div>
+                            <div class="message-content">M. Veldman <br/> <br/> Beste leerlingen klassieke talen (verrekte kuthomos), het aanmelden voor de Romereis kan nog... </div>
+                        </div>
                     </div>
                 </div>
             </div>
