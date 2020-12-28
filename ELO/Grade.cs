@@ -12,9 +12,9 @@ namespace ELO
 
         public double grade { get; private set; }
         public string date { get; private set; }
-        public string subject { get; private set; }
-        public decimal weight { get; private set; }
-        public Grade(Student student, Class _class, double grade, string date, string subject, decimal weight)
+        public Subject subject { get; private set; }
+        public int weight { get; private set; }
+        public Grade(Student student, Class _class, double grade, string date, Subject subject, int weight)
         {
             this.student = student;
             this._class = _class;
