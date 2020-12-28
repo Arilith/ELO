@@ -148,11 +148,9 @@
     border-radius: 0px;
 }
 
-/* Add a red background color to navbar links on hover */
-.topbar a:hover, .dropdown2:hover .dropbtn {
-    background-color: rgba(255,255,255, 0.2);
-    color: rgba(200, 200, 200, 1);
-    text-decoration: none;
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: white;
+    color: black;
 }
 
 /* Dropdown content (hidden by default) */
@@ -162,7 +160,8 @@
     color: rgba(200, 200, 200, 1);
     background-color: rgba(0,0,0, 0.8);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px
+    rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -186,48 +185,66 @@
     display: block;
 }
 
-.topbar .icon {
-    display: none;
+
+.form-control {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+    border-radius: 0px !important;
+    transition: ease-out 0s !important;
+    border: none !important;
+    border-bottom: 2px solid white!important;
 }
 
-@media screen and (max-width: 600px) {
-    .topbar a:not(:first-child) {
-        display: none;
-    }
-
-    .topbar > *:not(:last-child) {
-        display: none;
-    }
-
-    .topbar > :first-child {
-        display: block;
-    }
-
-    .topbar a.icon {
-        float: right;
-        display: block;
-    }
+.btn-success {
+    border-radius: 0px !important;
+    backdrop-filter: blur(5px)!important;
+    background-color: rgba(0, 200, 100, 0.7)!important;
+    border: none !important;
 }
 
-@media screen and (max-width: 600px) {
-    .topbar.responsive {
-        position: relative;
-        float: none;
-    }
+.btn-info {
+    border-radius: 0px !important;
+    backdrop-filter: blur(5px)!important;
+    background-color: rgba(0, 100, 200, 0.7)!important;
+    border: none !important;
+}
 
-    .topbar > *:not(:last-child) {
-        display: block;
-    }
+.container-form {
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+    width: fit-content;
+    min-width: 500px;
+    color: rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    
+}
 
-    .topbar.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
+.body-content {
+    margin-top: 50px;
+}
 
-    .topbar.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
+
+.container-info {
+    background: rgba(250, 250, 250, 0.4);
+    border: 2px solid rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    min-height: 200px;
+    margin: 25px 25px 25px 25px;
+}
+
+.container-info .container-title {
+    color: rgba(80, 80, 80, 1);
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.container-info .container-content {
+    margin-top: 10px;
+    padding: 0px 10px 0px 10px;
 }
