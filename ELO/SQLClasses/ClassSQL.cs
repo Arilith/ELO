@@ -137,23 +137,23 @@ namespace ELO.SQLClasses
 
         public void CreateClass(string className, string level, string cluster, string leshuis, int studyYear, string school)
         {
-            string AddClassSql = "INSERT INTO classes(className, level, uuid, cluster, leshuis, studyYear, school) VALUES (@className, @level, @uuid, @cluster, @leshuis, @studyYear, @school)";
-            MySqlCommand AddClassCmd;
+            string addClassSql = "INSERT INTO classes(className, level, uuid, cluster, leshuis, studyYear, school) VALUES (@className, @level, @uuid, @cluster, @leshuis, @studyYear, @school)";
+            MySqlCommand addClassCmd;
 
 
 
-            AddClassCmd = new MySqlCommand(AddClassSql, mysqlManager.con);
+            addClassCmd = new MySqlCommand(addClassSql, mysqlManager.con);
 
-            AddClassCmd.Parameters.AddWithValue("@className", className);
-            AddClassCmd.Parameters.AddWithValue("@level", level);
-            AddClassCmd.Parameters.AddWithValue("@uuid", uuid);
-            AddClassCmd.Parameters.AddWithValue("@cluster", cluster);
-            AddClassCmd.Parameters.AddWithValue("@leshuis", leshuis);
-            AddClassCmd.Parameters.AddWithValue("@studyYear", studyYear);
-            AddClassCmd.Parameters.AddWithValue("@school", school);
+            addClassCmd.Parameters.AddWithValue("@className", className);
+            addClassCmd.Parameters.AddWithValue("@level", level);
+            addClassCmd.Parameters.AddWithValue("@uuid", uuid);
+            addClassCmd.Parameters.AddWithValue("@cluster", cluster);
+            addClassCmd.Parameters.AddWithValue("@leshuis", leshuis);
+            addClassCmd.Parameters.AddWithValue("@studyYear", studyYear);
+            addClassCmd.Parameters.AddWithValue("@school", school);
 
-            AddClassCmd.Prepare();
-            AddClassCmd.ExecuteNonQuery();
+            addClassCmd.Prepare();
+            addClassCmd.ExecuteNonQuery();
 
             //return new Class(className, cluster, leshuis, level, studyYear);
         }

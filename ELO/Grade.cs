@@ -14,7 +14,10 @@ namespace ELO
         public string date { get; private set; }
         public Subject subject { get; private set; }
         public int weight { get; private set; }
-        public Grade(Student student, Class _class, double grade, string date, Subject subject, int weight)
+
+        public int year { get; private set; }
+
+        public Grade(Student student, Class _class, double grade, string date, Subject subject, int weight, int year)
         {
             this.student = student;
             this._class = _class;
@@ -22,6 +25,8 @@ namespace ELO
             this.date = date;
             this.subject = subject;
             this.weight = weight;
+            this.year = year;
+            
         }
 
     }
