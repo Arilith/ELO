@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using MySql.Data.MySqlClient;
 namespace ELO.SQLClasses
@@ -14,19 +13,7 @@ namespace ELO.SQLClasses
         public MySqlManager()
         {
             con = new MySqlConnection(connectionString);
-            try
-            {
-                con.Open();
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-            finally
-            {
-                con.Close();
-            }
-            
+            con.Open();
         }
 
     }
