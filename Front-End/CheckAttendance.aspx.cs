@@ -23,31 +23,5 @@ namespace Front_End
 		}
 
 		
-
-		protected void CheckBoxOA_CheckedChanged(object sender, EventArgs e)
-		{
-			if (CheckBoxA.Checked == true)
-			{
-				CheckBoxOA.Checked = false;
-				CheckBoxWA.Checked = false;
-			}
-
-		}
-
-		protected void CheckBoxWA_CheckedChanged(object sender, EventArgs e)
-		{
-			CheckBoxOA.Checked = false;
-			
-		}
-		protected void CheckBoxTLO_CheckedChanged(object sender, EventArgs e)
-		{
-			CheckBoxTLO.Checked = false;
-		}
-		protected void CheckBoxTLW_CheckedChanged(object sender, EventArgs e)
-		{
-			
-			CheckBoxTLO.Checked = false;
-			
-		}
 	}
 }

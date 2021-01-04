@@ -47,13 +47,13 @@
                     <% foreach (Student student in classManager.GetStudentsInClass(Request.Form["class"])){ %> 
                     <tr>
                         <td><%: student.Name %></td>
-                        <td> <asp:CheckBox ID="CheckBoxA" runat="server" /></td>
-                        <td> <asp:CheckBox ID="CheckBoxOA" runat="server" OnCheckedChanged="CheckBoxOA_CheckedChanged"  /></td>
-                        <td> <asp:CheckBox ID="CheckBoxWA" runat="server" OnCheckedChanged="CheckBoxWA_CheckedChanged"  /></td>
-                        <td> <asp:CheckBox ID="CheckBoxTLO" runat="server" /></td>
-                        <td> <asp:CheckBox ID="CheckBoxTLW" runat="server" /></td>
-                        <td> <asp:CheckBox ID="CheckBoxHWV" runat="server" /></td>
-                        <td> <asp:CheckBox ID="CheckBoxVW" runat="server" /></td>
+                        <td> <input type="checkbox" id="CheckBoxA" name="CheckBoxA" value="Aanwezig"></td>
+                        <td> <input type="checkbox" id="CheckBoxAO" name="CheckBoxAO" value="Afwezig Onwettig"></td>
+                        <td> <input type="checkbox" id="CheckBoxAW" name="CheckBoxAW" value="Afwezig Wettig"></td>
+                        <td> <input type="checkbox" id="CheckBoxTLO" name="CheckBoxTLO" value="Te laat onwettig"></td>
+                        <td> <input type="checkbox" id="CheckBoxTLW" name="CheckBoxTLW" value="Te laat wettig"></td>
+                        <td> <input type="checkbox" id="CheckBoxHWV" name="CheckBoxHWV" value="Huiswerk vergeten"></td>
+                        <td> <input type="checkbox" id="CheckBoxVW" name="CheckBoxVW" value="Verwijdering"></td>
                        </tr>     
                     <% } %>
                     </tbody>
