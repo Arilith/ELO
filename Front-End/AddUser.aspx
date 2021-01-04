@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Activities.Statements" %>
 <%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container-form">
     <h2><%: Title %></h2>
     <div class="row">
         <div class="col-lg-6">
@@ -30,4 +31,5 @@
             <asp:Label ID="ErrorLabel" runat="server" Text=""></asp:Label>
         </div>
     </div>
+        </div>
 </asp:Content>
