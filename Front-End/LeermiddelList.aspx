@@ -10,7 +10,7 @@
             padding: 10px;
         }
         table, th, td {
-            border:1px solid black;
+            border:1px solid gray;
         }
     </style>
     <table>

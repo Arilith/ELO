@@ -3,6 +3,18 @@
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
         <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
     </meta>
+ <div class="homebar">
+  <div class="homebar-content">
+  <p>3 toetsen deze week <br>
+  5 vakken met huiswerk deze week</p>
+  <img src="Content/Pictures/Logo-ELO2Best.png" style="width:23%; height:23%">
+  <div style="width:60px; height:75px; border: 1px solid #000"></div>
+  <p class="gegevens"> naam leerling <br>
+      leerlingnummer <br>
+      e-mail leerling
+  </p>
+  </div>
+</div>
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info">
@@ -37,7 +49,7 @@
                         </div>
                         <div class="message">
                             <div class="message-title">Aanmelden Romereis</div>
-                            <div class="message-content">M. Veldman <br/> <br/> Beste leerlingen klassieke talen (verrekte kuthomos), het aanmelden voor de Romereis kan nog... </div>
+                            <div class="message-content">M. Veldman <br/> <br/> Beste leerlingen klassieke talen, het aanmelden voor de Romereis kan nog... </div>
                         </div>
                     </div>
                 </div>

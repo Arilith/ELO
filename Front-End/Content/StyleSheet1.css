@@ -178,6 +178,7 @@
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content2 a:hover {
     background-color: rgba(255,255,255, 0.2);
+    color: rgba(200, 200, 200, 1);
 }
 
 /* Show the dropdown menu on hover */
@@ -219,16 +220,13 @@
 }
 
 .container-form {
-    background: rgba(100, 100, 100, 0.2);
+    background: rgba(225, 225, 225, 0.4);
+    border: 2px solid rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
     padding: 10px 10px 10px 10px;
-    margin-top: 10px;
-    width: fit-content;
-    min-width: 500px;
-    color: rgba(200, 200, 200, 1);
-    border-radius: 5px;
-    border: 1px solid #707070;
-    
+    border-radius: 10px;
+    min-height: 200px;
+    margin: 25px 25px 25px 25px;
 }
 
 .body-content {
@@ -256,4 +254,50 @@
 .container-info .container-content {
     margin-top: 10px;
     padding: 0px 10px 0px 10px;
+}
+
+.homebar {
+    overflow: hidden;
+    background-color: #D9E8F6;
+    text-decoration: none;
+    box-sizing: border-box;
+    display: block;
+    font-size: 16px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: 75px;
+}
+
+.homebar p {
+    float:left;
+    margin-left: 15px;
+    margin-top:16px;
+}
+
+.homebar img {
+    margin-left:10px;
+    margin-right:10px;
+    float: left;
+    margin-top: 5px;
+}
+
+.homebar div {
+    float: left;
+    margin-bottom:0;
+}
+
+.homebar .gegevens {
+    float: left;
+    margin-top: 4px;
+}
+
+.homebar-content {
+   margin-left:auto!important;
+   margin-right:auto!important;
+}
+
+.col-lg-4 {
+    margin-top: 25px;
 }
