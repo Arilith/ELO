@@ -5,19 +5,27 @@
         <h2>Cijfer Invoeren</h2>
         <div class="row">
             <div class="col-lg-6">
-                <form method="post" id="addgrade" name="addgrade">
+                <% if (!IsPostBack)
+                   { %>
+                <form method="post" id="selectclass" name="selectclass">
                     <label for="_class">Selecteer een Klas</label><br/>
                     <select id="_class" class="form-control" name="_class">
-                        <% foreach (Class _class in classMan.GetClassList()) {  %>
+                        <% foreach (Class _class in classMan.GetClassList())
+                           { %>
                             <option><%: _class.Name %></option>
                         <% } %>
                     </select><br/>
-            
-
+                    <button style="width: auto" type="submit" class="btn btn-success">Selecteren</button>
+                </form>
+                <% } %>
+                <% if (IsPostBack && Request.Form["studentName"] == null) { %>
+                <form method="post" id="addgrade" name="addgrade">
+                    <input type="hidden" value="<%: Request.Form["_class"] %>" name="_class" id="_class" class="form-control"/>
                     <label for="studentName">Naam student</label><br/>
-                    <select id="name" class="form-control" name="name">
-                        <% foreach (Student student in userMan.GetStudentList()) {  %>
-                            <option><%: student.Name %></option>
+                    <select id="studentName" class="form-control" name="studentName">
+                        <% foreach (Student student in userMan.GetStudentList())
+                           { %>
+                            <option value="<%: student.UserId %>"><%: student.Name %></option>
                         <% } %>
                     </select><br/>
 
@@ -35,9 +43,7 @@
                     <br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Invoeren</button>
                 </form>
-                <%
-                
-                %>
+                <% } %>
             </div>
         </div>
     </div>
