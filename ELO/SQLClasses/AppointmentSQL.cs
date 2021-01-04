@@ -7,7 +7,7 @@ namespace ELO.SQLClasses
 {
     public class AppointmentSQL
     {
-        private MySqlManager MySqlManager;
+        private MySqlManager mySqlManager;
         private SubjectManager subjectManager;
         private ClassManager classManager;
         private ClassroomMan classroomManager;
@@ -19,12 +19,12 @@ namespace ELO.SQLClasses
 
         public AppointmentSQL()
         {
-            MySqlManager = new MySqlManager();
+            mySqlManager = new MySqlManager();
         }
 
         public List<Appointment> GetAppointmentList(string school, string _classUUID)
         {
-            MySqlCommand getAppointmentCommand = new MySqlCommand($"SELECT * FROM appointments WHERE school = '{school}' AND classUUID = '{_classUUID}'", MySqlManager.con);
+            MySqlCommand getAppointmentCommand = new MySqlCommand($"SELECT * FROM appointments WHERE school = '{school}' AND classUUID = '{_classUUID}'", mySqlManager.con);
             MySqlDataReader appointmentReader = getAppointmentCommand.ExecuteReader();
 
             List<Appointment> returnList = new List<Appointment>();
@@ -63,7 +63,7 @@ namespace ELO.SQLClasses
 
         public void AddAppointmentToDatabase(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string homeworkUUID, bool cancelled, string examUUID, string UUID)
         {
-            MySqlCommand addAppointmentCommand = new MySqlCommand($"INSERT INTO appointments (teacherUUID, subjectUUID, dateTime, classroomUUID, classUUID, school, homeworkUUID, cancelled, examUUID, UUID) VALUES ({teacherUUID}, {subjectUUID}, {dateTime}, {classroomUUID}, {classUUID}, {classUUID}, {school}, {homeworkUUID}, {cancelled}, {examUUID}, {UUID})", MySqlManager.con);
+            MySqlCommand addAppointmentCommand = new MySqlCommand($"INSERT INTO appointments (teacherUUID, subjectUUID, dateTime, classroomUUID, classUUID, school, homeworkUUID, cancelled, examUUID, UUID) VALUES ({teacherUUID}, {subjectUUID}, {dateTime}, {classroomUUID}, {classUUID}, {classUUID}, {school}, {homeworkUUID}, {cancelled}, {examUUID}, {UUID})", mySqlManager.con);
             addAppointmentCommand.ExecuteNonQuery();
         }
 
