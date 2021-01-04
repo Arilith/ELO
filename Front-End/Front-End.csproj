@@ -192,6 +192,7 @@
     <Content Include="Home.aspx" />
     <Content Include="HwList.aspx" />
     <Content Include="LeermiddelList.aspx" />
+    <Content Include="LevelManagerPage.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="AddSchedule.aspx" />
@@ -371,6 +372,13 @@
     </Compile>
     <Compile Include="LeermiddelList.aspx.designer.cs">
       <DependentUpon>LeermiddelList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LevelManagerPage.aspx.cs">
+      <DependentUpon>LevelManagerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LevelManagerPage.aspx.designer.cs">
+      <DependentUpon>LevelManagerPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
