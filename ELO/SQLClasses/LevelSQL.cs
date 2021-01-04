@@ -14,5 +14,12 @@ namespace ELO.SQLClasses
         {
             mySqlManager = new MySqlManager();
         }
+
+        public void AddLevelToDatabase(int levelNummer, int requiredExp, string seizoen)
+        {
+
+        }
+
+
     }
 }

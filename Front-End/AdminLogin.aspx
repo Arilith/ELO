@@ -41,7 +41,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="topnav">
+        <div class="topbar">
             <a runat="server" class="active" href="~/Login">Leerlingen Login</a>
         </div>
         <div class="container body-content" style="margin-top: 50px;">
@@ -56,7 +56,7 @@
                     <% foreach (School school in schoolManager.GetSchoolList()) { %>
                         <option><%: school.Name %></option>
                     <% } %>
-                </select>
+                </select><br />
                 <label for="username">Gebruikersnaam</label><br />
                 <input id="username" type="text" name="username" class="form-control" /><br />
                 <label for="password">Wachtwoord</label><br />
@@ -68,7 +68,7 @@
             <% } %><br/><br/>
             (VERBORGEN) Systeembeheer account aanmaken <a href="~/AdminRegister" runat="server">hier</a>.
 
-            <hr />
+            <hr style="border-top: 1px solid black!important"/>
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
             </footer>
