@@ -18,7 +18,7 @@ namespace Front_End
             classMan = new ClassManager();
             userMan = new UserMan();
 
-            if (IsPostBack)
+            if (IsPostBack && Request.Form["studentName"] != null)
             {
                 ConvertAndInsertData();
             }

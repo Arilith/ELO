@@ -8,5 +8,11 @@ namespace ELO.SQLClasses
 {
     public class LevelSQL
     {
+        private MySqlManager mySqlManager;
+        
+        public LevelSQL()
+        {
+            mySqlManager = new MySqlManager();
+        }
     }
 }
