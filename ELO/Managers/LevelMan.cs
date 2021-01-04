@@ -4,7 +4,13 @@ using System.Text;
 
 namespace ELO.Managers
 {
-    class LevelMan
+    public class LevelMan
     {
+
+        public LevelMan()
+        {
+
+        }
+
     }
 }
