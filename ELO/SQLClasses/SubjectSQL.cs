@@ -86,7 +86,44 @@ namespace ELO.SQLClasses
 
         public List<Subject> GetSubjectList(string school)
         {
-            return null;
+            
+
+            string findSubjectSql = $"SELECT * FROM subjects WHERE school = '{school}'";
+
+            MySqlCommand findSubjectCmd = new MySqlCommand(findSubjectSql, mySqlManager.con);
+
+            MySqlDataReader reader = findSubjectCmd.ExecuteReader();
+
+            List<Subject> returnSubjects = new List<Subject>();
+
+            while (reader.Read())
+            {
+                string subjectName = reader["subjectName"].ToString();
+                string teachersCSV = reader["teacherUUIDs"].ToString();
+
+                string[] teacherUUIDs = teachersCSV.Split(',');
+
+                List<Teacher> teachers = new List<Teacher>();
+                // userManager = new UserMan();
+                //
+                // foreach (string teacherUUID in teacherUUIDs)
+                // {
+                //     teachers.Add((Teacher)userManager.FindUserInDataBase(teacherUUID));
+                // }
+                //
+                // userManager = null;
+                Subject returnSubject = new Subject(subjectName, UUID);
+
+                //TO IMPLEMENT
+                returnSubject.SetTeachers(teachers);
+
+                returnSubjects.Add(returnSubject);
+                
+                
+            }
+            
+            reader.Close();
+            return returnSubjects;
         }
 
 

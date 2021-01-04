@@ -6,15 +6,9 @@ namespace ELO
 {
     class Today
     {
-        private enum DayOfTheWeek
+        private enum TimeSlots
         {
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday,
-            Sunday  
+
         }
     }
 }
