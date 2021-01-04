@@ -7,5 +7,9 @@ namespace ELO.Managers
 {
     public class SeasonSQL
     {
+        public SeasonSQL()
+        { 
+
+        }
     }
 }
