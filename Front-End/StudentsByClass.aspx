@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentsByClass.aspx.cs" Inherits="Front_End.StudentsByClass" %>
+﻿<%@ Page Title="StudentsByClass" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentsByClass.aspx.cs" Inherits="Front_End.StudentsByClass" %>
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 draggable="auto"><%: Title %></h2>
     <% if (!IsPostBack) { %>
     <form method="post" id="classform" name="classform">
         <label for="class">Selecteer een klas</label>
@@ -24,6 +23,9 @@
                     }
                     th {
                         padding: 10px;
+                    }
+                    table, td, th {
+                        border:1px solid gray!important;
                     }
                 </style>
         

@@ -2,13 +2,16 @@
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 draggable="auto"><%: Title %></h2>
+    <h2 draggable="auto">Gebruikerslijst</h2>
     <style>
         td {
             padding: 10px;
         }
         th {
             padding: 10px;
+        }
+        table, th, td {
+            border: 1px solid gray!important;
         }
     </style>
     <table class="table-striped table-bordered ">

@@ -40,7 +40,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block" />
+        <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block; margin-top:20px" />
             <br/>
 
         <div class="container body-content" style="margin-top: 50px;">
