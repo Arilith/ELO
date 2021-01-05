@@ -9,6 +9,7 @@ namespace ELO
         public string StartDate { get; private set;}
         public string EndDate { get; private set; }
         public string SeasonName { get; private set; }
+        public string UUID { get; private set; }
 
 
         public Season(string StartDate, string EndDate, string SeasonName)
@@ -16,8 +17,7 @@ namespace ELO
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.SeasonName = SeasonName;
-
-
+            this.UUID = UUID;
         }
     }
 }
