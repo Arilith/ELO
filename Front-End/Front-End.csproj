@@ -163,6 +163,7 @@
     <Content Include="AddUser.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminRegister.aspx" />
+    <Content Include="BattlePass.aspx" />
     <Content Include="BookList.aspx" />
     <Content Include="ChangeSubject.aspx" />
     <Content Include="CheckAttendance.aspx" />
@@ -315,6 +316,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BattlePass.aspx.cs">
+      <DependentUpon>BattlePass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BattlePass.aspx.designer.cs">
+      <DependentUpon>BattlePass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BookList.aspx.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
