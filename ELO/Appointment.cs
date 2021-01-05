@@ -22,8 +22,7 @@ namespace ELO
         //public bool cancelled { get; private set; }
         //public Exam exam { get; private set; }
 
-        public Appointment(Teacher teacher, Subject subject, string time,
-                           Classroom classroom, Class _class, School school, Homework homework, bool cancelled, Exam exam, string uuid)
+        public Appointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, School school, Homework homework, bool cancelled, Exam exam, string uuid)
         {
             this.teacher = teacher;
             this.subject = subject;
