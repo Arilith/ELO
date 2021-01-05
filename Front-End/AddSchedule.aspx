@@ -25,9 +25,9 @@
 
         <label for="_class">Class</label><br/>
         <select id="teacherName" class="form-control" name="teacherName">
-            <% foreach (Teacher teacher in userMan.GetPersonListFromDB(loggedInPerson.School, "teacher"))
+            <% foreach (Class _class in classMan.GetClassListFromDatabase(loggedInPerson.School))
                { %>
-                <option value="<%: teacher.UserId %>"><%: teacher.Name %></option>
+                <option value="<%: _class.UUID %>"><%: _class.Name %></option>
             <% } %>
         </select><br/>
             

@@ -63,17 +63,20 @@ namespace ELO.SQLClasses
 
         public void AddAppointmentToDatabase(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string UUID)
         {
-            MySqlCommand addAppointmentCommand = new MySqlCommand($"INSERT INTO appointments (teacherUUID, subjectUUID, dateTime, classroomUUID, classUUID, school, UUID) VALUES (@teacherUUID,@subjectUUID,@dateTime,@classroomUUID,@classUUID,@school,@UUID ", mySqlManager.con);
+            string sql =
+                "INSERT INTO appointments (teacherUUID, subjectUUID, dateandTime, classroomUUID, classUUID, school, UUID) VALUES (@teacherUUID, @subjectUUID, @dateandTime, @classroomUUID, @classUUID, @school, @UUID)";
+
+            MySqlCommand addAppointmentCommand = new MySqlCommand(sql, mySqlManager.con);
 
             addAppointmentCommand.Parameters.AddWithValue("@teacherUUID", teacherUUID);
             addAppointmentCommand.Parameters.AddWithValue("@subjectUUID", subjectUUID);
-            addAppointmentCommand.Parameters.AddWithValue("@dateTime", dateTime);
+            addAppointmentCommand.Parameters.AddWithValue("@dateandTime", dateTime);
             addAppointmentCommand.Parameters.AddWithValue("@classroomUUID", classroomUUID);
             addAppointmentCommand.Parameters.AddWithValue("@classUUID", classUUID);
             addAppointmentCommand.Parameters.AddWithValue("@school", school);
             addAppointmentCommand.Parameters.AddWithValue("@UUID", UUID);
-            addAppointmentCommand.Prepare();
 
+            addAppointmentCommand.Prepare();
             addAppointmentCommand.ExecuteNonQuery();
         }
     }

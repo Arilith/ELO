@@ -24,6 +24,7 @@ namespace ELO
             subjectManager = new SubjectManager();
             userMan = new UserMan();
             classroomMan = new ClassroomMan();
+            appointmentSql = new AppointmentSQL();
         }
 
         public void AddAppointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)
