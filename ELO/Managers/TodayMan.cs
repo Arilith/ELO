@@ -7,8 +7,12 @@ namespace ELO
 {
     public class TodayMan
     {
+        private SubjectManager subjectManager;
+        private UserMan userMan;
+        private ClassroomMan classroomMan;
+        
         public static List<Appointment> AppointmentList { get; private set; }
-        private string UUID;
+        public string UUID { get; private set; }
 
         private AppointmentSQL appointmentSql;
 
@@ -16,6 +20,10 @@ namespace ELO
         {
             AppointmentList = new List<Appointment>();
             UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
+            
+            subjectManager = new SubjectManager();
+            userMan = new UserMan();
+            classroomMan = new ClassroomMan();
         }
 
         public void AddAppointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)
@@ -24,9 +32,15 @@ namespace ELO
             //AppointmentList.Add(Appointment);
         }
 
-        public void AddAppointment(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string homeworkUUID, bool cancelled, string examUUID, string UUID)
+        public void AddAppointment(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school)
         {
-           appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID,dateTime,  classroomUUID,  classUUID,  school,  homeworkUUID,  cancelled,  examUUID,  UUID);
+            Teacher insertTeacher = userMan.GetTeacher(teacherUUID);
+            Subject insertSubject = subjectManager.FindSubject(subjectUUID);
+            Classroom insertClassroom = classroomMan.GetClassroom(classroomUUID);
+            Class insertClass = Manager.classMan.GetClass(classUUID);
+            
+            
+            appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateTime,  classroomUUID,  classUUID,  school, UUID);
         }
 
         public void GetAppointmentListFromDatabase(string school, string _classUUID)
