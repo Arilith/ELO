@@ -25,7 +25,7 @@
                         <option><%: teacher.Name %></option>
                     <% } %>
                 </select><br/><br/>
-                <button type="submit">Verstuur</button>
+                <button class="btn btn-success" type="submit">Verstuur</button>
             </form>
             <br/>
             <script>
