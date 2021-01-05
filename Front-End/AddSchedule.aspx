@@ -24,7 +24,7 @@
         <input id="classroom" class="form-control" name="classroom" type="text" required aria-autocomplete="list"/><br/>
 
         <label for="_class">Class</label><br/>
-        <select id="teacherName" class="form-control" name="teacherName">
+        <select id="_class" class="form-control" name="_class">
             <% foreach (Class _class in classMan.GetClassListFromDatabase(loggedInPerson.School))
                { %>
                 <option value="<%: _class.UUID %>"><%: _class.Name %></option>
