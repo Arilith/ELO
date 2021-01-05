@@ -42,6 +42,7 @@
                     <%--Site Scripts--%>
                 </Scripts>
             </asp:ScriptManager>
+            
             <div class="topbar" id="myTopnav">
                 <% if (loggedInPerson.Type == "SysAdmin") { %>
                     <a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a>
@@ -78,7 +79,7 @@
 
                 <% } else if (loggedInPerson.Type == "Student") { %>
                     <a href="#">Hallo, <%: loggedInPerson.Name %></a>
-                    <a runat="server" class="active" href="~/Home">Home</a>
+                    <a runat="server" href="~/Home">Home</a>
                     <a runat="server" href="~/Schedule">Rooster</a>
                     <a runat="server" href="~/Gradelist">Cijfers</a>
                     <a runat="server" href="~/SubjectList">Vakken</a>
@@ -87,7 +88,7 @@
                     <a runat="server" href="~/LeermiddelList">leermiddelen</a>
                 <% } else if (loggedInPerson.Type == "Teacher") { %>
                     <a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a>
-                    <a runat="server" class="active" href="~/Home">Home</a>
+                    <a runat="server" href="~/Home">Home</a>
                     <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
                     <a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a>
                 <% } %>
