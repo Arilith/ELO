@@ -24,6 +24,7 @@ namespace ELO
             subjectManager = new SubjectManager();
             userMan = new UserMan();
             classroomMan = new ClassroomMan();
+            appointmentSql = new AppointmentSQL();
         }
 
         public void AddAppointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)
@@ -34,12 +35,6 @@ namespace ELO
 
         public void AddAppointment(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school)
         {
-            Teacher insertTeacher = userMan.GetTeacher(teacherUUID);
-            Subject insertSubject = subjectManager.FindSubject(subjectUUID);
-            Classroom insertClassroom = classroomMan.GetClassroom(classroomUUID);
-            Class insertClass = Manager.classMan.GetClass(classUUID);
-            
-            
             appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateTime,  classroomUUID,  classUUID,  school, UUID);
         }
 
