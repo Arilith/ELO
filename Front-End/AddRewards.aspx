@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Beloningen toevoegen" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddHomework.aspx.cs" Inherits="Front_End.AddHomework" %>
+﻿<%@ Page Title="Beloningen toevoegen" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddRewards.aspx.cs" Inherits="Front_End.AddRewards" %>
 <%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-form">
@@ -13,8 +13,11 @@
                     <input id="rewardDescription" class="form-control" name="rewardDescription" type="text" placeholder="10% korting op een broodje" required/><br/>
                
 
-                    <label for="imageURL">Afbeelding</label><br/>
-                    <input id="imageURL" class="form-control" name="imageURL" type="img" required/><br/>      
+                    <label for="imageURL">Afbeelding URL</label><br/>
+                    <input id="imageURL" class="form-control" name="imageURL" type="text" /><br/> 
+                    
+                    <label for="requiredLevel">Op welk level krijg je het</label><br/>
+                    <input id="requiredLevel" class="form-control" name="requiredLevel" type="number" /><br/>     
                     <br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                 </form>
