@@ -158,10 +158,12 @@
     <Content Include="AddHomework.aspx" />
     <Content Include="AddLeermiddel.aspx" />
     <Content Include="AddRewards.aspx" />
+    <Content Include="AddSeason.aspx" />
     <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminRegister.aspx" />
+    <Content Include="BattlePass.aspx" />
     <Content Include="BookList.aspx" />
     <Content Include="ChangeSubject.aspx" />
     <Content Include="CheckAttendance.aspx" />
@@ -271,6 +273,13 @@
     <Compile Include="AddRewards.aspx.designer.cs">
       <DependentUpon>AddRewards.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddSeason.aspx.cs">
+      <DependentUpon>AddSeason.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddSeason.aspx.designer.cs">
+      <DependentUpon>AddSeason.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddTeacher.aspx.cs">
       <DependentUpon>AddTeacher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +317,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BattlePass.aspx.cs">
+      <DependentUpon>BattlePass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BattlePass.aspx.designer.cs">
+      <DependentUpon>BattlePass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BookList.aspx.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

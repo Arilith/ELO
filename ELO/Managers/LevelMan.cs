@@ -7,7 +7,6 @@ namespace ELO.Managers
 {
     public class LevelMan
     {
-
         private LevelSQL levelSql;
 
         public LevelMan()
@@ -20,6 +19,10 @@ namespace ELO.Managers
 
         }
 
+        public List<Level> GetLevelListFromDB(string school)
+        {
+            return levelSql.GetLevelsFromDB(school);
+        }
 
     }
 }
