@@ -7,9 +7,9 @@
   <div class="homebar-content">
   <img src="Content/Pictures/Logo-ELO2Best.png" style="width:18%; height:18%">
   <div style="width:60px; height:75px; border: 1px solid #000"><img src="Content/Pictures/neds (2).jpg" style="width:100%; height:100%; margin:0" /></div>
-  <p class="gegevens"> naam leerling <br>
-      leerlingnummer <br>
-      e-mail leerling
+  <p class="gegevens"> <%: loggedInStudent.Name %> <br>
+      <%: loggedInStudent.LeerlingNummer %> <br>
+      <%: loggedInStudent.Email %>
   </p>
   </div>
 </div>

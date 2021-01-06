@@ -13,8 +13,13 @@ namespace Front_End
     {
         public ClassManager classManager;
         public HwMan hwMan;
+        public Person LoggedInPerson;
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoggedInPerson = (Person)Session["person"];
+            classManager = new ClassManager();
+            hwMan = new HwMan();
+
             if (IsPostBack)
             {
                 ConvertAndInsertData();
@@ -23,17 +28,16 @@ namespace Front_End
 
         private void ConvertAndInsertData()
         {
-            classManager = new ClassManager();
-            hwMan = new HwMan();
-
-            string work = Request.Form["work"];
+           
+            string school = LoggedInPerson.School;
+            string title = Request.Form["title"];
             string dueDate =Request.Form["dueDate"];
             string subject = Request.Form["subject"];
             string content = Request.Form["content"];
 
-            Class linkedClass = classManager.GetClassFromDatabase(Request.Form["_class"]);
+            string _class = Request.Form["class"];
 
-			//hwMan.AddHomeWorkToDB(work, subject, dueDate, content, linkedClass);
+			hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject);
 
 			OutputLabel.Text = "Huiswerk ingevoerd!";
         }
