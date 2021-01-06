@@ -10,9 +10,9 @@ namespace ELO
         public Subject subject { get; private set; }
         public int weight { get; private set; }
         public Class _classUUID { get; private set; }
-        public School school { get; private set; }
+        public string school { get; private set; }
 
-        public Exam(string uuid, Subject subject, int weight, Class _classUUID, School school)
+        public Exam(string uuid, Subject subject, int weight, Class _classUUID, string school)
         {
             this.UUID = uuid;
             this.weight = weight;

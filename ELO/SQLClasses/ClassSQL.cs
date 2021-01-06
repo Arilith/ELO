@@ -17,8 +17,6 @@ namespace ELO.SQLClasses
 
         public ClassSQL()
         {
-            mysqlManager = new MySqlManager();
-            
             uuid = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
             date = DateTime.Now.ToString("u");
         }
@@ -26,6 +24,7 @@ namespace ELO.SQLClasses
         public List<Class> GetClassList(string school)
         {
             userSql = new UserSQL();
+            mysqlManager = new MySqlManager();
 
             List<Class> returnList = new List<Class>();
 
@@ -51,6 +50,7 @@ namespace ELO.SQLClasses
             classReader.Close();
 
             userSql = null;
+            mysqlManager.con.Close();
 
             return returnList;
         }
@@ -68,6 +68,7 @@ namespace ELO.SQLClasses
         public Class GetClass(string school, string name)
         {
             userSql = new UserSQL();
+            mysqlManager = new MySqlManager();
 
             string findClassSql = "SELECT * FROM classes WHERE school = '" + school + "' AND className = '" + name + "'";
 
@@ -94,6 +95,7 @@ namespace ELO.SQLClasses
             }
 
             userSql = null;
+            mysqlManager.con.Close();
 
             return null;
         }
@@ -106,6 +108,7 @@ namespace ELO.SQLClasses
         public Class GetClass(string uuid)
         {
             userSql = new UserSQL();
+            mysqlManager = new MySqlManager();
 
             string findClassSql = "SELECT * FROM classes WHERE uuid = '" + uuid + "'";
 
@@ -131,12 +134,14 @@ namespace ELO.SQLClasses
             }
 
             userSql = null;
+            mysqlManager.con.Close();
 
             return null;
         }
 
         public void CreateClass(string className, string level, string cluster, string leshuis, int studyYear, string school)
         {
+            mysqlManager = new MySqlManager();
             string addClassSql = "INSERT INTO classes(className, level, uuid, cluster, leshuis, studyYear, school) VALUES (@className, @level, @uuid, @cluster, @leshuis, @studyYear, @school)";
             MySqlCommand addClassCmd;
 
@@ -155,18 +160,22 @@ namespace ELO.SQLClasses
             addClassCmd.Prepare();
             addClassCmd.ExecuteNonQuery();
 
+            mysqlManager.con.Close();
             //return new Class(className, cluster, leshuis, level, studyYear);
         }
 
         public int GetAmountOfStudents(string classUUID)
         {
+            mysqlManager = new MySqlManager();
             MySqlCommand amountOfStudentsCmd = new MySqlCommand($"SELECT Id FROM users WHERE classUUID = '{classUUID}'", mysqlManager.con);
             MySqlDataReader amountOfStudentsReader = amountOfStudentsCmd.ExecuteReader();
             return amountOfStudentsReader.RowCount();
+            mysqlManager.con.Close();
         }
 
         public List<Student> GetStudentsInClass(string classUUID)
         {
+            mysqlManager = new MySqlManager();
             MySqlCommand studentsInClassCmd = new MySqlCommand($"SELECT * FROM users WHERE classUUID = '{classUUID}'", mysqlManager.con);
             MySqlDataReader studentsInClassReader = studentsInClassCmd.ExecuteReader();
 
@@ -183,10 +192,12 @@ namespace ELO.SQLClasses
 
             return returnList;
 
+            mysqlManager.con.Close();
         }
 
         public void UpdateMentor(string classUUID, string mentorUUID)
         {
+            mysqlManager = new MySqlManager();
             string changeMentorSql = $"UPDATE classes SET mentorUUID = @mentorUUID WHERE uuid = '{classUUID}'";
             MySqlCommand changeMentorCmd;
 
@@ -196,6 +207,7 @@ namespace ELO.SQLClasses
 
             changeMentorCmd.Prepare();
             changeMentorCmd.ExecuteNonQuery();
+            mysqlManager.con.Close();
         }
     }
 }

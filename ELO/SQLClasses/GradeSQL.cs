@@ -79,6 +79,10 @@ namespace ELO.SQLClasses
 
             }
 
+            userManager = null;
+            classManager = null;
+            subjectManager = null;
+
             return returnGrades;
         }
 
@@ -111,6 +115,10 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year));
 
             }
+
+            userManager = null;
+            classManager = null;
+            subjectManager = null;
 
             return returnGrades;
 
@@ -146,9 +154,18 @@ namespace ELO.SQLClasses
                 Subject subjectObj = subjectManager.FindSubjectInDatabase(subjectString);
 
                 returnGrade = new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year);
+
+                userManager = null;
+                classManager = null;
+                subjectManager = null;
+
                 return returnGrade;
 
             }
+
+            userManager = null;
+            classManager = null;
+            subjectManager = null;
 
             return null;
         }

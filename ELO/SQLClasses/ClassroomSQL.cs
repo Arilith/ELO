@@ -11,14 +11,10 @@ namespace ELO.SQLClasses
 
         private SubjectManager subjectManager;
         private ClassManager classManager;
-
-        public ClassroomSQL()
-        {
-            MySqlManager = new MySqlManager();
-        }
-
+        
         public List<Classroom> GetClassroomListFromDatabase(string school)
         {
+            MySqlManager = new MySqlManager();
             MySqlCommand getClassroomCommand = new MySqlCommand($"SELECT * FROM classrooms WHERE school = '{school}'", MySqlManager.con);
             MySqlDataReader ClassroomReader = getClassroomCommand.ExecuteReader();
 
@@ -37,14 +33,16 @@ namespace ELO.SQLClasses
             }
 
             ClassroomReader.Close();
-
+            MySqlManager.con.Close();
             return returnList;
         }
 
         public void AddClassroomToDB(string name, string floor, string available, string UUID)
         {
+            MySqlManager = new MySqlManager();
             MySqlCommand addClassroomCommand = new MySqlCommand($"INSERT INTO classrooms (name, floor, available, UUID) VALUES ({name}, {floor}, {available}, {UUID})", MySqlManager.con);
             addClassroomCommand.ExecuteNonQuery();
+            MySqlManager.con.Close();
         }
     }
 }

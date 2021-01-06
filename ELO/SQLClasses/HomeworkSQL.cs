@@ -25,6 +25,10 @@ namespace ELO.SQLClasses
 
         public List<Homework> GetHomeWorkList(string school, string subject)
         {
+
+            subjectManager = new SubjectManager();
+            classManager = new ClassManager();
+
             MySqlCommand getHomeworkCommand = new MySqlCommand($"SELECT * FROM homework WHERE school = '{school}' AND subject = '{subject}'", MySqlManager.con);
             MySqlDataReader homeworkReader = getHomeworkCommand.ExecuteReader();
 
@@ -52,6 +56,9 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            classManager = null;
+            subjectManager = null;
+
             return returnList;
         }
 
@@ -63,6 +70,9 @@ namespace ELO.SQLClasses
 
         public Homework GetHomeworkFromDatabase(string homeworkUUID)
         {
+            subjectManager = new SubjectManager();
+            classManager = new ClassManager();
+
             MySqlCommand getHomeworkCommand = new MySqlCommand($"SELECT * FROM homework WHERE UUID = '{homeworkUUID}'", MySqlManager.con);
             MySqlDataReader homeworkReader = getHomeworkCommand.ExecuteReader();
 
@@ -79,11 +89,16 @@ namespace ELO.SQLClasses
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
+                classManager = null;
+                subjectManager = null;
 
                 return new Homework(returnContent, insertSubject, returnDate, insertClass);
             }
-
             homeworkReader.Close();
+
+            classManager = null;
+            subjectManager = null;
+
             return null;
         }
         

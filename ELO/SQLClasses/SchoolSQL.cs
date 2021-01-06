@@ -11,22 +11,25 @@ namespace ELO.SQLClasses
         private MySqlManager mySqlManager;
         public SchoolSQL()
         {
-            mySqlManager = new MySqlManager();
+            
         }
 
-        public List<School> GetSchools()
+        public List<String> GetSchools()
         {
-            List<School> schoolList = new List<School>();
+            mySqlManager = new MySqlManager();
+
+            List<String> schoolList = new List<String>();
 
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM schools", mySqlManager.con);
             MySqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                schoolList.Add(new School(reader["school"].ToString()));
+                schoolList.Add(reader["school"].ToString());
             }
 
             reader.Close();
+            mySqlManager = null;
 
             return schoolList;
 
