@@ -12,6 +12,8 @@ namespace ELO.SQLClasses
         private SubjectManager subjectManager;
         private ClassManager classManager;
 
+        private string UUID = "Huiswerk";
+
         public HomeworkSQL()
         {
             MySqlManager = new MySqlManager();
@@ -57,7 +59,7 @@ namespace ELO.SQLClasses
 
         public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subject)
         {
-            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subject, school, title, content, duedate, classUUID, subject) VALUES ({subject}, {school}, {title}, {content}, {duedate}, {classUUID}, {subject})", MySqlManager.con);
+            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subject, school, title, content, duedate, classUUID, UUID) VALUES ('{subject}', '{school}', '{title}', '{content}', '{duedate}', '{classUUID}', '{UUID}')", MySqlManager.con);
             addHomeworkCommand.ExecuteNonQuery();
         }
 
@@ -68,11 +70,12 @@ namespace ELO.SQLClasses
 
             if (homeworkReader.Read())
             {
-
+                string returnTitle = homeworkReader["Title"].ToString();
                 string returnSubject = homeworkReader["subject"].ToString();
                 string returnContent = homeworkReader["content"].ToString();
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
+                
 
                 homeworkReader.Close();
                 
@@ -80,7 +83,7 @@ namespace ELO.SQLClasses
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
 
-                return new Homework(returnContent, insertSubject, returnDate, insertClass);
+                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass);
             }
 
             homeworkReader.Close();

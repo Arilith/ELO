@@ -6,7 +6,7 @@ using System.Text;
  {
     public class Homework
     {
-        public string Work { get; private set; }
+        public string Title { get; private set; }
 
         public string DueDate { get; private set; }
 
@@ -18,9 +18,9 @@ using System.Text;
         public string subjectUUID { get; private set; }
 
 
-        public Homework(string work, Subject subject, string content, string dueDate, Class _class)
+        public Homework(string title, Subject subject, string content, string dueDate, Class _class)
         {
-            this.Work = work;
+            this.Title = title;
             this.Subject = subject;
             this.DueDate = dueDate;
             this._class = _class;
@@ -29,7 +29,7 @@ using System.Text;
 
         public override string ToString()
         {
-            return $"Voor klas: {_class.Name} moet voor het vak {Subject} op {DueDate}, {Work} af zijn.";
+            return $"Voor klas: {_class.Name} moet voor het vak {Subject} op {DueDate}, {Title} af zijn.";
         }
 
 
