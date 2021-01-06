@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
         <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server">
+        <link id="link2" rel="stylesheet" href="~/Content/mark-your-calendar.css" type="text/css" runat="server" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server"/>
     </meta>
     <title><%: Page.Title %> - Study Cluster</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
+    <script src="https://www.jqueryscript.net/demo/pick-hours-availability-calendar/js/mark-your-calendar.js" language="javascript" type="text/javascript"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
@@ -42,6 +44,7 @@
                     <%--Site Scripts--%>
                 </Scripts>
             </asp:ScriptManager>
+            
             <div class="topbar" id="myTopnav">
                 <% if (loggedInPerson.Type == "SysAdmin") { %>
                     <a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a>
@@ -55,6 +58,15 @@
                             <a runat="server" href="~/ClassList">Klassenlijst</a>
                         </div>
                     </div> 
+                    <div class="dropdown2">
+                        <button class="dropbtn">Roosters
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content2">
+                            <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
+                            <a runat="server" href="~/Schedule">Rooster</a>
+                        </div>
+                    </div>
                     <div class="dropdown2">
                         <button class="dropbtn">Gebruikers 
                             <i class="fa fa-caret-down"></i>
@@ -78,16 +90,16 @@
 
                 <% } else if (loggedInPerson.Type == "Student") { %>
                     <a href="#">Hallo, <%: loggedInPerson.Name %></a>
-                    <a runat="server" class="active" href="~/Home">Home</a>
+                    <a runat="server" href="~/StudentHome">Home</a>
                     <a runat="server" href="~/Schedule">Rooster</a>
                     <a runat="server" href="~/Gradelist">Cijfers</a>
                     <a runat="server" href="~/SubjectList">Vakken</a>
                     <a runat="server" href="~/HwList">Huiswerk</a>
                     <a runat="server" href="~/UploadFile">Bestand Uploaden</a>
-                    <a runat="server" href="~/LeermiddelList">leermiddelen</a>
+                    <a runat="server" href="~/LeermiddelList">Leermiddelen</a>
                 <% } else if (loggedInPerson.Type == "Teacher") { %>
                     <a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a>
-                    <a runat="server" class="active" href="~/Home">Home</a>
+                    <a runat="server" href="~/Home">Home</a>
                     <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
                     <a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a>
                 <% } %>
@@ -96,7 +108,8 @@
                     <i class="fa fa-bars"></i>
                 </a>
             </div>
-
+            <% if (loggedInPerson != null)
+               { %>
             <div class="container body-content">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
@@ -105,7 +118,9 @@
                     <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
                 </footer>
             </div>
+            <% } else { %>
 
+            <% } %>
         </form>
         <% } %>
     </div>

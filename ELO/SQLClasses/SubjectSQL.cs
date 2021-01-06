@@ -17,8 +17,8 @@ namespace ELO.SQLClasses
             mySqlManager = new MySqlManager();
 
             UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddMMYYYYhhiiss");
-
         }
+        
         public Subject GetSubject(string uuid)
         {
             userManager = new UserMan();
@@ -100,6 +100,7 @@ namespace ELO.SQLClasses
             {
                 string subjectName = reader["subjectName"].ToString();
                 string teachersCSV = reader["teacherUUIDs"].ToString();
+                string subjectUUID = reader["subjectUUID"].ToString();
 
                 string[] teacherUUIDs = teachersCSV.Split(',');
 
@@ -112,7 +113,7 @@ namespace ELO.SQLClasses
                 // }
                 //
                 // userManager = null;
-                Subject returnSubject = new Subject(subjectName, UUID);
+                Subject returnSubject = new Subject(subjectName, subjectUUID);
 
                 //TO IMPLEMENT
                 returnSubject.SetTeachers(teachers);

@@ -6,13 +6,13 @@ namespace ELO
 {
     public class Season
     {
-        public DateTime StartDate { get; private set;}
-        public DateTime EndDate { get; private set; }
+        public string StartDate { get; private set;}
+        public string EndDate { get; private set; }
         public string SeasonName { get; private set; }
         public string UUID { get; private set; }
 
 
-        public Season(DateTime StartDate, DateTime EndDate, String SeasonName, string UUID)
+        public Season(string StartDate, string EndDate, string SeasonName, string UUID)
         {
             this.StartDate = StartDate;
             this.EndDate = EndDate;

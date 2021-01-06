@@ -62,7 +62,7 @@
             </form><br/><br/>
             Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in
             <% if (results != null) { %>
-                <meta http-equiv="refresh" content="0;url=Home.aspx" />
+                <meta http-equiv="refresh" content="0;url=StudentHome.aspx" />
             <% } %>
             <hr style="border-top: 1px solid black!important" />
             <footer>

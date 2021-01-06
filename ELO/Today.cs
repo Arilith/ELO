@@ -6,9 +6,9 @@ namespace ELO
 {
     class Today
     {
-        private enum TimeSlots
+        private enum Weekday
         {
-
+            
         }
     }
 }

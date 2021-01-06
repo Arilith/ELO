@@ -27,5 +27,22 @@ namespace ELO.SQLClasses
             addSeasonCommand.ExecuteNonQuery();
 
         }
+
+        public List<Season> GetSeasonListFromDB(string school)
+        {
+            List<Season> returnList = new List<Season>();
+            MySqlCommand ReadSeasonSqlCommand = new MySqlCommand($"SELECT * FROM seasons WHERE school = {school}", mySqlManager.con);
+            MySqlDataReader readSeasonDataReader = ReadSeasonSqlCommand.ExecuteReader();
+            while (readSeasonDataReader.Read())
+            {
+                string returnStartDate =Convert.ToString(readSeasonDataReader["startDate"]);
+                string returnEndDate = Convert.ToString(readSeasonDataReader["endDate"]);
+                string returnSeasonName = Convert.ToString(readSeasonDataReader["name"]);
+                string returnUUID =Convert.ToString(readSeasonDataReader["UUID"]);
+                Season newSeason = new Season(returnStartDate, returnEndDate, returnSeasonName, returnUUID);
+                returnList.Add(newSeason);
+            }
+            return returnList;
+        }
     }
 }

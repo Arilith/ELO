@@ -60,6 +60,32 @@ namespace ELO.SQLClasses
             MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subject, school, title, content, duedate, classUUID, subject) VALUES ({subject}, {school}, {title}, {content}, {duedate}, {classUUID}, {subject})", MySqlManager.con);
             addHomeworkCommand.ExecuteNonQuery();
         }
+
+        public Homework GetHomeworkFromDatabase(string homeworkUUID)
+        {
+            MySqlCommand getHomeworkCommand = new MySqlCommand($"SELECT * FROM homework WHERE UUID = '{homeworkUUID}'", MySqlManager.con);
+            MySqlDataReader homeworkReader = getHomeworkCommand.ExecuteReader();
+
+            if (homeworkReader.Read())
+            {
+
+                string returnSubject = homeworkReader["subject"].ToString();
+                string returnContent = homeworkReader["content"].ToString();
+                string returnClass = homeworkReader["classUUID"].ToString();
+                string returnDate = homeworkReader["duedate"].ToString();
+
+                homeworkReader.Close();
+                
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
+                Class insertClass = classManager.GetClassFromDatabase(returnClass);
+
+
+                return new Homework(returnContent, insertSubject, returnDate, insertClass);
+            }
+
+            homeworkReader.Close();
+            return null;
+        }
         
     }
 }

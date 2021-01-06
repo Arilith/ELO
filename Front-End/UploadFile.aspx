@@ -6,7 +6,7 @@
         
         <label for="file">Selecteer je bestand</label>
         <input type="file" name="uploadedFile" required id="uploadedFile" runat="server" style="background-color:transparent!important; margin-top:10px"/><br/><br/>
-        <asp:button CssClass="btn btn-primary" id="btnUpload" type="submit" text="Upload" runat="server" OnClick="btnUpload_Click" Style="background-color:#5cb85c; border-color:#4cae4c"/><asp:button />
+        <asp:button CssClass="btn btn-success" id="btnUpload" type="submit" text="Upload" runat="server" OnClick="btnUpload_Click" Style="background-color:#5cb85c; border-color:#4cae4c"/><asp:button />
         <asp:Panel ID="frmConfirmation" Visible="False" Runat="server">
             <asp:Label id="lblUploadResult" Runat="server"></asp:Label>
         </asp:Panel>
