@@ -92,7 +92,7 @@ namespace ELO.SQLClasses
                 classManager = null;
                 subjectManager = null;
 
-                return new Homework(returnContent, insertSubject, returnDate, insertClass);
+                //return new Homework(returnContent, insertSubject, returnDate, insertClass);
             }
             homeworkReader.Close();
 

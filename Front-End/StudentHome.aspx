@@ -6,7 +6,7 @@
  <div class="homebar">
   <div class="homebar-content">
   <img src="Content/Pictures/Logo-ELO2Best.png" style="width:18%; height:18%">
-  <div style="width:60px; height:75px; border: 1px solid #000"><img src="Content/Pictures/neds (2).jpg" style="width:100%; height:100%; margin:0" /></div>
+  <div style="width:59px; height:75px; border: 1px solid #000"><img src="Content/Pictures/neds (2).jpg" style="width:100%; height:100%; margin:0" /></div>
   <p class="gegevens"> Vissers, Niels N.P.E.P. <br>
       123456 <br>
       123456@leerling.dendron.nl
