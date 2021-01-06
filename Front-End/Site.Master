@@ -15,7 +15,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <script src="~/Scripts/mark-your-calendar.js" language="javascript" type="text/javascript"></script>
+    <script src="https://www.jqueryscript.net/demo/pick-hours-availability-calendar/js/mark-your-calendar.js" language="javascript" type="text/javascript"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
