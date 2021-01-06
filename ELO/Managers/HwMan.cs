@@ -20,7 +20,7 @@ namespace ELO
             homeworkSql = new HomeworkSQL();
         }
 
-        public void AddHomework(string work, string subject, string dueDate, Class _class)
+        public void AddHomework(string work, string subject, string dueDate, string content,  Class _class)
         {
             //Homework homework = new Homework(subject, work, dueDate, _class);
             //homeworkList.Add(homework);

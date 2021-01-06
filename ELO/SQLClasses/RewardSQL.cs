@@ -7,7 +7,7 @@ namespace ELO.SQLClasses
 {
 	public class RewardSQL
 	{
-		private string UUID = "griep eets";
+		private string UUID = "Reward";
 
 		private MySqlManager mySqlManager;
 		public RewardSQL() 
@@ -15,7 +15,7 @@ namespace ELO.SQLClasses
 			mySqlManager = new MySqlManager();
 		}
 
-		public List<Reward> GetRewardListFromDB(string school)
+		public List<Reward> GetRewardFromDB(string school)
 		{ 
 			//Lijst voor Rewards die gelezen worden
 			List<Reward> returnList = new List<Reward>();

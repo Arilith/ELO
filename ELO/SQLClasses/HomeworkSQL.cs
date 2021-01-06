@@ -46,7 +46,7 @@ namespace ELO.SQLClasses
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
 
-                returnList.Add(new Homework(returnContent, insertSubject, returnDate, insertClass));
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass));
 
             }
 
