@@ -48,7 +48,7 @@ namespace Front_End
 
                     //Voeg het toe aan de filemanager.
 
-                    Manager.fileMan.AddFile(new ELO.File(fileName, filePath, currentDateTime));
+                    //Manager.fileMan.AddFile(new ELO.File(fileName, filePath, currentDateTime));
 
                     lblUploadResult.Text = "Je hebt met succes het bestand " + fileNameWithDate + " geuploaded! Je leraar zal er snel naar kijken!";
                 }

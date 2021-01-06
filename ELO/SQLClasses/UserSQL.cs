@@ -54,7 +54,7 @@ namespace ELO.SQLClasses
                 string returnMentorUUID = Studentsreader["mentorUUID"].ToString();
 
                 
-                Class returnClass = classManager.GetClass(returnClassUUID);
+                Class returnClass = classManager.GetClassFromDatabase(returnClassUUID);
                 Teacher returnTeacher = (Teacher)new UserSQL().FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
@@ -203,7 +203,7 @@ namespace ELO.SQLClasses
 
                 reader.Close();
 
-                Class returnClass = classManager.GetClass(returnClassUUID);
+                Class returnClass = classManager.GetClassFromDatabase(returnClassUUID);
                 Teacher returnTeacher = (Teacher)FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
                 

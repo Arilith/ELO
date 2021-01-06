@@ -11,25 +11,11 @@ namespace ELO
     {
 
         public HomeworkSQL homeworkSql;
-
-        public static List<Homework> homeworkList { get; private set; }
-
         public HwMan()
         {
-            homeworkList = new List<Homework>();
             homeworkSql = new HomeworkSQL();
         }
-
-        public void AddHomework(string work, string subject, string dueDate, Class _class)
-        {
-            //Homework homework = new Homework(subject, work, dueDate, _class);
-            //homeworkList.Add(homework);
-        }
-        public List<Homework> GetHomeworkList()
-        {
-            return homeworkList;
-        }
-
+        
         public Homework GetHomeworkFromDB(string homeworkUUID)
         {
             return homeworkSql.GetHomeworkFromDatabase(homeworkUUID);

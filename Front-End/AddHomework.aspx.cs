@@ -11,6 +11,10 @@ namespace Front_End
 {
     public partial class AddHomework : System.Web.UI.Page
     {
+
+        public ClassManager classMan;
+        public HwMan hwMan;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -26,9 +30,9 @@ namespace Front_End
             string dueDate =Request.Form["dueDate"];
             string subject = Request.Form["subject"];
 
-            Class linkedClass = Manager.classMan.GetClass(Request.Form["_class"]);
+            Class linkedClass = classMan.GetClassFromDatabase(Request.Form["_class"]);
 
-			Manager.hwMan.AddHomework(work, subject, dueDate, linkedClass);
+			//hwMan.AddHomeWorkToDB(work, subject, dueDate, linkedClass);
 
 			OutputLabel.Text = "Huiswerk ingevoerd!";
         }

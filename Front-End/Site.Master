@@ -59,6 +59,15 @@
                         </div>
                     </div> 
                     <div class="dropdown2">
+                        <button class="dropbtn">Roosters
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content2">
+                            <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
+                            <a runat="server" href="~/Schedule">Rooster</a>
+                        </div>
+                    </div>
+                    <div class="dropdown2">
                         <button class="dropbtn">Gebruikers 
                             <i class="fa fa-caret-down"></i>
                         </button>
@@ -81,13 +90,13 @@
 
                 <% } else if (loggedInPerson.Type == "Student") { %>
                     <a href="#">Hallo, <%: loggedInPerson.Name %></a>
-                    <a runat="server" href="~/Home">Home</a>
+                    <a runat="server" href="~/StudentHome">Home</a>
                     <a runat="server" href="~/Schedule">Rooster</a>
                     <a runat="server" href="~/Gradelist">Cijfers</a>
                     <a runat="server" href="~/SubjectList">Vakken</a>
                     <a runat="server" href="~/HwList">Huiswerk</a>
                     <a runat="server" href="~/UploadFile">Bestand Uploaden</a>
-                    <a runat="server" href="~/LeermiddelList">leermiddelen</a>
+                    <a runat="server" href="~/LeermiddelList">Leermiddelen</a>
                 <% } else if (loggedInPerson.Type == "Teacher") { %>
                     <a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a>
                     <a runat="server" href="~/Home">Home</a>
@@ -99,7 +108,8 @@
                     <i class="fa fa-bars"></i>
                 </a>
             </div>
-
+            <% if (loggedInPerson != null)
+               { %>
             <div class="container body-content">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
@@ -108,7 +118,9 @@
                     <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
                 </footer>
             </div>
+            <% } else { %>
 
+            <% } %>
         </form>
         <% } %>
     </div>

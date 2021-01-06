@@ -26,7 +26,7 @@ namespace Front_End
             string link = Request.Form["link"];
             string description = Request.Form["description"];
 
-            Manager.leermiddelMan.AddleermiddelToList(subject, niveau, leerjaar, link, description);
+            //Manager.leermiddelMan.AddleermiddelToList(subject, niveau, leerjaar, link, description);
 
         }
     }

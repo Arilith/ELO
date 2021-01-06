@@ -159,6 +159,7 @@
     <Content Include="AddLeermiddel.aspx" />
     <Content Include="AddRewards.aspx" />
     <Content Include="AddSeason.aspx" />
+    <Content Include="AddSubject.aspx" />
     <Content Include="AddTeacher.aspx" />
     <Content Include="AddUser.aspx" />
     <Content Include="AdminLogin.aspx" />
@@ -282,6 +283,13 @@
     </Compile>
     <Compile Include="AddSeason.aspx.designer.cs">
       <DependentUpon>AddSeason.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddSubject.aspx.cs">
+      <DependentUpon>AddSubject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddSubject.aspx.designer.cs">
+      <DependentUpon>AddSubject.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddTeacher.aspx.cs">
       <DependentUpon>AddTeacher.aspx</DependentUpon>
