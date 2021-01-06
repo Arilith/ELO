@@ -278,7 +278,7 @@
 
 .homebar img {
     margin-left:10px;
-    margin-right:10px;
+    margin-right:700px;
     float: left;
     margin-top: 5px;
 }
@@ -308,4 +308,8 @@
 
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: rgba(20,20,20,0.1)!important;
+}
+
+.middle {
+    text-align: center!important;
 }
