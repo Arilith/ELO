@@ -175,6 +175,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\mark-your-calendar.css" />
+    <Content Include="HomeworkList.aspx" />
     <Content Include="Scripts\mark-your-calendar.js" />
     <Content Include="Content\Pictures\Logo ELO2.png" />
     <Content Include="Content\Site.css" />
@@ -195,7 +196,6 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Gradelist.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="HwList.aspx" />
     <Content Include="LeermiddelList.aspx" />
     <Content Include="LevelManagerPage.aspx" />
     <Content Include="Login.aspx" />
@@ -393,6 +393,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomeworkList.aspx.cs">
+      <DependentUpon>HomeworkList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomeworkList.aspx.designer.cs">
+      <DependentUpon>HomeworkList.aspx</DependentUpon>
     </Compile>
     <Compile Include="LeermiddelList.aspx.cs">
       <DependentUpon>LeermiddelList.aspx</DependentUpon>
