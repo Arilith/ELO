@@ -12,7 +12,7 @@ namespace ELO
         public string UUID { get; private set; }
 
 
-        public Season(string StartDate, string EndDate, string SeasonName)
+        public Season(string StartDate, string EndDate, string SeasonName, string UUID)
         {
             this.StartDate = StartDate;
             this.EndDate = EndDate;

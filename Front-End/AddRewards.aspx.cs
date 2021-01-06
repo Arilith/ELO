@@ -22,7 +22,7 @@ namespace Front_End
 				string imageURL = Request.Form["imageURL"];
 				int requiredLevel = Convert.ToInt32(Request.Form["requiredLevel"]);
 
-				rewardMan.AddReward(title, rewardDescription, imageURL, requiredLevel);
+				//rewardMan.AddReward(title, rewardDescription, imageURL, requiredLevel);
 			}
 		}
 	}
