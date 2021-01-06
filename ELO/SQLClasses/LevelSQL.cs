@@ -18,7 +18,7 @@ namespace ELO.SQLClasses
             seasonMan = new SeasonMan();
         }
 
-        public List<Level> GetLevelListFromDB(string school)
+        public List<Level> GetLevelsFromDB(string school)
         {
             // lijst voor levels die gelezen worden
             List<Level> returnList = new List<Level>();
@@ -52,7 +52,5 @@ namespace ELO.SQLClasses
         {
 
         }
-
-
     }
 }

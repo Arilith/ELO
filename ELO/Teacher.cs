@@ -14,8 +14,7 @@ namespace ELO
         public Subject Subject { get; private set; }
 
         public Class MentorForClass { get; private set; } 
-
-
+        
         public Teacher(string name, int age, string school, string type, Subject subject, Class _mentorClass, string userId, string registrationDate, string userName, string email) : base(name, age, school, type, userName, userId, registrationDate, email)
         {
             this.Subject = subject;
@@ -32,8 +31,8 @@ namespace ELO
         {
             
         }
-
-        public static implicit operator Teacher(string v)
+        
+        public static implicit operator Teacher(string vis)
         {
             throw new NotImplementedException();
         }

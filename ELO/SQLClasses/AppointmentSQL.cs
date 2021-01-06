@@ -20,6 +20,13 @@ namespace ELO.SQLClasses
         public AppointmentSQL()
         {
             mySqlManager = new MySqlManager();
+            subjectManager = new SubjectManager();
+            classManager = new ClassManager();
+            classroomManager = new ClassroomMan();
+            userManager = new UserMan();
+            homeworkManager = new HwMan();
+            schoolMan = new SchoolManager();
+            examManager = new ExamMan();
         }
 
         public List<Appointment> GetAppointmentList(string school, string _classUUID)
@@ -34,7 +41,7 @@ namespace ELO.SQLClasses
 
                 string returnTeacherUUID = appointmentReader["teacherUUID"].ToString();
                 string returnSubjectUUID = appointmentReader["subjectUUID"].ToString();
-                string returnTime = appointmentReader["time"].ToString();
+                string returnTime = appointmentReader["dateandTime"].ToString();
                 string returnClassroomUUID = appointmentReader["classroomUUID"].ToString();
                 string returnClassUUID = appointmentReader["classUUID"].ToString();
                 string returnSchool = appointmentReader["school"].ToString();
@@ -44,15 +51,18 @@ namespace ELO.SQLClasses
                 string returnUUID = appointmentReader["UUID"].ToString();
 
 
-                Teacher insertTeacher = userManager.GetTeacher(returnTeacherUUID);
-                Subject insertSubject = subjectManager.FindSubject(returnSubjectUUID);
+                Teacher insertTeacher = (Teacher) userManager.FindUserInDataBase(returnTeacherUUID);
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
                 Classroom insertClassroom = classroomManager.GetClassroom(returnClassroomUUID);
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
-                Homework insertHomework = homeworkManager.GetHomework(returnHomeworkUUID);
-                School insertSchool = schoolMan.GetSchool(returnSchool);
+                Homework insertHomework = homeworkManager.GetHomeworkFromDB(returnHomeworkUUID);
                 Exam insertExam = examManager.GetExam(returnExamUUID);
 
-                returnList.Add(new Appointment(insertTeacher, insertSubject, returnTime, insertClassroom, insertClass, insertSchool, insertHomework, returnCancelled, insertExam, returnUUID));
+                Appointment returnAppointment = new Appointment(insertTeacher, insertSubject, returnTime,
+                    insertClassroom, insertClass, returnSchool, insertHomework, returnCancelled, insertExam,
+                    returnUUID);
+
+                returnList.Add(returnAppointment);
 
             }
 
@@ -63,17 +73,20 @@ namespace ELO.SQLClasses
 
         public void AddAppointmentToDatabase(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string UUID)
         {
-            MySqlCommand addAppointmentCommand = new MySqlCommand($"INSERT INTO appointments (teacherUUID, subjectUUID, dateTime, classroomUUID, classUUID, school, UUID) VALUES (@teacherUUID,@subjectUUID,@dateTime,@classroomUUID,@classUUID,@school,@UUID ", mySqlManager.con);
+            string sql =
+                "INSERT INTO appointments (teacherUUID, subjectUUID, dateandTime, classroomUUID, classUUID, school, UUID) VALUES (@teacherUUID, @subjectUUID, @dateandTime, @classroomUUID, @classUUID, @school, @UUID)";
+
+            MySqlCommand addAppointmentCommand = new MySqlCommand(sql, mySqlManager.con);
 
             addAppointmentCommand.Parameters.AddWithValue("@teacherUUID", teacherUUID);
             addAppointmentCommand.Parameters.AddWithValue("@subjectUUID", subjectUUID);
-            addAppointmentCommand.Parameters.AddWithValue("@dateTime", dateTime);
+            addAppointmentCommand.Parameters.AddWithValue("@dateandTime", dateTime);
             addAppointmentCommand.Parameters.AddWithValue("@classroomUUID", classroomUUID);
             addAppointmentCommand.Parameters.AddWithValue("@classUUID", classUUID);
             addAppointmentCommand.Parameters.AddWithValue("@school", school);
             addAppointmentCommand.Parameters.AddWithValue("@UUID", UUID);
-            addAppointmentCommand.Prepare();
 
+            addAppointmentCommand.Prepare();
             addAppointmentCommand.ExecuteNonQuery();
         }
     }

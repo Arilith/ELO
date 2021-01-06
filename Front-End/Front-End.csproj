@@ -163,6 +163,7 @@
     <Content Include="AddUser.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminRegister.aspx" />
+    <Content Include="BattlePass.aspx" />
     <Content Include="BookList.aspx" />
     <Content Include="ChangeSubject.aspx" />
     <Content Include="CheckAttendance.aspx" />
@@ -172,6 +173,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mark-your-calendar.css" />
+    <Content Include="Scripts\mark-your-calendar.js" />
     <Content Include="Content\Pictures\Logo ELO2.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\StyleSheet1.css" />
@@ -197,6 +200,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="AddSchedule.aspx" />
+    <Content Include="Schedule.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -226,6 +230,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="StudentHome.aspx" />
     <Content Include="StudentsByClass.aspx" />
     <Content Include="SubjectList.aspx" />
     <Content Include="UploadFile.aspx" />
@@ -315,6 +320,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BattlePass.aspx.cs">
+      <DependentUpon>BattlePass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BattlePass.aspx.designer.cs">
+      <DependentUpon>BattlePass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BookList.aspx.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -410,6 +422,13 @@
     <Compile Include="AddSchedule.aspx.designer.cs">
       <DependentUpon>AddSchedule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -423,6 +442,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StudentHome.aspx.cs">
+      <DependentUpon>StudentHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentHome.aspx.designer.cs">
+      <DependentUpon>StudentHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="StudentsByClass.aspx.cs">
       <DependentUpon>StudentsByClass.aspx</DependentUpon>

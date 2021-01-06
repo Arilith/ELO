@@ -15,13 +15,15 @@ namespace Front_End
         public UserMan userMan;
         public Person loggedInPerson;
         public SubjectManager subjectMan;
+        public ClassManager classMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             loggedInPerson = (Person) Session["person"];
             todayMan = new TodayMan();
             subjectMan = new SubjectManager();
-            //userMan = new UserMan();
+            userMan = new UserMan();
+            classMan = new ClassManager();
             
             if (IsPostBack)
             {
@@ -32,7 +34,7 @@ namespace Front_End
         private void ConvertAndInsertData()
         {
             string returnTeacherUUID = Request.Form["teacherName"];
-            string returnSubjectUUID = Request.Form["subject"];
+            string returnSubjectUUID = Request.Form["subjectName"];
             string returnDateTime = Request.Form["dateTime"];
             string returnClassUUID = Request.Form["_class"];
             string returnClassroom = Request.Form["classroom"];

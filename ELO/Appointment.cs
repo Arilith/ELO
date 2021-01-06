@@ -11,7 +11,7 @@ namespace ELO
         public string time { get; private set; }
         public Classroom classroom { get; private set; }
         public Class _class { get; private set; }
-        public School school { get; private set; }
+        public string school { get; private set; }
         public Homework homework { get; private set; }
         public bool cancelled { get; private set; }
         public Exam exam { get; private set; }
@@ -22,8 +22,7 @@ namespace ELO
         //public bool cancelled { get; private set; }
         //public Exam exam { get; private set; }
 
-        public Appointment(Teacher teacher, Subject subject, string time,
-                           Classroom classroom, Class _class, School school, Homework homework, bool cancelled, Exam exam, string uuid)
+        public Appointment(Teacher teacher, Subject subject, string time, Classroom classroom, Class _class, string school, Homework homework, bool cancelled, Exam exam, string uuid)
         {
             this.teacher = teacher;
             this.subject = subject;
