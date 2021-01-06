@@ -17,15 +17,11 @@ namespace ELO.SQLClasses
         private SchoolManager schoolMan;
         private ExamMan examManager;
         private string UUID;
-
-        public AppointmentSQL()
-        {
-            // mysql manager aanmaken/ hoofdconnecties
-            mySqlManager = new MySqlManager();
-        }
-
+        
         public List<Appointment> GetAppointmentList(string school, string _classUUID)
         {
+            mySqlManager = new MySqlManager();
+
             // connecties met de dadabase aanmaken
             subjectManager = new SubjectManager();
             classManager = new ClassManager();
@@ -78,12 +74,17 @@ namespace ELO.SQLClasses
 
             appointmentReader.Close();
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
+
             return returnList;
         }
 
         // appointment aan database toevoegen
         public void AddAppointmentToDatabase(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string UUID)
         {
+            mySqlManager = new MySqlManager();
+
             string sql = "INSERT INTO appointments (teacherUUID, subjectUUID, dateandTime, classroomUUID, classUUID, school, UUID) VALUES (@teacherUUID, @subjectUUID, @dateandTime, @classroomUUID, @classUUID, @school, @UUID)";
 
             MySqlCommand addAppointmentCommand = new MySqlCommand(sql, mySqlManager.con);
@@ -100,6 +101,9 @@ namespace ELO.SQLClasses
             // de data invoeren in de database
             addAppointmentCommand.Prepare();
             addAppointmentCommand.ExecuteNonQuery();
+
+            mySqlManager.con.Close();
+            mySqlManager = null;
         }
     }
 }

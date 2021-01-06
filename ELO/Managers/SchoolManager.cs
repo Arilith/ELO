@@ -10,24 +10,16 @@ namespace ELO//.Managers
 
         private SchoolSQL schoolSQL;
 
-
-        public List<School> schools { get; private set; }
-
+        
         public SchoolManager()
         {
-            schools = new List<School>();
             schoolSQL = new SchoolSQL();
         }
 
-        public List<School> GetSchoolList()
+        public List<String> GetSchoolList()
         {
             return schoolSQL.GetSchools();
         }
-
-        public School GetSchool(string name)
-        {
-            return schools.Find(x => x.Name == name);
-        }
-
+        
     }
 }

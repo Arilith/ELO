@@ -20,6 +20,9 @@ namespace ELO.SQLClasses
 
         public List<Exam> GetExamListFromDatabase(string school, string _classUUID)
         {
+            subjectManager = new SubjectManager();
+            classManager = new ClassManager();
+            
             MySqlCommand getExamCommand = new MySqlCommand($"SELECT * FROM exams WHERE school = '{school}' AND classUUID = '{_classUUID}'", MySqlManager.con);
             MySqlDataReader ExamReader = getExamCommand.ExecuteReader();
             List<Exam> returnList = new List<Exam>();
@@ -34,10 +37,10 @@ namespace ELO.SQLClasses
 
                 Subject insertSubject = subjectManager.FindSubject(returnSubjectUUID);
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
-                School insertSchool = schoolManager.GetSchool(returnSchool);
+                
 
 
-                returnList.Add(new Exam(returnUUID, insertSubject, returnWeight, insertClass, insertSchool));
+                returnList.Add(new Exam(returnUUID, insertSubject, returnWeight, insertClass, returnSchool));
             }
 
             ExamReader.Close();

@@ -10,7 +10,7 @@
 
 namespace Front_End
 {
-	public partial class HwList
-	{
-	}
+    public partial class HomeworkList
+    {
+    }
 }

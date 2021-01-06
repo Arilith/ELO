@@ -49,8 +49,8 @@
                 Voer je inloggegevens in.<br /><br />
                 <label for="school">School</label><br />
                 <select id="school" name="school" class="form-control">
-                    <% foreach (School school in schoolManager.GetSchoolList()) { %>
-                        <option><%: school.Name %></option>
+                    <% foreach (String school in schoolManager.GetSchoolList()) { %>
+                        <option><%: school %></option>
                     <% } %>
                 </select>
                 <br />

@@ -15,11 +15,13 @@ namespace ELO.SQLClasses
         public LevelSQL()
         {
             mySqlManager = new MySqlManager();
-            seasonMan = new SeasonMan();
+            
         }
 
         public List<Level> GetLevelsFromDB(string school)
         {
+            seasonMan = new SeasonMan();
+
             // lijst voor levels die gelezen worden
             List<Level> returnList = new List<Level>();
 
@@ -44,6 +46,9 @@ namespace ELO.SQLClasses
                 
                 returnList.Add(newLevel);
             }
+
+            seasonMan = null;
+
             //als alle rijen zijn gelezen en in de lijst gezet, return de lijst
             return returnList;
         }
