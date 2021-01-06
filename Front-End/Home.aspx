@@ -5,10 +5,8 @@
     </meta>
  <div class="homebar">
   <div class="homebar-content">
-  <p>3 toetsen deze week <br>
-  5 vakken met huiswerk deze week</p>
-  <img src="Content/Pictures/Logo-ELO2Best.png" style="width:23%; height:23%">
-  <div style="width:60px; height:75px; border: 1px solid #000"></div>
+  <img src="Content/Pictures/Logo-ELO2Best.png" style="width:18%; height:18%">
+  <div style="width:60px; height:75px; border: 1px solid #000"><img src="Content/Pictures/neds (2).jpg" style="width:100%; height:100%; margin:0" /></div>
   <p class="gegevens"> naam leerling <br>
       leerlingnummer <br>
       e-mail leerling
@@ -23,7 +21,7 @@
                     <div class="row">
                         <div class="col-lg-3">Foto hier</div>
                         <div class="col-lg-9">
-                            ENTL - KOW- ENTL2 - E16<br/>
+                            Engels - E16<br/>
                             <b>HW: Maak opdracht 14 t/m 17 en lees pagina 54 t/m 58 in het lesboek.</b>
                         </div>
                     </div>
@@ -31,6 +29,12 @@
             </div>
             <div class="container-info">
                 <div class="container-title">Opdrachten</div>
+                 <div class="container-content">
+                    <div class="row">
+                            <b class="middle">Engels - Inleverdatum 07-01-2021</b><br/><br />
+                            <p class="middle">Maak de online opdracht over werkwoorden op www.ofcourse.nl</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-4">
