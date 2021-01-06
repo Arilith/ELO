@@ -301,3 +301,11 @@
 .col-lg-4 {
     margin-top: 25px;
 }
+
+::-webkit-input-placeholder {
+    color: rgba(30, 30, 30, 1)!important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(20,20,20,0.1)!important;
+}

@@ -35,12 +35,19 @@ namespace ELO
 
         public void AddAppointment(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school)
         {
+            Teacher insertTeacher = userMan.GetTeacher(teacherUUID);
+            Subject insertSubject = subjectManager.FindSubject(subjectUUID);
+            Classroom insertClassroom = classroomMan.GetClassroom(classroomUUID);
+            Class insertClass = Manager.classMan.GetClass(classUUID);
+            
             appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateTime,  classroomUUID,  classUUID,  school, UUID);
         }
 
-        public void GetAppointmentListFromDatabase(string school, string _classUUID)
+        public List<Appointment> GetAppointmentListFromDatabase(string school, string _classUUID)
         {
-           appointmentSql.GetAppointmentList(school, _classUUID);
+           return appointmentSql.GetAppointmentList(school, _classUUID);
         }
+        
+        
     }
 }
