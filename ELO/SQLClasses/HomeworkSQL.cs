@@ -62,6 +62,11 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
+        public List<Homework> GetHomeWorkForClass(string school, Class _class)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subject)
         {
             MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subject, school, title, content, duedate, classUUID, subject) VALUES ({subject}, {school}, {title}, {content}, {duedate}, {classUUID}, {subject})", MySqlManager.con);
@@ -92,7 +97,7 @@ namespace ELO.SQLClasses
                 classManager = null;
                 subjectManager = null;
 
-                return new Homework(returnContent, insertSubject, returnDate, insertClass);
+                //return new Homework(returnContent, insertSubject, returnDate, insertClass);
             }
             homeworkReader.Close();
 

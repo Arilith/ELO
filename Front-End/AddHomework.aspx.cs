@@ -33,7 +33,7 @@ namespace Front_End
 
             Class linkedClass = classManager.GetClassFromDatabase(Request.Form["_class"]);
 
-			hwMan.AddHomework(work, subject, dueDate, content, linkedClass);
+			//hwMan.AddHomeWorkToDB(work, subject, dueDate, content, linkedClass);
 
 			OutputLabel.Text = "Huiswerk ingevoerd!";
         }
