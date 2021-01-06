@@ -12,7 +12,7 @@
                     <label for="_class">Klas</label><br/>
                     <select id="_class" class="form-control" name="_class" placeholder="Klas 1B"><br/>
 
-                        <% foreach (Class _class in Manager.classMan.GetClassList()) { %>
+                        <% foreach (Class _class in classManager.GetClassList()) { %>
                             <option><%: _class.Name %></option>
                         <% } %>
 
@@ -25,6 +25,11 @@
                     <label for="work">Huiswerk</label><br/>
                     <input id="work" class="form-control" name="work" type="text" placeholder="Opdracht 1 tot en met 6" required/><br/>      
                     <br/>
+
+                    <label for="content">Beschrijving</label><br/>
+                    <input id="content" class="form-control" name="content" type="text" placeholder="Pagina 22 t/m 25" required/><br/>      
+                    <br/>
+
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                 </form>
                 <asp:Label ID="OutputLabel" runat="server"></asp:Label>
