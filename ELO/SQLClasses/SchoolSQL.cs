@@ -1,17 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace ELO.SQLClasses
 {
     public class SchoolSQL
     {
         private MySqlManager mySqlManager;
+
         public SchoolSQL()
         {
-            
         }
 
         public List<String> GetSchools()
@@ -32,8 +30,6 @@ namespace ELO.SQLClasses
             mySqlManager = null;
 
             return schoolList;
-
         }
-
     }
 }

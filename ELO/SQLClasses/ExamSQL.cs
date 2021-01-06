@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace ELO.SQLClasses
 {
@@ -22,7 +21,7 @@ namespace ELO.SQLClasses
         {
             subjectManager = new SubjectManager();
             classManager = new ClassManager();
-            
+
             MySqlCommand getExamCommand = new MySqlCommand($"SELECT * FROM exams WHERE school = '{school}' AND classUUID = '{_classUUID}'", MySqlManager.con);
             MySqlDataReader ExamReader = getExamCommand.ExecuteReader();
             List<Exam> returnList = new List<Exam>();
@@ -37,8 +36,6 @@ namespace ELO.SQLClasses
 
                 Subject insertSubject = subjectManager.FindSubject(returnSubjectUUID);
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
-                
-
 
                 returnList.Add(new Exam(returnUUID, insertSubject, returnWeight, insertClass, returnSchool));
             }
@@ -47,7 +44,7 @@ namespace ELO.SQLClasses
 
             return returnList;
         }
-        
+
         public void AddExamToDatabase(string UUID, int weight, string subjectUUID, string _classUUID, string school)
         {
             MySqlCommand addExamCommand = new MySqlCommand($"INSERT INTO appointments (UUID, weight, subjectUUID, classUUID, school) VALUES ({UUID}, {weight}, {subjectUUID}, {_classUUID}, {school})", MySqlManager.con);

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ELO.Managers;
+﻿using ELO.Managers;
 using MySql.Data.MySqlClient;
-
+using System;
+using System.Collections.Generic;
 
 namespace ELO.SQLClasses
 {
@@ -11,11 +9,10 @@ namespace ELO.SQLClasses
     {
         private MySqlManager mySqlManager;
         private SeasonMan seasonMan;
-        
+
         public LevelSQL()
         {
             mySqlManager = new MySqlManager();
-            
         }
 
         public List<Level> GetLevelsFromDB(string school)
@@ -35,15 +32,15 @@ namespace ELO.SQLClasses
             {
                 // alles uit de database is string dus die zetten we om naar wat je nodig hebt
                 int returnRequiredExp = Convert.ToInt32(readLevelDataReader["requiredLevel"]);
-                
+
                 string returnSeasonUUID = readLevelDataReader["seasonUUID"].ToString();
                 Season returnSeason = seasonMan.FindSeasonInDB(returnSeasonUUID);
-                
+
                 int returnLevelNumber = Convert.ToInt32(readLevelDataReader["levelNumber"]);
-                
+
                 //met die data een nieuw level maken in de returnlijst
                 Level newLevel = new Level(returnRequiredExp, returnSeason, returnLevelNumber);
-                
+
                 returnList.Add(newLevel);
             }
 
@@ -55,7 +52,6 @@ namespace ELO.SQLClasses
 
         public void AddLevelToDatabase(int levelNummer, int requiredExp, string seizoen)
         {
-
         }
     }
 }

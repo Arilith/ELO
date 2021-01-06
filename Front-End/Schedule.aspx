@@ -57,7 +57,7 @@
                   ['1:00', '2:00', '3:00', '4:00', '5:00'],
                   ['1:00', '2:00', '3:00', '4:00', '5:00'],
                   ['1:00', '2:00', '3:00', '4:00', '5:00'],
-                  ['1:00', '2:00', '3:00', '4:00', '5:00'], 
+                  ['1:00', '2:00', '3:00', '4:00', '5:00'],
               ],
               months: ['Januari', 'Feruari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'October', 'November', 'December'],
               weekdays: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],

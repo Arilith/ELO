@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace ELO.SQLClasses
 {
@@ -9,6 +8,7 @@ namespace ELO.SQLClasses
     {
         private string UUID = "lul";
         private MySqlManager mySqlManager;
+
         public SeasonSQL()
         {
             mySqlManager = new MySqlManager();
@@ -25,7 +25,6 @@ namespace ELO.SQLClasses
             addSeasonCommand.Prepare();
 
             addSeasonCommand.ExecuteNonQuery();
-
         }
 
         public List<Season> GetSeasonListFromDB(string school)
@@ -35,10 +34,10 @@ namespace ELO.SQLClasses
             MySqlDataReader readSeasonDataReader = ReadSeasonSqlCommand.ExecuteReader();
             while (readSeasonDataReader.Read())
             {
-                string returnStartDate =Convert.ToString(readSeasonDataReader["startDate"]);
+                string returnStartDate = Convert.ToString(readSeasonDataReader["startDate"]);
                 string returnEndDate = Convert.ToString(readSeasonDataReader["endDate"]);
                 string returnSeasonName = Convert.ToString(readSeasonDataReader["name"]);
-                string returnUUID =Convert.ToString(readSeasonDataReader["UUID"]);
+                string returnUUID = Convert.ToString(readSeasonDataReader["UUID"]);
                 Season newSeason = new Season(returnStartDate, returnEndDate, returnSeasonName, returnUUID);
                 returnList.Add(newSeason);
             }

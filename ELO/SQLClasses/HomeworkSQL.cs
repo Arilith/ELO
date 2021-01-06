@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace ELO.SQLClasses
 {
@@ -22,10 +21,8 @@ namespace ELO.SQLClasses
         //
         // }
 
-
         public List<Homework> GetHomeWorkList(string school, string subject)
         {
-
             subjectManager = new SubjectManager();
             classManager = new ClassManager();
 
@@ -36,7 +33,6 @@ namespace ELO.SQLClasses
 
             while (homeworkReader.Read())
             {
-
                 string returnSchool = homeworkReader["school"].ToString();
                 string returnSubject = homeworkReader["subject"].ToString();
                 string returnTitle = homeworkReader["title"].ToString();
@@ -45,13 +41,10 @@ namespace ELO.SQLClasses
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
 
-
                 Subject insertSubject = subjectManager.FindSubject(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-
                 returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass));
-
             }
 
             homeworkReader.Close();
@@ -83,14 +76,13 @@ namespace ELO.SQLClasses
 
             if (homeworkReader.Read())
             {
-
                 string returnSubject = homeworkReader["subject"].ToString();
                 string returnContent = homeworkReader["content"].ToString();
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
 
                 homeworkReader.Close();
-                
+
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
@@ -106,6 +98,5 @@ namespace ELO.SQLClasses
 
             return null;
         }
-        
     }
 }

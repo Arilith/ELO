@@ -1,12 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace ELO.SQLClasses
 {
-    class ClassSQL
+    internal class ClassSQL
     {
         private MySqlManager mysqlManager;
 
@@ -44,7 +42,6 @@ namespace ELO.SQLClasses
                 Teacher foundTeacher = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 
                 returnList.Add(new Class(returnName, cluster, leshuis, level, studyYear, foundTeacher, uuid));
-
             }
 
             classReader.Close();
@@ -91,7 +88,6 @@ namespace ELO.SQLClasses
                 Teacher mentor = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 
                 return new Class(className, cluster, leshuis, stream, studyYear, mentor, classUUID);
-
             }
 
             userSql = null;
@@ -130,7 +126,6 @@ namespace ELO.SQLClasses
                 Teacher mentor = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 
                 return new Class(className, cluster, leshuis, stream, studyYear, mentor, uuid);
-
             }
 
             userSql = null;
@@ -144,8 +139,6 @@ namespace ELO.SQLClasses
             mysqlManager = new MySqlManager();
             string addClassSql = "INSERT INTO classes(className, level, uuid, cluster, leshuis, studyYear, school) VALUES (@className, @level, @uuid, @cluster, @leshuis, @studyYear, @school)";
             MySqlCommand addClassCmd;
-
-
 
             addClassCmd = new MySqlCommand(addClassSql, mysqlManager.con);
 

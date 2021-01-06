@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace ELO.SQLClasses
 {
@@ -9,6 +8,7 @@ namespace ELO.SQLClasses
     {
         // managers aanroepen
         private MySqlManager mySqlManager;
+
         private SubjectManager subjectManager;
         private ClassManager classManager;
         private ClassroomMan classroomManager;
@@ -17,7 +17,7 @@ namespace ELO.SQLClasses
         private SchoolManager schoolMan;
         private ExamMan examManager;
         private string UUID;
-        
+
         public List<Appointment> GetAppointmentList(string school, string _classUUID)
         {
             mySqlManager = new MySqlManager();
@@ -49,7 +49,7 @@ namespace ELO.SQLClasses
                 string returnUUID = appointmentReader["UUID"].ToString();
 
                 // variabelen omzetten naar objecten waar nodig
-                Teacher insertTeacher = (Teacher) userManager.FindUserInDataBase(returnTeacherUUID);
+                Teacher insertTeacher = (Teacher)userManager.FindUserInDataBase(returnTeacherUUID);
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
                 string classRoom = returnClassroom;
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
@@ -57,12 +57,11 @@ namespace ELO.SQLClasses
                 //Exam insertExam = examManager.GetExam(returnExamUUID);
 
                 // met alle data het object appointment maken
-                Appointment returnAppointment = new Appointment(insertTeacher, insertSubject, returndateAndTime, 
+                Appointment returnAppointment = new Appointment(insertTeacher, insertSubject, returndateAndTime,
                     classRoom, insertClass, returnSchool, insertHomework, returnCancelled,
                     returnUUID);
 
                 returnList.Add(returnAppointment);
-
             }
 
             // connecties sluiten na gebruik

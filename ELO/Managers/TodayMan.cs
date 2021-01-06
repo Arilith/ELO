@@ -1,7 +1,6 @@
-﻿using System;
+﻿using ELO.SQLClasses;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using ELO.SQLClasses;
 
 namespace ELO
 {
@@ -24,7 +23,7 @@ namespace ELO
 
         public void AddAppointment(Teacher teacher, Subject subject, string dateAndTime, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)
         {
-           // Appointment Appointment = new Appointment(teacher, subject, dateAndTime, classroom, _class, homework, cancelled, exam);
+            // Appointment Appointment = new Appointment(teacher, subject, dateAndTime, classroom, _class, homework, cancelled, exam);
             //AppointmentList.Add(Appointment);
         }
 
@@ -37,13 +36,13 @@ namespace ELO
             Teacher insertTeacher = userMan.GetTeacher(teacherUUID);
             Subject insertSubject = subjectManager.FindSubject(subjectUUID);
             Class insertClass = classManager.GetClassFromDatabase(classUUID);
-            
-            appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateAndTime,  classroomUUID,  classUUID,  school, UUID);
+
+            appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateAndTime, classroomUUID, classUUID, school, UUID);
         }
 
         public List<Appointment> GetAppointmentListFromDatabase(string school, string _classUUID)
         {
-           return appointmentSql.GetAppointmentList(school, _classUUID);
+            return appointmentSql.GetAppointmentList(school, _classUUID);
         }
 
         public Dictionary<string, List<Appointment>> SortDaysAndAppointments(Student loggedInStudent)
@@ -72,7 +71,7 @@ namespace ELO
                 //Zet de datum om naar datum zonder tijd (01/06/2021)
                 string dateWithoutTime = newDate.ToString("MM/dd/yyyy");
 
-                //Check of de huidige dag van de appointment (bijv. 01/06/2021) al in de dictionairy staat. 
+                //Check of de huidige dag van de appointment (bijv. 01/06/2021) al in de dictionairy staat.
                 if (appointmentsPerDay.ContainsKey(dateWithoutTime))
                 {
                     //Pak de appointmentslist uit de huidige key van de huidige datum;

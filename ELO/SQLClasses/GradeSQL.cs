@@ -1,14 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Asn1;
 
 namespace ELO.SQLClasses
 {
     public class GradeSQL
     {
-
         private readonly MySqlManager _mySqlManager;
         private UserMan userManager;
         private SchoolManager schoolManager;
@@ -23,18 +20,15 @@ namespace ELO.SQLClasses
         private string gradeClass;
         private string date;
         private string studentuuid;
-        private int year; 
+        private int year;
 
         public GradeSQL()
         {
             _mySqlManager = new MySqlManager();
-            
         }
-
 
         public void AddGradeToDB(string school, string studentuuid, double grade, int weight, Subject subject, Student student)
         {
-
             MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, studentUUID, grade, weight, subjectUUID, userUUID, classUUID) VALUES (@school, @studentUUID, @grade, @weight, @subjectUUID, @userUUID, @classUUID)", _mySqlManager.con);
 
             addGradeCommand.Parameters.AddWithValue("@school", school);
@@ -47,7 +41,6 @@ namespace ELO.SQLClasses
 
             addGradeCommand.Prepare();
             addGradeCommand.ExecuteNonQuery();
-
         }
 
         public List<Grade> GetGradeList(string studentuuid)
@@ -76,7 +69,6 @@ namespace ELO.SQLClasses
                 Subject gradeSubjectObj = subjectManager.FindSubjectInDatabase(subjectString);
 
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, gradeSubjectObj, weight, year));
-
             }
 
             userManager = null;
@@ -88,7 +80,6 @@ namespace ELO.SQLClasses
 
         public List<Grade> GetGradeList(string studentuuid, Subject subjectObj, int year)
         {
-
             //Initialize the managers
             userManager = new UserMan();
             classManager = new ClassManager();
@@ -96,7 +87,6 @@ namespace ELO.SQLClasses
 
             //Make a new list to return eventually.
             List<Grade> returnGrades = new List<Grade>();
-
 
             //Get all grades where the user is the requested user.
             MySqlCommand GetGradesCmd = new MySqlCommand($"SELECT * FROM grades WHERE userUUID = '{studentuuid}' AND subjectUUID = {subjectObj.uuid}", _mySqlManager.con);
@@ -113,7 +103,6 @@ namespace ELO.SQLClasses
                 Class gradeClassObj = classManager.GetClassFromDatabase(gradeClass);
 
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year));
-
             }
 
             userManager = null;
@@ -121,12 +110,10 @@ namespace ELO.SQLClasses
             subjectManager = null;
 
             return returnGrades;
-
         }
 
         public Grade GetGrade(string gradeuuid)
         {
-
             //Initialize the managers
             userManager = new UserMan();
             classManager = new ClassManager();
@@ -135,17 +122,13 @@ namespace ELO.SQLClasses
             //Make a new list to return eventually.
             Grade returnGrade;
 
-
             //Get all grades where the user is the requested user.
             MySqlCommand GetGradesCmd = new MySqlCommand($"SELECT * FROM grades WHERE uuid = '{gradeuuid}'", _mySqlManager.con);
             MySqlDataReader Grades = GetGradesCmd.ExecuteReader();
 
-
-
             //Go through all roles
             if (Grades.Read())
             {
-
                 GetItemsFromReader(Grades);
 
                 //Get objects from the strings
@@ -160,7 +143,6 @@ namespace ELO.SQLClasses
                 subjectManager = null;
 
                 return returnGrade;
-
             }
 
             userManager = null;
@@ -169,7 +151,6 @@ namespace ELO.SQLClasses
 
             return null;
         }
-
 
         public void GetItemsFromReader(MySqlDataReader reader)
         {
@@ -184,6 +165,5 @@ namespace ELO.SQLClasses
             studentuuid = Convert.ToString(reader["studentUUID"]);
             year = Convert.ToInt32(reader["year"]);
         }
-
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
-using MySqlX.Serialization;
-using Newtonsoft.Json;
 
 namespace ELO.SQLClasses
 {
@@ -12,13 +9,14 @@ namespace ELO.SQLClasses
         private MySqlManager mySqlManager;
         private UserMan userManager;
         private string UUID;
+
         public SubjectSQL()
         {
             mySqlManager = new MySqlManager();
 
             UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddMMYYYYhhiiss");
         }
-        
+
         public Subject GetSubject(string uuid)
         {
             userManager = new UserMan();
@@ -36,14 +34,13 @@ namespace ELO.SQLClasses
                 string school = reader["school"].ToString();
                 reader.Close();
 
-
                 string[] teacherUUIDs = teachersCSV.Split(',');
 
                 List<Teacher> teachers = new List<Teacher>();
 
                 foreach (string teacherUUID in teacherUUIDs)
                 {
-                   teachers.Add((Teacher)userManager.FindUserInDataBase(teacherUUID));
+                    teachers.Add((Teacher)userManager.FindUserInDataBase(teacherUUID));
                 }
 
                 Subject returnSubject = new Subject(subjectName, uuid);
@@ -54,7 +51,6 @@ namespace ELO.SQLClasses
                 userManager = null;
 
                 return returnSubject;
-
             }
 
             reader.Close();
@@ -86,8 +82,6 @@ namespace ELO.SQLClasses
 
         public List<Subject> GetSubjectList(string school)
         {
-            
-
             string findSubjectSql = $"SELECT * FROM subjects WHERE school = '{school}'";
 
             MySqlCommand findSubjectCmd = new MySqlCommand(findSubjectSql, mySqlManager.con);
@@ -119,14 +113,10 @@ namespace ELO.SQLClasses
                 returnSubject.SetTeachers(teachers);
 
                 returnSubjects.Add(returnSubject);
-                
-                
             }
-            
+
             reader.Close();
             return returnSubjects;
         }
-
-
     }
 }

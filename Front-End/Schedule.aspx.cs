@@ -25,8 +25,8 @@ namespace Front_End
             loggedInPerson = (Person)Session["person"];
             //Zet deze persoon om naar student (indien het een student is, zal deze de studentengegevens erbij krijgen)
             loggedInStudent = (Student)loggedInPerson;
-            
-            //Manager initialisatie
+
+            //Manager initialisatialiseren
             userManager = new UserMan();
             todayMan = new TodayMan();
 
