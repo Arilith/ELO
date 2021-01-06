@@ -12,6 +12,7 @@ namespace Front_End
     {
         public ClassManager classMan;
         public UserMan userMan;
+        public GradeMan gradeMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,14 +28,14 @@ namespace Front_End
         private void ConvertAndInsertData()
         {
 
-            Student studentName = Manager.userMan.GetStudent(Request.Form["name"]);
+            Student studentName = userMan.GetStudent(Request.Form["name"]);
             string subject = Request.Form["subject"];
-            Class _class = Manager.classMan.GetClass(Request.Form["_class"]);
+            Class _class = classMan.GetClassFromDatabase(Request.Form["_class"]);
             string date = Request.Form["date"];
             decimal weight =Convert.ToDecimal(Request.Form["weight"]);
             double grade =Convert.ToDouble(Request.Form["grade"]);
 
-            Manager.gradeMan.AddGradeToList(studentName, _class, grade, date, subject, weight);
+           // gradeMan.AddGradeToDataBase(studentName, _class, grade, date, subject, weight);
 
         }
 

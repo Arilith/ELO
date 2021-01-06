@@ -16,25 +16,23 @@ namespace Front_End
 
         public UserMan userManager;
         public TodayMan todayMan;
-        
-        public List<Appointment> appointments;
+
+        public Dictionary<string, List<Appointment>> AppointmentsPerDay;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // loggedInStudent = (Student) Session["student"];
+           //Haal ingelogde persoon uit de sessie.
             loggedInPerson = (Person)Session["person"];
+            //Zet deze persoon om naar student (indien het een student is, zal deze de studentengegevens erbij krijgen)
             loggedInStudent = (Student)loggedInPerson;
             
+            //Manager initialisatie
             userManager = new UserMan();
             todayMan = new TodayMan();
 
-            appointments = new List<Appointment>();
+            //Vraag de gesoorteerde lijst op uit de todayman voor de ingelogde student.
+            AppointmentsPerDay = todayMan.SortDaysAndAppointments(loggedInStudent);
 
-            if(IsPostBack)
-            {
-                string datum = Request.Form["datum"];
-                // appointments = todayMan.GetAppointmentsAtDate(datum, loggedInStudent.PartOfClass.UUID);
-            }
         }
     }
 }

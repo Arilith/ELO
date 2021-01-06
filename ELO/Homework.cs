@@ -10,6 +10,7 @@ using System.Text;
 
         public string DueDate { get; private set; }
 
+        public string Content { get; private set; }
         public Subject Subject { get; private set; }
 
         public Class _class { get; }
@@ -17,12 +18,13 @@ using System.Text;
         public string subjectUUID { get; private set; }
 
 
-        public Homework(string work, Subject subject, string dueDate, Class _class)
+        public Homework(string work, Subject subject, string content, string dueDate, Class _class)
         {
             this.Work = work;
             this.Subject = subject;
             this.DueDate = dueDate;
             this._class = _class;
+            this.Content = content;
         }
 
         public override string ToString()

@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            <% foreach (Homework homework in Manager.hwMan.GetHomeworkList()){ %> 
+            <% foreach (Homework homework in homeworkManager.GetHomeworkList()){ %> 
                 <tr>
                     <td><%: homework._class.Name %></td>
                     <td><%: homework.Subject %></td>

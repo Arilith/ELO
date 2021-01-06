@@ -16,23 +16,7 @@ namespace ELO
             classroomList = new List<Classroom>();
             classroomSql = new ClassroomSQL();
         }
-    
-
-        public List<Classroom> GetClassroomList()
-        {
-            return classroomList;
-        }
-
-        public Classroom GetClassroom(int index)
-        {
-            return classroomList[index];
-        }
-
-        public Classroom GetClassroom(string name)
-        {
-            return classroomList.Find(x => x.Name == name);
-        }
-
+        
         public List<Classroom> GetClassroomList(string school)
         {
             return classroomSql.GetClassroomListFromDatabase(school);

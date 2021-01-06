@@ -38,7 +38,8 @@ namespace ELO.SQLClasses
                 string returnStartDate =Convert.ToString(readSeasonDataReader["startDate"]);
                 string returnEndDate = Convert.ToString(readSeasonDataReader["endDate"]);
                 string returnSeasonName = Convert.ToString(readSeasonDataReader["name"]);
-                Season newSeason = new Season(returnStartDate, returnEndDate, returnSeasonName);
+                string returnUUID =Convert.ToString(readSeasonDataReader["UUID"]);
+                Season newSeason = new Season(returnStartDate, returnEndDate, returnSeasonName, returnUUID);
                 returnList.Add(newSeason);
             }
             return returnList;

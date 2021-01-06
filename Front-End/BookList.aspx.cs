@@ -20,7 +20,7 @@ namespace Front_End
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Manager.bookMan.AddBook(TextBoxTitle.Text, number);
+            //Manager.bookMan.AddBook(TextBoxTitle.Text, number);
             number++;
             TextBoxTitle.Text = "";
         }

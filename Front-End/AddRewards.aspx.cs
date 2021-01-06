@@ -23,6 +23,8 @@ namespace Front_End
 				int requiredLevel = Convert.ToInt32(Request.Form["requiredLevel"]);
 
 				rewardMan.AddReward(title, rewardDescription, imageURL, requiredLevel);
+
+				OutputLabel.Text = "Beloning toegevoegd!";
 			}
 		}
 	}

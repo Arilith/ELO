@@ -49,8 +49,8 @@
                 Nieuw administratoraccount aanmaken<br /><br />
                 <label for="school">School</label><br />
                 <select id="school" class="form-control" name="school">
-                    <% foreach (School school in schoolManager.GetSchoolList()) { %>
-                        <option><%: school.Name %></option>
+                    <% foreach (string school in schoolManager.GetSchoolList()) { %>
+                        <option><%: school %></option>
                     <% } %>
                 </select><br/>
                 <label for="username">Gebruikersnaam</label><br />

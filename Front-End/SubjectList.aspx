@@ -14,26 +14,7 @@
     </style>
     <h3>Vak toevoegen</h3>
     <div class="row">
-        <div class="col-lg-6">
-            <form>
-                <label for="name">Naam van het vak</label>
-                <input id="name" type="text" name="name" required class="form-control"/><br/>
-                <label for="teachers">Selecteer de leraren van dit vak</label><br/>
-                <select data-placeholder="Typ een naam in..." multiple class="chosen-select form-control" name="teachers" id="teachers">
-                    <option value="">Geen leraar invoegen.</option>
-                    <% foreach (Teacher teacher in userManager.GetPersonListFromDB(loggedInPerson.School, "Teacher")) { %>
-                        <option><%: teacher.Name %></option>
-                    <% } %>
-                </select><br/><br/>
-                <button class="btn btn-success" type="submit">Verstuur</button>
-            </form>
-            <br/>
-            <script>
-                $(".chosen-select").chosen({
-                    no_results_text: "Oops, nothing found!"
-                })
-            </script>
-        </div>
+       
 <%--         <div class="col-lg-6"> --%>
 <%--             <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %> --%>
 <%--                 Lerarenlijst voor <%: subject.Name %> --%>

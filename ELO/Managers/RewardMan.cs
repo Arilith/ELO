@@ -17,6 +17,12 @@ namespace ELO.Managers
 		{
 			rewardSQL.AddRewardToDB(title, rewardDescription, imageURL, requiredLevel);
 		}
+
+		public void GetRewardListFromDB(string school)
+		{
+			rewardSQL.GetRewardFromDB(school);
+
+		}
 	}
 
 }
