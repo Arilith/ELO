@@ -19,7 +19,7 @@
                     </select><br/>
 
                     <label for="dueDate">Datum</label><br/>
-                    <input id="dueDate" class="form-control" name="dueDate" type="date" placeholder="16-12-2020" required/><br/>
+                    <input id="dueDate" class="form-control" name="dueDate" type="date" required/><br/>
                
 
                     <label for="title">Huiswerk</label><br/>
@@ -28,6 +28,10 @@
 
                     <label for="content">Beschrijving</label><br/>
                     <input id="content" class="form-control" name="content" type="text" placeholder="Pagina 22 t/m 25" required/><br/>      
+                    <br/>
+
+                    <label for="exp">Te verdienen punten</label><br/>
+                    <input id="exp" class="form-control" name="exp" type="text" placeholder="100" required/><br/>      
                     <br/>
 
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>

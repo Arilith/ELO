@@ -8,16 +8,16 @@
             <div class="col-lg-6">
                 <form method="post" id="addteacher" name="addteacher">
                     <label for="name">Naam</label><br/>
-                    <input id="name" class="form-control" name="name" type="text" placeholder="Jan de hoop" required/><br />
-            
+                    <input id="name" class="form-control" name="name" type="text" placeholder="Jan de hoop" required/><br/>
+
                     <label for="username">Gebruikersnaam</label><br/>
-                    <input id="username" class="form-control" name="username" type="text" placeholder="Jdehoop" required /><br />
-                    
+                    <input id="username" class="form-control" name="username" type="text" placeholder="Jdehoop" required /><br/>
+
                     <label for="email">Email Adres</label><br/>
-                    <input id="email" class="form-control" name="email" type="email" placeholder="jdehoop@school.nl" required /><br />
-                    
+                    <input id="email" class="form-control" name="email" type="email" placeholder="jdehoop@school.nl" required /><br/>
+
                     <label for="password">Wachtwoord</label><br/>
-                    <input id="password" class="form-control" name="password" type="password"  placeholder="Wachtwoord" required /><br />
+                    <input id="password" class="form-control" name="password" type="password"  placeholder="Wachtwoord" required /><br/>
                     <%--  <label for="subject">Vak</label><br/> --%>
                    <%--  <select name="subject" id="subject" class="form-control"> --%>
                    <%--      <option value="">Geen vak</option> --%>
@@ -38,5 +38,4 @@
             <asp:Label ID="OutputLabel" runat="server"></asp:Label>
         </div>
     </div>
-    
 </asp:Content>

@@ -32,9 +32,9 @@ namespace ELO
         }
 
         public void AddHomeWorkToDB(string school, string title, string duedate, string content, string classUUID,
-            string subject)
+            string subject, int exp)
         {
-            homeworkSql.AddHomeworkToDB(school, title, duedate, content, classUUID, subject);
+            homeworkSql.AddHomeworkToDB(school, title, duedate, content, classUUID, subject, exp);
         }
 
     }
