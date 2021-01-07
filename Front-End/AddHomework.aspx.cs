@@ -34,10 +34,11 @@ namespace Front_End
             string dueDate =Request.Form["dueDate"];
             string subject = Request.Form["subject"];
             string content = Request.Form["content"];
+            int exp = Convert.ToInt32(Request.Form["exp"]);
 
             string _class = Request.Form["class"];
 
-			hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject);
+			hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject, exp);
 
 			OutputLabel.Text = "Huiswerk ingevoerd!";
         }

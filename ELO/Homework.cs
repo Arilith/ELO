@@ -17,14 +17,17 @@ using System.Text;
         public string UUID { get; private set; }
         public string subjectUUID { get; private set; }
 
+        public int Exp { get; private set; }
 
-        public Homework(string title, Subject subject, string content, string dueDate, Class _class)
+
+        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp)
         {
             this.Title = title;
             this.Subject = subject;
             this.DueDate = dueDate;
             this._class = _class;
             this.Content = content;
+            this.Exp = exp;
         }
 
         public override string ToString()

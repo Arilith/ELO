@@ -42,11 +42,13 @@ namespace ELO.SQLClasses
                 int returnId = Convert.ToInt32(homeworkReader["Id"]);
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
+                int returnExp = Convert.ToInt32(homeworkReader["experience"]);
+
 
                 Subject insertSubject = subjectManager.FindSubject(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass));
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp));
             }
 
             homeworkReader.Close();
@@ -62,9 +64,9 @@ namespace ELO.SQLClasses
             throw new NotImplementedException();
         }
 
-        public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subject)
+        public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subject, int exp)
         {
-            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subject, school, title, content, duedate, classUUID, UUID) VALUES ('{subject}', '{school}', '{title}', '{content}', '{duedate}', '{classUUID}', '{UUID}')", MySqlManager.con);
+            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subject, school, title, content, duedate, classUUID, exp, UUID) VALUES ('{subject}', '{school}', '{title}', '{content}', '{duedate}', '{classUUID}', '{exp}', '{UUID}')", MySqlManager.con);
             addHomeworkCommand.ExecuteNonQuery();
         }
 
@@ -83,7 +85,8 @@ namespace ELO.SQLClasses
                 string returnContent = homeworkReader["content"].ToString();
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
-                
+                int returnExp = Convert.ToInt32(homeworkReader["exp"]);
+
 
                 homeworkReader.Close();
 
@@ -93,7 +96,7 @@ namespace ELO.SQLClasses
                 classManager = null;
                 subjectManager = null;
 
-                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass);
+                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp);
             }
             homeworkReader.Close();
 
