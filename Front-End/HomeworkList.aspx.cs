@@ -14,7 +14,7 @@ namespace Front_End
         public HwMan HomeworkManager;
         public Person LoggedInPerson;
         public Student LoggedInStudent;
-        protected void Page_Load(object sender, EventArgs e)
+               protected void Page_Load(object sender, EventArgs e)
         {
             LoggedInPerson = (Person) Session["person"];
             LoggedInStudent = (Student) LoggedInPerson;

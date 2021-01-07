@@ -19,19 +19,21 @@
             <th>Klas</th>
             <th>Vak</th>
             <th>Datum</th>
-            <th>Huiswerk</th>
-            <th>Voortgang</th>
+            <th>Titel</th>
+            <th>Beschrijving</th>
         </tr>
         </thead>
         <tbody>
-        <%-- <% foreach (Homework homework in homeworkManager.GetHomeWorkFromDB(LoggedInStudent.School, LoggedInPerson.)){ %>  --%>
-        <%--     <tr> --%>
-        <%--         <td><%: homework._class.Name %></td> --%>
-        <%--         <td><%: homework.Subject %></td> --%>
-        <%--         <td><%: homework.DueDate %></td>   --%>
-        <%--         <td><%: homework.Work %></td> --%>
-        <%--     </tr>      --%>
-        <%-- <% } %> --%>
+        <% foreach (Homework homework in HomeworkManager.GetHomeWorkFromDB(LoggedInStudent.School)){ %>  %>
+        <tr> 
+        <td><%: homework._class.Name %></td>
+        <td><%: homework.Subject %></td>
+        <td><%: homework.DueDate %></td>
+        <td><%: homework.Title %></td>
+        <td><%: homework.Content%></td>
+        <td><%: homework.Exp %></td>
+        </tr>
+        <% } %>
         </tbody>
     </table>
     <br/>
