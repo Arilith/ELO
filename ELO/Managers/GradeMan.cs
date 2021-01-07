@@ -8,6 +8,8 @@ namespace ELO
     public class GradeMan
     {
         public GradeSQL GradeSql;
+        public UserMan userMan;
+        public SubjectManager subjectManager;
 
         public GradeMan()
         {
@@ -30,8 +32,14 @@ namespace ELO
             return returnGradeList;
         }
 
-        public void AddGradeToDatabase(string school, string studentuuid, double grade, int weight, Subject subject, Student student)
+        public void AddGradeToDatabase(string school, string studentuuid, double grade, decimal weight, string subjectName)
         {
+            userMan = new UserMan();
+            subjectManager = new SubjectManager();
+            Student student = userMan.GetStudent(studentuuid);
+            Subject subject = subjectManager.FindSubject(subjectName);
+            userMan = null;
+            subjectManager = null;
             GradeSql.AddGradeToDB(school, studentuuid, grade, weight, subject, student);
         }
 

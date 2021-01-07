@@ -27,17 +27,17 @@ namespace ELO.SQLClasses
             _mySqlManager = new MySqlManager();
         }
 
-        public void AddGradeToDB(string school, string studentuuid, double grade, int weight, Subject subject, Student student)
+        public void AddGradeToDB(string school, string studentuuid, double grade, decimal weight, Subject subject, Student student)
         {
-            MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, studentUUID, grade, weight, subjectUUID, userUUID, classUUID) VALUES (@school, @studentUUID, @grade, @weight, @subjectUUID, @userUUID, @classUUID)", _mySqlManager.con);
+            MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, studentUUID, grade, weight, subjectUUID, userUUID, classUUID) VALUES " + "(@school, @studentUUID, @grade, @weight, @subjectUUID, @userUUID, @classUUID)", _mySqlManager.con);
 
             addGradeCommand.Parameters.AddWithValue("@school", school);
             addGradeCommand.Parameters.AddWithValue("@studentUUID", studentuuid);
-            addGradeCommand.Parameters.AddWithValue("@studentUUID", grade);
-            addGradeCommand.Parameters.AddWithValue("@studentUUID", weight);
-            addGradeCommand.Parameters.AddWithValue("@studentUUID", subject.uuid);
-            addGradeCommand.Parameters.AddWithValue("@studentUUID", student.UserId);
-            addGradeCommand.Parameters.AddWithValue("@studentUUID", student.PartOfClass);
+            addGradeCommand.Parameters.AddWithValue("@grade", grade);
+            addGradeCommand.Parameters.AddWithValue("@weight", weight);
+            addGradeCommand.Parameters.AddWithValue("@subjectUUID", subject.uuid);
+            addGradeCommand.Parameters.AddWithValue("@userUUID", student.UserId);
+            addGradeCommand.Parameters.AddWithValue("@classUUID", student.PartOfClass.UUID);
 
             addGradeCommand.Prepare();
             addGradeCommand.ExecuteNonQuery();

@@ -32,16 +32,14 @@ namespace Front_End
         {
 
             string school = LoggedInPerson.School;
-            Student studentuuid = (Student) userMan.FindUserInDataBase(Request.Form["studentName"]);
-            string subject = Request.Form["subject"];
-            Class _class = classMan.GetClassFromDatabase(Request.Form["_class"]);
+            string classUUID = (Request.Form["classUUID"]);
             string date = Request.Form["date"];
-            decimal weight =Convert.ToDecimal(Request.Form["weight"]);
-            double grade =Convert.ToDouble(Request.Form["grade"]);
+            decimal weight = Convert.ToDecimal(Request.Form["weight"]);
+            double grade = Convert.ToDouble(Request.Form["grade"]);
+            string studentuuid = Request.Form["studentName"];
+            string subjectName = Request.Form["subject"];
 
-
-            gradeMan.AddGradeToDatabase(school, studentuuid, grade, date, weight, subject, student);
-
+            gradeMan.AddGradeToDatabase(school, studentuuid, grade, weight, subjectName);
         }
     }
 }
