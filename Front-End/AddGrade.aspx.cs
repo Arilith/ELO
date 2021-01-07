@@ -13,9 +13,12 @@ namespace Front_End
         public ClassManager classMan;
         public UserMan userMan;
         public GradeMan gradeMan;
+        public Person LoggedInPerson;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoggedInPerson = (Person)Session["person"];
+            gradeMan = new GradeMan();
             classMan = new ClassManager();
             userMan = new UserMan();
 
@@ -28,17 +31,17 @@ namespace Front_End
         private void ConvertAndInsertData()
         {
 
-            Student studentName = userMan.GetStudent(Request.Form["name"]);
+            string school = LoggedInPerson.School;
+            Student studentuuid = (Student) userMan.FindUserInDataBase(Request.Form["studentName"]);
             string subject = Request.Form["subject"];
             Class _class = classMan.GetClassFromDatabase(Request.Form["_class"]);
             string date = Request.Form["date"];
             decimal weight =Convert.ToDecimal(Request.Form["weight"]);
             double grade =Convert.ToDouble(Request.Form["grade"]);
 
-           // gradeMan.AddGradeToDataBase(studentName, _class, grade, date, subject, weight);
+
+            gradeMan.AddGradeToDatabase(school, studentuuid, grade, date, weight, subject, student);
 
         }
-
-	
-	}
+    }
 }

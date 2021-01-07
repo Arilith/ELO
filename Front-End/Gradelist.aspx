@@ -27,18 +27,18 @@
 
             </tr>
         </thead>
-        <tbody>
-            <% foreach (Grade grade in Manager.gradeMan.GetGradeList()){ %> 
-                <tr>
-                    <td><%: grade.student.Name %></td>
-                    <td><%: grade._class.Name%></td>
-                    <td><%: grade.subject %></td>
-                    <td><%: grade.date %></td>
-                    <td><%: grade.weight %></td>
-                    <td><% if (grade.grade < 55) { %><i style="color: darkred; "><%: grade.grade %></i> <% } else { %><i style="color: lawngreen; "><%: grade.grade %></i><% } %></td>
-                </tr>     
-            <% } %>
-        </tbody>
+<%-- <tbody> --%>
+        <%--     <% //foreach (Grade grade in Manager.gradeMan.GetGradeList()){ %>  --%>
+        <%--         <tr> --%>
+        <%--             <td><%: //grade.student.Name %></td> --%>
+        <%--             <td><%: //grade._class.Name%></td> --%>
+        <%--             <td><%: //grade.subject %></td> --%>
+        <%--             <td><%: //grade.date %></td> --%>
+        <%--             <td><%:// grade.weight %></td> --%>
+        <%--             <td><% if (grade.grade < 55) { %><i style="color: darkred; "><%: grade.grade %></i> <% } else { %><i style="color: lawngreen; "><%: grade.grade %></i><% } %></td> --%>
+        <%--         </tr>      --%>
+        <%--     <% } %> --%>
+        <%-- </tbody>
 
 </table>
 </asp:Content>

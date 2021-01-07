@@ -136,5 +136,10 @@ namespace ELO
 
         }
 
+       // public List<Student> GetStudentsOfClass(string classUUID)
+        
+            //return userSql.FindStudentsInClass(classUUID);
+        
+
     }
 }

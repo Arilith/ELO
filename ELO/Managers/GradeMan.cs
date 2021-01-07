@@ -14,10 +14,6 @@ namespace ELO
 
         }
 
-        public void AddGradeToDataBase()
-        {
-
-        }
 
         public Grade GetGradeFromDataBase(string uuid)
         {

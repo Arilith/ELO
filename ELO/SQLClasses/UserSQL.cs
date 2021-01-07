@@ -314,5 +314,10 @@ namespace ELO.SQLClasses
 
             return null;
         }
+
+        public List<Student> FindStudentsInClass(string classUUID)
+        {
+            return null;
+        }
     }
 }
