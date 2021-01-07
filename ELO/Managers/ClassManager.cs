@@ -7,14 +7,14 @@ namespace ELO
 {
     public class ClassManager
     {
-        
+
         private ClassSQL classSql;
 
         public ClassManager()
         {
             classSql = new ClassSQL();
         }
-        
+
         public void AddNewClassToDatabase(string name, string leshuis, string stream, string cluster, int studyYear, Person loggedInPerson)
         {
             string school = loggedInPerson.School;
@@ -26,6 +26,10 @@ namespace ELO
             return classSql.GetClass(uuid);
         }
 
+        public string GetClassUUIDFromDatabase(string className)
+        {
+            return GetClassFromDatabase(className).UUID;
+        }
 
         public List<Class> GetClassListFromDatabase(string school, string level)
         {
