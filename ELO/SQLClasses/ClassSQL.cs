@@ -7,7 +7,6 @@ namespace ELO.SQLClasses
     internal class ClassSQL
     {
         private MySqlManager mysqlManager;
-
         private string uuid;
         private string date;
 

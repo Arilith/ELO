@@ -12,7 +12,7 @@
                     <select id="_class" class="form-control" name="_class">
                         <% foreach (Class _class in classMan.GetClassListFromDatabase(LoggedInPerson.School))
                            { %>
-                            <option><%: _class.Name %></option>
+                            <option value="<%: _class.UUID%>"><%: _class.Name %></option>
                         <% } %>
                     </select><br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Selecteren</button>
