@@ -13,12 +13,12 @@ namespace ELO
         private ClassManager classMan;
 
         public static List<Person> personList { get; private set; }
-        
+
         public UserMan()
         {
             userSQL = new UserSQL();
             personList = new List<Person>();
-            
+
         }
 
         // public void AddStudentToPersonList(string name, int age, string school, Class _class, Teacher mentor)
@@ -108,7 +108,7 @@ namespace ELO
             string school = loggedInperson.School;
 
             Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email);
-            
+
             return newTeacher;
         }
 
@@ -134,6 +134,11 @@ namespace ELO
             else
                 return "Er is iets fout gegaan met het toevoegen bij de studenten.";
 
+        }
+
+        public List<Student> GetStudentsOfClass(string classUUID)
+        {
+            return userSQL.FindStudentsInClass(classUUID);
         }
 
     }

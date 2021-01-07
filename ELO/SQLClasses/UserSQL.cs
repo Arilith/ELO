@@ -314,5 +314,39 @@ namespace ELO.SQLClasses
 
             return null;
         }
+
+        public List<Student> FindStudentsInClass(string classUUID)
+        {
+            mySqlManager = new MySqlManager();
+            string findStudents = $"SELECT * FROM users WHERE classUUID='{classUUID}'";
+            MySqlCommand findStudentsCommand = new MySqlCommand(findStudents, mySqlManager.con);
+            // reader activeren
+            MySqlDataReader reader = findStudentsCommand.ExecuteReader();
+            List<Student> returnList = new List<Student>();
+            // tijdens het lezen van data in de lijst zetten
+            while (reader.Read())
+            {
+                string returnUsername = reader["username"].ToString();
+                string returnName = reader["name"].ToString();
+                int returnAge = Convert.ToInt32(reader["age"]);
+                string returnType = reader["role"].ToString();
+                string returnSchool = reader["school"].ToString();
+                string returnUserId = Convert.ToString(reader["uuid"]);
+                int returnLeerlingNummer = Convert.ToInt32(reader["leerlingnummer"]);
+                string returnRegistrationdate = reader["registrationdate"].ToString();
+                string email = reader["email"].ToString();
+
+                reader.Close();
+                mySqlManager.con.Close();
+                mySqlManager = null;
+
+                Class returnClass = classManager.GetClassFromDatabase(classUUID);
+                Teacher returnTeacher = (Teacher)FindUserInDataBase(classUUID);
+
+                returnList.Add(new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email));
+            }
+
+            return returnList;
+        }
     }
 }

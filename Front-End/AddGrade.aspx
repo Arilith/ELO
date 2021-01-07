@@ -10,7 +10,7 @@
                 <form method="post" id="selectclass" name="selectclass">
                     <label for="_class">Selecteer een Klas</label><br/>
                     <select id="_class" class="form-control" name="_class">
-                        <% foreach (Class _class in classMan.GetClassList())
+                        <% foreach (Class _class in classMan.GetClassListFromDatabase(LoggedInPerson.School))
                            { %>
                             <option><%: _class.Name %></option>
                         <% } %>
@@ -23,7 +23,7 @@
                     <input type="hidden" value="<%: Request.Form["_class"] %>" name="_class" id="_class" class="form-control"/>
                     <label for="studentName">Naam student</label><br/>
                     <select id="studentName" class="form-control" name="studentName">
-                        <% foreach (Student student in userMan.GetStudentList())
+                        <% foreach (Student student in userMan.GetStudentsOfClass(Request.Form["_class"]))
                            { %>
                             <option value="<%: student.UserId %>"><%: student.Name %></option>
                         <% } %>
@@ -47,5 +47,5 @@
             </div>
         </div>
     </div>
-    
+
 </asp:Content>
