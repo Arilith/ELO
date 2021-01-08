@@ -16,23 +16,25 @@
     <table>
         <thead>
         <tr>
-            <th>Klas</th>
             <th>Vak</th>
-            <th>Datum</th>
+            <th>inleverdatum</th>
             <th>Titel</th>
             <th>Beschrijving</th>
+            <th>Te verdienen punten</th>
+            <th>Afvinken</th>
         </tr>
         </thead>
         <tbody>
-        <% foreach (Homework homework in HomeworkManager.GetHomeWorkFromDB(LoggedInStudent.School)){ %>  %>
+        <% foreach (Homework homework in HomeworkManager.GetHomeWorkForClassFromDB(LoggedInStudent.School, LoggedInStudent.PartOfClass)){ %> 
         <tr> 
-        <td><%: homework._class.Name %></td>
-        <td><%: homework.Subject %></td>
+        <td><%: homework.Subject.Name %></td>
         <td><%: homework.DueDate %></td>
         <td><%: homework.Title %></td>
         <td><%: homework.Content%></td>
         <td><%: homework.Exp %></td>
+            <td> <input type="checkbox"/></td>
         </tr>
+
         <% } %>
         </tbody>
     </table>

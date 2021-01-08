@@ -7,8 +7,12 @@
             <div class="col-lg-6">
                 <form method="post" id="addstudent" name="homework">
                     <label for="subject">Vak</label><br/>
-                    <input id="subject" class="form-control" name="subject" type="text" placeholder="Nederlands" required/><br/>
+                    <select id="subject" class="form-control" name="subject" type="text" placeholder="Nederlands" required><br/>
 
+                    <% foreach (Subject subject in subjectManager.GetSubjectList(LoggedInPerson.School)) { %>
+                            <option value ="<%: subject.uuid %>"><%: subject.Name %></option>
+                        <% } %>
+                        </select>
                     <label for="_class">Klas</label><br/>
                     <select id="_class" class="form-control" name="_class" placeholder="Klas 1B"><br/>
 

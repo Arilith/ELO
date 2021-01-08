@@ -13,12 +13,14 @@ namespace Front_End
     {
         public ClassManager classManager;
         public HwMan hwMan;
+        public SubjectManager subjectManager;
         public Person LoggedInPerson;
         protected void Page_Load(object sender, EventArgs e)
         {
             LoggedInPerson = (Person)Session["person"];
             classManager = new ClassManager();
             hwMan = new HwMan();
+            subjectManager = new SubjectManager();
 
             if (IsPostBack)
             {
@@ -36,9 +38,9 @@ namespace Front_End
             string content = Request.Form["content"];
             int exp = Convert.ToInt32(Request.Form["exp"]);
 
-            string _class = Request.Form["class"];
+            string _class = Request.Form["_class"];
 
-			hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject, exp);
+            hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject, exp);
 
 			OutputLabel.Text = "Huiswerk ingevoerd!";
         }

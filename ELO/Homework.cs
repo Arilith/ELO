@@ -32,7 +32,7 @@ using System.Text;
 
         public override string ToString()
         {
-            return $"Voor klas: {_class.Name} moet voor het vak {Subject} op {DueDate}, {Title} af zijn.";
+            return $"Voor klas: {_class.Name} moet voor het vak {Subject.Name} op {DueDate}, {Title} af zijn.";
         }
 
 

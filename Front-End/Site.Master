@@ -94,7 +94,7 @@
                     <a runat="server" href="~/Schedule">Rooster</a>
                     <a runat="server" href="~/Gradelist">Cijfers</a>
                     <a runat="server" href="~/SubjectList">Vakken</a>
-                    <a runat="server" href="~/HwList">Huiswerk</a>
+                    <a runat="server" href="~/HomeworkList">Huiswerk</a>
                     <a runat="server" href="~/UploadFile">Bestand Uploaden</a>
                     <a runat="server" href="~/LeermiddelList">Leermiddelen</a>
                 <% } else if (loggedInPerson.Type == "Teacher") { %>
