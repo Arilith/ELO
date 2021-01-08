@@ -15,7 +15,6 @@
               <div id="loader"></div>
             <div id="loader-text">Uitloggen... doorsturen naar Login Pagina.
             <meta http-equiv="refresh" content="0;url=login.aspx" /></div>
-            </div>
         </div>
     </form>
 </body>

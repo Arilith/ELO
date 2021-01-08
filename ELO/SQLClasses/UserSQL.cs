@@ -19,7 +19,7 @@ namespace ELO.SQLClasses
             subjectManager = new SubjectManager();
 
             date = DateTime.Now.ToString();
-            userUUID = new Random().Next().ToString() + DateTime.Now.ToString("ddMMYYYYhhiiss");
+            userUUID = new Random().Next().ToString() + DateTime.Now.ToString("O");
         }
 
         public List<Person> GetList(string school, string type)

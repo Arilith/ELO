@@ -19,9 +19,15 @@ namespace Front_End
 
         public Dictionary<string, List<Appointment>> AppointmentsPerDay;
 
+        public string startDate;
+        public string endDate;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-           //Haal ingelogde persoon uit de sessie.
+            startDate = DateTime.Now.ToString("dd-MM-yyyy"); 
+            endDate = DateTime.Now.AddDays(5).ToString("dd-MM-yyyy");
+
+            //Haal ingelogde persoon uit de sessie.
             loggedInPerson = (Person)Session["person"];
             //Zet deze persoon om naar student (indien het een student is, zal deze de studentengegevens erbij krijgen)
             loggedInStudent = (Student)loggedInPerson;

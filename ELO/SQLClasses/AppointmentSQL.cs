@@ -56,8 +56,10 @@ namespace ELO.SQLClasses
                 Homework insertHomework = homeworkManager.GetHomeworkFromDB(returnHomeworkUUID);
                 //Exam insertExam = examManager.GetExam(returnExamUUID);
 
+                DateTime dateTime = DateTime.Parse(returndateAndTime);
+
                 // met alle data het object appointment maken
-                Appointment returnAppointment = new Appointment(insertTeacher, insertSubject, returndateAndTime,
+                Appointment returnAppointment = new Appointment(insertTeacher, insertSubject, dateTime,
                     classRoom, insertClass, returnSchool, insertHomework, returnCancelled,
                     returnUUID);
 

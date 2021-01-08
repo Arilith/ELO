@@ -19,10 +19,16 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
+<div class="background-blur"></div>
     <div class="bodycontainer">
+        
         <% if (Session["person"] == null) { %>
-        <meta http-equiv="refresh" content="3;url=login.aspx" />
-        U bent niet ingelogd. Doorsturen...
+            <div id="search-overlay">
+                <div id="loader"></div>
+                <div id="loader-text">U bent niet ingelogd... doorsturen naar Login Pagina.
+                    <meta http-equiv="refresh" content="0.6;url=login.aspx" />
+                </div>
+            </div>
         <% } else { %>
         <form runat="server">
             <asp:ScriptManager runat="server">
