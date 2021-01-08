@@ -14,6 +14,7 @@ namespace Front_End
         public UserMan userMan;
         public GradeMan gradeMan;
         public Person LoggedInPerson;
+        public SubjectManager subjectMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +22,8 @@ namespace Front_End
             gradeMan = new GradeMan();
             classMan = new ClassManager();
             userMan = new UserMan();
+            subjectMan = new SubjectManager();
+
 
             if (IsPostBack && Request.Form["studentName"] != null)
             {
@@ -33,7 +36,6 @@ namespace Front_End
 
             string school = LoggedInPerson.School;
             string classUUID = (Request.Form["classUUID"]);
-            string date = Request.Form["date"];
             decimal weight = Convert.ToDecimal(Request.Form["weight"]);
             double grade = Convert.ToDouble(Request.Form["grade"]);
             string studentuuid = Request.Form["studentName"];

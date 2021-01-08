@@ -30,10 +30,13 @@
                     </select><br/>
 
                     <label for="subject">Vak</label><br/>
-                    <input id="subject" class="form-control" name="subject" type="text" required/><br/>
+                    <select id="subject" class="form-control" name="subject">
+                        <% foreach (Subject subject in subjectMan.GetSubjectList(LoggedInPerson.School))
+                           { %>
+                            <option value="<%: subject.uuid%>"><%: subject.Name %></option>
+                        <% } %>
+                    </select><br/>
 
-                    <label for="date">Datum</label><br/>
-                    <input id="date" class="form-control" name="date" type="text" required/><br/>
 
                     <label for="weight">Weging</label><br/>
                     <input id="weight" class="form-control" name="weight" type="text" required/>  <br/>

@@ -7,19 +7,19 @@ namespace ELO
 {
     public class GradeMan
     {
-        public GradeSQL GradeSql;
+        public GradeSQL gradeSql;
         public UserMan userMan;
         public SubjectManager subjectManager;
 
         public GradeMan()
         {
-
+            gradeSql = new GradeSQL();
         }
 
 
         public Grade GetGradeFromDataBase(string uuid)
         {
-            Grade returnGrade = GradeSql.GetGrade(uuid);
+            Grade returnGrade = gradeSql.GetGrade(uuid);
 
             return returnGrade;
         }
@@ -27,7 +27,15 @@ namespace ELO
         public List<Grade> GetGradeListFromDatabase(string useruuid, Subject subject, int year)
         {
 
-            List<Grade> returnGradeList = GradeSql.GetGradeList(useruuid, subject, year);
+            List<Grade> returnGradeList = gradeSql.GetGradeList(useruuid, subject, year);
+
+            return returnGradeList;
+        }
+
+        public List<Grade> GetGradeListFromDatabase(string useruuid)
+        {
+
+            List<Grade> returnGradeList = gradeSql.GetGradeList(useruuid);
 
             return returnGradeList;
         }
@@ -36,11 +44,11 @@ namespace ELO
         {
             userMan = new UserMan();
             subjectManager = new SubjectManager();
-            Student student = userMan.GetStudent(studentuuid);
-            Subject subject = subjectManager.FindSubject(subjectName);
+            Student student = (Student)userMan.FindUserInDataBase(studentuuid);
+            Subject subject = subjectManager.FindSubjectInDatabase(subjectName);
             userMan = null;
             subjectManager = null;
-            GradeSql.AddGradeToDB(school, studentuuid, grade, weight, subject, student);
+            gradeSql.AddGradeToDB(school, grade, weight, subject, student);
         }
 
     }

@@ -213,8 +213,8 @@ namespace ELO.SQLClasses
                 Teacher returnTeacher = (Teacher)FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
-                mySqlManager.con.Close();
-                mySqlManager = null;
+                //mySqlManager.con.Close();
+                //mySqlManager = null;
 
                 if (returnType == "Student")
                     return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail);

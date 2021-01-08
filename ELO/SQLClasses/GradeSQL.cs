@@ -27,12 +27,11 @@ namespace ELO.SQLClasses
             _mySqlManager = new MySqlManager();
         }
 
-        public void AddGradeToDB(string school, string studentuuid, double grade, decimal weight, Subject subject, Student student)
+        public void AddGradeToDB(string school, double grade, decimal weight, Subject subject, Student student)
         {
-            MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, studentUUID, grade, weight, subjectUUID, userUUID, classUUID) VALUES " + "(@school, @studentUUID, @grade, @weight, @subjectUUID, @userUUID, @classUUID)", _mySqlManager.con);
+            MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, grade, weight, subjectUUID, userUUID, classUUID) VALUES (@school, @grade, @weight, @subjectUUID, @userUUID, @classUUID)", _mySqlManager.con);
 
             addGradeCommand.Parameters.AddWithValue("@school", school);
-            addGradeCommand.Parameters.AddWithValue("@studentUUID", studentuuid);
             addGradeCommand.Parameters.AddWithValue("@grade", grade);
             addGradeCommand.Parameters.AddWithValue("@weight", weight);
             addGradeCommand.Parameters.AddWithValue("@subjectUUID", subject.uuid);
@@ -162,7 +161,7 @@ namespace ELO.SQLClasses
             uuid = Convert.ToString(reader["uuid"]);
             gradeClass = Convert.ToString(reader["classUUID"]);
             date = Convert.ToString(reader["date"]);
-            studentuuid = Convert.ToString(reader["studentUUID"]);
+            studentuuid = Convert.ToString(reader["userUUID"]);
             year = Convert.ToInt32(reader["year"]);
         }
     }
