@@ -3,7 +3,7 @@
     <div class="container-form">
         <%@ Import Namespace="ELO" %>
             <% DateTime now = DateTime.Now; %>
-        <h2>Rooster veranderen</h2>
+        <h2>Rooster item toevoegen</h2>
         <label for="teacherName">Teacher</label><br/>
 
         <%-- selectievak leraar --%>

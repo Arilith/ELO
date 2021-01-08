@@ -6,6 +6,7 @@ namespace ELO
 {
     public class TodayMan
     {
+        //aanmaken managers em andere objecten
         private SubjectManager subjectManager;
         private UserMan userMan;
         private ClassManager classManager;
@@ -16,6 +17,7 @@ namespace ELO
 
         public TodayMan()
         {
+            // lijst van appointments, uuid generator, appointmentsql connectie
             AppointmentList = new List<Appointment>();
             UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
             appointmentSql = new AppointmentSQL();
@@ -27,12 +29,14 @@ namespace ELO
             //AppointmentList.Add(Appointment);
         }
 
+        //functie voor het toevoegen van een appointment aan de database
         public void AddAppointment(string teacherUUID, string subjectUUID, string dateAndTime, string classroomUUID, string classUUID, string school)
         {
             subjectManager = new SubjectManager();
             userMan = new UserMan();
             classManager = new ClassManager();
 
+            // omzetten van string naar object
             Teacher insertTeacher = userMan.GetTeacher(teacherUUID);
             Subject insertSubject = subjectManager.FindSubject(subjectUUID);
             Class insertClass = classManager.GetClassFromDatabase(classUUID);
@@ -42,6 +46,7 @@ namespace ELO
 
         public List<Appointment> GetAppointmentListFromDatabase(string school, string _classUUID)
         {
+            // lijst van appointments voor de klas van de persoon die is ingelogd
             return appointmentSql.GetAppointmentList(school, _classUUID);
         }
 

@@ -7,8 +7,6 @@ namespace ELO
     public class Appointment
     {
         //properties
-        
-        
         public Teacher teacher { get; private set; }
         public Subject subject { get; private set; }
         public string dateAndTime { get; private set; }
