@@ -11,7 +11,7 @@ namespace ELO
         
         public Teacher teacher { get; private set; }
         public Subject subject { get; private set; }
-        public string dateAndTime { get; private set; }
+        public DateTime dateAndTime { get; private set; }
         public string classroom { get; private set; }
         public Class _class { get; private set; }
         public string school { get; private set; }
@@ -21,7 +21,7 @@ namespace ELO
         public string uuid { get; private set; }
 
         //constructor met alles er op en er aan
-        public Appointment(Teacher teacher, Subject subject, string dateAndTime, string classroom, Class _class, string school, Homework homework, bool cancelled, Exam exam, string uuid)
+        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, Homework homework, bool cancelled, Exam exam, string uuid)
         {
             this.teacher = teacher;
             this.subject = subject;
@@ -36,7 +36,7 @@ namespace ELO
         }
 
         //zonder exam
-        public Appointment(Teacher teacher, Subject subject, string dateAndTime, string classroom, Class _class, string school, Homework homework, bool cancelled, string uuid)
+        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, Homework homework, bool cancelled, string uuid)
         {
             this.teacher = teacher;
             this.subject = subject;
@@ -50,7 +50,7 @@ namespace ELO
         }
 
         //zonder homework
-        public Appointment(Teacher teacher, Subject subject, string dateAndTime, string classroom, Class _class, string school, Exam exam, bool cancelled, string uuid)
+        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, Exam exam, bool cancelled, string uuid)
         {
             this.teacher = teacher;
             this.subject = subject;
@@ -64,7 +64,7 @@ namespace ELO
         }
 
         //zonder homework en exam
-        public Appointment(Teacher teacher, Subject subject, string dateAndTime, string classroom, Class _class, string school, bool cancelled, string uuid)
+        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, bool cancelled, string uuid)
         {
             this.teacher = teacher;
             this.subject = subject;

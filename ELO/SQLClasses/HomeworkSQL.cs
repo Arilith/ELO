@@ -8,16 +8,7 @@ namespace ELO.SQLClasses
     {
         private SubjectManager subjectManager;
         private ClassManager classManager;
-        private string UUID = "Huiswerk";
-
-        public HomeworkSQL()
-        {
-        }
-
-        // public List<Homework> GetHomeWorkList(string school, string className, string subject)
-        // {
-        //
-        // }
+        private string UUID = new Random().Next().ToString() + DateTime.Now.ToString("O");
 
         public List<Homework> GetHomeWorkList(string school)
         {
@@ -40,12 +31,14 @@ namespace ELO.SQLClasses
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
                 int returnExp = Convert.ToInt32(homeworkReader["exp"]);
-
+                int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
+                bool isTest = returnIsTest == 1;
+              
 
                 Subject insertSubject = subjectManager.FindSubject(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp));
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest));
             }
 
             homeworkReader.Close();
@@ -77,12 +70,13 @@ namespace ELO.SQLClasses
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
                 int returnExp = Convert.ToInt32(homeworkReader["exp"]);
-
+                int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
+                bool isTest = returnIsTest == 1;
 
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp));
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest));
             }
 
             homeworkReader.Close();
@@ -95,11 +89,26 @@ namespace ELO.SQLClasses
 
 
 
-        public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subjectUUID, int exp)
+        public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subjectUUID, int exp, bool isTest)
         {
             MySqlManager mySqlManager = new MySqlManager();
-            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subjectUUID, school, title, content, duedate, classUUID, exp, UUID) VALUES ('{subjectUUID}', '{school}', '{title}', '{content}', '{duedate}', '{classUUID}', '{exp}', '{UUID}')", mySqlManager.con);
+            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subjectUUID, school, title, content, duedate, classUUID, exp, UUID, istest) VALUES (@subjectUUID, @school, @title, @content, @duedate, @classUUID, @exp, @UUID, @istest)", mySqlManager.con);
+
+
+            addHomeworkCommand.Parameters.AddWithValue("@subjectUUID", subjectUUID);
+            addHomeworkCommand.Parameters.AddWithValue("@school", school);
+            addHomeworkCommand.Parameters.AddWithValue("@title", title);
+            addHomeworkCommand.Parameters.AddWithValue("@content", content);
+            addHomeworkCommand.Parameters.AddWithValue("@duedate", duedate);
+            addHomeworkCommand.Parameters.AddWithValue("@classUUID", classUUID);
+            addHomeworkCommand.Parameters.AddWithValue("@exp", exp);
+            addHomeworkCommand.Parameters.AddWithValue("@UUID", UUID);
+            addHomeworkCommand.Parameters.AddWithValue("@istest", isTest);
+
+
+            addHomeworkCommand.Prepare();
             addHomeworkCommand.ExecuteNonQuery();
+
             mySqlManager = null;
         }
 
@@ -120,7 +129,8 @@ namespace ELO.SQLClasses
                 string returnClass = homeworkReader["classUUID"].ToString();
                 string returnDate = homeworkReader["duedate"].ToString();
                 int returnExp = Convert.ToInt32(homeworkReader["exp"]);
-
+                int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
+                bool isTest = returnIsTest == 1;
 
                 homeworkReader.Close();
 
@@ -130,7 +140,7 @@ namespace ELO.SQLClasses
                 classManager = null;
                 subjectManager = null;
 
-                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp);
+                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest);
             }
             homeworkReader.Close();
 

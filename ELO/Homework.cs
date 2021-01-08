@@ -19,8 +19,9 @@ using System.Text;
 
         public int Exp { get; private set; }
 
+        public bool IsTest { get; private set; }
 
-        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp)
+        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp, bool isTest)
         {
             this.Title = title;
             this.Subject = subject;
@@ -28,6 +29,7 @@ using System.Text;
             this._class = _class;
             this.Content = content;
             this.Exp = exp;
+            this.IsTest = isTest;
         }
 
         public override string ToString()

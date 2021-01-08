@@ -5,17 +5,19 @@
 }
 
 .bodycontainer {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
+    height: auto;
+    width: calc(100vw-100px);
+    position: relative;
+    }
+.background-blur {
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background:rgba(50,50,50, 0.05);
+    background: rgba(50,50,50, 0.05);
     backdrop-filter: blur(5px);
 }
-
 .form-control {
     background-color:white!important;
 }
