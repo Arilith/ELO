@@ -15,7 +15,6 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <script src="https://www.jqueryscript.net/demo/pick-hours-availability-calendar/js/mark-your-calendar.js" language="javascript" type="text/javascript"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
@@ -72,13 +71,13 @@
                             <a href="~/Logout" runat="server" class="logout-button-side"><b><i>Uitloggen</i></b></a>
                         </div><br/><br/>
                         <% if (loggedInPerson.Type == "Student") { %>
-                            <a runat="server" href="~/StudentHome">Home</a>
-                            <a runat="server" href="~/Schedule">Rooster</a>
-                            <a runat="server" href="~/Gradelist">Cijfers</a>
-                            <a runat="server" href="~/SubjectList">Vakken</a>
-                            <a runat="server" href="~/HomeworkList">Huiswerk</a>
-                            <a runat="server" href="~/UploadFile">Bestand Uploaden</a>
-                            <a runat="server" href="~/LeermiddelList">Leermiddelen</a>
+                            <a runat="server" href="~/StudentHome"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
+                            <a runat="server" href="~/Schedule"><i class="fa fa-calendar" style="margin-right: 10px;"></i>Rooster</a>
+                            <a runat="server" href="~/Gradelist"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers</a>
+                            <a runat="server" href="~/SubjectList"><i class="fa fa-calculator" style="margin-right: 10px;"></i>Vakken</a>
+                            <a runat="server" href="~/HomeworkList"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk</a>
+                            <a runat="server" href="~/UploadFile"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
+                            <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
                             <a runat="server" href="~/Home">Home</a>
                             <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
@@ -86,39 +85,31 @@
                             <a runat="server" href="~/FileList">Ingeleverde bestanden</a>
 
                         <% } else if (loggedInPerson.Type == "SysAdmin") { %>
-                            <div class="dropdown2">
-                                <button class="dropbtn">Klassen 
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content2">
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <div class="navigator-category-content">
                                     <a runat="server" href="~/AddClass">Klas Invoeren</a>
                                     <a runat="server" href="~/ClassList">Klassenlijst</a>
                                 </div>
                             </div> 
-                            <div class="dropdown2">
-                                <button class="dropbtn">Roosters
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content2">
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <div class="navigator-category-content">
                                     <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
                                     <a runat="server" href="~/Schedule">Rooster</a>
                                 </div>
                             </div>
-                            <div class="dropdown2">
-                                <button class="dropbtn">Gebruikers 
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content2">
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <div class="navigator-category-content">
                                     <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
                                     <a runat="server" href="~/AddUser">Leerling Invoeren</a>
                                     <a runat="server" href="~/UserList">Gebruikerslijst</a>
                                 </div>
                             </div>
-                            <div class="dropdown2">
-                                <button class="dropbtn">Overig 
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content2">
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <div class="navigator-category-content">
                                     <a runat="server" href="~/AddSchedule">Rooster Items Toevoegen</a>
                                     <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
                                     <a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a>
