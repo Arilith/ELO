@@ -7,8 +7,8 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
-        <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
+    <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
+        <link id="link1" rel="stylesheet" href="~/Content/Login.css" type="text/css" runat="server" />
     </meta>
     <title><%: Page.Title %> - Study Cluster</title>
     <asp:PlaceHolder runat="server">
@@ -20,6 +20,7 @@
 
 </head>
 <body>
+    <div class="bg-image"><div class="darkening"></div></div>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -41,35 +42,42 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block; margin-top:20px" />
-                
-        <div class="container body-content" style="margin-top: 50px">
-            
-            <form method="post" action="Login.aspx" name="login">
-                Voer je inloggegevens in.<br /><br />
-                <label for="school">School</label><br />
-                <select id="school" name="school" class="form-control">
-                    <% foreach (String school in schoolManager.GetSchoolList()) { %>
-                        <option><%: school %></option>
-                    <% } %>
-                </select>
-                <br />
-                <label for="leerlingnummer">Leerlingnummer</label><br />
-                <input id="leerlingnummer" type="text" name="leerlingnummer" class="form-control" /><br />
-                <label for="password">Wachtwoord</label><br />
-                <input id="password" type="password" name="password" class="form-control" /><br /><br />
-                <button type="submit" class="btn btn-success">Log in</button>
-            </form><br/><br/>
-            Systeembeheer? Log <a href="~/AdminLogin" runat="server">hier</a> in
-            <% if (results != null) { %>
-                <meta http-equiv="refresh" content="0;url=StudentHome.aspx" />
-            <% } %>
-            <hr style="border-top: 1px solid black!important" />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
-            </footer>
-        </div>
+        <div class="login-container">
+            <div class="login-picture"></div>
+            <div class="top">
+                <img src="https://media.discordapp.net/attachments/788383809133215754/797134629898420304/Logo-Studycluster-wit-beter.png" class="login-logo" />
+            </div>
+            <div class="bottom">
+                <form method="post" action="Login.aspx" name="login">
+                    <div>
+                        <select id="school" name="school" class="input-control"  style="margin-bottom: 40px!important; "required>
+                            <% foreach (String school in schoolManager.GetSchoolList()) { %>
+                                <option><%: school %></option>
+                            <% } %>
+                        </select>
+                    </div>
 
+                    <div>
+                        <input id="username" type="text" name="leerlingnummer" class="input-control" required />
+                        <span class="floating-label">Leerlingnummer</span>
+                    </div>
+                    <div>
+                        <input id="password" type="password" name="password" class="input-control" required />
+                        <span class="floating-label">Wachtwoord</span>
+                    </div>
+                    <a class="btn btn-info" href="AdminLogin.aspx">Leraren log-in</a>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success" style="margin-right: 80px; display:inline-block">Log in</button>
+                    </div>
+                </form>
+                
+                <% if (results != null) { %>
+                    <meta http-equiv="refresh" content="0;url=StudentHome.aspx" />
+                <% } else if (Session["person"] != null) { %>
+                    <meta http-equiv="refresh" content="0;url=StudentHome.aspx" />
+                <% } %>
+            </div>
+        </div>
     </form>
 </body>
 </html>

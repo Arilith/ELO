@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
-        <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
-        <link id="link2" rel="stylesheet" href="~/Content/mark-your-calendar.css" type="text/css" runat="server" />
+        <%-- <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" /> --%>
+        <link id="link2" rel="stylesheet" href="~/Content/Main.css" type="text/css" runat="server" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server"/>
     </meta>
     <title><%: Page.Title %> - Study Cluster</title>
@@ -50,95 +50,115 @@
                     <%--Site Scripts--%>
                 </Scripts>
             </asp:ScriptManager>
-            
-            <div class="topbar" id="myTopnav">
-                <% if (loggedInPerson.Type == "SysAdmin") { %>
-                    <a href="#">Hallo, (SYSADMIN) <%: loggedInPerson.Name %></a>
-                    <a runat="server" class="active" href="~/Home">Home</a>
-                    <div class="dropdown2">
-                        <button class="dropbtn">Klassen 
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content2">
-                            <a runat="server" href="~/AddClass">Klas Invoeren</a>
-                            <a runat="server" href="~/ClassList">Klassenlijst</a>
-                        </div>
-                    </div> 
-                    <div class="dropdown2">
-                        <button class="dropbtn">Roosters
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content2">
-                            <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
+            <div class="topnav">
+                <div class="pull-right">
+                    <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds (2).jpg" style="height: 52px;" /></a>
+                    <a href="#" class="active"><%: loggedInPerson.Name %></a>
+                    <% if(loggedInPerson.Type == "Student") { %><a href="#"><%: loggedInStudent.LeerlingNummer %></a> <% } %>
+                    <a href="#"><%: loggedInPerson.Email %></a>
+                    <a href="~/Logout" runat="server">Uitloggen</a>
+                </div>
+            </div>
+            <% if (loggedInPerson != null) { %>
+                <div class="body-content">
+                    <span style="font-size:30px;cursor:pointer" id="openbutton" onclick="openNav()">&#9776; Menu</span>
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div class="user-info">
+                            <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds (2).jpg" style="margin: 40px; height: 200px;" /></a>
+                            <a href="#" class="active"><b><i><%: loggedInPerson.Name %></i></b></a>
+                            <% if(loggedInPerson.Type == "Student") { %><a href="#"><b><i><%: loggedInStudent.LeerlingNummer %></i></b></a><% } %>
+                            <a href="#"><b><i><%: loggedInPerson.Email %></i></b></a>
+                            <a href="~/Logout" runat="server" class="logout-button-side"><b><i>Uitloggen</i></b></a>
+                        </div><br/><br/>
+                        <% if (loggedInPerson.Type == "Student") { %>
+                            <a runat="server" href="~/StudentHome">Home</a>
                             <a runat="server" href="~/Schedule">Rooster</a>
-                        </div>
-                    </div>
-                    <div class="dropdown2">
-                        <button class="dropbtn">Gebruikers 
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content2">
-                            <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
-                            <a runat="server" href="~/AddUser">Leerling Invoeren</a>
-                            <a runat="server" href="~/UserList">Gebruikerslijst</a>
-                        </div>
-                    </div>
-                    <div class="dropdown2">
-                        <button class="dropbtn">Overig 
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content2">
-                            <a runat="server" href="~/AddSchedule">Rooster Items Toevoegen</a>
-                            <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
-                            <a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a>
-                        </div>
-                    </div>
+                            <a runat="server" href="~/Gradelist">Cijfers</a>
+                            <a runat="server" href="~/SubjectList">Vakken</a>
+                            <a runat="server" href="~/HomeworkList">Huiswerk</a>
+                            <a runat="server" href="~/UploadFile">Bestand Uploaden</a>
+                            <a runat="server" href="~/LeermiddelList">Leermiddelen</a>
+                        <% } else if (loggedInPerson.Type == "Teacher") { %>
+                            <a runat="server" href="~/Home">Home</a>
+                            <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
+                            <a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a>
+                            <a runat="server" href="~/FileList">Ingeleverde bestanden</a>
 
-                <% } else if (loggedInPerson.Type == "Student") { %>
-                    <a href="#">Hallo, <%: loggedInPerson.Name %></a>
-                    <a runat="server" href="~/StudentHome">Home</a>
-                    <a runat="server" href="~/Schedule">Rooster</a>
-                    <a runat="server" href="~/Gradelist">Cijfers</a>
-                    <a runat="server" href="~/SubjectList">Vakken</a>
-                    <a runat="server" href="~/HomeworkList">Huiswerk</a>
-                    <a runat="server" href="~/UploadFile">Bestand Uploaden</a>
-                    <a runat="server" href="~/LeermiddelList">Leermiddelen</a>
-                <% } else if (loggedInPerson.Type == "Teacher") { %>
-                    <a href="#">Hallo, (TEACHER) <%: loggedInPerson.Name %></a>
-                    <a runat="server" href="~/Home">Home</a>
-                    <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
-                    <a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a>
-                <% } %>
-                <a runat="server" style="float: right;" href="~/Logout">Uitloggen</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </div>
-            <% if (loggedInPerson != null)
-               { %>
-            <div class="container body-content">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                </asp:ContentPlaceHolder>
-                <hr style="border-top: 1px solid black!important" />
-                <footer>
-                    <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
-                </footer>
-            </div>
+                        <% } else if (loggedInPerson.Type == "SysAdmin") { %>
+                            <div class="dropdown2">
+                                <button class="dropbtn">Klassen 
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content2">
+                                    <a runat="server" href="~/AddClass">Klas Invoeren</a>
+                                    <a runat="server" href="~/ClassList">Klassenlijst</a>
+                                </div>
+                            </div> 
+                            <div class="dropdown2">
+                                <button class="dropbtn">Roosters
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content2">
+                                    <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
+                                    <a runat="server" href="~/Schedule">Rooster</a>
+                                </div>
+                            </div>
+                            <div class="dropdown2">
+                                <button class="dropbtn">Gebruikers 
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content2">
+                                    <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
+                                    <a runat="server" href="~/AddUser">Leerling Invoeren</a>
+                                    <a runat="server" href="~/UserList">Gebruikerslijst</a>
+                                </div>
+                            </div>
+                            <div class="dropdown2">
+                                <button class="dropbtn">Overig 
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content2">
+                                    <a runat="server" href="~/AddSchedule">Rooster Items Toevoegen</a>
+                                    <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
+                                    <a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                    
+                    
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <hr style="border-top: 1px solid black!important" />
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
+                    </footer>
+                </div>
             <% } else { %>
-
+                //Redirect
             <% } %>
         </form>
         <% } %>
     </div>
 </body>
+<%-- <script> --%>
+<%--     function myFunction() { --%>
+<%--         var x = document.getElementById("myTopnav"); --%>
+<%--         if (x.className === "topbar") { --%>
+<%--             x.className += " responsive"; --%>
+<%--         } else { --%>
+<%--             x.className = "topbar"; --%>
+<%--         } --%>
+<%--     } --%>
+<%-- </script> --%>
 <script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topbar") {
-            x.className += " responsive";
-        } else {
-            x.className = "topbar";
-        }
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
     }
-</script>
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script> 
 </html>

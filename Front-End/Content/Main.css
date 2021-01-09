@@ -1,0 +1,145 @@
+﻿body {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .sidenav {
+        padding-top: 15px;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+
+    #openbutton {
+        display: block;
+    }
+
+    .topnav {
+        display: none;
+    }
+
+    .closebtn {
+        display: block !important;
+    }
+
+    .body-content {
+        height: 100%;
+        width: 100%;
+    }
+
+    .user-info {
+        display: block;
+    }
+
+    .logout-button-side {
+        display: block;
+    }
+}
+
+
+
+@media screen and (min-width: 700px) {
+    .user-info {
+        display: none;
+    }
+    .sidenav {
+        width: 250px;
+        background: rgba(0, 0, 0, 1);
+    }
+
+    .closebtn {
+        display: none !important;
+    }
+
+    #openbutton {
+        display: none;
+    }
+    /* Add a black background color to the top navigation */
+    .topnav {
+        display: block;
+        background-color: #333;
+        overflow: hidden;
+    }
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    /* Change the color of links on hover */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+    .body-content {
+        left: 250px !important;
+        width: calc(100% - 250px);
+        height: calc(100% - 52px);
+    }
+
+    .logout-button-side {
+        display: none;
+    }
+}
+
+
+
+.body-content {
+    padding: 50px;
+    overflow-x: hidden;
+    position: absolute;
+    background: rgba(255, 255, 255, 1);
+    /* background: rgba(0, 100, 100, 1); */
+}

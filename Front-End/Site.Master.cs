@@ -11,10 +11,21 @@ namespace Front_End
     public partial class SiteMaster : MasterPage
     {
         public Person loggedInPerson;
+        public Student loggedInStudent;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            loggedInPerson = (Person)Session["person"];
+            if (Session["person"] != null)
+            {
+                loggedInPerson = (Person) Session["person"];
+                if (loggedInPerson.Type == "Student")
+                {
+                    loggedInStudent = (Student)loggedInPerson;
+                    loggedInPerson = (Student)loggedInPerson;
+                }
+                else if (loggedInPerson.Type == "Teacher")
+                    loggedInPerson = (Teacher) loggedInPerson;
+            }
         }
     }
 }

@@ -1,0 +1,176 @@
+﻿@font-face {
+    font-family: mainfont;
+    src: url("./Fonts/Montserrat-Regular.woff");
+}
+
+body {
+    height: 100vh;
+    font-family: mainfont;
+}
+
+.bg-image {
+    position: fixed;
+    top: -20px;
+    bottom: -20px;
+    left: -20px;
+    right: -20px;
+    /* background: lightblue; */
+    background-image: url("https://cdn.discordapp.com/attachments/788383809133215754/797125793629077574/unknown.png");
+    background-size: cover;
+    filter: blur(10px);
+    transform: scaleX(-1);
+    z-index: -1;
+}
+
+.bg-image-admin {
+    background-image: url("https://oudenbosch.markland.nl/uimg/oudenbosch/b85432_img1f.jpg");
+}
+
+.darkening {
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+
+.login-container {
+    position: absolute;
+    height: 450px;
+    width: 55vw;
+    left: 15%;
+    top: 25%;
+
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+
+    color: white;
+}
+
+.login-container > .login-picture {
+    display: inline-block;
+    border-radius: 8px 0px 0px 8px;
+    height: 100%;
+    width: 60%;
+    background: url("https://media.discordapp.net/attachments/788383809133215754/797126237113286696/unknown.png?width=555&height=676") no-repeat 0px -100px;
+}
+
+
+    .login-container > .admin-login-picture {
+        background: url("https://oudenbosch.markland.nl/uimg/oudenbosch/b85432_img1f.jpg") no-repeat;
+        background-position: -800px -100px;
+    }
+
+.login-container > .top {
+    /* background: pink; */
+    padding: 20px 30px 20px 30px;
+
+    width: 40%;
+    height: 30%;
+    float: right;
+    display: inline-block;
+
+
+}
+
+.login-container > .top > .login-logo {
+    width: 80%;
+}
+
+.login-container > .bottom {
+    display: inline-block;
+    float: right;
+    width: 40%;
+    height: 70%;
+    position: absolute;
+    margin-top: 12%;
+    padding: 30px;
+}
+
+label {
+    color: white;
+    font-family: mainfont;
+    padding-bottom: 0px;
+}
+
+input, select {
+    background: rgba(200, 200, 200, 0.6);
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-width: 50%;
+    width: 80%;
+    margin-bottom: 10px !important;
+    font-family: mainfont;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+    position: relative;
+    pointer-events: none;
+    /* margin-top: -200px; */
+    top: -65px;
+    left: 15px;
+    font-size: 11px;
+    opacity: 1;
+}
+
+
+input:not(:focus):invalid {
+    border-bottom: 2px solid rgba(200, 20, 0, 0.5);
+}
+
+input:not(:focus):valid {
+    border-bottom: 2px solid rgba(0, 200, 0, 0.5);
+}
+
+.floating-label {
+    display: block;
+    position: relative;
+    pointer-events: none;
+    /* margin-top: -200px; */
+    top: -35px;
+    left: 15px;
+    transition: 0.2s ease all;
+    height: 30px;
+    font-family: mainfont;
+}
+
+option {
+    color: ghostwhite;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: mainfont;
+}
+
+@media only screen and (max-width: 600px) {
+    .login-picture {
+        display: none;
+    }
+
+    .top, .bottom {
+        float: left;
+    }
+}
+
+.btn {
+    border-radius: 3px !important;
+}
+
+.btn-success {
+    background-color: rgba(0, 200, 100, 0.5) !important;
+    border: none !important;
+}
+
+.btn-info {
+    background-color: rgba(0, 200,255, 0.5) !important;
+    border: none !important;
+}
+
+
+
+

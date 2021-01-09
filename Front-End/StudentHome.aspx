@@ -3,16 +3,6 @@
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
         <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
     </meta>
- <div class="homebar">
-  <div class="homebar-content">
-  <img src="Content/Pictures/Logo-ELO2Best.png" style="width:16%; height:16%">
-  <div style="width:58px; height:75px; border: 1px solid #000"><img src="Content/Pictures/neds (2).jpg" style="width:100%; height:100%; margin:0" /></div>
-  <p class="gegevens"> <%: loggedInStudent.Name %> <br>
-      <%: loggedInStudent.LeerlingNummer %> <br>
-      <%: loggedInStudent.Email %>
-  </p>
-  </div>
-</div>
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info">
