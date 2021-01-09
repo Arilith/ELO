@@ -360,3 +360,15 @@
     font-family: sans-serif;
     text-align: center;
 }
+
+.eind {
+    background: #91FF85!important;
+}
+
+.odd {
+    background-color: rgba(20,20,20,0.1) !important;
+}
+
+.odd .eind {
+    background: #72C969!important;
+}

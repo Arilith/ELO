@@ -142,4 +142,32 @@
     position: absolute;
     background: rgba(255, 255, 255, 1);
     /* background: rgba(0, 100, 100, 1); */
+    background: url("Pictures/backgroundBeter4.jpg") no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover!important;
+}
+
+.container-info {
+    background: rgba(225, 225, 225, 0.7);
+    border: 2px solid rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    min-height: 200px;
+    margin: 25px 25px 25px 25px;
+    color: rgba(80, 80, 80, 1);
+}
+
+.container-info .container-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.container-info .container-content {
+    margin-top: 10px;
+    padding: 0px 10px 0px 10px;
 }
