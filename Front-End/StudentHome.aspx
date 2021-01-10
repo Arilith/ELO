@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Hoofdpagina" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentHome.aspx.cs" Inherits="Front_End.StudentHome" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
         <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
     </meta>
@@ -11,7 +12,7 @@
                     <div class="row">
                         <div class="col-lg-3"><img src="Content/Pictures/Hoofd leraar.jpg" style="border-radius:50%; width: 100px; "/></div>
                         <div class="col-lg-9">
-                            Engels - E16<br/>
+                            Engels <i class="fas fa-flag-usa"></i> - E16<br/>
                             <b>HW: Maak opdracht 14 t/m 17 en lees pagina 54 t/m 58 in het lesboek.</b>
                         </div>
                     </div>
@@ -32,9 +33,9 @@
                 <div class="container-title">Laatste cijfers</div>
                 <div class="container-content">
                     <div class="row">
-                            <b class="middle">Wiskunde B - toets integralen - 5.5</b><br /><br />
-                            <b class="middle">Nederlands - toets grammatica - </b><b class="red middle">4.3</b><br /><br />
-                            <b class="middle">Engels - SO woorden unit 3 - 9.7</b><br />
+                            <b class="middle">Wiskunde B <i class="fas fa-square-root-alt"></i> - toets integralen - 5.5</b><br /><br />
+                            <b class="middle">Nederlands <i class="fas fa-bicycle"></i> - toets grammatica - </b><b class="red middle">4.3</b><br /><br />
+                            <b class="middle">Engels <i class="fas fa-flag-usa"></i> - SO woorden unit 3 - 9.7</b><br />
                     </div>
                 </div>
             </div>
@@ -42,8 +43,8 @@
                 <div class="container-title">3 toetsen deze week</div>
                 <div class="container-content">
                     <div class="row">
-                            <b class="middle">Duits - Boektoets! Denk aan het meenemen van het boek!</b><br /><br />
-                            <b class="middle">Geschiedenis - SO tweede wereldoorlog</b><br /><br />
+                            <b class="middle">Duits <i class="fas fa-beer"></i> - Boektoets! Denk aan het meenemen van het boek!</b><br /><br />
+                            <b class="middle">Geschiedenis <i class="fas fa-landmark"></i> - SO tweede wereldoorlog</b><br /><br />
                             <b class="middle">Natuurkunde - Toets optica</b><br />
                     </div>
                 </div>

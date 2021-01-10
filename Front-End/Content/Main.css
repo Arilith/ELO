@@ -147,11 +147,8 @@ body {
     position: absolute;
     background: rgba(255, 255, 255, 1);
     /* background: rgba(0, 100, 100, 1); */
-    background: url("Pictures/backgroundBeter4.jpg") no-repeat center center fixed !important;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover!important;
+    background: rgb(32,89,122);
+    background: linear-gradient(0deg, rgba(32,89,122,1) 0%, rgba(188,159,156,1) 0%, rgba(138,160,181,1) 25%);
 }
 
 .container-info {
