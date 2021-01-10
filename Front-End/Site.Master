@@ -49,9 +49,20 @@
                     <%--Site Scripts--%>
                 </Scripts>
             </asp:ScriptManager>
+            <% if (loggedInPerson.Type == "Teacher" || loggedInPerson.Type == "SysAdmin") { %>
+                   <style>
+                       .topnav {
+                           background: #5887ff;
+                       }
+
+                       .sidenav {
+                           background: #102e4a;
+                       }
+                   </style> 
+            <% } %>
             <div class="topnav">
                 <div class="pull-right">
-                    <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds (2).jpg" style="height: 52px;" /></a>
+                    <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="height: 52px;" /></a>
                     <a href="#" class="active"><%: loggedInPerson.Name %></a>
                     <% if(loggedInPerson.Type == "Student") { %><a href="#"><%: loggedInStudent.LeerlingNummer %></a> <% } %>
                     <a href="#"><%: loggedInPerson.Email %></a>
@@ -64,11 +75,11 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <div class="user-info">
-                            <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds (2).jpg" style="margin: 40px; height: 200px;" /></a>
-                            <a href="#" class="active"><b><i><%: loggedInPerson.Name %></i></b></a>
-                            <% if(loggedInPerson.Type == "Student") { %><a href="#"><b><i><%: loggedInStudent.LeerlingNummer %></i></b></a><% } %>
-                            <a href="#"><b><i><%: loggedInPerson.Email %></i></b></a>
-                            <a href="~/Logout" runat="server" class="logout-button-side"><b><i>Uitloggen</i></b></a>
+                            <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="margin: 40px; height: 200px;" /></a>
+                            <a href="#" class="active"><b><%: loggedInPerson.Name %></b></a>
+                            <% if(loggedInPerson.Type == "Student") { %><a href="#"><b><%: loggedInStudent.LeerlingNummer %></b></a><% } %>
+                            <a href="#"><b><%: loggedInPerson.Email %></b></a>
+                            <a href="~/Logout" runat="server" class="logout-button-side">Uitloggen</a>
                         </div><br/><br/>
                         <% if (loggedInPerson.Type == "Student") { %>
                             <a runat="server" href="~/StudentHome"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
@@ -85,22 +96,23 @@
                             <a runat="server" href="~/FileList">Ingeleverde bestanden</a>
 
                         <% } else if (loggedInPerson.Type == "SysAdmin") { %>
+                            <a runat="server" href="~/Home">Home</a>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <span class="navigator-heading">Klassen<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddClass">Klas Invoeren</a>
                                     <a runat="server" href="~/ClassList">Klassenlijst</a>
                                 </div>
                             </div> 
                             <div class="navigator-category">
-                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <span class="navigator-heading">Roosters<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
                                     <a runat="server" href="~/Schedule">Rooster</a>
                                 </div>
                             </div>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <span class="navigator-heading">Gebruikers<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
                                     <a runat="server" href="~/AddUser">Leerling Invoeren</a>
@@ -108,11 +120,10 @@
                                 </div>
                             </div>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Overig<i class="fa fa-caret-down"></i></span>
+                                <span class="navigator-heading">Overig<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
                                 <div class="navigator-category-content">
-                                    <a runat="server" href="~/AddSchedule">Rooster Items Toevoegen</a>
                                     <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
-                                    <a runat="server" href="~/StudentsByClass">Leerlingenlijsten</a>
+                                    <a runat="server" href="~/StudentsByClass">Mentor & Leerlingen</a>
                                 </div>
                             </div>
                         <% } %>
@@ -121,8 +132,8 @@
                     
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
-                    <hr style="border-top: 1px solid black!important" />
-                    <footer>
+                    <footer class="footer">
+                        <hr style="border-top: 1px solid black!important" />
                         <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
                     </footer>
                 </div>

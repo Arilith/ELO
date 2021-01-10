@@ -9,7 +9,7 @@
                 <div class="container-title">Volgende uur</div>
                 <div class="container-content">
                     <div class="row">
-                        <div class="col-lg-3"><img src="Content/Pictures/Hoofd leraar.jpg" style="border-radius:50%; width: 100px; "/></div>
+                        <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 100px; "/></div>
                         <div class="col-lg-9">
                             Engels - E16<br/>
                             <b>HW: Maak opdracht 14 t/m 17 en lees pagina 54 t/m 58 in het lesboek.</b>
@@ -32,9 +32,9 @@
                 <div class="container-title">Laatste cijfers</div>
                 <div class="container-content">
                     <div class="row">
-                            <b class="middle">Wiskunde B - toets integralen - 5.5</b><br /><br />
-                            <b class="middle">Nederlands - toets grammatica - </b><b class="red middle">4.3</b><br /><br />
-                            <b class="middle">Engels - SO woorden unit 3 - 9.7</b><br />
+                        <b class="middle">Wiskunde B - toets integralen - 5.5</b><br /><br />
+                        <b class="middle">Nederlands - toets grammatica - </b><b class="red middle">4.3</b><br /><br />
+                        <b class="middle">Engels - SO woorden unit 3 - 9.7</b><br />
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@
                 <div class="container-title">3 toetsen deze week</div>
                 <div class="container-content">
                     <div class="row">
-                            <b class="middle">Duits - Boektoets! Denk aan het meenemen van het boek!</b><br /><br />
-                            <b class="middle">Geschiedenis - SO tweede wereldoorlog</b><br /><br />
-                            <b class="middle">Natuurkunde - Toets optica</b><br />
+                        <b class="middle">Duits - Boektoets! Denk aan het meenemen van het boek!</b><br /><br />
+                        <b class="middle">Geschiedenis - SO tweede wereldoorlog</b><br /><br />
+                        <b class="middle">Natuurkunde - Toets optica</b><br />
                     </div>
                 </div>
                 </div>
