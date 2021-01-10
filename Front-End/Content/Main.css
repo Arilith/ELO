@@ -91,7 +91,14 @@ body {
     }
     .sidenav {
         width: 265px;
-        background: rgba(0, 0, 0, 1);
+        /* background: rgba(40, 40, 40, 1); */
+        background: #102E4A;
+        
+    }
+
+    .sidenav a {
+        color: rgb(200, 200, 200);
+        font-size: 18px;
     }
 
     .closebtn {
@@ -103,15 +110,18 @@ body {
     }
 
     .topnav {
+        /* position: absolute; */
         display: block;
-        background-color: #333;
+        background-color: #55c1ff;
         overflow: hidden;
+        width: calc(100% - 265px);
+        margin-left: 265px;
     }
 
 
     .topnav a {
         float: left;
-        color: #f2f2f2;
+        color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -124,7 +134,7 @@ body {
     }
 
     .topnav a.active {
-        background-color: rgba(0, 100, 100, 0.5);
+        /* background-color: rgba(0, 100, 100, 0.5); */
         color: white;
     }
 
@@ -145,22 +155,35 @@ body {
     padding: 50px;
     overflow-x: hidden;
     position: absolute;
-    background: rgba(255, 255, 255, 1);
+    /* background: rgba(255, 255, 255, 1); */
+    background: url("https://media.discordapp.net/attachments/705752605456072714/797541426401378384/preview16.png");
+    /* background-color: #ffffff; */
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%2354c8e1' fill-opacity='0.11'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E"); */
+    background-size: 30%;
     /* background: rgba(0, 100, 100, 1); */
-    background: rgb(32,89,122);
-    background: linear-gradient(0deg, rgba(32,89,122,1) 0%, rgba(188,159,156,1) 0%, rgba(138,160,181,1) 25%);
+    /* background: url("Pictures/backgroundBeter4.jpg") no-repeat center center fixed !important; */
+    /* -webkit-background-size: cover; */
+    /* -moz-background-size: cover; */
+    /* -o-background-size: cover; */
+    /* background-size: cover !important; */
 }
 
 .container-info {
-    background: rgba(225, 225, 225, 0.7);
-    border: 2px solid rgba(0,0,0,0.2);
+    /* background: rgba(0, 0, 0, 0.7); */
+    background: rgba(240, 240, 240, 1);
     backdrop-filter: blur(10px);
-    padding: 10px 10px 10px 10px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 6px;
     min-height: 200px;
     margin: 25px 25px 25px 25px;
-    color: rgba(80, 80, 80, 1);
+    color: rgba(60, 60, 60, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
+
+    .container-info:hover {
+        box-shadow: 0 3px 5px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+    }
 
 .container-info .container-title {
     text-align: center;
@@ -174,18 +197,37 @@ body {
     padding: 0px 10px 0px 10px;
 }
 
-.eind {
-    background: #91FF85 !important;
+.light-dark-check:checked ~ *.container-info {
+    height: 1000px !important;
+    background: pink !important;
 }
 
-.odd {
-    background-color: rgba(20,20,20,0.1) !important;
+.message {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px 0px 20px 0px;
 }
 
-.odd .eind {
-    background: #72C969 !important;
+.message:last-child {
+    border: none !important;
 }
 
-.red {
-    color:red;
+.message .message-title {
+    font-weight: bold;
+}
+
+.footer {
+    position: absolute;
+    bottom: 25px;
+    width: 80vw;
+}
+
+.navigator-heading {
+    font-family: mainfont;
+    color: white;
+    font-size: 23px;
+    margin-left: 20px;
+}
+
+.navigator-category-content:last-child {
+    margin-bottom: 20px;
 }
