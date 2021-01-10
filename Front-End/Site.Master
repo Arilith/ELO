@@ -90,10 +90,10 @@
                             <a runat="server" href="~/UploadFile"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
                             <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
-                            <a runat="server" href="~/Home">Home</a>
-                            <a runat="server" href="~/AddGrade">Cijfers Invoeren</a>
-                            <a runat="server" href="~/AddHomework">Huiswerk Toevoegen</a>
-                            <a runat="server" href="~/FileList">Ingeleverde bestanden</a>
+                            <a runat="server" href="~/Home"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
+                            <a runat="server" href="~/AddGrade"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers Invoeren</a>
+                            <a runat="server" href="~/AddHomework"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk Toevoegen</a>
+                            <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Ingeleverde bestanden</a>
 
                         <% } else if (loggedInPerson.Type == "SysAdmin") { %>
                             <a runat="server" href="~/Home">Home</a>

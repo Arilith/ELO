@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <form method="post" id="addleermiddel" name="addleermiddel">
+                    <div class="jelly-form" style="width:356px">
                     <label for="subject">Vak</label><br/>
                     <input id="subject" class="form-control" name="subject" type="text" required/><br/>
 
@@ -21,7 +22,7 @@
                     <input id="description" class="form-control" name="description" type="text" required/> <br/>       
 
                     <br/>
-                    <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
+                    <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button></div>
                 </form>
                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
             </div>

@@ -9,6 +9,7 @@
                    { %>
                 <form method="post" id="selectclass" name="selectclass">
                     <label for="_class">Selecteer een Klas</label><br/>
+                    <div class="jelly-form" style="width:356px">
                     <select id="_class" class="form-control" name="_class">
                         <% foreach (Class _class in classMan.GetClassListFromDatabase(LoggedInPerson.School))
                            { %>
@@ -16,10 +17,12 @@
                         <% } %>
                     </select><br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Selecteren</button>
+                        </div>
                 </form>
                 <% } %>
                 <% if (IsPostBack && Request.Form["studentName"] == null) { %>
                 <form method="post" id="addgrade" name="addgrade">
+                    <div class="jelly-form" style="width:356px">
                     <input type="hidden" value="<%: Request.Form["_class"] %>" name="_class" id="_class" class="form-control"/>
                     <label for="studentName">Naam student</label><br/>
                     <select id="studentName" class="form-control" name="studentName">
@@ -45,10 +48,10 @@
                     <input id="grade" class="form-control" name="grade" type="text" required/><br/>
                     <br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Invoeren</button>
+                        </div>
                 </form>
                 <% } %>
             </div>
         </div>
     </div>
-
 </asp:Content>

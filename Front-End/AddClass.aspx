@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-lg-6">
             <form method="post" id="addteacher" name="addteacher">
+                <div class="jelly-form" style="width:356px">
                 <label for="name">Klasnaam</label><br/>
                 <input id="name" class="form-control" name="name" type="text" placeholder="OB1B" required/>
                 <br/>
@@ -23,6 +24,7 @@
                 <input id="studyyear" class="form-control" name="studyyear" type="number" min="1" max="6" placeholder="1 t/m 6" required/>
                 <br/>
                 <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
+                    </div>
             </form>
         </div>
         <asp:Label ID="OutputLabel" runat="server"></asp:Label>

@@ -4,6 +4,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <% if (!IsPostBack) { %>
     <form method="post" id="classform" name="classform">
+        <div class="jelly-form" style="width:356px">
         <label for="class">Selecteer een klas</label>
         <select id="class" name="class" class="form-control">
             <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School))
@@ -11,7 +12,7 @@
                 <option value="<%: _class.UUID %>"><%: _class.Name %></option>
             <% } %>
         </select><br/><br/>
-        <button class="btn btn-success" type="submit">Verstuur</button>
+        <button class="btn btn-success" type="submit">Verstuur</button></div>
     </form>
     <% } %>
     <% if (IsPostBack && Request.Form["mentor"] == null) { %>
@@ -60,6 +61,7 @@
             <div class="col-lg-3">
                 <h2>Mentor veranderen</h2>
                 <form method="post" name="addmentor" id="addmentor">
+                    <div class="jelly-form" style="width:356px">
                     <input type="hidden" value="<%: Request.Form["class"] %>" name="class" id="class" class="form-control"/>
                     <label for="mentor">Mentor</label><br/>
                     <select name="mentor" id="mentor" class="form-control">
@@ -67,7 +69,7 @@
                             <option value="<%: mentor.UserId %>"><%: mentor.Name %></option>    
                         <% } %>
                     </select><br/>
-                    <button type="submit" class="btn btn-info">Verander</button>
+                    <button type="submit" class="btn btn-info">Verander</button></div>
                     <asp:Label ID="OutputLabel" runat="server" Text=""></asp:Label>
                 </form>
             </div>

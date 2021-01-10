@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-lg-6">
             <form method="post" id="addstudent" name="addstudent">
+                <div class="jelly-form" style="width:356px">
                 <label for="name">Naam</label><br/>
                 <input id="name" class="form-control" name="name" type="text" placeholder="Joep Pieters" required/><br/>
                 
@@ -26,7 +27,7 @@
                     <% } %>
                 </select>
                 <br/>
-                <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
+                <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button></div>
             </form>
             <asp:Label ID="ErrorLabel" runat="server" Text=""></asp:Label>
         </div>

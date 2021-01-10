@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddSchedule.aspx.cs" Inherits="Front_End.AddSchedule" %>
+﻿<%@ Page Title="Rooster item toevoegen" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddSchedule.aspx.cs" Inherits="Front_End.AddSchedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-form">
         <%@ Import Namespace="ELO" %>
@@ -7,6 +7,7 @@
         <label for="teacherName">Teacher</label><br/>
 
         <%-- selectievak leraar --%>
+        <div class="jelly-form" style="width:356px">
         <select id="teacherName" class="form-control" name="teacherName" required>
             <option selected disabled hidden>Abdhulla Klapstulla</option>
             <% foreach (Teacher teacher in userMan.GetPersonListFromDB(loggedInPerson.School, "Teacher"))
@@ -43,7 +44,7 @@
         <label for="dateAndTime">Date+Time</label><br/>
         <input id="dateAndTime" class="form-control" name="dateAndTime" type="datetime-local" required/><br/>
 
-        <button style="width: auto" type="submit" class="btn btn-success">Voeg Toe</button><br/><br/><br/>
+        <button style="width: auto" type="submit" class="btn btn-success">Voeg Toe</button></div><br/><br/><br/>
         <br />
     </div>
     <div><asp:Label ID="OutputLabelSchedule" runat="server"></asp:Label></div>

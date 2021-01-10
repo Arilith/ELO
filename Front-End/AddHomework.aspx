@@ -7,6 +7,7 @@
             <div class="col-lg-6">
                 <form method="post" id="addstudent" name="homework">
                     <label for="subject">Vak</label><br/>
+                    <div class="jelly-form" style="width:356px">
                     <select id="subject" class="form-control" name="subject" type="text" placeholder="Nederlands" required><br/>
 
                     <% foreach (Subject subject in subjectManager.GetSubjectList(LoggedInPerson.School)) { %>
@@ -39,6 +40,7 @@
                     <label for="exp">Te verdienen punten</label><br/>
                     <input id="exp" class="form-control" name="exp" type="text" placeholder="100" required/><br/>      
                     <br/>
+                        </div>
 
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                 </form>

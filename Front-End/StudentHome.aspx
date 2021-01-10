@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info">
-                <div class="container-title">Volgende uur</div>
+                <div class="container-title">Volgend uur</div>
                 <div class="container-content">
                     <div class="row">
                         <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 100px; "/></div>
@@ -45,7 +45,7 @@
                     <div class="row">
                             <b class="middle">Duits <i class="fas fa-beer"></i> - Boektoets! Denk aan het meenemen van het boek!</b><br /><br />
                             <b class="middle">Geschiedenis <i class="fas fa-landmark"></i> - SO tweede wereldoorlog</b><br /><br />
-                            <b class="middle">Natuurkunde - Toets optica</b><br />
+                            <b class="middle">Natuurkunde <i class="fas fa-broadcast-tower"></i> - Toets optica</b><br />
                     </div>
                 </div>
                 </div>

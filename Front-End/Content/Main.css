@@ -231,3 +231,98 @@ body {
 .navigator-category-content:last-child {
     margin-bottom: 20px;
 }
+
+.eind {
+    background: #91FF85 !important;
+}
+
+.odd {
+    background-color: rgba(20,20,20,0.1) !important;
+}
+
+.odd .eind {
+    background: #72C969 !important;
+}
+
+.red {
+    color:red;
+}
+
+#loader {
+    border: 16px solid rgba(255, 255, 255, 0.5);
+    /* Light grey */
+    border-top: 16px solid rgb(27, 40, 61);
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin-bottom: 10px;
+    margin-top: 230px;
+}
+
+    #loader:after {
+        position: absolute;
+        bottom: 100%;
+    }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#search-overlay {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader-text {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.jelly-form {
+    position: relative;
+}
+
+.jelly-form .form-control {
+    border-top: none!important;
+    border-left: none!important;
+    border-right: none!important;
+    border-bottom: 2px solid #0099CC!important;
+    box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    outline: none!important;
+    font-size: 1.0em!important;
+    padding: 0.6em 0.6em!important;
+    width: 100%!important;
+}
+
+.jelly-form:before, .jelly-form:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    height: 6px;
+    border-left: 2px solid #0099CC;
+}
+
+.jelly-form:before {
+    left: 0;
+}
+
+.jelly-form:after {
+    right: 0;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(20,20,20,0.1) !important;
+}

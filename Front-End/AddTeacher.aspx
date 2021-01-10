@@ -7,6 +7,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <form method="post" id="addteacher" name="addteacher">
+                    <div class="jelly-form" style="width:356px">
                     <label for="name">Naam</label><br/>
                     <input id="name" class="form-control" name="name" type="text" placeholder="Jan de hoop" required/><br/>
 
@@ -33,6 +34,7 @@
                    <%--      <% } %> --%>
                    <%--  </select> --%>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
+                        </div>
                 </form>
             </div>
             <asp:Label ID="OutputLabel" runat="server"></asp:Label>

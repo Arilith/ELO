@@ -171,6 +171,12 @@ option {
     border: none !important;
 }
 
+.btn-success:hover {
+    background-color: rgba(0, 125, 100, 0.7) !important;
+}
 
+.btn-info:hover {
+    background-color: rgba(0, 50, 150, 0.7) !important;
+}
 
 
