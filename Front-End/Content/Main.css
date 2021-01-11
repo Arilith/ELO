@@ -217,7 +217,6 @@ body {
 
 .footer {
     position: absolute;
-    bottom: 25px;
     width: 80vw;
 }
 
@@ -362,4 +361,14 @@ body {
 
 table, th, tr {
     border:0px!important;
+}
+
+h2 {
+    color: #777CA3 !important;
+    font-family: mainfont, cursive !important;
+    font-size: 26px !important;
+    font-weight: normal !important;
+    line-height: 32px !important;
+    margin: 0 0 18px !important;
+    text-shadow: 1px 0 0 #fff !important;
 }
