@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <form method="post" id="addstudent" name="homework">
-                    <label for="startdate">Startdatum</label><br/>
-                    <input id="startdate" class="form-control" name="startdate" type="date" required/><br/>
+                    <label for="startDate">Start Datum</label><br/>
+                    <input id="startDate" class="form-control" name="startdate" type="date" required/><br/>
 
-                    <label for="enddate">Einddatum</label><br/>
-                    <input id="enddate" class="form-control" name="enddate" type="date" required/><br/>
+                    <label for="endDate">Eind Datum</label><br/>
+                    <input id="endDate" class="form-control" name="enddate" type="date" required/><br/>
                
 
                     <label for="seasonname">Seizoen Naam</label><br/>

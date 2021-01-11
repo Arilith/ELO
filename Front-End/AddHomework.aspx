@@ -28,6 +28,9 @@
                
                     <label for="istest">Is dit een toets?</label>
                     <input type="checkbox" class="form-control" name="istest" id="istest" /><br/>
+                        
+                    <label for="forgrade">Krijg je hier een cijfer voor?</label>
+                    <input type="checkbox" class="form-control" name="forgrade" id="forgrade" /><br/>
 
                     <label for="title">Huiswerk</label><br/>
                     <input id="title" class="form-control" name="title" type="text" placeholder="Opdracht 1 tot en met 6" required/><br/>      
