@@ -17,13 +17,13 @@
         <thead>
             <tr class="head-table">
                 <th>Vak</th>
+                <th>HW 1</th>
+                <th>HW 2</th>
+                <th>HW 3</th>
+                <th>HW 4</th>
+                <th>HW 5</th>
                 <th>SO 1</th>
                 <th>SO 2</th>
-                <th>SO 3</th>
-                <th>SO 4</th>
-                <th>SO 5</th>
-                <th>SO 6</th>
-                <th>SO 7</th>
                 <th>T 1</th>
                 <th>T 2</th>
                 <th>T 3</th>
