@@ -10,11 +10,8 @@
         th {
             padding: 10px;
         }
-        table, th, td {
-            border: 1px solid gray!important;
-        }
     </style>
-    <table class="table-striped table-bordered ">
+    <table class="table-striped table-bordered styled-table">
         <thead>
             <tr>
                 <th>Naam</th>

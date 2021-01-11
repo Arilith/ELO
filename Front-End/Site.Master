@@ -82,6 +82,7 @@
                             <a href="~/Logout" runat="server" class="logout-button-side">Uitloggen</a>
                         </div><br/><br/>
                         <% if (loggedInPerson.Type == "Student") { %>
+                            <img src="Content/Pictures/logo-Studycluster-wit-beter.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
                             <a runat="server" href="~/StudentHome"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
                             <a runat="server" href="~/Schedule"><i class="fa fa-calendar" style="margin-right: 10px;"></i>Rooster</a>
                             <a runat="server" href="~/Gradelist"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers</a>
@@ -90,12 +91,14 @@
                             <a runat="server" href="~/UploadFile"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
                             <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
+                            <img src="Content/Pictures/logo-Studycluster-wit-beter.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
                             <a runat="server" href="~/Home"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
                             <a runat="server" href="~/AddGrade"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers Invoeren</a>
                             <a runat="server" href="~/AddHomework"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk Toevoegen</a>
                             <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Ingeleverde bestanden</a>
 
                         <% } else if (loggedInPerson.Type == "SysAdmin") { %>
+                            <img src="Content/Pictures/logo-Studycluster-wit-beter.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
                             <a runat="server" href="~/Home">Home</a>
                             <div class="navigator-category">
                                 <span class="navigator-heading">Klassen<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
@@ -133,7 +136,7 @@
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                     <footer class="footer">
-                        <hr style="border-top: 1px solid black!important" />
+                        <hr style="border-top: 1px solid black!important;" />
                         <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
                     </footer>
                 </div>

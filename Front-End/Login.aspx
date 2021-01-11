@@ -10,7 +10,7 @@
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
         <link id="link1" rel="stylesheet" href="~/Content/Login.css" type="text/css" runat="server" />
     </meta>
-    <title><%: Page.Title %> - Study Cluster</title>
+    <title>Login - Study Cluster</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>

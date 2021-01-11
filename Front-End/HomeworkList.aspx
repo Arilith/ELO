@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HomeworkList.aspx.cs" Inherits="Front_End.HomeworkList" %>
+﻿<%@ Page Title="Huiswerk" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HomeworkList.aspx.cs" Inherits="Front_End.HomeworkList" %>
 <%@ Import Namespace="ELO" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2 draggable="auto">Huiswerk</h2>

@@ -25,13 +25,10 @@
                     th {
                         padding: 10px;
                     }
-                    table, td, th {
-                        border:1px solid gray!important;
-                    }
                 </style>
         
                 <h2>Klassenlijst van klas: <%: classManager.GetClassFromDatabase(Request.Form["class"]).Name %></h2>
-                <table class="table-striped table-bordered ">
+                <table class="table-striped table-bordered styled-table">
                     <thead>
                     <tr>
                         <th>Naam</th>
