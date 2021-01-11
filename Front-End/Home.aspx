@@ -2,6 +2,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-lg-4">
+            <a href="#">
             <div class="container-info">
                 <div class="container-title">Volgend uur</div>
                 <div class="container-content">
@@ -11,10 +12,12 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         <div class="col-lg-4">
-            <div class="container-info">
-                <div class="container-title">Meldingen</div>
+            <a href="#">
+            <div class="container-info">  
+             <div class="container-title">Meldingen</div>
                 <div class="container-content">
                     <div class="message-holder">
                         <div class="message">
@@ -28,8 +31,10 @@
                     </div>
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-lg-4">
+            <a href="#">
             <div class="container-info">
                 <div class="container-title">Mailbox</div>
                 <div class="container-content">
@@ -41,7 +46,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
-        </div>
         </div>
 </asp:Content>

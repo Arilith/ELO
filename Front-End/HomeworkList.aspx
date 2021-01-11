@@ -18,18 +18,21 @@
             <div class="list-group">
                 <% foreach (Homework homework in HomeworkManager.GetHomeWorkForClassFromDB(LoggedInStudent.School, LoggedInStudent.PartOfClass)){ %>
                     <a href="#" class="list-group-item active" <% if(homework.IsTest == true) { %>style="background-color: #a94442; border-color: #a94442;"<% } %>>
-                            <h4 class="list-group-item-heading"><%: homework.Subject.Name %> - <%: homework.Title %></h4>
-                            <p class="list-group-item-text">
-                                <div class="pull-right">Voltooid <br/><input type="checkbox" /></div>
-                                <%: homework.Content %> <br/> Moet af zijn op: <i><%: homework.DueDate %></i>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading"></h4>
-                            <p class="list-group-item-text">
-                                Dit huiswerk is <% if (homework.IsTest == false){ %> geen <% } else { %> <b>wel</b> een <% } %> toets.  <br/><i>Te verdienen XP: <%: homework.Exp  %> </i>
-                            </p>
-                        </a>
+                        <h4 class="list-group-item-heading"><%: homework.Subject.Name %> - <%: homework.Title %></h4>
+                        <p class="list-group-item-text">
+                            <div class="pull-right">Voltooid <br/><input type="checkbox" /></div>
+                            <%: homework.Content %> <br/> Moet af zijn op: <i><%: homework.DueDate %></i>
+                        </p>
+                    </a>
+                    <span href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading"></h4>
+                        <p class="list-group-item-text">
+                            Dit huiswerk is <% if (homework.IsTest == false){ %> geen <% } else { %> <b>wel</b> een <% } %> toets.  <br/><i>Te verdienen XP: <%: homework.Exp  %> </i>
+                            <div class="pull-right">
+                                <a href="UploadFile?homeworkUUID=<%: homework.UUID %>" class="btn btn-info" style="margin-top: -50px;">Bestand uploaden</a>
+                            </div>
+                        </p>
+                    </span>
                     <br/>
                 <% } %>
             </div>
