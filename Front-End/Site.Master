@@ -75,15 +75,16 @@
                     <span style="font-size:30px;cursor:pointer" id="openbutton" onclick="openNav()">&#9776; Menu</span>
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div class="mobile-menu">
                         <div class="user-info">
-                            <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="margin: 40px; height: 200px;" /></a>
+                            <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" class="ned"/></a>
                             <a href="#" class="active"><b><%: loggedInPerson.Name %></b></a>
                             <% if(loggedInPerson.Type == "Student") { %><a href="#"><b><%: loggedInStudent.LeerlingNummer %></b></a><% } %>
                             <a href="#"><b><%: loggedInPerson.Email %></b></a>
                             <a href="~/Logout" runat="server" class="logout-button-side">Uitloggen</a>
                         </div><br/><br/>
                         <% if (loggedInPerson.Type == "Student") { %>
-                            <img src="Content/Pictures/logo-ELO.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
+                            <img src="Content/Pictures/logo-ELO.png" class="logo"/>
                             <a runat="server" href="~/StudentHome"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
                             <a runat="server" href="~/Schedule"><i class="fa fa-calendar" style="margin-right: 10px;"></i>Rooster</a>
                             <a runat="server" href="~/Gradelist"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers</a>
@@ -92,6 +93,7 @@
                             <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
                             <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
                             <a runat="server" href="~/BattlePass"><i class="fas fa-gamepad" style="margin-right: 10px;"></i>Puntenseizoen</a>
+                            </div>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
                             <img src="Content/Pictures/logo-ELO.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
                             <a runat="server" href="~/Home"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>

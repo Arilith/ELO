@@ -25,7 +25,7 @@
                 <div class="container-title">Opdrachten</div>
                  <div class="container-content">
                     <div class="row">
-                            <b style="left:50px; position:absolute">Engels - Inleverdatum 07-01-2021</b><br/><br />
+                            <b style="left:50px; position:absolute">Engels <i class="fas fa-flag-usa"></i> - Inleverdatum 07-01-2021</b><br/><br />
                             <p class="middle">Maak de online opdracht over werkwoorden op www.ofcourse.nl</p>
                     </div>
                 </div>

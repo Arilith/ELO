@@ -17,7 +17,7 @@ namespace ELO.SQLClasses
 
         public File UploadFile(File fileToUpload)
         {
-            string uploadFileQuery = $"INSERT INTO file (fileName, filePath, studentUUID, homeworkUUID) VALUES (@fileName, @filePath, @studentUUID, @homeworkUUID)";
+            string uploadFileQuery = $"INSERT INTO file (fileName, filePath, studentUUID, homeworkUUID, subjectUUID) VALUES (@fileName, @filePath, @studentUUID, @homeworkUUID, @subjectUUID)";
             mysqlManager = new MySqlManager();
             MySqlCommand uploadFileCommand = new MySqlCommand(uploadFileQuery, mysqlManager.con);
 
@@ -25,6 +25,7 @@ namespace ELO.SQLClasses
             uploadFileCommand.Parameters.AddWithValue("@filePath", fileToUpload.FilePath);
             uploadFileCommand.Parameters.AddWithValue("@studentUUID", fileToUpload.Student.UserId);
             uploadFileCommand.Parameters.AddWithValue("@homeworkUUID", fileToUpload.Homework.UUID);
+            uploadFileCommand.Parameters.AddWithValue("@subjectUUID", fileToUpload.Homework.Subject.uuid);
 
             uploadFileCommand.Prepare();
             uploadFileCommand.ExecuteNonQuery();
@@ -50,6 +51,8 @@ namespace ELO.SQLClasses
 
             return returnFiles;
         }
+
+
 
         public List<File> GetFileListByUser(string userUUID)
         {
@@ -95,13 +98,14 @@ namespace ELO.SQLClasses
 
             UserMan userMan = new UserMan();
             HwMan homeworkMan = new HwMan();
+            SubjectManager subjectManager = new SubjectManager();
 
             string fileName = Convert.ToString(reader["fileName"]);
             string filePath = Convert.ToString(reader["filePath"]);
             string fileUploadDate = Convert.ToString(reader["uploadDate"]); ;
             Student fileStudent = (Student)userMan.FindUserInDataBase(Convert.ToString(reader["studentUUID"]));
             Homework fileHomework = homeworkMan.GetHomeworkFromDB(Convert.ToString(reader["homeworkUUID"]));
-
+            Subject fileSubject = subjectManager.FindSubjectInDatabase(Convert.ToString(reader["subjectUUID"]));
             userMan = null;
             homeworkMan = null;
 

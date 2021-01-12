@@ -15,10 +15,11 @@ namespace Front_End
 
         public Person loggedInPerson;
         public UserMan usermanager;
-
+        public ClassManager classManager;
         protected void Page_Load(object sender, EventArgs e)
         {
             usermanager = new UserMan();
+            classManager = new ClassManager();
             loggedInPerson = (Person)Session["person"];
         }
 

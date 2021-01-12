@@ -96,23 +96,23 @@ namespace ELO
         {
             return userSQL.FindUserInDataBase(uuid);
         }
-        public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email)
+        public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email, int exp)
         {
-            SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email);
+            SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email, exp);
 
             return newAdmin;
         }
 
-        public Teacher AddTeacherToDataBase(string username, string password, Person loggedInperson, string name, string email)
+        public Teacher AddTeacherToDataBase(string username, string password, Person loggedInperson, string name, string email, int exp)
         {
             string school = loggedInperson.School;
 
-            Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email);
+            Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email, exp);
 
             return newTeacher;
         }
 
-        public string AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, Person loggedInPerson)
+        public string AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, Person loggedInPerson, int exp)
         {
             classMan = new ClassManager();
 
@@ -127,7 +127,7 @@ namespace ELO
             else
                 return "Je moet eerst een mentor invoeren bij deze klas voordat je er leerlingen bij kan voegen!";
 
-            Student newStudent = userSQL.AddStudent(userName, password, leerlingnummer, school, name, email, classUUID, mentorUUID);
+            Student newStudent = userSQL.AddStudent(userName, password, leerlingnummer, school, name, email, classUUID, mentorUUID, exp);
 
             if (newStudent != null)
                 return "Student met success toegevoegd!";

@@ -45,12 +45,25 @@ body {
     margin-left: 50px;
 }
 
+.logo {
+    width: 80%;
+    margin-left: 10%;
+    position: absolute;
+    top: 10px
+}
+
+.ned {
+    margin: 40px;
+    height: 200px;
+}
 
 @media only screen and (max-width: 700px) {
     .sidenav {
         padding-top: 15px;
         background: rgba(0, 0, 0, 0.7);
     }
+
+
 
     .sidenav a {
         color: rgba(200, 200, 200, 1);
@@ -80,6 +93,18 @@ body {
 
     .logout-button-side {
         display: block;
+    }
+
+    .logo {
+        top: 50px;
+    }
+
+    .mobile-menu {
+        padding-top: 30%;
+    }
+
+    .ned {
+        padding-left: 0%;
     }
 }
 
@@ -218,6 +243,10 @@ body {
 .footer {
     position: absolute;
     width: 80vw;
+}
+
+.footer hr {
+    margin-right:5%;
 }
 
 .navigator-heading {
@@ -519,4 +548,8 @@ h2 {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.normal {
+    width: 100%!important;
 }
