@@ -10,7 +10,7 @@ namespace ELO
         public GradeSQL gradeSql;
         public UserMan userMan;
         public SubjectManager subjectManager;
-
+        public HwMan homeworkManager;
         public GradeMan()
         {
             gradeSql = new GradeSQL();
@@ -40,15 +40,20 @@ namespace ELO
             return returnGradeList;
         }
 
-        public void AddGradeToDatabase(string school, string studentuuid, double grade, decimal weight, string subjectName)
+        public void AddGradeToDatabase(string school, string studentuuid, double grade, decimal weight, string subjectName, string homeworkUUID)
         {
             userMan = new UserMan();
             subjectManager = new SubjectManager();
+            homeworkManager = new HwMan();
+
             Student student = (Student)userMan.FindUserInDataBase(studentuuid);
             Subject subject = subjectManager.FindSubjectInDatabase(subjectName);
+            Homework homework = homeworkManager.GetHomeworkFromDB(homeworkUUID);
+
+
             userMan = null;
             subjectManager = null;
-            gradeSql.AddGradeToDB(school, grade, weight, subject, student);
+            gradeSql.AddGradeToDB(school, grade, weight, subject, student, homework);
         }
 
         public List<Grade> GetRecentGrades(string studentUUID, int limit)

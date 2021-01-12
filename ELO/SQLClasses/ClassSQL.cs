@@ -31,12 +31,12 @@ namespace ELO.SQLClasses
             while (classReader.Read())
             {
                 string returnName = classReader["className"].ToString();
-                string level = classReader["className"].ToString();
+                string level = classReader["level"].ToString();
                 string uuid = classReader["uuid"].ToString();
                 string mentorUUID = classReader["mentorUUID"].ToString();
                 int studyYear = Convert.ToInt32(classReader["studyYear"]);
-                string cluster = classReader["className"].ToString();
-                string leshuis = classReader["className"].ToString();
+                string cluster = classReader["cluster"].ToString();
+                string leshuis = classReader["leshuis"].ToString();
 
                 Teacher foundTeacher = (Teacher)userSql.FindUserInDataBase(mentorUUID);
 

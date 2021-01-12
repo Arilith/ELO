@@ -14,15 +14,20 @@ namespace Front_End
         public UserMan userMan;
         public GradeMan gradeMan;
         public Person LoggedInPerson;
+        public Student LoggedInStudent;
         public SubjectManager subjectMan;
+        public HwMan homeworkManager;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             LoggedInPerson = (Person)Session["person"];
+            LoggedInStudent = (Student) LoggedInPerson;
             gradeMan = new GradeMan();
             classMan = new ClassManager();
             userMan = new UserMan();
             subjectMan = new SubjectManager();
+            homeworkManager = new HwMan();
+
 
 
             if (IsPostBack && Request.Form["studentName"] != null)
@@ -40,8 +45,9 @@ namespace Front_End
             double grade = Convert.ToDouble(Request.Form["grade"]);
             string studentuuid = Request.Form["studentName"];
             string subjectName = Request.Form["subject"];
+            string homeworkUUID = Request.Form["homework"];
 
-            gradeMan.AddGradeToDatabase(school, studentuuid, grade, weight, subjectName);
+            gradeMan.AddGradeToDatabase(school, studentuuid, grade, weight, subjectName, homeworkUUID);
         }
     }
 }

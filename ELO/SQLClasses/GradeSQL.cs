@@ -21,15 +21,16 @@ namespace ELO.SQLClasses
         private string date;
         private string studentuuid;
         private int year;
+        private Homework homework;
 
         public GradeSQL()
         {
             _mySqlManager = new MySqlManager();
         }
 
-        public void AddGradeToDB(string school, double grade, decimal weight, Subject subject, Student student)
+        public void AddGradeToDB(string school, double grade, decimal weight, Subject subject, Student student, Homework homework)
         {
-            MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, grade, weight, subjectUUID, userUUID, classUUID) VALUES (@school, @grade, @weight, @subjectUUID, @userUUID, @classUUID)", _mySqlManager.con);
+            MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, grade, weight, subjectUUID, userUUID, classUUID, homeworkUUID) VALUES (@school, @grade, @weight, @subjectUUID, @userUUID, @classUUID, @homeworkUUID)", _mySqlManager.con);
 
             addGradeCommand.Parameters.AddWithValue("@school", school);
             addGradeCommand.Parameters.AddWithValue("@grade", grade);
@@ -37,6 +38,7 @@ namespace ELO.SQLClasses
             addGradeCommand.Parameters.AddWithValue("@subjectUUID", subject.uuid);
             addGradeCommand.Parameters.AddWithValue("@userUUID", student.UserId);
             addGradeCommand.Parameters.AddWithValue("@classUUID", student.PartOfClass.UUID);
+            addGradeCommand.Parameters.AddWithValue("@homeworkUUID", homework.UUID);
 
             addGradeCommand.Prepare();
             addGradeCommand.ExecuteNonQuery();
@@ -67,7 +69,7 @@ namespace ELO.SQLClasses
                 Class gradeClassObj = classManager.GetClassFromDatabase(gradeClass);
                 Subject gradeSubjectObj = subjectManager.FindSubjectInDatabase(subjectString);
 
-                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, gradeSubjectObj, weight, year));
+                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, gradeSubjectObj, weight, year, homework));
             }
 
             userManager = null;
@@ -101,7 +103,7 @@ namespace ELO.SQLClasses
                 Student studentObj = (Student)userManager.FindUserInDataBase(studentuuid);
                 Class gradeClassObj = classManager.GetClassFromDatabase(gradeClass);
 
-                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year));
+                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year, homework));
             }
 
             userManager = null;
@@ -137,7 +139,7 @@ namespace ELO.SQLClasses
                 string returnSubjectUUID = Grades["subjectUUID"].ToString();
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
-                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year));
+                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year, homework));
             }
 
             userManager = null;
@@ -171,7 +173,7 @@ namespace ELO.SQLClasses
                 Class gradeClassObj = classManager.GetClassFromDatabase(gradeClass);
                 Subject subjectObj = subjectManager.FindSubjectInDatabase(subjectString);
 
-                returnGrade = new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year);
+                returnGrade = new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year, homework);
 
                 userManager = null;
                 classManager = null;
@@ -189,6 +191,8 @@ namespace ELO.SQLClasses
 
         public void GetItemsFromReader(MySqlDataReader reader)
         {
+            HwMan homeworkManager = new HwMan();
+
             //Initialize Fields
             grade = Convert.ToDouble(reader["grade"]);
             weight = Convert.ToInt32(reader["weight"]);
@@ -199,6 +203,7 @@ namespace ELO.SQLClasses
             date = Convert.ToString(reader["date"]);
             studentuuid = Convert.ToString(reader["userUUID"]);
             year = Convert.ToInt32(reader["year"]);
+            homework = homeworkManager.GetHomeworkFromDB(Convert.ToString(reader["homeworkUUID"]));
         }
     }
 }
