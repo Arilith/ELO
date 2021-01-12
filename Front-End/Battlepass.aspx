@@ -4,7 +4,7 @@
     <%@ Import Namespace="System.Globalization" %>
     <%@ Import Namespace="ELO" %>
     <h2 draggable="auto">Seizoen</h2>
-    
+
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info2">
@@ -90,44 +90,16 @@
         </div>
         </div>
 
-    <%-- <style> --%>
-    <%--     td { --%>
-    <%--         padding: 10px; --%>
-    <%--     } --%>
-    <%-- --%>
-    <%--     th { --%>
-    <%--         padding: 10px; --%>
-    <%--     } --%>
-    <%-- --%>
-    <%--     table, th, td { --%>
-    <%--         border: 1px solid gray !important; --%>
-    <%--     } --%>
-    <%-- </style> --%>
-    <%-- <div class="row"> --%>
-    <%--     <div class="col-lg-1"></div> --%>
-    <%--     <% --%>
-    <%--         Dictionary<Level, Reward>.KeyCollection levelKeys = battlePassItems.Keys; --%>
-    <%--         foreach (Level level in levelKeys) --%>
-    <%--         { --%>
-    <%-- --%>
-    <%--     %> --%>
-    <%--     <a href="#" class="list-group-item active"> --%>
-    <%--         <h4 class="list-group-item-heading"></h4> --%>
-    <%--         <p class="list-group-item-text"> --%>
-    <%--             <b><%: level.LevelNumber %></b><br /> --%>
-    <%--         </p> --%>
-    <%--     </a> --%>
-    <%--     <a href="#" class="list-group-item"> --%>
-    <%--         <h4 class="list-group-item-heading"></h4> --%>
-    <%--         <p class="list-group-item-text"> --%>
-    <%--             $1$ <%: level.rewardUUID  Hier moet de reward komen  %> #1# --%>
-    <%--             <br /> --%>
-    <%--             <%: level.RequiredExp%> --%>
-    <%--         </p> --%>
-    <%--     </a> --%>
-    <%--     <br /> --%>
-    <%-- </div> --%>
-    <%-- --%>
-    <%-- <% } %> --%>
-    <%-- <div class="col-lg-1"></div> --%>
+        <%
+            Dictionary<Level, Reward>.KeyCollection levelKeys = GetBattlePass(loggedInPerson.School).Keys;
+            foreach (Level level in levelKeys)
+            {
+
+        %>
+            <b><%: level.LevelNumber %></b><br />
+            <% Reward foundReward = rewardMan.FindReward(level.rewardUUID); %>
+                <%: foundReward.Title %>
+                <br />
+                <%: level.RequiredExp %>
+    <% } %>
 </asp:Content>

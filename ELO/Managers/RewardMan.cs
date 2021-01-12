@@ -26,7 +26,7 @@ namespace ELO.Managers
 
         public Reward FindReward(string rewardUUID)
         {
-            Reward returnReward = (Reward)GetRewardList().Find(x => x.UUID == rewardUUID);
+            Reward returnReward = rewardSQL.FindReward(rewardUUID);
             return returnReward;
 		}
 
