@@ -17,7 +17,18 @@ namespace ELO
             //         teun.Name = Teun Spithoven
             get { return name; }
             // bv Console.Println(teun.Name)
-            set { name = value; }
+            private set
+            {
+                if (name != "Teun")
+                {
+                    name = value;
+                }
+
+                else
+                {
+                    name = "****";
+                }
+            }
         }
 
         // alles van de eerste comment tot hier doet hetzelfde als public string Name { get; set;)
@@ -39,7 +50,7 @@ namespace ELO
         // enum heeft vaste waardes die read-only zijn
         enum Aanwezig
         {
-            Niet,
+            Niet = 5,
             Matig,
             Redelijk,
             Goed,
