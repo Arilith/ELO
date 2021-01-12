@@ -148,7 +148,6 @@
             <% } %>
         </form>
         <% } %>
-    </div>
 </body>
 <%-- <script> --%>
 <%--     function myFunction() { --%>
