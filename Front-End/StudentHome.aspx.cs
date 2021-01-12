@@ -12,6 +12,7 @@ namespace Front_End
     {
 
         public Student loggedInStudent;
+        public GradeMan gradeMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {

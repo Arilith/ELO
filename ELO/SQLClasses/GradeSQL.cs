@@ -88,7 +88,7 @@ namespace ELO.SQLClasses
             List<Grade> returnGrades = new List<Grade>();
 
             //Get all grades where the user is the requested user.
-            MySqlCommand GetGradesCmd = new MySqlCommand($"SELECT * FROM grades WHERE userUUID = '{studentuuid}' AND subjectUUID = {subjectObj.uuid}", _mySqlManager.con);
+            MySqlCommand GetGradesCmd = new MySqlCommand($"SELECT * FROM grades WHERE userUUID = '{studentuuid}' AND subjectUUID = '{subjectObj.uuid}'", _mySqlManager.con);
             MySqlDataReader Grades = GetGradesCmd.ExecuteReader();
 
             //Go through all roles
@@ -102,6 +102,42 @@ namespace ELO.SQLClasses
                 Class gradeClassObj = classManager.GetClassFromDatabase(gradeClass);
 
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year));
+            }
+
+            userManager = null;
+            classManager = null;
+            subjectManager = null;
+
+            return returnGrades;
+        }
+
+        public List<Grade> GetGradeListOfStudent(string studentuuid, int limit)
+        {
+            //Initialize the managers
+            userManager = new UserMan();
+            classManager = new ClassManager();
+            subjectManager = new SubjectManager();
+
+            //Make a new list to return eventually.
+            List<Grade> returnGrades = new List<Grade>();
+
+            //Get all grades where the user is the requested user.
+            MySqlCommand GetGradesCmd = new MySqlCommand($"SELECT * FROM grades WHERE userUUID = '{studentuuid}' ORDER BY Id DESC LIMIT {limit}", _mySqlManager.con);
+            MySqlDataReader Grades = GetGradesCmd.ExecuteReader();
+
+            //Go through all roles
+            while (Grades.Read())
+            {
+                //Initialize Fields
+                GetItemsFromReader(Grades);
+
+                //Get objects from the strings
+                Student studentObj = (Student)userManager.FindUserInDataBase(studentuuid);
+                Class gradeClassObj = classManager.GetClassFromDatabase(gradeClass);
+                string returnSubjectUUID = Grades["subjectUUID"].ToString();
+                Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
+
+                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year));
             }
 
             userManager = null;
