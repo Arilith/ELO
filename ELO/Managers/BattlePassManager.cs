@@ -11,18 +11,20 @@ namespace ELO.Managers
         public Dictionary<Level, Reward> GetBattlePassLevelsBySchool(string schoolUUID)
         {
             LevelSQL levelSql = new LevelSQL();
+            RewardSQL rewardSql = new RewardSQL();
             LevelMan levelMan = new LevelMan();
             RewardMan rewardMan = new RewardMan();
             Dictionary<Level, Reward> returnDictionary = new Dictionary<Level, Reward>();
 
             foreach (Level level in levelSql.GetLevelsFromDB(schoolUUID))
             {
-                Level returnLevel = levelMan.FindLevel(level.UUID);
-                Reward returnReward = rewardMan.FindReward(level.rewardUUID);
+                Level returnLevel = levelSql.FindLevel(level.UUID);
+                Reward returnReward = rewardSql.FindReward(level.rewardUUID);
                 returnDictionary.Add(returnLevel, returnReward);
             }
 
             levelSql = null;
+            rewardSql = null;
             levelMan = null;
             rewardMan = null;
 

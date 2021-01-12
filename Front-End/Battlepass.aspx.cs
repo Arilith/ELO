@@ -11,7 +11,6 @@ namespace Front_End
         public Person loggedInPerson;
         public RewardMan rewardMan;
         public LevelMan levelMan;
-        public Dictionary<Level, Reward> battlePassItems;
         public BattlePassManager battlePassMan;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,7 +25,7 @@ namespace Front_End
         public Dictionary<Level, Reward> GetBattlePass(string schoolUUID)
         {
             // returned uit de database een dictionary van een reward die bij een level hoort
-            battlePassItems = new Dictionary<Level, Reward>(battlePassMan.GetBattlePassLevelsBySchool(schoolUUID));
+            Dictionary<Level, Reward> battlePassItems = new Dictionary<Level, Reward>(battlePassMan.GetBattlePassLevelsBySchool(schoolUUID));
             return battlePassItems;
         }
     }
