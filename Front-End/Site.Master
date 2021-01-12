@@ -92,7 +92,6 @@
                             <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
                             <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
                             <a runat="server" href="~/BattlePass"><i class="fas fa-gamepad" style="margin-right: 10px;"></i>Puntenoverzicht</a>
-                            </div>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
                             <img src="Content/Pictures/logo-ELO.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
                             <a runat="server" href="~/Home"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>

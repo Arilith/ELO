@@ -14,14 +14,14 @@ namespace Front_End
         public UserMan userMan;
         public GradeMan gradeMan;
         public Person LoggedInPerson;
-        public Student LoggedInStudent;
+        public Teacher LoggedInTeacher;
         public SubjectManager subjectMan;
         public HwMan homeworkManager;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             LoggedInPerson = (Person)Session["person"];
-            LoggedInStudent = (Student) LoggedInPerson;
+            LoggedInTeacher = (Teacher) LoggedInPerson;
             gradeMan = new GradeMan();
             classMan = new ClassManager();
             userMan = new UserMan();
