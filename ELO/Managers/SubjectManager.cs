@@ -61,9 +61,9 @@ namespace ELO
         //     }
         // }
 
-        public void AddNewSubjectToDataBase(string subjectName, string school, string teachers)
+        public void AddNewSubjectToDataBase(string subjectName, string school, string teachers, string icon)
         {
-            subjectSql.AddSubject(subjectName, teachers, school);
+            subjectSql.AddSubject(subjectName, teachers, school, icon);
         }
 
         public void UpdateSubjectTeachers(string subjectUUID, string teachers)
