@@ -15,7 +15,7 @@ namespace ELO.SQLClasses
         public ClassSQL()
         {
             uuid = new Random().Next().ToString() + DateTime.Now.ToString("ddmmYYYhhiiss");
-            date = DateTime.Now.ToString("u");
+            date = DateTime.Now.ToString("U");
         }
 
         public List<Class> GetClassList(string school)
