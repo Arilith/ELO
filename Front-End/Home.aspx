@@ -16,7 +16,7 @@
             </div>
         <div class="col-lg-4">
             <a href="#">
-            <div class="container-info">  
+            <div class="container-info">
              <div class="container-title">Meldingen</div>
                 <div class="container-content">
                     <div class="message-holder">

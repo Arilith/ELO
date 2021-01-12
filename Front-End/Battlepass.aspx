@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BattlePass.aspx.cs" Inherits="Front_End.BattlePass" %>
+﻿<%@ Page Title="Puntenoverzicht" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BattlePass.aspx.cs" Inherits="Front_End.BattlePass" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%@ Import Namespace="System.Globalization" %>
     <%@ Import Namespace="ELO" %>
-    <h2 draggable="auto">Seizoen</h2>
+    <h2 draggable="auto">Puntenoverzicht</h2>
 
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info2">
-                <div class="container-title">Top 10 OBA1</div>
+                <div class="container-title">Top 10 OBA1 aantal punten</div>
                     <div class="container-content">
                     <div class="row">
                     <b>Sem</b>
@@ -89,17 +89,24 @@
         </div>
         </div>
         </div>
-
         <%
             Dictionary<Level, Reward>.KeyCollection levelKeys = GetBattlePass(loggedInPerson.School).Keys;
             foreach (Level level in levelKeys)
             {
 
-        %>
-            <b><%: level.LevelNumber %></b><br />
-            <% Reward foundReward = rewardMan.FindReward(level.rewardUUID); %>
+        %>     
+            <div class="container-info2 normal horizontal">       
+            <div class="container-title">Level <%: level.LevelNumber %></div><br />
+            <div class="container-content">
+                    <div class="row">
+            <b>Reward: <% Reward foundReward = rewardMan.FindReward(level.rewardUUID); %>
                 <%: foundReward.Title %>
                 <br />
-                <%: level.RequiredExp %>
+                Xp nodig voor volgend level: <%: level.RequiredExp %></b>
+                    </div>
+                </div>
+              </div>
+          
+           
     <% } %>
 </asp:Content>

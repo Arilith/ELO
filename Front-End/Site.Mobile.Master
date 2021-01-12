@@ -1,23 +1,173 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="Front_End.Site_Mobile" %>
-<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
-
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Front_End.SiteMaster" %>
+<%@ Import Namespace="ELO" %>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
+        <%-- <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" /> --%>
+        <link id="link2" rel="stylesheet" href="~/Content/Main.css" type="text/css" runat="server" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server"/>
+    </meta>
+        <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
+    <title><%: Page.Title %> - Study Cluster</title>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <h1>Mobile Master Page</h1>
-        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-        <section class="content-wrapper main-content clear-fix">
-            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-        </section>
-        <friendlyUrls:ViewSwitcher runat="server" />
+<div class="background-blur"></div>
+    <div class="bodycontainer">
+        
+        <% if (Session["person"] == null) { %>
+            <div id="search-overlay">
+                <div id="loader"></div>
+                <div id="loader-text">U bent niet ingelogd... doorsturen naar Login Pagina.
+                    <meta http-equiv="refresh" content="0.6;url=login.aspx" />
+                </div>
+            </div>
+        <% } else { %>
+        <form runat="server">
+            <asp:ScriptManager runat="server">
+                <Scripts>
+                    <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                    <%--Framework Scripts--%>
+                    <asp:ScriptReference Name="MsAjaxBundle" />
+                    <asp:ScriptReference Name="jquery" />
+                    <asp:ScriptReference Name="bootstrap" />
+                    <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                    <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                    <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                    <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                    <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                    <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                    <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                    <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                    <asp:ScriptReference Name="WebFormsBundle" />
+                    <%--Site Scripts--%>
+                </Scripts>
+            </asp:ScriptManager>
+            <% if (loggedInPerson.Type == "Teacher" || loggedInPerson.Type == "SysAdmin") { %>
+                   <style>
+                       .topnav {
+                           background: #5887ff;
+                       }
+
+                       .sidenav {
+                           background: #102e4a;
+                       }
+                   </style> 
+            <% } %>
+            <div class="topnav">
+                <div class="pull-right">
+                    <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="height: 52px;" /></a>
+                    <a href="#" class="active"><%: loggedInPerson.Name %></a>
+                    <% if(loggedInPerson.Type == "Student") { %><a href="#"><%: loggedInStudent.LeerlingNummer %></a> <% } %>
+                    <a href="#"><%: loggedInPerson.Email %></a>
+                    <a href="~/Logout" runat="server">Uitloggen</a>
+                </div>
+            </div>
+            <% if (loggedInPerson != null) { %>
+                <div class="body-content">
+                    <span style="font-size:30px;cursor:pointer" id="openbutton" onclick="openNav()">&#9776; Menu</span>
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div class="mobile-menu">
+                        <div class="user-info">
+                            <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" class="ned"/></a>
+                            <a href="#" class="active"><b><%: loggedInPerson.Name %></b></a>
+                            <% if(loggedInPerson.Type == "Student") { %><a href="#"><b><%: loggedInStudent.LeerlingNummer %></b></a><% } %>
+                            <a href="#"><b><%: loggedInPerson.Email %></b></a>
+                            <a href="~/Logout" runat="server" class="logout-button-side">Uitloggen</a>
+                        </div><br/><br/>
+                        <% if (loggedInPerson.Type == "Student") { %>
+                            <img src="Content/Pictures/logo-ELO.png" class="logo"/>
+                            <a runat="server" href="~/StudentHome"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
+                            <a runat="server" href="~/Schedule"><i class="fa fa-calendar" style="margin-right: 10px;"></i>Rooster</a>
+                            <a runat="server" href="~/Gradelist"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers</a>
+                            <a runat="server" href="~/SubjectList"><i class="fa fa-calculator" style="margin-right: 10px;"></i>Vakken</a>
+                            <a runat="server" href="~/HomeworkList"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk</a>
+                            <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
+                            <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
+                            <a runat="server" href="~/BattlePass"><i class="fas fa-gamepad" style="margin-right: 10px;"></i>Puntenoverzicht</a>
+                            </div>
+                        <% } else if (loggedInPerson.Type == "Teacher") { %>
+                            <img src="Content/Pictures/logo-ELO.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
+                            <a runat="server" href="~/Home"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>
+                            <a runat="server" href="~/AddGrade"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers Invoeren</a>
+                            <a runat="server" href="~/AddHomework"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk Toevoegen</a>
+                            <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Ingeleverde bestanden</a>
+
+                        <% } else if (loggedInPerson.Type == "SysAdmin") { %>
+                            <img src="Content/Pictures/logo-ELO.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
+                            <a runat="server" href="~/Home">Home</a>
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Klassen<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <div class="navigator-category-content">
+                                    <a runat="server" href="~/AddClass">Klas Invoeren</a>
+                                    <a runat="server" href="~/ClassList">Klassenlijst</a>
+                                </div>
+                            </div> 
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Roosters<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <div class="navigator-category-content">
+                                    <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
+                                    <a runat="server" href="~/Schedule">Rooster</a>
+                                </div>
+                            </div>
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Gebruikers<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <div class="navigator-category-content">
+                                    <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
+                                    <a runat="server" href="~/AddUser">Leerling Invoeren</a>
+                                    <a runat="server" href="~/UserList">Gebruikerslijst</a>
+                                </div>
+                            </div>
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Overig<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <div class="navigator-category-content">
+                                    <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
+                                    <a runat="server" href="~/StudentsByClass">Mentor & Leerlingen</a>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                    
+                    
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <footer class="footer">
+                        <hr style="border-top: 1px solid black!important;" />
+                        <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
+                    </footer>
+                </div>
+            <% } else { %>
+                //Redirect
+            <% } %>
+        </form>
+        <% } %>
     </div>
-    </form>
 </body>
+<%-- <script> --%>
+<%--     function myFunction() { --%>
+<%--         var x = document.getElementById("myTopnav"); --%>
+<%--         if (x.className === "topbar") { --%>
+<%--             x.className += " responsive"; --%>
+<%--         } else { --%>
+<%--             x.className = "topbar"; --%>
+<%--         } --%>
+<%--     } --%>
+<%-- </script> --%>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script> 
 </html>
