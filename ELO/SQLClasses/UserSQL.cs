@@ -47,17 +47,18 @@ namespace ELO.SQLClasses
                 string returnClassUUID = Studentsreader["classUUID"].ToString();
                 string returnSubjectUUID = Studentsreader["subjectUUID"].ToString();
                 string returnMentorUUID = Studentsreader["mentorUUID"].ToString();
+                int returnExp = Convert.ToInt32(Studentsreader["exp"]);
 
                 Class returnClass = classManager.GetClassFromDatabase(returnClassUUID);
                 Teacher returnTeacher = (Teacher)new UserSQL().FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
                 if (returnType == "Student")
-                    returnList.Add(new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail));
+                    returnList.Add(new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail, returnExp));
                 if (returnType == "Teacher")
-                    returnList.Add(new Teacher(returnName, returnAge, returnSchool, "Teacher", returnSubject, returnClass, returnUserId, returnRegistrationdate, returnUsername, returnEmail));
+                    returnList.Add(new Teacher(returnName, returnAge, returnSchool, "Teacher", returnSubject, returnClass, returnUserId, returnRegistrationdate, returnUsername, returnEmail, returnExp));
                 if (returnType == "SysAdmin")
-                    returnList.Add(new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail));
+                    returnList.Add(new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail, returnExp));
             }
 
             classManager = null;
@@ -92,11 +93,11 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
-        public SysAdmin AddAdmin(string username, string password, string school, string name, string email)
+        public SysAdmin AddAdmin(string username, string password, string school, string name, string email, int exp)
         {
             mySqlManager = new MySqlManager();
 
-            string AddAdminSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school)";
+            string AddAdminSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school, exp) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school, @exp)";
             MySqlCommand AddAdminCommand;
 
             AddAdminCommand = new MySqlCommand(AddAdminSQL, mySqlManager.con);
@@ -109,6 +110,7 @@ namespace ELO.SQLClasses
             AddAdminCommand.Parameters.AddWithValue("@name", name);
             AddAdminCommand.Parameters.AddWithValue("@uuid", userUUID);
             AddAdminCommand.Parameters.AddWithValue("@school", school);
+            AddAdminCommand.Parameters.AddWithValue("@exp", exp);
 
             AddAdminCommand.Prepare();
             AddAdminCommand.ExecuteNonQuery();
@@ -116,14 +118,14 @@ namespace ELO.SQLClasses
             mySqlManager.con.Close();
             mySqlManager = null;
 
-            return new SysAdmin(name, 0, school, "SysAdmin", userUUID, date, username, email);
+            return new SysAdmin(name, 0, school, "SysAdmin", userUUID, date, username, email, exp);
         }
 
-        public Teacher AddTeacher(string username, string password, string school, string name, string email)
+        public Teacher AddTeacher(string username, string password, string school, string name, string email, int exp)
         {
             mySqlManager = new MySqlManager();
 
-            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school)";
+            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school, exp) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school, @exp)";
             MySqlCommand addTeacherCommand;
 
             addTeacherCommand = new MySqlCommand(addTeacherSQL, mySqlManager.con);
@@ -136,6 +138,7 @@ namespace ELO.SQLClasses
             addTeacherCommand.Parameters.AddWithValue("@name", name);
             addTeacherCommand.Parameters.AddWithValue("@uuid", userUUID);
             addTeacherCommand.Parameters.AddWithValue("@school", school);
+            addTeacherCommand.Parameters.AddWithValue("@exp", exp);
 
             addTeacherCommand.Prepare();
             addTeacherCommand.ExecuteNonQuery();
@@ -143,15 +146,15 @@ namespace ELO.SQLClasses
             mySqlManager.con.Close();
             mySqlManager = null;
 
-            return new Teacher(name, 0, school, "Teacher", userUUID, date, username, email);
+            return new Teacher(name, 0, school, "Teacher", userUUID, date, username, email, exp);
         }
 
-        public Student AddStudent(string username, string password, int leerlingnummer, string school, string name, string email, string classUUID, string mentorUUID)
+        public Student AddStudent(string username, string password, int leerlingnummer, string school, string name, string email, string classUUID, string mentorUUID, int exp)
         {
             mySqlManager = new MySqlManager();
             ClassManager classManager = new ClassManager();
 
-            string addStudentSql = "INSERT INTO users(username, leerlingnummer, password, email, registrationdate, role, name, uuid, school, classUUID, mentorUUID) VALUES (@username, @leerlingnummer, @password, @email, @registrationdate, @role, @name, @uuid, @school, @classUUID, @mentorUUID)";
+            string addStudentSql = "INSERT INTO users(username, leerlingnummer, password, email, registrationdate, role, name, uuid, school, classUUID, mentorUUID, exp) VALUES (@username, @leerlingnummer, @password, @email, @registrationdate, @role, @name, @uuid, @school, @classUUID, @mentorUUID, @exp)";
             MySqlCommand addStudentCommand;
 
             addStudentCommand = new MySqlCommand(addStudentSql, mySqlManager.con);
@@ -167,6 +170,7 @@ namespace ELO.SQLClasses
             addStudentCommand.Parameters.AddWithValue("@school", school);
             addStudentCommand.Parameters.AddWithValue("@classUUID", classUUID);
             addStudentCommand.Parameters.AddWithValue("@mentorUUID", mentorUUID);
+            addStudentCommand.Parameters.AddWithValue("@exp", exp);
 
             addStudentCommand.Prepare();
             addStudentCommand.ExecuteNonQuery();
@@ -178,7 +182,7 @@ namespace ELO.SQLClasses
             mySqlManager.con.Close();
             mySqlManager = null;
 
-            return new Student(name, 0, school, "Student", returnClass, mentorTeacher, userUUID, leerlingnummer, date, username, email);
+            return new Student(name, 0, school, "Student", returnClass, mentorTeacher, userUUID, leerlingnummer, date, username, email, exp);
         }
 
         public Person FindUserInDataBase(string uuid)
@@ -206,6 +210,7 @@ namespace ELO.SQLClasses
                 string returnClassUUID = reader["classUUID"].ToString();
                 string returnSubjectUUID = reader["subjectUUID"].ToString();
                 string returnMentorUUID = reader["mentorUUID"].ToString();
+                int returnExp = Convert.ToInt32(reader["exp"]);
 
                 reader.Close();
 
@@ -217,11 +222,11 @@ namespace ELO.SQLClasses
                 //mySqlManager = null;
 
                 if (returnType == "Student")
-                    return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail);
+                    return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail, returnExp);
                 if (returnType == "Teacher")
-                    return new Teacher(returnName, returnAge, returnSchool, "Teacher", returnSubject, returnClass, returnUserId, returnRegistrationdate, returnUsername, returnEmail);
+                    return new Teacher(returnName, returnAge, returnSchool, "Teacher", returnSubject, returnClass, returnUserId, returnRegistrationdate, returnUsername, returnEmail, returnExp);
                 if (returnType == "SysAdmin")
-                    return new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail);
+                    return new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail, returnExp);
             }
 
             reader.Close();
@@ -254,17 +259,19 @@ namespace ELO.SQLClasses
                     string returnUserId = Convert.ToString(reader["uuid"]);
                     string returnRegistrationdate = reader["registrationdate"].ToString();
                     string email = reader["email"].ToString();
+                    
                     //TO BE DONE
                     string mentorClass = reader["classUUID"].ToString();
                     //string subject = reader["subjectUUID"].ToString();
+                    int returnExp = Convert.ToInt32(reader["exp"]);
 
                     reader.Close();
                     mySqlManager.con.Close();
                     mySqlManager = null;
                     if (returnType == "SysAdmin")
-                        return new SysAdmin(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email);
+                        return new SysAdmin(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email, returnExp);
                     else if (returnType == "Teacher")
-                        return new Teacher(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email);
+                        return new Teacher(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email, returnExp);
                 }
 
                 reader.Close();
@@ -295,6 +302,7 @@ namespace ELO.SQLClasses
                     string email = reader["email"].ToString();
 
                     string classUUID = reader["classUUID"].ToString();
+                    int exp = Convert.ToInt32(reader["exp"]);
 
                     reader.Close();
                     mySqlManager.con.Close();
@@ -303,7 +311,7 @@ namespace ELO.SQLClasses
                     Class returnClass = classManager.GetClassFromDatabase(classUUID);
                     Teacher returnTeacher = (Teacher)FindUserInDataBase(classUUID);
 
-                    return new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email);
+                    return new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email, exp);
                 }
 
                 classManager = null;
@@ -336,11 +344,12 @@ namespace ELO.SQLClasses
                 int returnLeerlingNummer = Convert.ToInt32(reader["leerlingnummer"]);
                 string returnRegistrationdate = reader["registrationdate"].ToString();
                 string email = reader["email"].ToString();
+                int exp = Convert.ToInt32(reader["exp"]);
 
                 Class returnClass = classManager.GetClassFromDatabase(classUUID);
                 Teacher returnTeacher = (Teacher)FindUserInDataBase(classUUID);
 
-                returnList.Add(new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email));
+                returnList.Add(new Student(returnName, returnAge, returnSchool, returnType, returnClass, returnTeacher, returnUserId, returnLeerlingNummer, returnRegistrationdate, returnUsername, email, exp));
             }
 
             reader.Close();

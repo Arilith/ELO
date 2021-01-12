@@ -30,8 +30,8 @@ namespace Front_End
                 string email = Request.Form["email"];
                 int leerlingnummer = Convert.ToInt32(Request.Form["leerlingnummer"]);
                 string postClass = Request.Form["class"];
-
-                ErrorLabel.Text = userManager.AddStudentToDataBase(leerlingnummer, password, studentName, email, postClass, loggedInUser);
+                int exp = Convert.ToInt32(Request.Form["exp"]);
+                ErrorLabel.Text = userManager.AddStudentToDataBase(leerlingnummer, password, studentName, email, postClass, loggedInUser, exp);
             }
         }
 

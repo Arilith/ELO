@@ -23,8 +23,10 @@ namespace ELO
 
         public string Email { get; private set; }
         
+        public int Exp { get; private set; }
+        
 
-        public Person(string name, int age, string school, string type, string userName, string userId, string registrationDate, string email)
+        public Person(string name, int age, string school, string type, string userName, string userId, string registrationDate, string email, int exp)
         {
             this.Name = name;
             this.Age = age;
@@ -34,6 +36,7 @@ namespace ELO
             this.Type = type;
             this.UserName = userName;
             this.Email = email;
+            this.Exp = exp;
             
         }
 
