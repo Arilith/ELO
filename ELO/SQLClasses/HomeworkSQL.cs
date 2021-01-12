@@ -33,12 +33,14 @@ namespace ELO.SQLClasses
                 int returnExp = Convert.ToInt32(homeworkReader["exp"]);
                 int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
                 bool isTest = returnIsTest == 1;
-              
+                int returnForGrade = Convert.ToInt32(homeworkReader["forgrade"]);
+                bool forGrade = returnForGrade == 1;
+
 
                 Subject insertSubject = subjectManager.FindSubject(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID));
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade));
             }
 
             homeworkReader.Close();
@@ -72,11 +74,13 @@ namespace ELO.SQLClasses
                 int returnExp = Convert.ToInt32(homeworkReader["exp"]);
                 int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
                 bool isTest = returnIsTest == 1;
+                int returnForGrade = Convert.ToInt32(homeworkReader["forgrade"]);
+                bool forGrade = returnForGrade == 1;
 
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID));
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade));
             }
 
             homeworkReader.Close();
@@ -89,10 +93,10 @@ namespace ELO.SQLClasses
 
 
 
-        public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subjectUUID, int exp, bool isTest)
+        public void AddHomeworkToDB(string school, string title, string duedate, string content, string classUUID, string subjectUUID, int exp, bool isTest, bool forGrade)
         {
             MySqlManager mySqlManager = new MySqlManager();
-            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subjectUUID, school, title, content, duedate, classUUID, exp, UUID, istest) VALUES (@subjectUUID, @school, @title, @content, @duedate, @classUUID, @exp, @UUID, @istest)", mySqlManager.con);
+            MySqlCommand addHomeworkCommand = new MySqlCommand($"INSERT INTO homework (subjectUUID, school, title, content, duedate, classUUID, exp, UUID, istest, forgrade) VALUES (@subjectUUID, @school, @title, @content, @duedate, @classUUID, @exp, @UUID, @istest, @forgrade)", mySqlManager.con);
 
 
             addHomeworkCommand.Parameters.AddWithValue("@subjectUUID", subjectUUID);
@@ -104,6 +108,7 @@ namespace ELO.SQLClasses
             addHomeworkCommand.Parameters.AddWithValue("@exp", exp);
             addHomeworkCommand.Parameters.AddWithValue("@UUID", UUID);
             addHomeworkCommand.Parameters.AddWithValue("@istest", isTest);
+            addHomeworkCommand.Parameters.AddWithValue("@forgrade", forGrade);
 
 
             addHomeworkCommand.Prepare();
@@ -132,6 +137,8 @@ namespace ELO.SQLClasses
                 int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
                 string returnUUID = Convert.ToString(homeworkReader["UUID"]);
                 bool isTest = returnIsTest == 1;
+                int returnForGrade = Convert.ToInt32(homeworkReader["forgrade"]);
+                bool forGrade = returnForGrade == 1;
 
                 homeworkReader.Close();
 
@@ -141,7 +148,7 @@ namespace ELO.SQLClasses
                 classManager = null;
                 subjectManager = null;
 
-                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID);
+                return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade);
             }
             homeworkReader.Close();
 

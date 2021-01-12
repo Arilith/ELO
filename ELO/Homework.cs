@@ -20,8 +20,9 @@ using System.Text;
         public int Exp { get; private set; }
 
         public bool IsTest { get; private set; }
+        public bool ForGrade { get; private set; }
 
-        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp, bool isTest, string uuid)
+        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp, bool isTest, string uuid, bool ForGrade)
         {
             this.Title = title;
             this.Subject = subject;
@@ -30,6 +31,7 @@ using System.Text;
             this.Content = content;
             this.Exp = exp;
             this.IsTest = isTest;
+            this.ForGrade = ForGrade;
             this.UUID = uuid;
         }
 

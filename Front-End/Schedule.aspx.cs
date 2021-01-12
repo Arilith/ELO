@@ -24,7 +24,7 @@ namespace Front_End
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            startDate = DateTime.Now.ToString("dd-MM-yyyy"); 
+            startDate = DateTime.Now.ToString("dd-MM-yyyy");
             endDate = DateTime.Now.AddDays(5).ToString("dd-MM-yyyy");
 
             //Haal ingelogde persoon uit de sessie.
