@@ -139,7 +139,7 @@ namespace ELO.SQLClasses
                 string returnSubjectUUID = Grades["subjectUUID"].ToString();
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
-                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year));
+                returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year, homework));
             }
 
             userManager = null;
