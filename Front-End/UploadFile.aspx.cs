@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,9 +13,32 @@ namespace Front_End
 {
     public partial class UploadFile : System.Web.UI.Page
     {
+        public Homework FoundHomework { get; private set; }
+
+        private HwMan homeworkManager;
+
+        private FileManager fileManager;
+
+        private string getHomeworkUUID;
+
+        private Person loggedInPerson;
+
+        protected void Page_load(object sender, EventArgs e)
+        {
+            homeworkManager = new HwMan();
+            fileManager = new FileManager();
+
+            getHomeworkUUID = Request["homeworkUUID"];
+            FoundHomework = homeworkManager.GetHomeworkFromDB(getHomeworkUUID);
+
+            loggedInPerson = (Person)Session["person"];
+
+        }
+
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             ExecuteUploadFile();
+
         }
 
         private void ExecuteUploadFile()
@@ -23,6 +47,8 @@ namespace Front_End
             string filePath;
             string folder;
             string currentDateTime = DateTime.Now.ToString();
+
+            
 
             folder = Server.MapPath("./UploadedFiles/");
 
@@ -46,7 +72,9 @@ namespace Front_End
                     //Sla het bestand op.
                     uploadedFile.PostedFile.SaveAs(filePath);
 
-                    //Voeg het toe aan de filemanager.
+                    //Voeg het toe aan de database.
+                    fileManager.UploadFile(fileNameWithDate, FoundHomework, loggedInPerson);
+
 
                     //Manager.fileMan.AddFile(new ELO.File(fileName, filePath, currentDateTime));
 

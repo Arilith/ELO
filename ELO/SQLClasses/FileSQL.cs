@@ -51,6 +51,26 @@ namespace ELO.SQLClasses
             return returnFiles;
         }
 
+        public List<File> GetFileListByUser(string userUUID)
+        {
+            //Get the files for this specific homework.
+            string readFilesOfHomework = $"SELECT * FROM file WHERE studentUUID = '{userUUID}'";
+
+            mysqlManager = new MySqlManager();
+
+            MySqlCommand getFileCommand = new MySqlCommand(readFilesOfHomework, mysqlManager.con);
+            MySqlDataReader getFileReader = getFileCommand.ExecuteReader();
+
+            List<File> returnFiles = new List<File>();
+
+            while (getFileReader.Read())
+            {
+                returnFiles.Add(MakeFileFromReader(getFileReader, true));
+            }
+
+            return returnFiles;
+        }
+
         public File GetFile(string filePath)
         {
             // get files from database
@@ -62,12 +82,12 @@ namespace ELO.SQLClasses
 
             List<File> returnFiles = new List<File>();
 
-            while (getFileReader.Read())
+            if (getFileReader.Read())
             {
-                returnFiles.Add(MakeFileFromReader(getFileReader, false));
+                return MakeFileFromReader(getFileReader, true);
             }
 
-            throw new NotImplementedException();
+            return null;
         }
 
         public File MakeFileFromReader(MySqlDataReader reader, bool withHomework)

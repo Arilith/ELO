@@ -22,7 +22,7 @@ using System.Text;
         public bool IsTest { get; private set; }
         public bool ForGrade { get; private set; }
 
-        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp, bool isTest, bool ForGrade)
+        public Homework(string title, Subject subject, string content, string dueDate, Class _class, int exp, bool isTest, string uuid, bool ForGrade)
         {
             this.Title = title;
             this.Subject = subject;
@@ -32,6 +32,7 @@ using System.Text;
             this.Exp = exp;
             this.IsTest = isTest;
             this.ForGrade = ForGrade;
+            this.UUID = uuid;
         }
 
         public override string ToString()

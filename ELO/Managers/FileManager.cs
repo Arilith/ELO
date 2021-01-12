@@ -23,17 +23,15 @@ namespace ELO
             return fileSql.GetFile(filePath);
         }
 
-        public void UploadFile(string fileName, string homeworkUUID, Person loggedInPerson)
+        public void UploadFile(string fileName, Homework homework, Person loggedInPerson)
         {
 
             string filePath = "/UploadedFiles/" + fileName;
 
-            Homework assignedHomework = homeworkManager.GetHomeworkFromDB(homeworkUUID);
-
             File fileToUpload;
 
-            if (homeworkUUID != null)
-                fileToUpload = new File(fileName, filePath, (Student)loggedInPerson, assignedHomework);
+            if (homework != null)
+                fileToUpload = new File(fileName, filePath, (Student)loggedInPerson, homework);
             else
                 fileToUpload = new File(fileName, filePath, (Student)loggedInPerson);
 
@@ -44,6 +42,12 @@ namespace ELO
         public List<File> GetFileListForHomework(string homeworkUUID)
         {
             return fileSql.GetFileListByHomework(homeworkUUID);
+        }
+
+
+        public List<File> GetFileListByUser(string userUUID)
+        {
+            return fileSql.GetFileListByUser(userUUID);
         }
 
     }

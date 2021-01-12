@@ -14,7 +14,7 @@ namespace ELO.SQLClasses
         {
             mySqlManager = new MySqlManager();
 
-            UUID = new Random().Next().ToString() + DateTime.Now.ToString("ddMMYYYYhhiiss");
+            UUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
         public Subject GetSubject(string uuid)

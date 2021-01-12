@@ -17,14 +17,18 @@
                 <th>Bestandnaam</th>
                 <th>Geupload op</th>
                 <th>Geupload door</th>
+                <th>Downloaden</th>
+                <th>Heruploaden</th>
             </tr>
         </thead>
         <tbody>
-            <% foreach (File file in Manager.fileMan.GetFileList()){ %> 
+            <% foreach (File file in FileManager.GetFileListByUser(loggedInPerson.UserId)){ %> 
                 <tr>
                     <td><%: file.FileName %></td>
                     <td><%: file.UploadDate %></td>
-                    <td>Coming soon!</td>
+                    <td><%: file.Student.Name %></td>
+                    <td><a href="<%: file.FilePath %>" class="btn btn-primary">Downloaden</a></td>
+                    <td><a href="UploadFile?homeworkUUID=<%: file.Homework.UUID %>" class="btn btn-warning">Heruploaden</a></td>
                 </tr>     
             <% } %>
         </tbody>

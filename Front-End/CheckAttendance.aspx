@@ -8,7 +8,7 @@
     <form method="post" id="classform" name="classform">
         <label for="class">Selecteer een klas</label>
         <select id="class" name="class" class="form-control">
-            <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School))
+            <% foreach (Class _class in classManager.GetClassListFromDatabase(LoggedInPerson.School))
                { %>
                 <option value="<%: _class.UUID %>"><%: _class.Name %></option>
             <% } %>
@@ -46,20 +46,22 @@
                     <tbody>
                     <% foreach (Student student in classManager.GetStudentsInClass(Request.Form["class"])){ %> 
                     <tr>
+                        <% string RButton = student.Name;%>
                         <td><%: student.Name %></td>
-                        <td> <input type="checkbox" id="CheckBoxA" name="CheckBoxA" value="Aanwezig"></td>
-                        <td> <input type="checkbox" id="CheckBoxAO" name="CheckBoxAO" value="Afwezig Onwettig"></td>
-                        <td> <input type="checkbox" id="CheckBoxAW" name="CheckBoxAW" value="Afwezig Wettig"></td>
-                        <td> <input type="checkbox" id="CheckBoxTLO" name="CheckBoxTLO" value="Te laat onwettig"></td>
-                        <td> <input type="checkbox" id="CheckBoxTLW" name="CheckBoxTLW" value="Te laat wettig"></td>
-                        <td> <input type="checkbox" id="CheckBoxHWV" name="CheckBoxHWV" value="Huiswerk vergeten"></td>
-                        <td> <input type="checkbox" id="CheckBoxVW" name="CheckBoxVW" value="Verwijdering"></td>
+                        <td> <input type="radio" id="present" name=student.Name value="present"></td>
+                        <td> <input type="radio" id="absent" name="RButton" value="absent"></td>
+                        <td> <input type="radio" id="leave" name="RButton" value="leave"></td>
+                        <td> <input type="radio" id="late" name="RButton" value="late"></td>
+                        <td> <input type="radio" id="lateAllow" name="RButton" value="lateAllow"></td>
+                        <td> <input type="checkbox" id="forgot" name="forgot" value="forgot"></td>
+                        <td> <input type="checkbox" id="expelled" name="expelled" value="expelled"></td>
                        </tr>     
                     <% } %>
                     </tbody>
                 </table>
             </div>
-            
+            <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
+            <asp:Label ID="OutputLabel" runat="server"></asp:Label>
         </div>
     <% } %>
 </asp:Content>
