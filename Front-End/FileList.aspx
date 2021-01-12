@@ -18,6 +18,7 @@
                 <th>Geupload op</th>
                 <th>Geupload door</th>
                 <th>Downloaden</th>
+                <th>Heruploaden</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                     <td><%: file.UploadDate %></td>
                     <td><%: file.Student.Name %></td>
                     <td><a href="<%: file.FilePath %>" class="btn btn-primary">Downloaden</a></td>
+                    <td><a href="UploadFile?homeworkUUID=<%: file.Homework.UUID %>" class="btn btn-warning">Heruploaden</a></td>
                 </tr>     
             <% } %>
         </tbody>
