@@ -23,32 +23,39 @@
                 <% if (IsPostBack && Request.Form["studentName"] == null) { %>
                 <form method="post" id="addgrade" name="addgrade">
                     <div class="jelly-form" style="width:356px">
-                    <input type="hidden" value="<%: Request.Form["_class"] %>" name="_class" id="_class" class="form-control"/>
-                    <label for="studentName">Naam student</label><br/>
-                    <select id="studentName" class="form-control" name="studentName">
-                        <% foreach (Student student in userMan.GetStudentsOfClass(Request.Form["_class"]))
-                           { %>
-                            <option value="<%: student.UserId %>"><%: student.Name %></option>
-                        <% } %>
-                    </select><br/>
+                        <input type="hidden" value="<%: Request.Form["_class"] %>" name="_class" id="_class" class="form-control"/>
+                        <label for="studentName">Naam student</label><br/>
+                        <select id="studentName" class="form-control" name="studentName">
+                            <% foreach (Student student in userMan.GetStudentsOfClass(Request.Form["_class"]))
+                               { %>
+                                <option value="<%: student.UserId %>"><%: student.Name %></option>
+                            <% } %>
+                        </select><br/>
 
-                    <label for="subject">Vak</label><br/>
-                    <select id="subject" class="form-control" name="subject">
-                        <% foreach (Subject subject in subjectMan.GetSubjectList(LoggedInPerson.School))
-                           { %>
-                            <option value="<%: subject.uuid%>"><%: subject.Name %></option>
-                        <% } %>
-                    </select><br/>
+                        <label for="subject">Vak</label><br/>
+                        <select id="subject" class="form-control" name="subject">
+                            <% foreach (Subject subject in subjectMan.GetSubjectList(LoggedInPerson.School))
+                               { %>
+                                <option value="<%: subject.uuid%>"><%: subject.Name %></option>
+                            <% } %>
+                        </select><br/>
+                        
+                        <label for="homework">Huiswerk/Toets</label><br/>
+                        <select id="homework" class="form-control" name="homework">
+                            <% foreach (Homework homework in homeworkManager.GetHomeWorkForClassFromDB(LoggedInPerson.School, LoggedInStudent.PartOfClass))
+                               { %>
+                                <option value="<%: homework.UUID %>"><%: homework.Title %> <% if(homework.IsTest) { %> (TOETS) <% } %></option>
+                            <% } %>
+                        </select><br/>
 
+                        <label for="weight">Weging</label><br/>
+                        <input id="weight" class="form-control" name="weight" type="text" required/>  <br/>
 
-                    <label for="weight">Weging</label><br/>
-                    <input id="weight" class="form-control" name="weight" type="text" required/>  <br/>
-
-                    <label for="grade">Cijfer</label><br/>
-                    <input id="grade" class="form-control" name="grade" type="text" required/><br/>
-                    <br/>
-                    <button style="width: auto" type="submit" class="btn btn-success">Invoeren</button>
-                        </div>
+                        <label for="grade">Cijfer</label><br/>
+                        <input id="grade" class="form-control" name="grade" type="text" required/><br/>
+                        <br/>
+                        <button style="width: auto" type="submit" class="btn btn-success">Invoeren</button>
+                    </div>
                 </form>
                 <% } %>
             </div>

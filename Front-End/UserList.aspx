@@ -37,7 +37,7 @@
             <% } %>
         </tbody>
     </table><br/>
-    <table class="table-striped table-bordered">
+    <table class="table-striped table-bordered styled-table">
         <thead>
             <tr>
                 <th>Naam</th>
@@ -63,7 +63,7 @@
             <% } %>
         </tbody>
     </table><br/>
-    <table class="table-striped table-bordered">
+    <table class="table-striped table-bordered styled-table">
         <thead>
         <tr>
             <th>Klasnaam</th>
