@@ -10,6 +10,7 @@
         <link id="link2" rel="stylesheet" href="~/Content/Main.css" type="text/css" runat="server" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server"/>
     </meta>
+        <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
     <title><%: Page.Title %> - Study Cluster</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -90,6 +91,7 @@
                             <a runat="server" href="~/HomeworkList"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk</a>
                             <a runat="server" href="~/UploadFile"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
                             <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
+                            <a runat="server" href="~/BattlePass"><i class="fas fa-gamepad" style="margin-right: 10px;"></i>Puntenseizoen</a>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
                             <img src="Content/Pictures/logo-ELO.png" style="width:80%; margin-left: 10%; position: absolute; top: 10px" />
                             <a runat="server" href="~/Home"><i class="fa fa-home" style="margin-right: 10px;"></i>Home</a>

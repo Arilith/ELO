@@ -25,7 +25,7 @@ namespace Front_End
         // dit moet in de front end komen in de loop
         public void GetBattlePass(string schoolUUID)
         {
-            battlePassItems = new battlePassMan.GetBattlePassItemsBySchool(schoolUUID);
+            //battlePassItems = new battlePassMan.GetBattlePassItemsBySchool(schoolUUID);
         }
     }
 }
