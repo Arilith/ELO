@@ -51,5 +51,10 @@ namespace ELO
             gradeSql.AddGradeToDB(school, grade, weight, subject, student);
         }
 
+        public List<Grade> GetRecentGrades(string studentUUID, int limit)
+        {
+            List<Grade> returnList = new List<Grade>(gradeSql.GetGradeListOfStudent(studentUUID, limit));
+            return returnList;
+        }
     }
 }

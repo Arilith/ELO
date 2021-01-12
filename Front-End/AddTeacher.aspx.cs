@@ -23,7 +23,7 @@ namespace Front_End
             {
                 Person loggedInPerson = (Person)Session["person"];
 
-                userManager.AddTeacherToDataBase(Request.Form["username"], Request.Form["password"], loggedInPerson, Request.Form["name"], Request.Form["email"]);
+                userManager.AddTeacherToDataBase(Request.Form["username"], Request.Form["password"], loggedInPerson, Request.Form["name"], Request.Form["email"], Convert.ToInt32(Request.Form["exp"]));
 
                 OutputLabel.Text = "Docent Succesvol toegevoegd!";
             }

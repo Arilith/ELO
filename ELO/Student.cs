@@ -12,7 +12,7 @@ namespace ELO
 
         public int LeerlingNummer { get; private set; }
 
-        public Student(string name, int age, string school, string type, Class _class, Teacher mentor, string userId, int leerLingNummer, string registrationDate, string userName, string email) : base(name, age, school, type, userName, userId, registrationDate, email)
+        public Student(string name, int age, string school, string type, Class _class, Teacher mentor, string userId, int leerLingNummer, string registrationDate, string userName, string email, int exp) : base(name, age, school, type, userName, userId, registrationDate, email, exp)
         {
             this.PartOfClass = _class;
             this.Mentor = mentor;

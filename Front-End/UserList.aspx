@@ -15,7 +15,6 @@
         <thead>
             <tr>
                 <th>Naam</th>
-                <th>Leeftijd</th>
                 <th>Datum</th>
                 <th>School</th>
                 <th>Rol</th>
@@ -28,7 +27,6 @@
             <% foreach (Student student in usermanager.GetPersonListFromDB(loggedInPerson.School, "Student")){ %> 
                 <tr>
                     <td><%: student.Name %></td>
-                    <td><%: student.Age %></td>
                     <td><%: student.RegistrationDate %></td>
                     <td><%: student.School %></td>
                     <td><%: student.Type %></td>
@@ -39,61 +37,54 @@
             <% } %>
         </tbody>
     </table><br/>
-    <%-- <table class="table-striped table-bordered"> --%>
-    <%--     <thead> --%>
-    <%--         <tr> --%>
-    <%--             <th>Naam</th> --%>
-    <%--             <th>Leeftijd</th> --%>
-    <%--             <th>Datum</th> --%>
-    <%--             <th>School</th> --%>
-    <%--             <th>Rol</th> --%>
-    <%--             <th>UserID</th> --%>
-    <%--             <th>Vak</th> --%>
-    <%--             <th>Mentor Klas</th> --%>
-    <%--             <th>Studenten in huidige klas</th> --%>
-    <%--         </tr> --%>
-    <%--     </thead> --%>
-    <%--     <tbody> --%>
-    <%--         <% foreach (Teacher teacher in Manager.userMan.GetTeacherList()){ %>  --%>
-    <%--             <tr> --%>
-    <%--                 <td><%: teacher.Name %></td> --%>
-    <%--                 <td><%: teacher.Age %></td> --%>
-    <%--                 <td><%: teacher.RegistrationDate %></td> --%>
-    <%--                 <td><%: teacher.School %></td> --%>
-    <%--                 <td><%: teacher.Type %></td> --%>
-    <%--                 <td><%: teacher.UserId %></td> --%>
-    <%--                 <td><%: teacher.Subject %></td> --%>
-    <%--                 <td><% if(teacher.MentorForClass != null) { %> <%: teacher.MentorForClass.Name %> <% }  %></td> --%>
-    <%--                 <td><% if(teacher.MentorForClass != null) { %> <%: teacher.MentorForClass.AmountOfStudents %> <% }  %></td> --%>
-    <%--             </tr>      --%>
-    <%--         <% } %> --%>
-    <%--     </tbody> --%>
-    <%-- </table><br/> --%>
-    <%-- <table class="table-striped table-bordered"> --%>
-    <%--     <thead> --%>
-    <%--     <tr> --%>
-    <%--         <th>Klasnaam</th> --%>
-    <%--         <th>Aantal leerlingen</th> --%>
-    <%--         <th>Leshuis</th> --%>
-    <%--         <th>Stream</th> --%>
-    <%--         <th>Cluster</th> --%>
-    <%--         <th>Mentor</th> --%>
-    <%--         <th>Jaargang</th> --%>
-    <%--     </tr> --%>
-    <%--     </thead> --%>
-    <%--     <tbody> --%>
-    <%--     <% foreach (Class _class in Manager.classMan.GetClassList()){ %>  --%>
-    <%--         <tr> --%>
-    <%--             <td><%: _class.Name %></td> --%>
-    <%--             <td><%: _class.AmountOfStudents %></td> --%>
-    <%--             <td><%: _class.LesHuis %></td> --%>
-    <%--             <td><%: _class.Stream %></td> --%>
-    <%--             <td><%: _class.Cluster %></td> --%>
-    <%--             <td><%: _class.Mentor.Name %></td> --%>
-    <%--             <td><%: _class.StudyYear %></td> --%>
-    <%-- --%>
-    <%--         </tr>      --%>
-    <%--     <% } %> --%>
-    <%--     </tbody> --%>
-    <%-- </table> --%>
+    <table class="table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Datum</th>
+                <th>School</th>
+                <th>Rol</th>
+                <th>UserID</th>
+                <th>Vak</th>
+                <th>Mentor Klas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% foreach (Teacher teacher in usermanager.GetPersonListFromDB(loggedInPerson.School, "Teacher")){ %>
+                <tr>
+                    <td><%: teacher.Name %></td>
+                    <td><%: teacher.RegistrationDate %></td>
+                    <td><%: teacher.School %></td>
+                    <td><%: teacher.Type %></td>
+                    <td><%: teacher.UserId %></td>
+                    <td><% if(teacher.Subject != null) { %> <%: teacher.Subject.Name %> <% }  %></td>
+                    <td><% if(teacher.MentorForClass != null) { %> <%: teacher.MentorForClass.Name %> <% }  %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table><br/>
+    <table class="table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Klasnaam</th>
+            <th>Leshuis</th>
+            <th>Cluster</th>
+            <th>Mentor</th>
+            <th>Jaargang</th>
+            <th>Veranderen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School)) { %>
+            <tr>
+                <td><%: _class.Name %></td>
+                <td><%: _class.LesHuis %></td>
+                <td><%: _class.Cluster %></td>
+                <td><% if(_class.Mentor != null) { %><%: _class.Mentor.Name %> <% } %></td>
+                <td><%: _class.StudyYear %></td>
+                <td><a href="StudentsByClass" class="btn btn-primary">Mentor veranderen</a></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
 </asp:Content>

@@ -8,15 +8,16 @@ using ELO;
 
 namespace Front_End
 {
-    public partial class StudentHome : System.Web.UI.Page
+    public partial class TeacherFileList : System.Web.UI.Page
     {
+        public Person loggedInPerson;
 
-        public Student loggedInStudent;
-        public GradeMan gradeMan;
+        public FileManager FileManager;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            loggedInStudent = (Student) Session["person"];
+            loggedInPerson = (Person)Session["person"];
+            FileManager = new FileManager();
         }
     }
 }
