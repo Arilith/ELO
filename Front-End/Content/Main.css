@@ -551,3 +551,7 @@ h2 {
 .normal {
     width: 100%!important;
 }
+
+.horizontal {
+    display: inline-block;
+}

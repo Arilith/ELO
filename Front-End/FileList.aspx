@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FileList.aspx.cs" Inherits="Front_End.FileList" %>
+﻿<%@ Page Title="Upload bestand" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FileList.aspx.cs" Inherits="Front_End.FileList" %>
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -11,7 +11,7 @@
             padding: 10px;
         }
     </style>
-    <table class="table-striped table-bordered ">
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>Bestandnaam</th>
@@ -27,8 +27,8 @@
                     <td><%: file.FileName %></td>
                     <td><%: file.UploadDate %></td>
                     <td><%: file.Student.Name %></td>
-                    <td><a href="<%: file.FilePath %>" class="btn btn-primary">Downloaden</a></td>
-                    <td><a href="UploadFile?homeworkUUID=<%: file.Homework.UUID %>" class="btn btn-warning">Heruploaden</a></td>
+                    <td><a href="<%: file.FilePath %>" class="btn btn-primary" style="border-radius:0px!important">Downloaden</a></td>
+                    <td><a href="UploadFile?homeworkUUID=<%: file.Homework.UUID %>" class="btn btn-warning" style="border-radius:0px!important">Heruploaden</a></td>
                 </tr>     
             <% } %>
         </tbody>
