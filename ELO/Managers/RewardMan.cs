@@ -8,8 +8,8 @@ namespace ELO.Managers
 	public class RewardMan
 	{
 		private RewardSQL rewardSQL;
-		
-		public RewardMan()
+        private List<Reward> rewardList = new List<Reward>();
+        public RewardMan()
 		{
 			rewardSQL = new RewardSQL();
 		}
@@ -23,6 +23,17 @@ namespace ELO.Managers
 			rewardSQL.GetRewardFromDB(school);
 
 		}
+
+        public Reward FindReward(string rewardUUID)
+        {
+            Reward returnReward = rewardSQL.FindReward(rewardUUID);
+            return returnReward;
+		}
+
+		public List<Reward> GetRewardList()
+        {
+            return rewardList;
+        }
 	}
 
 }

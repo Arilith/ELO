@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ELO.SQLClasses;
 
 namespace ELO
 {
@@ -9,29 +10,45 @@ namespace ELO
     {
         public List<File> files { get; private set; }
 
+        private FileSQL fileSql;
+        private HwMan homeworkManager;
+
         public FileManager()
         {
-            files = new List<File>();
+            fileSql = new FileSQL();
         }
 
-        public void AddFile(File file)
+        public File GetFileFromDatabase(string filePath)
         {
-            files.Add(file);
+            return fileSql.GetFile(filePath);
         }
 
-        public File GetFile(string fileName)
+        public void UploadFile(string fileName, Homework homework, Person loggedInPerson)
         {
-            return files.Find(x => x.FileName == fileName);
+
+            string filePath = "/UploadedFiles/" + fileName;
+
+            File fileToUpload;
+
+            if (homework != null)
+                fileToUpload = new File(fileName, filePath, (Student)loggedInPerson, homework);
+            else
+                fileToUpload = new File(fileName, filePath, (Student)loggedInPerson);
+
+            fileSql.UploadFile(fileToUpload);
         }
 
-        public File GetFile(string filePath, string fileName)
+
+        public List<File> GetFileListForHomework(string homeworkUUID)
         {
-            return files.Find(x => (x.FilePath == filePath) && (x.FileName == fileName));
+            return fileSql.GetFileListByHomework(homeworkUUID);
         }
 
-        public List<File> GetFileList()
+
+        public List<File> GetFileListByUser(string userUUID)
         {
-            return files;
+            return fileSql.GetFileListByUser(userUUID);
         }
+
     }
 }

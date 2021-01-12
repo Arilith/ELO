@@ -8,6 +8,8 @@ namespace ELO.Managers
     public class LevelMan
     {
         private LevelSQL levelSql;
+        public static List<Level> levelList { get; private set; }
+
 
         public LevelMan()
         {
@@ -21,7 +23,20 @@ namespace ELO.Managers
 
         public List<Level> GetLevelListFromDB(string school)
         {
-            return levelSql.GetLevelsFromDB(school);
+            List<Level> returnList = levelSql.GetLevelsFromDB(school);
+            levelList = returnList;
+            return returnList;
+        }
+
+        public Level FindLevel(string levelUUID)
+        {
+            Level returnLevel = (Level)GetLevelList().Find(x => x.UUID == levelUUID);
+            return returnLevel;
+        }
+
+        public List<Level> GetLevelList()
+        {
+            return levelList;
         }
 
     }

@@ -12,11 +12,11 @@ namespace ELO.SQLClasses
 
         public RewardSQL()
         {
-            mySqlManager = new MySqlManager();
         }
 
         public List<Reward> GetRewardFromDB(string school)
         {
+            mySqlManager = new MySqlManager();
             //Lijst voor Rewards die gelezen worden
             List<Reward> returnList = new List<Reward>();
 
@@ -33,17 +33,19 @@ namespace ELO.SQLClasses
                 string returnTitle = Convert.ToString(readRewardDataReader["title"]);
                 string returnDescription = Convert.ToString(readRewardDataReader["description"]);
                 string returnImageURL = Convert.ToString(readRewardDataReader["imageURL"]);
+                string returnUUID = readRewardDataReader["UUID"].ToString();
 
-                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnRequiredLevel);
+                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnRequiredLevel, returnUUID);
 
                 returnList.Add(newReward);
             }
-
+            mySqlManager = null;
             return returnList;
         }
 
         public void AddRewardToDB(string reward, string rewardDescription, string imageURL, int requiredLevel)
         {
+            mySqlManager = new MySqlManager();
             MySqlCommand addRewardCommand = new MySqlCommand($"Insert into rewards (requiredLevel, reward, description, imageURL, UUID) values (@requiredLevel, @reward, @description, @imageURL, @UUID)", mySqlManager.con);
 
             addRewardCommand.Parameters.AddWithValue("@requiredLevel", requiredLevel);
@@ -54,6 +56,30 @@ namespace ELO.SQLClasses
             addRewardCommand.Prepare();
 
             addRewardCommand.ExecuteNonQuery();
+            mySqlManager = null;
+        }
+
+        public Reward FindReward(string rewardUUID)
+        {
+            mySqlManager = new MySqlManager();
+            MySqlCommand findRewardInDatabase = new MySqlCommand($"SELECT * FROM rewards WHERE UUID = '{rewardUUID}'", mySqlManager.con);
+            MySqlDataReader readRewardReader = findRewardInDatabase.ExecuteReader();
+            if (readRewardReader.Read())
+            {
+                // alles uit de database is string dus die zetten we om naar wat je nodig hebt
+                string returnTitle = readRewardReader["title"].ToString();
+                string rewardDescription = readRewardReader["description"].ToString();
+                string imageUrl = readRewardReader["imageURL"].ToString();
+                int requiredLevel = Convert.ToInt32(readRewardReader["requiredLevel"]);
+                string returnUUID = readRewardReader["UUID"].ToString();
+                //met die data een nieuw level maken in de returnlijst
+                Reward returnReward = new Reward(returnTitle, rewardDescription, imageUrl, requiredLevel, returnUUID);
+
+                return returnReward;
+            }
+
+            mySqlManager = null;
+            return null;
         }
     }
 }

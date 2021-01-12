@@ -6,11 +6,11 @@
     </meta>
     <div class="row">
         <div class="col-lg-4">
-            <div class="container-info">
+            <a href="Schedule.aspx"><div class="container-info">
                 <div class="container-title">Volgend uur</div>
                 <div class="container-content">
                     <div class="row">
-                        <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 100px; "/></div>
+                        <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 65px; "/></div>
                         <div class="col-lg-9">
                             Engels <i class="fas fa-flag-usa"></i> - E16<br/>
                             <b>HW: Maak opdracht 14 t/m 17 en lees pagina 54 t/m 58 in het lesboek.</b>
@@ -18,17 +18,21 @@
                     </div>
                 </div>
             </div>
+                </a>
+            <a href="UploadFile.aspx">
             <div class="container-info">
                 <div class="container-title">Opdrachten</div>
                  <div class="container-content">
                     <div class="row">
                             <b style="left:50px; position:absolute">Engels - Inleverdatum 07-01-2021</b><br/><br />
-                            <p class="middle">Maak de online opdracht over werkwoorden op <a href="https://www.malmberg.nl/voortgezet-onderwijs/methodes/talen/engels/of-course-havovwo-bovenbouw.htm">www.ofcourse.nl</a></p>
+                            <p class="middle">Maak de online opdracht over werkwoorden op www.ofcourse.nl</p>
                     </div>
                 </div>
             </div>
+                </a>
         </div>
         <div class="col-lg-4">
+            <a href="Gradelist.aspx">
             <div class="container-info">
                 <div class="container-title">Laatste cijfers</div>
                 <div class="container-content">
@@ -39,6 +43,8 @@
                     </div>
                 </div>
             </div>
+                </a>
+            <a href="HomeworkList.aspx">
             <div class="container-info">
                 <div class="container-title">3 toetsen deze week</div>
                 <div class="container-content">
@@ -49,8 +55,10 @@
                     </div>
                 </div>
                 </div>
+                </a>
         </div>
         <div class="col-lg-4">
+            <a href="#">
             <div class="container-info">
                 <div class="container-title">Meldingen</div>
                 <div class="container-content">
@@ -66,6 +74,7 @@
                     </div>
                 </div>
             </div>
+                </a>
         </div>
     </div>
 </asp:Content>

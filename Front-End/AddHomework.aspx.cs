@@ -40,10 +40,12 @@ namespace Front_End
             string _class = Request.Form["_class"];
             string isTestString = Request.Form["istest"];
             bool isTest = isTestString == "on";
+            string forGradeString = Request.Form["forgrade"];
+            bool forGrade = forGradeString == "on";
 
 
 
-            hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject, exp, isTest);
+            hwMan.AddHomeWorkToDB(school, title, dueDate, content, _class, subject, exp, isTest,forGrade);
 
 			OutputLabel.Text = "Huiswerk ingevoerd!";
         }
