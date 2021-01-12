@@ -23,9 +23,11 @@ namespace Front_End
         }
 
         // dit moet in de front end komen in de loop
-        public void GetBattlePass(string schoolUUID)
+        public Dictionary<Level, Reward> GetBattlePass(string schoolUUID)
         {
-            battlePassItems = new battlePassMan.GetBattlePassItemsBySchool(schoolUUID);
+            // returned uit de database een dictionary van een reward die bij een level hoort
+            battlePassItems = new Dictionary<Level, Reward>(battlePassMan.GetBattlePassLevelsBySchool(schoolUUID));
+            return battlePassItems;
         }
     }
 }

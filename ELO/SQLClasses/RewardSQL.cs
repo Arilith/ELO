@@ -33,8 +33,9 @@ namespace ELO.SQLClasses
                 string returnTitle = Convert.ToString(readRewardDataReader["title"]);
                 string returnDescription = Convert.ToString(readRewardDataReader["description"]);
                 string returnImageURL = Convert.ToString(readRewardDataReader["imageURL"]);
+                string returnUUID = readRewardDataReader["UUID"].ToString();
 
-                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnRequiredLevel);
+                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnRequiredLevel, returnUUID);
 
                 returnList.Add(newReward);
             }

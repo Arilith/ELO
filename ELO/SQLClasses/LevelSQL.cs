@@ -37,9 +37,10 @@ namespace ELO.SQLClasses
                 Season returnSeason = seasonMan.FindSeasonInDB(returnSeasonUUID);
 
                 int returnLevelNumber = Convert.ToInt32(readLevelDataReader["levelNumber"]);
-
+                string returnRewardUUID = readLevelDataReader["rewardUUID"].ToString();
+                string returnUUID = readLevelDataReader["UUID"].ToString();
                 //met die data een nieuw level maken in de returnlijst
-                Level newLevel = new Level(returnRequiredExp, returnSeason, returnLevelNumber);
+                Level newLevel = new Level(returnRequiredExp, returnSeason, returnLevelNumber, returnRewardUUID, returnUUID);
 
                 returnList.Add(newLevel);
             }
