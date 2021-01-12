@@ -179,6 +179,7 @@
     <Content Include="Content\mark-your-calendar.css" />
     <Content Include="GradeList.aspx" />
     <Content Include="HomeworkList.aspx" />
+    <Content Include="ManageUser.aspx" />
     <Content Include="Scripts\mark-your-calendar.js" />
     <Content Include="Content\Pictures\Logo ELO2.png" />
     <Content Include="Content\Site.css" />
@@ -237,6 +238,7 @@
     <Content Include="StudentHome.aspx" />
     <Content Include="StudentsByClass.aspx" />
     <Content Include="SubjectList.aspx" />
+    <Content Include="TeacherFileList.aspx" />
     <Content Include="UploadFile.aspx" />
     <Content Include="UserList.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -439,6 +441,13 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddSchedule.aspx.cs">
       <DependentUpon>AddSchedule.aspx</DependentUpon>
@@ -488,6 +497,13 @@
     </Compile>
     <Compile Include="SubjectList.aspx.designer.cs">
       <DependentUpon>SubjectList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherFileList.aspx.cs">
+      <DependentUpon>TeacherFileList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TeacherFileList.aspx.designer.cs">
+      <DependentUpon>TeacherFileList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadFile.aspx.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>

@@ -15,7 +15,6 @@ using System.Text;
 
         public Class _class { get; }
         public string UUID { get; private set; }
-        public string subjectUUID { get; private set; }
 
         public int Exp { get; private set; }
 
