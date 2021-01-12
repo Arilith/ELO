@@ -89,7 +89,7 @@
                             <a runat="server" href="~/Gradelist"><i class="fa fa-list-ol" style="margin-right: 10px;"></i>Cijfers</a>
                             <a runat="server" href="~/SubjectList"><i class="fa fa-calculator" style="margin-right: 10px;"></i>Vakken</a>
                             <a runat="server" href="~/HomeworkList"><i class="fa fa-pencil" style="margin-right: 10px;"></i>Huiswerk</a>
-                            <a runat="server" href="~/UploadFile"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
+                            <a runat="server" href="~/FileList"><i class="fa fa-archive" style="margin-right: 10px;"></i>Bestanden</a>
                             <a runat="server" href="~/LeermiddelList"><i class="fa fa-book" style="margin-right: 10px;"></i>Leermiddelen</a>
                             <a runat="server" href="~/BattlePass"><i class="fas fa-gamepad" style="margin-right: 10px;"></i>Puntenseizoen</a>
                         <% } else if (loggedInPerson.Type == "Teacher") { %>
