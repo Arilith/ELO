@@ -32,6 +32,7 @@ namespace ELO.SQLClasses
                 string subjectName = reader["subjectName"].ToString();
                 string teachersCSV = reader["teacherUUIDs"].ToString();
                 string school = reader["school"].ToString();
+                string icon = reader["icon"].ToString();
                 reader.Close();
 
                 string[] teacherUUIDs = teachersCSV.Split(',');
@@ -43,7 +44,7 @@ namespace ELO.SQLClasses
                     teachers.Add((Teacher)userManager.FindUserInDataBase(teacherUUID));
                 }
 
-                Subject returnSubject = new Subject(subjectName, uuid);
+                Subject returnSubject = new Subject(subjectName, uuid, icon);
 
                 //TO IMPLEMENT
                 returnSubject.SetTeachers(teachers);
@@ -57,14 +58,15 @@ namespace ELO.SQLClasses
             return null;
         }
 
-        public void AddSubject(string name, string teachers, string school)
+        public void AddSubject(string name, string teachers, string school, string icon)
         {
-            MySqlCommand AddNewSubjectCommand = new MySqlCommand("INSERT INTO subjects (subjectUUID, subjectName, teacherUUIDs, school) VALUES (@subjectUUID, @subjectName, @teacherUUIDs, @school)", mySqlManager.con);
+            MySqlCommand AddNewSubjectCommand = new MySqlCommand("INSERT INTO subjects (subjectUUID, subjectName, teacherUUIDs, school, icon) VALUES (@subjectUUID, @subjectName, @teacherUUIDs, @school, @icon)", mySqlManager.con);
 
             AddNewSubjectCommand.Parameters.AddWithValue("@subjectUUID", UUID);
             AddNewSubjectCommand.Parameters.AddWithValue("@subjectName", name);
             AddNewSubjectCommand.Parameters.AddWithValue("@teacherUUIDs", teachers);
             AddNewSubjectCommand.Parameters.AddWithValue("@school", school);
+            AddNewSubjectCommand.Parameters.AddWithValue("@icon", icon);
 
             AddNewSubjectCommand.Prepare();
             AddNewSubjectCommand.ExecuteNonQuery();
@@ -95,6 +97,7 @@ namespace ELO.SQLClasses
                 string subjectName = reader["subjectName"].ToString();
                 string teachersCSV = reader["teacherUUIDs"].ToString();
                 string subjectUUID = reader["subjectUUID"].ToString();
+                string icon = reader["icon"].ToString();
 
                 string[] teacherUUIDs = teachersCSV.Split(',');
 
@@ -107,7 +110,7 @@ namespace ELO.SQLClasses
                 // }
                 //
                 // userManager = null;
-                Subject returnSubject = new Subject(subjectName, subjectUUID);
+                Subject returnSubject = new Subject(subjectName, subjectUUID, icon);
 
                 //TO IMPLEMENT
                 returnSubject.SetTeachers(teachers);

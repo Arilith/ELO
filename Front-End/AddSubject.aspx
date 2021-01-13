@@ -14,7 +14,10 @@
                     <% foreach (Teacher teacher in userManager.GetPersonListFromDB(loggedInPerson.School, "Teacher")) { %>
                         <option value="<%: teacher.UserId %>"><%: teacher.Name %></option>
                     <% } %>
-                </select><br/><br/>
+                </select>
+                <label for="icon">Icoon</label>
+                <input id="icon" type="text" name="icon" required class="form-control"/>
+                <br/><br/>
                 <button class="btn btn-success" type="submit">Verstuur</button>
             </form>
             <br/>
@@ -25,5 +28,4 @@
             </script>
         </div>
     </div>
-   
 </asp:Content>
