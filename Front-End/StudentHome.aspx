@@ -14,7 +14,7 @@
                         <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 65px; "/></div>
                         <div class="col-lg-9">
                             Engels <i class="fas fa-flag-usa"></i> - E16<br/>
-                            <b>HW: <%  %></b>
+                            <b>HW: Opdracht 5 tm 8<%  %></b>
                         </div>
                     </div>
                 </div>
@@ -44,11 +44,20 @@
                             foreach (Grade grade in gradeMan.GetRecentGrades(loggedInStudent.UserId, 3))
                             {
                                 string gradeSubject = grade.subject.Name;
-                                string gradeDescription = "";
+
+                                homeworkMan = new HwMan();
+                                Homework returnHomework = homeworkMan.GetHomeworkFromDB(grade.Homework.UUID);
+                                homeworkMan = null;
+                                string gradeDescription = returnHomework.Title;
+
                                 string gradeGrade = Convert.ToString(Math.Round(grade.grade, 3));
 
+                                subjectMan = new SubjectManager();
+                                Subject returnSubject = subjectMan.FindSubjectInDatabase(grade.subject.uuid);
+                                subjectMan = null;
+                                string insertIcon = returnSubject.icon;
                         %>
-                                <b class="middle"><%: gradeSubject %><i class="fas fa-flag-usa"></i> - <%: gradeDescription %> - <%: gradeGrade %></b><br />
+                                <b class="middle"><%: gradeSubject %> <i class="fas <%:insertIcon%>"></i> - <%: gradeDescription %> - <%: gradeGrade %></b><br />
                             <% } %>
                     </div>
                 </div>
