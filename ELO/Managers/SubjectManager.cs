@@ -13,7 +13,6 @@ namespace ELO
 
         public SubjectManager()
         {
-            subjectSql = new SubjectSQL();
             Subjects = new List<Subject>();
         }
 
@@ -63,22 +62,30 @@ namespace ELO
 
         public void AddNewSubjectToDataBase(string subjectName, string school, string teachers, string icon)
         {
+            subjectSql = new SubjectSQL();
             subjectSql.AddSubject(subjectName, teachers, school, icon);
+            subjectSql = null;
         }
 
         public void UpdateSubjectTeachers(string subjectUUID, string teachers)
         {
+            subjectSql = new SubjectSQL();
             subjectSql.UpdateTeachers(teachers, subjectUUID);
+            subjectSql = null;
         }
 
         public Subject FindSubjectInDatabase(string uuid)
         {
+            subjectSql = new SubjectSQL();
             return subjectSql.GetSubject(uuid);
+            subjectSql = null;
         }
 
         public List<Subject> GetSubjectList(string school)
         {
+            subjectSql = new SubjectSQL();
             return subjectSql.GetSubjectList(school);
+            subjectSql = null;
         }
 
         public Subject FindSubjectUUID(string uuid)

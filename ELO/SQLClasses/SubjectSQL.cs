@@ -12,13 +12,12 @@ namespace ELO.SQLClasses
 
         public SubjectSQL()
         {
-            mySqlManager = new MySqlManager();
-
             UUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
         public Subject GetSubject(string uuid)
         {
+            mySqlManager = new MySqlManager();
             userManager = new UserMan();
 
             string findSubjectSql = $"SELECT * FROM subjects WHERE subjectUUID = '{uuid}'";
@@ -54,12 +53,14 @@ namespace ELO.SQLClasses
                 return returnSubject;
             }
 
+            mySqlManager = null;
             reader.Close();
             return null;
         }
 
         public void AddSubject(string name, string teachers, string school, string icon)
         {
+            mySqlManager = new MySqlManager();
             MySqlCommand AddNewSubjectCommand = new MySqlCommand("INSERT INTO subjects (subjectUUID, subjectName, teacherUUIDs, school, icon) VALUES (@subjectUUID, @subjectName, @teacherUUIDs, @school, @icon)", mySqlManager.con);
 
             AddNewSubjectCommand.Parameters.AddWithValue("@subjectUUID", UUID);
@@ -70,20 +71,24 @@ namespace ELO.SQLClasses
 
             AddNewSubjectCommand.Prepare();
             AddNewSubjectCommand.ExecuteNonQuery();
+            mySqlManager = null;
         }
 
         public void UpdateTeachers(string teachers, string subjectUUID)
         {
+            mySqlManager = new MySqlManager();
             MySqlCommand UpdateTeachersCommand = new MySqlCommand($"UPDATE subjects SET teachers = @teachers WHERE subjectUUID = '{subjectUUID}'", mySqlManager.con);
 
             UpdateTeachersCommand.Parameters.AddWithValue("@teachers", teachers);
 
             UpdateTeachersCommand.Prepare();
             UpdateTeachersCommand.ExecuteNonQuery();
+            mySqlManager = null;
         }
 
         public List<Subject> GetSubjectList(string school)
         {
+            mySqlManager = new MySqlManager();
             string findSubjectSql = $"SELECT * FROM subjects WHERE school = '{school}'";
 
             MySqlCommand findSubjectCmd = new MySqlCommand(findSubjectSql, mySqlManager.con);
@@ -118,6 +123,7 @@ namespace ELO.SQLClasses
                 returnSubjects.Add(returnSubject);
             }
 
+            mySqlManager = null;
             reader.Close();
             return returnSubjects;
         }
