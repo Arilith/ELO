@@ -51,6 +51,46 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
+        public List<Homework> GetHomeworkForSubject(string school, Subject subject)
+        {
+            MySqlManager mySqlManager = new MySqlManager();
+            subjectManager = new SubjectManager();
+            classManager = new ClassManager();
+
+            MySqlCommand getHomeworkCommand = new MySqlCommand($"SELECT * FROM homework WHERE school = '{school}' AND subjectUUID = '{subject.uuid}'", mySqlManager.con);
+            MySqlDataReader homeworkReader = getHomeworkCommand.ExecuteReader();
+
+            List<Homework> returnList = new List<Homework>();
+
+            while (homeworkReader.Read())
+            {
+                string returnSchool = homeworkReader["school"].ToString();
+                string returnSubject = homeworkReader["subjectUUID"].ToString();
+                string returnTitle = homeworkReader["title"].ToString();
+                string returnContent = homeworkReader["content"].ToString();
+                string returnUUID = Convert.ToString(homeworkReader["UUID"]);
+                string returnClass = homeworkReader["classUUID"].ToString();
+                string returnDate = homeworkReader["duedate"].ToString();
+                int returnExp = Convert.ToInt32(homeworkReader["exp"]);
+                int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
+                bool isTest = returnIsTest == 1;
+                int returnForGrade = Convert.ToInt32(homeworkReader["forgrade"]);
+                bool forGrade = returnForGrade == 1;
+
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
+                Class insertClass = classManager.GetClassFromDatabase(returnClass);
+
+                returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade));
+            }
+
+            homeworkReader.Close();
+
+            classManager = null;
+            subjectManager = null;
+
+            return returnList;
+        }
+
         public List<Homework> GetHomeWorkForClass(string school, Class _class)
         {
             MySqlManager mySqlManager = new MySqlManager();

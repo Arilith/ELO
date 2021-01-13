@@ -26,6 +26,11 @@ namespace ELO
             return homeworkSql.GetHomeWorkForClass(school, _class);
         }
 
+        public List<Homework> GetHomeworkForSubjectFromDB(string school, Subject subject)
+        {
+            return homeworkSql.GetHomeworkForSubject(school, subject);
+        }
+
         public List<Homework> GetHomeWorkFromDB(string school)
         {
             return homeworkSql.GetHomeWorkList(school);

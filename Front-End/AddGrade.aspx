@@ -42,7 +42,7 @@
                         
                         <label for="homework">Huiswerk/Toets</label><br/>
                         <select id="homework" class="form-control" name="homework">
-                            <% foreach (Homework homework in homeworkManager.GetHomeWorkForClassFromDB(LoggedInPerson.School, LoggedInTeacher.MentorForClass))
+                            <% foreach (Homework homework in homeworkManager.GetHomeworkForSubjectFromDB(LoggedInPerson.School, LoggedInTeacher.Subject))
                                { %>
                                 <option value="<%: homework.UUID %>"><%: homework.Title %> <% if(homework.IsTest) { %> (TOETS) <% } %></option>
                             <% } %>
