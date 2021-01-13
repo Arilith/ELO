@@ -48,8 +48,8 @@ body {
 .logo {
     width: 80%;
     margin-left: 10%;
-    position: absolute;
-    top: 10px
+    margin-top: 0;
+    margin-bottom: 10%;
 }
 
 .ned {
@@ -97,10 +97,6 @@ body {
 
     .logo {
         top: 50px;
-    }
-
-    .mobile-menu {
-        padding-top: 30%;
     }
 
     .ned {
