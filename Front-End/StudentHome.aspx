@@ -39,6 +39,7 @@
                 <div class="container-content">
                     <div class="row">
                         <%
+                            // deze loop laat d ingelogde student zijn/haar 3 laatst behaalde cijfers zien
                             gradeMan = new GradeMan();
                             foreach (Grade grade in gradeMan.GetRecentGrades(loggedInStudent.UserId, 3))
                             {
