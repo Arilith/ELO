@@ -137,6 +137,7 @@ body {
         overflow: hidden;
         width: calc(100% - 265px);
         margin-left: 265px;
+        height: 51px !important;
     }
 
 
