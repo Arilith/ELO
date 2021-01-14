@@ -13,6 +13,8 @@ namespace Front_End
 
         public Student loggedInStudent;
         public GradeMan gradeMan;
+        public SubjectManager subjectMan;
+        public HwMan homeworkMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {

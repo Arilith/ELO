@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Hoofdpagina" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentHome.aspx.cs" Inherits="Front_End.StudentHome" %>
 <%@ Import Namespace="ELO" %>
+<%@ Import Namespace="Newtonsoft.Json.Linq" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
@@ -14,7 +15,7 @@
                         <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 65px; "/></div>
                         <div class="col-lg-9">
                             Engels <i class="fas fa-flag-usa"></i> - E16<br/>
-                            <b>HW: <%  %></b>
+                            <b>HW: Opdracht 5 tm 8<% %></b>
                         </div>
                     </div>
                 </div>
@@ -39,16 +40,36 @@
                 <div class="container-content">
                     <div class="row">
                         <%
+                            // deze loop laat d ingelogde student zijn/haar 3 laatst behaalde cijfers zien
                             gradeMan = new GradeMan();
-                            foreach (Grade grade in gradeMan.GetRecentGrades(loggedInStudent.UserId, 3))
+                            List<Grade> getRecentGradeList = gradeMan.GetRecentGrades(loggedInStudent.UserId, 3);
+                            if (getRecentGradeList.Count >= 1)
                             {
-                                string gradeSubject = grade.subject.Name;
-                                string gradeDescription = "";
-                                string gradeGrade = Convert.ToString(Math.Round(grade.grade, 3));
 
-                        %>
-                                <b class="middle"><%: gradeSubject %><i class="fas fa-flag-usa"></i> - <%: gradeDescription %> - <%: gradeGrade %></b><br />
+                                foreach (Grade grade in gradeMan.GetRecentGrades(loggedInStudent.UserId, 3))
+                                {
+                                    string gradeSubject = grade.subject.Name;
+
+                                    homeworkMan = new HwMan();
+                                    Homework returnHomework = homeworkMan.GetHomeworkFromDB(grade.Homework.UUID);
+                                    homeworkMan = null;
+                                    string gradeDescription = returnHomework.Title;
+
+                                    string gradeGrade = Convert.ToString(Math.Round(grade.grade, 3));
+
+                                    subjectMan = new SubjectManager();
+                                    Subject returnSubject = subjectMan.FindSubjectInDatabase(grade.subject.uuid);
+                                    subjectMan = null;
+                                    string insertIcon = returnSubject.icon;
+
+%>
+                                <b class="middle"><%: gradeSubject %> <i class="fas <%: insertIcon %>"></i> - <%: gradeDescription %> - <%: gradeGrade %></b><br />
                             <% } %>
+                        <% } %>
+                            <%else
+                            {%>
+                                <b>je hebt nog geen cijfers behaald.</b>
+                        <% }%>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ namespace Front_End
 
             if (IsPostBack)
             {
-                subjectManager.AddNewSubjectToDataBase(Request.Form["name"], loggedInPerson.School, Request.Form["teachers"]);
+                subjectManager.AddNewSubjectToDataBase(Request.Form["name"], loggedInPerson.School, Request.Form["teachers"], Request.Form["icon"]);
             }
         }
     }

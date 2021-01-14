@@ -46,6 +46,7 @@ namespace ELO.SQLClasses
             }
 
             seasonMan = null;
+            mySqlManager.con.Close();
             mySqlManager = null;
 
             //als alle rijen zijn gelezen en in de lijst gezet, return de lijst
@@ -80,6 +81,7 @@ namespace ELO.SQLClasses
             }
 
             seasonMan = null;
+            mySqlManager.con.Close();
             mySqlManager = null;
             return null;
         }

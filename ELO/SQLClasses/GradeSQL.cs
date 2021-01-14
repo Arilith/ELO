@@ -6,7 +6,7 @@ namespace ELO.SQLClasses
 {
     public class GradeSQL
     {
-        private readonly MySqlManager _mySqlManager;
+        private MySqlManager _mySqlManager;
         private UserMan userManager;
         private SchoolManager schoolManager;
         private ClassManager classManager;
@@ -25,11 +25,11 @@ namespace ELO.SQLClasses
 
         public GradeSQL()
         {
-            _mySqlManager = new MySqlManager();
         }
 
         public void AddGradeToDB(string school, double grade, decimal weight, Subject subject, Student student, Homework homework)
         {
+            _mySqlManager = new MySqlManager();
             MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, grade, weight, subjectUUID, userUUID, classUUID, homeworkUUID) VALUES (@school, @grade, @weight, @subjectUUID, @userUUID, @classUUID, @homeworkUUID)", _mySqlManager.con);
 
             addGradeCommand.Parameters.AddWithValue("@school", school);
@@ -42,11 +42,14 @@ namespace ELO.SQLClasses
 
             addGradeCommand.Prepare();
             addGradeCommand.ExecuteNonQuery();
+            _mySqlManager.con.Close();
+            _mySqlManager = null;
         }
 
         public List<Grade> GetGradeList(string studentuuid)
         {
             //Initialize the managers
+            _mySqlManager = new MySqlManager();
             userManager = new UserMan();
             classManager = new ClassManager();
             subjectManager = new SubjectManager();
@@ -72,6 +75,8 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, gradeSubjectObj, weight, year, homework));
             }
 
+            _mySqlManager.con.Close();
+            _mySqlManager = null;
             userManager = null;
             classManager = null;
             subjectManager = null;
@@ -82,6 +87,7 @@ namespace ELO.SQLClasses
         public List<Grade> GetGradeList(string studentuuid, Subject subjectObj, int year)
         {
             //Initialize the managers
+            _mySqlManager = new MySqlManager();
             userManager = new UserMan();
             classManager = new ClassManager();
             subjectManager = new SubjectManager();
@@ -106,6 +112,8 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year, homework));
             }
 
+            _mySqlManager.con.Close();
+            _mySqlManager = null;
             userManager = null;
             classManager = null;
             subjectManager = null;
@@ -116,6 +124,7 @@ namespace ELO.SQLClasses
         public List<Grade> GetGradeListOfStudent(string studentuuid, int limit)
         {
             //Initialize the managers
+            _mySqlManager = new MySqlManager();
             userManager = new UserMan();
             classManager = new ClassManager();
             subjectManager = new SubjectManager();
@@ -142,6 +151,8 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year, homework));
             }
 
+            _mySqlManager.con.Close();
+            _mySqlManager = null;
             userManager = null;
             classManager = null;
             subjectManager = null;
@@ -152,6 +163,7 @@ namespace ELO.SQLClasses
         public Grade GetGrade(string gradeuuid)
         {
             //Initialize the managers
+            _mySqlManager = new MySqlManager();
             userManager = new UserMan();
             classManager = new ClassManager();
             subjectManager = new SubjectManager();
@@ -175,13 +187,16 @@ namespace ELO.SQLClasses
 
                 returnGrade = new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year, homework);
 
-                userManager = null;
+                _mySqlManager.con.Close();
+                _mySqlManager = null;
                 classManager = null;
                 subjectManager = null;
 
                 return returnGrade;
             }
 
+            _mySqlManager.con.Close();
+            _mySqlManager = null;
             userManager = null;
             classManager = null;
             subjectManager = null;

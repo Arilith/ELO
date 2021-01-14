@@ -13,30 +13,30 @@ namespace ELO
         public HwMan homeworkManager;
         public GradeMan()
         {
-            gradeSql = new GradeSQL();
         }
 
 
         public Grade GetGradeFromDataBase(string uuid)
         {
+            gradeSql = new GradeSQL();
             Grade returnGrade = gradeSql.GetGrade(uuid);
-
+            gradeSql = null;
             return returnGrade;
         }
 
         public List<Grade> GetGradeListFromDatabase(string useruuid, Subject subject, int year)
         {
-
+            gradeSql = new GradeSQL();
             List<Grade> returnGradeList = gradeSql.GetGradeList(useruuid, subject, year);
-
+            gradeSql = null;
             return returnGradeList;
         }
 
         public List<Grade> GetGradeListFromDatabase(string useruuid)
         {
-
+            gradeSql = new GradeSQL();
             List<Grade> returnGradeList = gradeSql.GetGradeList(useruuid);
-
+            gradeSql = null;
             return returnGradeList;
         }
 
@@ -53,12 +53,16 @@ namespace ELO
 
             userMan = null;
             subjectManager = null;
+            gradeSql = new GradeSQL();
             gradeSql.AddGradeToDB(school, grade, weight, subject, student, homework);
+            gradeSql = null;
         }
 
         public List<Grade> GetRecentGrades(string studentUUID, int limit)
         {
+            gradeSql = new GradeSQL();
             List<Grade> returnList = new List<Grade>(gradeSql.GetGradeListOfStudent(studentUUID, limit));
+            gradeSql = null;
             return returnList;
         }
     }

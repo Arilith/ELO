@@ -7,7 +7,7 @@ namespace ELO.SQLClasses
 {
     public class FileSQL
     {
-        private MySqlManager mysqlManager;
+        private MySqlManager mySqlManager;
 
         public FileSQL()
         {
@@ -18,8 +18,8 @@ namespace ELO.SQLClasses
         public File UploadFile(File fileToUpload)
         {
             string uploadFileQuery = $"INSERT INTO file (fileName, filePath, studentUUID, homeworkUUID, subjectUUID) VALUES (@fileName, @filePath, @studentUUID, @homeworkUUID, @subjectUUID)";
-            mysqlManager = new MySqlManager();
-            MySqlCommand uploadFileCommand = new MySqlCommand(uploadFileQuery, mysqlManager.con);
+            mySqlManager = new MySqlManager();
+            MySqlCommand uploadFileCommand = new MySqlCommand(uploadFileQuery, mySqlManager.con);
 
             uploadFileCommand.Parameters.AddWithValue("@fileName", fileToUpload.FileName);
             uploadFileCommand.Parameters.AddWithValue("@filePath", fileToUpload.FilePath);
@@ -30,6 +30,8 @@ namespace ELO.SQLClasses
             uploadFileCommand.Prepare();
             uploadFileCommand.ExecuteNonQuery();
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
 
             return fileToUpload;
         }
@@ -38,8 +40,8 @@ namespace ELO.SQLClasses
         {
             //Get the files for this specific homework.
             string readFilesOfHomework = $"SELECT * FROM file WHERE homeworkUUID = '{homeworkUUID}'";
-            mysqlManager = new MySqlManager();
-            MySqlCommand getFileCommand = new MySqlCommand(readFilesOfHomework, mysqlManager.con);
+            mySqlManager = new MySqlManager();
+            MySqlCommand getFileCommand = new MySqlCommand(readFilesOfHomework, mySqlManager.con);
             MySqlDataReader getFileReader = getFileCommand.ExecuteReader();
 
             List<File> returnFiles = new List<File>();
@@ -49,6 +51,8 @@ namespace ELO.SQLClasses
                 returnFiles.Add(MakeFileFromReader(getFileReader, true));
             }
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
             return returnFiles;
         }
 
@@ -59,9 +63,9 @@ namespace ELO.SQLClasses
             //Get the files for this specific homework.
             string readFilesOfHomework = $"SELECT * FROM file WHERE studentUUID = '{userUUID}'";
 
-            mysqlManager = new MySqlManager();
+            mySqlManager = new MySqlManager();
 
-            MySqlCommand getFileCommand = new MySqlCommand(readFilesOfHomework, mysqlManager.con);
+            MySqlCommand getFileCommand = new MySqlCommand(readFilesOfHomework, mySqlManager.con);
             MySqlDataReader getFileReader = getFileCommand.ExecuteReader();
 
             List<File> returnFiles = new List<File>();
@@ -71,6 +75,8 @@ namespace ELO.SQLClasses
                 returnFiles.Add(MakeFileFromReader(getFileReader, true));
             }
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
             return returnFiles;
         }
 
@@ -79,8 +85,8 @@ namespace ELO.SQLClasses
             // get files from database
             string getFileQuery = $"SELECT * FROM file WHERE filePath = '{filePath}'";
 
-            mysqlManager = new MySqlManager();
-            MySqlCommand getFileCommand = new MySqlCommand(getFileQuery, mysqlManager.con);
+            mySqlManager = new MySqlManager();
+            MySqlCommand getFileCommand = new MySqlCommand(getFileQuery, mySqlManager.con);
             MySqlDataReader getFileReader = getFileCommand.ExecuteReader();
 
             List<File> returnFiles = new List<File>();
@@ -90,6 +96,8 @@ namespace ELO.SQLClasses
                 return MakeFileFromReader(getFileReader, true);
             }
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
             return null;
         }
 
@@ -114,6 +122,5 @@ namespace ELO.SQLClasses
             else
                 return new File(fileName, filePath, fileStudent, fileUploadDate);
         }
-
     }
 }

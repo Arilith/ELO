@@ -19,13 +19,8 @@ namespace Front_End
             loggedInPerson = (Person)Session["person"];
             userManager = new UserMan();
             subjectManager = new SubjectManager();
-
-            if (IsPostBack)
-            {
-                subjectManager.AddNewSubjectToDataBase(Request.Form["name"], loggedInPerson.School, Request.Form["teachers"]);
-            }
         }
 
- 
+
     }
 }
