@@ -37,7 +37,7 @@ namespace ELO.SQLClasses
                 bool forGrade = returnForGrade == 1;
 
 
-                Subject insertSubject = subjectManager.FindSubject(returnSubject);
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
                 returnList.Add(new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade));

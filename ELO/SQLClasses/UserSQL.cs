@@ -121,11 +121,11 @@ namespace ELO.SQLClasses
             return new SysAdmin(name, 0, school, "SysAdmin", userUUID, date, username, email, exp);
         }
 
-        public Teacher AddTeacher(string username, string password, string school, string name, string email, int exp)
+        public Teacher AddTeacher(string username, string password, string school, string name, string email, int exp, string subjectUUID, string classUUID)
         {
             mySqlManager = new MySqlManager();
 
-            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school, exp) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school, @exp)";
+            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school, exp, subjectUUID, classUUID) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school, @exp, @subjectUUID, @classUUID)";
             MySqlCommand addTeacherCommand;
 
             addTeacherCommand = new MySqlCommand(addTeacherSQL, mySqlManager.con);
@@ -139,6 +139,8 @@ namespace ELO.SQLClasses
             addTeacherCommand.Parameters.AddWithValue("@uuid", userUUID);
             addTeacherCommand.Parameters.AddWithValue("@school", school);
             addTeacherCommand.Parameters.AddWithValue("@exp", exp);
+            addTeacherCommand.Parameters.AddWithValue("@subjectUUID", subjectUUID);
+            addTeacherCommand.Parameters.AddWithValue("@classUUID", classUUID);
 
             addTeacherCommand.Prepare();
             addTeacherCommand.ExecuteNonQuery();
@@ -359,5 +361,26 @@ namespace ELO.SQLClasses
 
             return returnList;
         }
+        public Teacher ConvertReaderToTeacher(MySqlDataReader reader)
+        {
+            string returnUsername = reader["username"].ToString();
+            string returnName = reader["name"].ToString();
+            int returnAge = Convert.ToInt32(reader["age"]);
+            string returnType = reader["role"].ToString();
+            string returnSchool = reader["school"].ToString();
+            string returnUserId = Convert.ToString(reader["uuid"]);
+            string returnRegistrationdate = reader["registrationdate"].ToString();
+            string email = reader["email"].ToString();
+
+            string mentorClass = reader["classUUID"].ToString();
+            //string subject = reader["subjectUUID"].ToString();
+            int returnExp = Convert.ToInt32(reader["exp"]);
+
+            return new Teacher(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email, returnExp);
+
+        }
     }
+
+    
+
 }

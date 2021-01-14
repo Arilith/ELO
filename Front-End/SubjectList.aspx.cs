@@ -14,11 +14,15 @@ namespace Front_End
         public Person loggedInPerson;
         public UserMan userManager;
         public SubjectManager subjectManager;
+        public Student loggedInStudent;
         protected void Page_Load(object sender, EventArgs e)
         {
             loggedInPerson = (Person)Session["person"];
             userManager = new UserMan();
             subjectManager = new SubjectManager();
+
+            if (loggedInPerson != null && loggedInPerson.Type == "Student")
+                loggedInStudent = (Student) loggedInPerson;
         }
 
 

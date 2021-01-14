@@ -22,7 +22,7 @@ namespace ELO.SQLClasses
             subjectManager = new SubjectManager();
             classManager = new ClassManager();
 
-            MySqlCommand getExamCommand = new MySqlCommand($"SELECT * FROM exams WHERE school = '{school}' AND classUUID = '{_classUUID}'", MySqlManager.con);
+            MySqlCommand getExamCommand = new MySqlCommand($"SELECT * FROM exams WHERE school = '{school}' AND classUUID = '{_classUUID}'", mySqlManager.con);
             MySqlDataReader ExamReader = getExamCommand.ExecuteReader();
             List<Exam> returnList = new List<Exam>();
 
@@ -34,7 +34,7 @@ namespace ELO.SQLClasses
                 string returnClassUUID = ExamReader["classUUID"].ToString();
                 string returnSchool = ExamReader["school"].ToString();
 
-                Subject insertSubject = subjectManager.FindSubject(returnSubjectUUID);
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
 
                 returnList.Add(new Exam(returnUUID, insertSubject, returnWeight, insertClass, returnSchool));
@@ -49,7 +49,7 @@ namespace ELO.SQLClasses
         public void AddExamToDatabase(string UUID, int weight, string subjectUUID, string _classUUID, string school)
         {
             mySqlManager = new MySqlManager();
-            MySqlCommand addExamCommand = new MySqlCommand($"INSERT INTO appointments (UUID, weight, subjectUUID, classUUID, school) VALUES ({UUID}, {weight}, {subjectUUID}, {_classUUID}, {school})", MySqlManager.con);
+            MySqlCommand addExamCommand = new MySqlCommand($"INSERT INTO appointments (UUID, weight, subjectUUID, classUUID, school) VALUES ({UUID}, {weight}, {subjectUUID}, {_classUUID}, {school})", mySqlManager.con);
             addExamCommand.ExecuteNonQuery();
             mySqlManager.con.Close();
             mySqlManager = null;
