@@ -42,7 +42,7 @@
                     <br/>
 
                     <label for="exp">Te verdienen punten</label><br/>
-                    <input id="exp" class="form-control" name="exp" type="text" placeholder="100" required/><br/>      
+                    <input id="exp" class="form-control" name="exp" type="number" placeholder="100" required/><br/>      
                     <br/>
                         </div>
 
