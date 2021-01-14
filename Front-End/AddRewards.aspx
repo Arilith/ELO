@@ -6,6 +6,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <form method="post" id="addrewards" name="reward">
+                    <div class="jelly-form">
                     <label for="reward">Reward</label><br/>
                     <input id="reward" class="form-control" name="reward" type="text" placeholder="Kortingsbon" required/><br/>
 
@@ -20,6 +21,7 @@
                     <input id="requiredLevel" class="form-control" name="requiredLevel" type="number" /><br/>     
                     <br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
+                    </div>
                 </form>
                 <asp:Label ID="OutputLabel" runat="server"></asp:Label>             
             </div>

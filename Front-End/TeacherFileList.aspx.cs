@@ -12,11 +12,17 @@ namespace Front_End
     {
         public Person loggedInPerson;
 
+        public Teacher loggedInTeacher;
+
         public FileManager FileManager;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             loggedInPerson = (Person)Session["person"];
+
+            if (loggedInPerson != null && loggedInPerson.Type == "Teacher")
+                loggedInTeacher = (Teacher) loggedInPerson;
+
             FileManager = new FileManager();
         }
     }

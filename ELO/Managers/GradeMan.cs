@@ -40,21 +40,23 @@ namespace ELO
             return returnGradeList;
         }
 
-        public void AddGradeToDatabase(string school, string studentuuid, double grade, decimal weight, string subjectName, string homeworkUUID)
+        public void AddGradeToDatabase(string school, string studentuuid, double grade, decimal weight, string homeworkUUID)
         {
             userMan = new UserMan();
             subjectManager = new SubjectManager();
             homeworkManager = new HwMan();
 
             Student student = (Student)userMan.FindUserInDataBase(studentuuid);
-            Subject subject = subjectManager.FindSubjectInDatabase(subjectName);
+            
             Homework homework = homeworkManager.GetHomeworkFromDB(homeworkUUID);
+            Subject subject = homework.Subject;
 
+            int xpToAdd = Convert.ToInt32(Math.Round(homework.Exp * (grade / 10)));
 
             userMan = null;
             subjectManager = null;
             gradeSql = new GradeSQL();
-            gradeSql.AddGradeToDB(school, grade, weight, subject, student, homework);
+            gradeSql.AddGradeToDB(school, grade, weight, subject, student, homework, xpToAdd);
             gradeSql = null;
         }
 

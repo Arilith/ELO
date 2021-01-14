@@ -7,20 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Front_End
+namespace Front_End.Content
 {
 
 
-    public partial class AdminLogin
+    public partial class GradeFile
     {
-
-        /// <summary>
-        /// link1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlLink link1;
     }
 }

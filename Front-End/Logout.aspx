@@ -9,6 +9,7 @@
         <link id="link2" rel="stylesheet" href="~/Content/Main.css" type="text/css" runat="server" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server"/>
     </meta>
+    <link rel="icon" href="Studycluster-icon.ico" type="image/x-icon"/>
     <title></title>
 </head>
 <body>
