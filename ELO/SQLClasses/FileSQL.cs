@@ -36,6 +36,26 @@ namespace ELO.SQLClasses
             return fileToUpload;
         }
 
+        public List<File> GetFileListForSubject(Subject subject)
+        {
+            //Get the files for this specific homework.
+            string readFilesOfSubject = $"SELECT * FROM file WHERE subjectUUID = '{subject.uuid}'";
+            mySqlManager = new MySqlManager();
+            MySqlCommand getFileCommand = new MySqlCommand(readFilesOfSubject, mySqlManager.con);
+            MySqlDataReader getFileReader = getFileCommand.ExecuteReader();
+
+            List<File> returnFiles = new List<File>();
+
+            while (getFileReader.Read())
+            {
+                returnFiles.Add(MakeFileFromReader(getFileReader, true));
+            }
+
+            mySqlManager.con.Close();
+            mySqlManager = null;
+            return returnFiles;
+        }
+
         public List<File> GetFileListByHomework(string homeworkUUID)
         {
             //Get the files for this specific homework.

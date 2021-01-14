@@ -27,10 +27,12 @@ namespace ELO.SQLClasses
         {
         }
 
-        public void AddGradeToDB(string school, double grade, decimal weight, Subject subject, Student student, Homework homework)
+        public void AddGradeToDB(string school, double grade, decimal weight, Subject subject, Student student, Homework homework, int expToAdd)
         {
             _mySqlManager = new MySqlManager();
+
             MySqlCommand addGradeCommand = new MySqlCommand("INSERT INTO grades (school, grade, weight, subjectUUID, userUUID, classUUID, homeworkUUID) VALUES (@school, @grade, @weight, @subjectUUID, @userUUID, @classUUID, @homeworkUUID)", _mySqlManager.con);
+            MySqlCommand updateExpForUserCommand = new MySqlCommand($"UPDATE users SET `exp` = `exp` + {expToAdd} WHERE uuid = '{student.UserId}'", _mySqlManager.con);
 
             addGradeCommand.Parameters.AddWithValue("@school", school);
             addGradeCommand.Parameters.AddWithValue("@grade", grade);
@@ -42,6 +44,8 @@ namespace ELO.SQLClasses
 
             addGradeCommand.Prepare();
             addGradeCommand.ExecuteNonQuery();
+            updateExpForUserCommand.ExecuteNonQuery();
+
             _mySqlManager.con.Close();
             _mySqlManager = null;
         }

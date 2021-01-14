@@ -44,6 +44,10 @@ namespace ELO
             return fileSql.GetFileListByHomework(homeworkUUID);
         }
 
+        public List<File> GetFileListForSubject(Subject subject)
+        {
+            return fileSql.GetFileListForSubject(subject);
+        }
 
         public List<File> GetFileListByUser(string userUUID)
         {

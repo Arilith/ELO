@@ -31,15 +31,6 @@
                                 <option value="<%: student.UserId %>"><%: student.Name %></option>
                             <% } %>
                         </select><br/>
-
-                        <label for="subject">Vak</label><br/>
-                        <select id="subject" class="form-control" name="subject">
-                            <% foreach (Subject subject in subjectMan.GetSubjectList(LoggedInPerson.School))
-                               { %>
-                                <option value="<%: subject.uuid%>"><%: subject.Name %></option>
-                            <% } %>
-                        </select><br/>
-                        
                         <label for="homework">Huiswerk/Toets</label><br/>
                         <select id="homework" class="form-control" name="homework">
                             <% foreach (Homework homework in homeworkManager.GetHomeworkForSubjectFromDB(LoggedInPerson.School, LoggedInTeacher.Subject))

@@ -9,7 +9,11 @@
                     <label for="subject">Vak</label><br/>
                     <div class="jelly-form" style="width:356px">
                     <select id="subject" class="form-control" name="subject" type="text" placeholder="Nederlands" required><br/>
-                        <option selected value="<%: LoggedInTeacher.Subject.uuid %>"><%: LoggedInTeacher.Subject.Name %></option>
+                        <% if (LoggedInTeacher.Subject != null) { %>
+                            <option selected value="<%: LoggedInTeacher.Subject.uuid %>"><%: LoggedInTeacher.Subject.Name %></option>
+                        <% } else { %>
+                            <option disabled selected>Je bent een leraar zonder vak!</option>
+                        <% } %>
                     </select>
                     <label for="_class">Klas</label><br/>
                     <select id="_class" class="form-control" name="_class" placeholder="Klas 1B"><br/>
@@ -38,7 +42,7 @@
                     <br/>
 
                     <label for="exp">Te verdienen punten</label><br/>
-                    <input id="exp" class="form-control" name="exp" type="text" placeholder="100" required/><br/>      
+                    <input id="exp" class="form-control" name="exp" type="number" placeholder="100" required/><br/>      
                     <br/>
                         </div>
 
