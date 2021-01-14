@@ -168,6 +168,12 @@ body {
     .logout-button-side {
         display: none;
     }
+
+    .logo {
+        position:absolute;
+        top: 1%;
+        margin-bottom: 5%;
+    }
 }
 
 
@@ -552,4 +558,9 @@ h2 {
 
 .horizontal {
     display: inline-block;
+}
+
+.bigger {
+    display: block;
+    border-width: 0 6px 6px 0;
 }

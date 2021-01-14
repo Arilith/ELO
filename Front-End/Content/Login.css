@@ -14,7 +14,6 @@ body {
     bottom: -20px;
     left: -20px;
     right: -20px;
-    /* background: lightblue; */
     background-image: url("https://cdn.discordapp.com/attachments/788383809133215754/797125793629077574/unknown.png");
     background-size: cover;
     filter: blur(10px);
@@ -24,6 +23,10 @@ body {
 
 .bg-image-admin {
     background-image: url("https://oudenbosch.markland.nl/uimg/oudenbosch/b85432_img1f.jpg");
+    top: -20px;
+    bottom: -20px;
+    left: -20px;
+    right: -20px;
 }
 
 .darkening {
@@ -61,7 +64,6 @@ body {
     }
 
 .login-container > .top {
-    /* background: pink; */
     padding: 20px 30px 20px 30px;
 
     width: 40%;
@@ -179,4 +181,49 @@ option {
     background-color: rgba(0, 50, 150, 0.7) !important;
 }
 
+.login-container-register {
+    position: absolute;
+    height: 565px!important;
+    width: 55vw!important;
+    left: 15%;
+    top: 15%!important;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    color: white;
+}
 
+.login-container-register > .login-picture {
+    display: inline-block;
+    border-radius: 8px 0px 0px 8px;
+    height: 100%;
+    width: 60%;
+    background: url("https://media.discordapp.net/attachments/788383809133215754/797126237113286696/unknown.png?width=555&height=676") no-repeat 0px -100px;
+}
+
+
+.login-container-register > .admin-login-picture {
+    background: url("https://oudenbosch.markland.nl/uimg/oudenbosch/b85432_img1f.jpg") no-repeat;
+    background-position: -800px -100px;
+}
+
+.login-container-register > .top {
+    padding: 20px 30px 20px 30px;
+    width: 40%;
+    height: 30%;
+    float: right;
+    display: inline-block;
+}
+
+    .login-container-register > .top > .login-logo {
+        width: 80%;
+    }
+
+.login-container-register > .bottom {
+    display: inline-block;
+    float: right;
+    width: 40%;
+    height: 70%;
+    position: absolute;
+    margin-top: 12%;
+    padding: 30px;
+}
