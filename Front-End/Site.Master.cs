@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -30,6 +31,9 @@ namespace Front_End
                 else if (loggedInPerson.Type == "Teacher")
                     loggedInPerson = (Teacher) loggedInPerson;
             }
+
+            KillSleepingMySQL.KillSleepingConnections(10);
         }
+
     }
 }

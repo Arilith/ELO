@@ -3,17 +3,6 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info">
-                <div class="container-title">Volgend uur</div>
-                <div class="container-content">
-                    <div class="row">
-                        VW5C - T14<br />
-                        <b>HW: Maak opdracht 15 en 16</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <div class="col-lg-4">
-            <div class="container-info">
              <div class="container-title">Meldingen</div>
                 <div class="container-content">
                     <div class="message-holder">
@@ -36,11 +25,12 @@
                     <div class="message-holder">
                         <div class="message">
                             <div class="message-title">Schorsing</div>
-                            <div class="message-content">Steen, H. de <br/> <br/> Beste meneer Vissers, <br /> vorige week was ik geschorst, omdat ik te vaak niet kwam opdagen voor school. Ik dien bij deze een klacht in, omdat ik vind dat ik niet vaak genoeg afwezig ben geweest voor een schorsing. Wilt u mij zo snel mogelijk terugmailen, <br /> Groetjes <br /> Henk de Steen </div>
-                        </div>
+                            <div class="message-content">Steen, H. de <br/> <br/> Beste meneer <%: loggedInPerson.Name %>, <br /> vorige week was ik geschorst, omdat ik te vaak niet kwam opdagen voor school. Ik dien bij deze een klacht in, omdat ik vind dat ik niet vaak genoeg afwezig ben geweest voor een schorsing. Wilt u mij zo snel mogelijk terugmailen, <br /> Groetjes <br /> Henk de Steen </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
 </asp:Content>
