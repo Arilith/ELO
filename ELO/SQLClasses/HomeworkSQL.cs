@@ -229,14 +229,13 @@ namespace ELO.SQLClasses
                 int returnForGrade = Convert.ToInt32(homeworkReader["forgrade"]);
                 bool forGrade = returnForGrade == 1;
 
-                homeworkReader.Close();
-
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
                 Homework returnHomework = new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade);
                 returnList.Add(returnHomework);
             }
+            homeworkReader.Close();
             mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;

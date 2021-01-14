@@ -21,7 +21,6 @@
 <body>
 <div class="background-blur"></div>
     <div class="bodycontainer">
-        
         <% if (Session["person"] == null) { %>
             <div id="search-overlay">
                 <div id="loader"></div>
@@ -59,11 +58,25 @@
                        .sidenav {
                            background: #102e4a;
                        }
-                   </style> 
+                   </style>
             <% } %>
             <div class="topnav">
                 <a class="pull-right">
-                    <a href="Battlepass.aspx"><p>Volgend huiswerk: Nederlands <i class="fas fa-bicycle"></i> - Maak opdracht 15 en 16 - 15 punten</p></a>
+                <%
+                    if (homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1).Count != 0)
+                    {
+                        List<Homework> thisStudentsHomeWorkList = homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1);
+                        foreach (Homework homework in thisStudentsHomeWorkList)
+                        {
+                            Subject returnSubject = subjectManager.FindSubjectInDatabase(homework.Subject.uuid);
+                            string insertSubjectName = returnSubject.Name;
+                            string insertSubjectIcon = returnSubject.icon;
+                            string insertDueDate = homework.DueDate;
+                            string insertHomeworkDescription = homework.Content;
+
+                %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%:insertSubjectName %> <i class="fas <%:insertSubjectIcon %>"></i> - <%:insertHomeworkDescription %> - <%:homework.Exp %> punten</p></a><%
+                                }
+                            } %>
                 <a href="Battlepass.aspx"><p>Puntentotaal: 69 punten</p></a>
                     <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="height: 52px;" /></a>
                     <a href="#" class="active"><%: loggedInPerson.Name %></a>
@@ -108,7 +121,7 @@
                                     <a runat="server" href="~/AddClass">Klas Invoeren</a>
                                     <a runat="server" href="~/ClassList">Klassenlijst</a>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="navigator-category">
                                 <span class="navigator-heading">Roosters<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
                                 <div class="navigator-category-content">
@@ -140,8 +153,8 @@
                             </div>
                         <% } %>
                     </div>
-                    
-                    
+
+
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                     <footer class="footer">
@@ -173,5 +186,5 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
-</script> 
+</script>
 </html>

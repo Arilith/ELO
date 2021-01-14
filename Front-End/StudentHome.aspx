@@ -25,7 +25,6 @@
                  <div class="container-content">
                     <div class="row">
                         <%
-
                             if (homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1).Count != 0)
                             {
                                 List<Homework> thisStudentsHomeWorkList = homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1);
@@ -35,11 +34,11 @@
                                     string insertSubjectName = returnSubject.Name;
                                     string insertSubjectIcon = returnSubject.icon;
                                     string insertDueDate = homework.DueDate;
+                                    string insertHomeworkDescription = homework.Content;
 
-                                    %><b style="left:50px; position:absolute"><%:insertSubjectName %> <i class="fas <%:insertSubjectIcon %>"></i> - Inleverdatum: <%:insertDueDate %></b><br/><br /><%
+                                    %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%:insertSubjectName %> <i class="fas <%:insertSubjectIcon %>"></i> - <%:insertHomeworkDescription %> - <%:homework.Exp %> punten</p></a><%
                                 }
                             } %>
-                        <p class="middle">Maak de online opdracht over werkwoorden op www.ofcourse.nl</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +50,6 @@
                     <div class="row">
                         <%
                             // deze loop laat d ingelogde student zijn/haar 3 laatst behaalde cijfers zien
-                            gradeMan = new GradeMan();
                             List<Grade> getRecentGradeList = gradeMan.GetRecentGrades(loggedInStudent.UserId, 3);
                             if (getRecentGradeList.Count >= 1)
                             {
@@ -60,16 +58,14 @@
                                 {
                                     string gradeSubject = grade.subject.Name;
 
-                                    homeworkMan = new HwMan();
                                     Homework returnHomework = homeworkMan.GetHomeworkFromDB(grade.Homework.UUID);
-                                    homeworkMan = null;
+
                                     string gradeDescription = returnHomework.Title;
 
                                     string gradeGrade = Convert.ToString(Math.Round(grade.grade, 3));
 
-                                    subjectMan = new SubjectManager();
                                     Subject returnSubject = subjectMan.FindSubjectInDatabase(grade.subject.uuid);
-                                    subjectMan = null;
+
                                     string insertIcon = returnSubject.icon;
 
 %>
