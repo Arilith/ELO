@@ -96,23 +96,23 @@ namespace ELO
         {
             return userSQL.FindUserInDataBase(uuid);
         }
-        public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email, int exp)
+        public SysAdmin AddSysAdminToDataBase(string username, string password, string school, string name, string email)
         {
-            SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email, exp);
+            SysAdmin newAdmin = userSQL.AddAdmin(username, password, school, name, email, 0);
 
             return newAdmin;
         }
 
-        public Teacher AddTeacherToDataBase(string username, string password, Person loggedInperson, string name, string email, int exp)
+        public Teacher AddTeacherToDataBase(string username, string password, Person loggedInperson, string name, string email, string subjectUUID, string classUUID)
         {
             string school = loggedInperson.School;
 
-            Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email, exp);
+            Teacher newTeacher = userSQL.AddTeacher(username, password, school, name, email, 0, subjectUUID, classUUID);
 
             return newTeacher;
         }
 
-        public string AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, Person loggedInPerson, int exp)
+        public string AddStudentToDataBase(int leerlingnummer, string password, string name, string email, string classUUID, Person loggedInPerson)
         {
             classMan = new ClassManager();
 
@@ -127,7 +127,7 @@ namespace ELO
             else
                 return "Je moet eerst een mentor invoeren bij deze klas voordat je er leerlingen bij kan voegen!";
 
-            Student newStudent = userSQL.AddStudent(userName, password, leerlingnummer, school, name, email, classUUID, mentorUUID, exp);
+            Student newStudent = userSQL.AddStudent(userName, password, leerlingnummer, school, name, email, classUUID, mentorUUID, 0);
 
             if (newStudent != null)
                 return "Student met success toegevoegd!";

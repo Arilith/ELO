@@ -125,6 +125,13 @@
                                 </div>
                             </div>
                             <div class="navigator-category">
+                                <span class="navigator-heading">Battlepass<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <div class="navigator-category-content">
+                                    <a runat="server" href="~/AddSeason">Seizoenen toevoegen</a>
+                                    <a runat="server" href="~/AddRewards">Beloningen toevoegen</a>
+                                </div>
+                            </div>
+                            <div class="navigator-category">
                                 <span class="navigator-heading">Overig<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>

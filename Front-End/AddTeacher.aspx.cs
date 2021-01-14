@@ -11,19 +11,23 @@ namespace Front_End
     public partial class AddTeacher : System.Web.UI.Page
     {
 
-        public UserMan userManager;
-        public SchoolManager schoolManager;
+        private UserMan userManager;
+        public SubjectManager subjectManager;
+        public ClassManager classManager;
+
+        public Person loggedInPerson;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             userManager = new UserMan();
-            schoolManager = new SchoolManager();
+            classManager = new ClassManager();
+            subjectManager = new SubjectManager(); 
+            loggedInPerson = (Person)Session["person"];
 
             if (IsPostBack)
             {
-                Person loggedInPerson = (Person)Session["person"];
 
-                userManager.AddTeacherToDataBase(Request.Form["username"], Request.Form["password"], loggedInPerson, Request.Form["name"], Request.Form["email"], Convert.ToInt32(Request.Form["exp"]));
+                userManager.AddTeacherToDataBase(Request.Form["username"], Request.Form["password"], loggedInPerson, Request.Form["name"], Request.Form["email"], Request.Form["subject"], Request.Form["class"]);
 
                 OutputLabel.Text = "Docent Succesvol toegevoegd!";
             }

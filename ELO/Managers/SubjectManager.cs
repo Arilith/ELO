@@ -16,54 +16,22 @@ namespace ELO
             Subjects = new List<Subject>();
         }
 
-        public Subject FindSubject(string name)
+
+        public List<Teacher> GetTeachersBySubject(Subject subject)
         {
-            return Subjects.Find(x => x.Name == name);
+            subjectSql = new SubjectSQL();
+            return subjectSql.GetTeachersBySubject(subject);
+            subjectSql = null;
         }
-
-        public void AddTeacherToSubject(Teacher teacher, Subject subject)
-        {
-
-            Subject foundSubject = Subjects.Find(x => x.Name == subject.Name);
-
-            //Check of er wel een leraar is ingevuld. Anders niet invoegen.
-            if(teacher != null)
-            {
-                foundSubject.Teachers.Add(teacher);
-            }
-        }
-
-
-        public Subject FindSubject(Teacher teacher)
-        {
-            //HELP MEH
-            // return Subjects.Find(x => x.Teachers.Find(y => y.Name == teacher.Name));
-            return null;
-        }
-
-
-        public List<Teacher> GetTeacherListBySubject(Subject subject)
-        {
-            return Subjects.Find(x => x.Name == subject.Name).Teachers;
-        }
-
-        // public void AddNewSubjectForm(string subjectName, string teachers)
-        // {
-        //     Subject newSubject = new Subject(subjectName);
-        //     Subjects.Add(newSubject);
-        //
-        //     string[] teacherList = teachers.Split(',');
-        //     foreach (string teacher in teacherList)
-        //     {
-        //         Teacher newTeacher = Manager.userMan.GetTeacher(teacher);
-        //         AddTeacherToSubject(newTeacher, newSubject);
-        //     }
-        // }
-
+        
+        
         public void AddNewSubjectToDataBase(string subjectName, string school, string teachers, string icon)
         {
             subjectSql = new SubjectSQL();
-            subjectSql.AddSubject(subjectName, teachers, school, icon);
+
+            string[] teacherArray = teachers.Split(',');
+
+            subjectSql.AddSubject(subjectName, teacherArray, school, icon);
             subjectSql = null;
         }
 
@@ -88,9 +56,5 @@ namespace ELO
             subjectSql = null;
         }
 
-        public Subject FindSubjectUUID(string uuid)
-        {
-            return Subjects.Find(x => x.uuid == uuid);
-        }
     }
 }

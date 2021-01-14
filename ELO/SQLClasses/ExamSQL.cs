@@ -34,7 +34,7 @@ namespace ELO.SQLClasses
                 string returnClassUUID = ExamReader["classUUID"].ToString();
                 string returnSchool = ExamReader["school"].ToString();
 
-                Subject insertSubject = subjectManager.FindSubject(returnSubjectUUID);
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
                 Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
 
                 returnList.Add(new Exam(returnUUID, insertSubject, returnWeight, insertClass, returnSchool));

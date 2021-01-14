@@ -19,20 +19,20 @@
 
                     <label for="password">Wachtwoord</label><br/>
                     <input id="password" class="form-control" name="password" type="password"  placeholder="Wachtwoord" required /><br/>
-                    <%--  <label for="subject">Vak</label><br/> --%>
-                   <%--  <select name="subject" id="subject" class="form-control"> --%>
-                   <%--      <option value="">Geen vak</option> --%>
-                   <%--      <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %> --%>
-                   <%--          <option><%: subject.Name %></option> --%>
-                   <%--      <% } %> --%>
-                   <%--  </select> --%>
-                   <%-- <label for="mentorclass">Mentorklas</label><br/> --%>
-                   <%--  <select id="mentorclass" class="form-control" name="mentorclass"> --%>
-                   <%--      <option value="">Geen klas</option> --%>
-                   <%--      <% foreach (Class _class in Manager.classMan.GetClassList()) { %> --%>
-                   <%--          <option><%: _class.Name %></option> --%>
-                   <%--      <% } %> --%>
-                   <%--  </select> --%>
+                     <label for="subject">Vak</label><br/>
+                        <select name="subject" id="subject" class="form-control">
+                        <option value="">Geen vak</option>
+                        <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School)) { %>
+                            <option><%: subject.Name %></option>
+                        <% } %>
+                    </select>
+                   <label for="class">Mentorklas</label><br/>
+                    <select id="class" class="form-control" name="class">
+                        <option value="">Geen klas</option>
+                        <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School)) { %>
+                            <option><%: _class.Name %></option>
+                        <% } %>
+                    </select>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                         </div>
                 </form>
