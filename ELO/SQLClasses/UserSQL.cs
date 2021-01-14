@@ -220,9 +220,6 @@ namespace ELO.SQLClasses
                 Teacher returnTeacher = (Teacher)FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
-                mySqlManager.con.Close();
-                mySqlManager = null;
-
                 if (returnType == "Student")
                     return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail, returnExp);
                 if (returnType == "Teacher")
@@ -231,6 +228,8 @@ namespace ELO.SQLClasses
                     return new SysAdmin(returnName, returnAge, returnSchool, "SysAdmin", returnUserId, returnRegistrationdate, returnUsername, returnEmail, returnExp);
             }
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
             reader.Close();
 
             classManager = null;

@@ -1,15 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRegister.aspx.cs" Inherits="Front_End.AdminRegister" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="Front_End.AdminLogin" %>
 <%@ Import Namespace="ELO" %>
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
-        <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
+    <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
+        <link id="link1" rel="stylesheet" href="~/Content/Login.css" type="text/css" runat="server" />
     </meta>
-    <title><%: Page.Title %> - Study Cluster</title>
+    <title>Admin register - Study Cluster</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -19,6 +20,7 @@
 
 </head>
 <body>
+    <div class="bg-image bg-image-admin"><div class="darkening"></div></div>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -39,45 +41,55 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <img src="Content/Pictures/Logo-ELO2Best.png" width=20% style="margin-left:auto; margin-right:auto; display:block; margin-top:20px" />
-            <br/>
-
-        <div class="container body-content" style="margin-top: 50px;">
-            
-            <form method="post" action="AdminRegister.aspx" name="login">
-                Nieuw administratoraccount aanmaken<br /><br />
-                <label for="school">School</label><br />
-                <select id="school" class="form-control" name="school">
+        
+        <div class="login-container-register">
+            <div class="login-picture"></div>
+            <div class="top">
+                <img src="https://media.discordapp.net/attachments/788383809133215754/797134629898420304/Logo-Studycluster-wit-beter.png" class="login-logo" />
+            </div>
+            <div class="bottom">
+                <form method="post" action="AdminLogin.aspx" name="login">
+                Nieuw administratoraccount aanmaken
+                <div>
+                    <br />
+                <select id="school" class="input-control" name="school">
                     <% foreach (string school in schoolManager.GetSchoolList()) { %>
                         <option><%: school %></option>
                     <% } %>
-                </select><br/>
-                <label for="username">Gebruikersnaam</label><br />
-                <input id="username" type="text" name="username" class="form-control" /><br />
-                <label for="name">Naam</label><br />
-                <input id="name" type="text" name="name" class="form-control" /><br />
-                <label for="email">Email Adres</label><br />
-                <input id="email" type="email" name="email" class="form-control" /><br />
-                <label for="password">Wachtwoord</label><br />
-                <input id="password" type="password" name="password" class="form-control" /><br /><br />
-                <div class="row">
-                    <div class="col-lg-1"><a class="btn btn-info" href="AdminLogin">Inloggen</a></div>
-                    <div class="col-lg-1"><button type="submit" class="btn btn-success">Account aanmaken</button></div>
-                </div>
-                
-                
-            </form>
+                </select>
+                    </div>
+
+                    <div>
+                        <br />
+                <input id="username" type="text" name="username" class="input-control" required />
+                    <span class="floating-label">Gebruikersnaam</span>
+                        </div>
+                    <div>
+                <input id="name" type="text" name="name" class="input-control" required />
+                    <span class="floating-label">Naam</span>
+                        </div>
+                    <div>
+                <input id="email" type="email" name="email" class="input-control" required />
+                    <span class="floating-label">E-mailadres</span>
+                        </div>
+                    <div>
+                <input id="password" type="password" name="password" class="input-control" required />
+                    <span class="floating-label">Wachtwoord</span>
+                        </div>
+                <a class="btn btn-info" href="AdminLogin">Inloggen</a>
+                    <div class="pull-right">
+                <button type="submit" class="btn btn-success" style="margin-right: 25px; display:inline-block">Account aanmaken</button></div>
+                    </div>
+            </div>
+                </form>
+    <% if (results != null) { %>
+                    <meta http-equiv="refresh" content="0;url=Home.aspx" />
+                <% } %>
+
             <br/><br/>
             
             
             <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
-            <hr style="border-top: 1px solid black!important"/>
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - StudyCluster</p>
-            </footer>
-        </div>
-
     </form>
 </body>
 </html>

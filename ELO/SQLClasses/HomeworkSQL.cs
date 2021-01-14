@@ -192,11 +192,6 @@ namespace ELO.SQLClasses
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
-                mySqlManager.con.Close();
-                mySqlManager = null;
-                classManager = null;
-                subjectManager = null;
-
                 return new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade);
             }
             homeworkReader.Close();
@@ -207,6 +202,44 @@ namespace ELO.SQLClasses
             subjectManager = null;
 
             return null;
+        }
+
+        public List<Homework> GetHomeworkOfStudent(string loggedInStudentClassUUID, int limit)
+        {
+            MySqlManager mySqlManager = new MySqlManager();
+            subjectManager = new SubjectManager();
+            classManager = new ClassManager();
+
+            MySqlCommand getHomeworkCommand = new MySqlCommand($"SELECT * FROM homework WHERE classUUID = '{loggedInStudentClassUUID}' ORDER BY Id DESC LIMIT {limit}", mySqlManager.con);
+            MySqlDataReader homeworkReader = getHomeworkCommand.ExecuteReader();
+            List<Homework> returnList = new List<Homework>();
+            while (homeworkReader.Read())
+            {
+                string returnTitle = homeworkReader["Title"].ToString();
+                string returnSubject = homeworkReader["subjectUUID"].ToString();
+                string returnContent = homeworkReader["content"].ToString();
+                string returnClass = homeworkReader["classUUID"].ToString();
+                string returnDate = homeworkReader["duedate"].ToString();
+                int returnExp = Convert.ToInt32(homeworkReader["exp"]);
+                int returnIsTest = Convert.ToInt32(homeworkReader["istest"]);
+                string returnUUID = Convert.ToString(homeworkReader["UUID"]);
+                bool isTest = returnIsTest == 1;
+                int returnForGrade = Convert.ToInt32(homeworkReader["forgrade"]);
+                bool forGrade = returnForGrade == 1;
+
+                homeworkReader.Close();
+
+                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
+                Class insertClass = classManager.GetClassFromDatabase(returnClass);
+
+                Homework returnHomework = new Homework(returnTitle, insertSubject, returnContent, returnDate, insertClass, returnExp, isTest, returnUUID, forGrade);
+                returnList.Add(returnHomework);
+            }
+            mySqlManager.con.Close();
+            mySqlManager = null;
+            classManager = null;
+            subjectManager = null;
+            return returnList;
         }
     }
 }

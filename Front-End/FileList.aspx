@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Upload bestand" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FileList.aspx.cs" Inherits="Front_End.FileList" %>
+﻿<%@ Page Title="Geüploade bestanden" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FileList.aspx.cs" Inherits="Front_End.FileList" %>
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">

@@ -101,7 +101,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
     <div class="row">
     <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School)) { %>
         <div class="col-lg-4">
