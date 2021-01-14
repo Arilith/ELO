@@ -15,9 +15,11 @@ namespace Front_End
         public HwMan hwMan;
         public SubjectManager subjectManager;
         public Person LoggedInPerson;
+        public Teacher LoggedInTeacher;
         protected void Page_Load(object sender, EventArgs e)
         {
             LoggedInPerson = (Person)Session["person"];
+            LoggedInTeacher = (Teacher) LoggedInPerson;
             classManager = new ClassManager();
             hwMan = new HwMan();
             subjectManager = new SubjectManager();

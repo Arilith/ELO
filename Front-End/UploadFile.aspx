@@ -3,7 +3,7 @@
     <h2><%: Title %> voor huiswerkopdracht <br/> <i><%: FoundHomework.Subject.Name %> | <%: FoundHomework.Title %>  </i></h2>
     <h3>Huiswerkbeschrijving</h3>
     <p style="margin-top: -40px;">
-        <%: FoundHomework.Content %> <br/> 
+        <%: FoundHomework.Content %> <br/>
         <i>Te verdienen XP: </i> <%: FoundHomework.Exp %> <br/>
     </p><br/><br/>
     <p>Upload hier je gemaakte huiswerkbestanden, zodat de docent deze kan beoordelen.<br/> <i>Let op: De maximale bestandsgrootte is 4 megabytes (MB)</i></p>
@@ -14,6 +14,6 @@
         <asp:Panel ID="frmConfirmation" Visible="False" Runat="server">
             <asp:Label id="lblUploadResult" Runat="server"></asp:Label>
         </asp:Panel>
-    </form> 
+    </form>
 </asp:Content>
 
