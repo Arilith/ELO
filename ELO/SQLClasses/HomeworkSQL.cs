@@ -87,6 +87,8 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
             classManager = null;
             subjectManager = null;
             mySqlManager.con.Close();
@@ -192,6 +194,8 @@ namespace ELO.SQLClasses
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
+                mySqlManager.con.Close();
+                mySqlManager = null;
                 classManager = null;
                 subjectManager = null;
 
