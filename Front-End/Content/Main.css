@@ -336,23 +336,6 @@ body {
     width: 100%!important;
 }
 
-.jelly-form:before, .jelly-form:after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 2px;
-    height: 6px;
-    border-left: 2px solid #0099CC;
-}
-
-.jelly-form:before {
-    left: 0;
-}
-
-.jelly-form:after {
-    right: 0;
-}
-
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: rgba(20,20,20,0.1) !important;
 }
