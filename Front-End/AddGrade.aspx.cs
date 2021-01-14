@@ -47,7 +47,7 @@ namespace Front_End
             string subjectName = Request.Form["subject"];
             string homeworkUUID = Request.Form["homework"];
 
-            gradeMan.AddGradeToDatabase(school, studentuuid, grade, weight, subjectName, homeworkUUID);
+            gradeMan.AddGradeToDatabase(school, studentuuid, grade, weight, homeworkUUID);
         }
     }
 }

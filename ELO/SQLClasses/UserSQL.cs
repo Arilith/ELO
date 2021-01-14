@@ -332,12 +332,15 @@ namespace ELO.SQLClasses
         public List<Student> FindStudentsInClass(string classUUID)
         {
             mySqlManager = new MySqlManager();
+
             ClassManager classManager = new ClassManager();
             string findStudents = $"SELECT * FROM users WHERE classUUID='{classUUID}'";
             MySqlCommand findStudentsCommand = new MySqlCommand(findStudents, mySqlManager.con);
+
             // reader activeren
             MySqlDataReader reader = findStudentsCommand.ExecuteReader();
             List<Student> returnList = new List<Student>();
+
             // tijdens het lezen van data in de lijst zetten
             while (reader.Read())
             {
@@ -359,8 +362,7 @@ namespace ELO.SQLClasses
             }
 
             reader.Close();
-            mySqlManager.con.Close();
-            mySqlManager = null;
+
             classManager = null;
 
             return returnList;

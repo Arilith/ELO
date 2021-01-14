@@ -79,8 +79,10 @@
                                 %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: insertHomeworkDescription %> - <%: homework.Exp %> punten</p></a><%
                             }
                         }
-                    } %>
-                    <a href="Battlepass.aspx"><p>Puntentotaal: 69 punten</p></a>
+                        %>
+                        <a href="Battlepass.aspx"><p>Puntentotaal: 69 punten</p></a>
+                    <% } %>
+                    
                 </div>
                 <div class="pull-right">
                     <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="height: 52px;" /></a>
