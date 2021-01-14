@@ -11,12 +11,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" runat="server"/>
     </meta>
         <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="Studycluster-icon.ico" type="image/x-icon"/>
     <title><%: Page.Title %> - Study Cluster</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
 <div class="background-blur"></div>
@@ -62,9 +62,7 @@
                    </style> 
             <% } %>
             <div class="topnav">
-                <a class="pull-right">
-                    <a href="Battlepass.aspx"><p>Volgend huiswerk: Nederlands <i class="fas fa-bicycle"></i> - Maak opdracht 15 en 16 - 15 punten</p></a>
-                <a href="Battlepass.aspx"><p>Puntentotaal: 69 punten</p></a>
+                <div class="pull-right">
                     <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="height: 52px;" /></a>
                     <a href="#" class="active"><%: loggedInPerson.Name %></a>
                     <% if(loggedInPerson.Type == "Student") { %><a href="#"><%: loggedInStudent.LeerlingNummer %></a> <% } %>
