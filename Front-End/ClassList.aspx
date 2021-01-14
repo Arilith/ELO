@@ -1,4 +1,4 @@
-﻿<%@ Page Title="ClassList" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClassList.aspx.cs" Inherits="Front_End.ClassList" %>
+﻿<%@ Page Title="Klassenlijst" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ClassList.aspx.cs" Inherits="Front_End.ClassList" %>
 <%@ Import Namespace="ELO" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
