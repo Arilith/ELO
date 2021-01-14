@@ -27,6 +27,7 @@ namespace ELO.SQLClasses
             }
 
             reader.Close();
+            mySqlManager.con.Close();
             mySqlManager = null;
 
             return schoolList;

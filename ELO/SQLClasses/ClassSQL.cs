@@ -47,6 +47,7 @@ namespace ELO.SQLClasses
 
             userSql = null;
             mysqlManager.con.Close();
+            mysqlManager = null;
 
             return returnList;
         }
@@ -91,6 +92,7 @@ namespace ELO.SQLClasses
 
             userSql = null;
             mysqlManager.con.Close();
+            mysqlManager = null;
 
             return null;
         }
@@ -129,6 +131,7 @@ namespace ELO.SQLClasses
 
             userSql = null;
             mysqlManager.con.Close();
+            mysqlManager = null;
 
             return null;
         }
@@ -153,6 +156,7 @@ namespace ELO.SQLClasses
             addClassCmd.ExecuteNonQuery();
 
             mysqlManager.con.Close();
+            mysqlManager = null;
             //return new Class(className, cluster, leshuis, level, studyYear);
         }
 
@@ -163,6 +167,7 @@ namespace ELO.SQLClasses
             MySqlDataReader amountOfStudentsReader = amountOfStudentsCmd.ExecuteReader();
             return amountOfStudentsReader.RowCount();
             mysqlManager.con.Close();
+            mysqlManager = null;
         }
 
         public List<Student> GetStudentsInClass(string classUUID)
@@ -185,6 +190,7 @@ namespace ELO.SQLClasses
             return returnList;
 
             mysqlManager.con.Close();
+            mysqlManager = null;
         }
 
         public void UpdateMentor(string classUUID, string mentorUUID)
@@ -200,6 +206,7 @@ namespace ELO.SQLClasses
             changeMentorCmd.Prepare();
             changeMentorCmd.ExecuteNonQuery();
             mysqlManager.con.Close();
+            mysqlManager = null;
         }
     }
 }

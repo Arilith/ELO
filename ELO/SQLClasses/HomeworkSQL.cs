@@ -91,6 +91,8 @@ namespace ELO.SQLClasses
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
+            mySqlManager.con.Close();
+            mySqlManager = null;
 
             return returnList;
         }

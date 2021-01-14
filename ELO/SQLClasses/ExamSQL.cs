@@ -6,7 +6,7 @@ namespace ELO.SQLClasses
 {
     public class ExamSQL
     {
-        private MySqlManager MySqlManager;
+        private MySqlManager mySqlManager;
         private Class _class;
         private SubjectManager subjectManager;
         private ClassManager classManager;
@@ -14,11 +14,11 @@ namespace ELO.SQLClasses
 
         public ExamSQL()
         {
-            MySqlManager = new MySqlManager();
         }
 
         public List<Exam> GetExamListFromDatabase(string school, string _classUUID)
         {
+            mySqlManager = new MySqlManager();
             subjectManager = new SubjectManager();
             classManager = new ClassManager();
 
@@ -41,14 +41,18 @@ namespace ELO.SQLClasses
             }
 
             ExamReader.Close();
-
+            mySqlManager.con.Close();
+            mySqlManager = null;
             return returnList;
         }
 
         public void AddExamToDatabase(string UUID, int weight, string subjectUUID, string _classUUID, string school)
         {
+            mySqlManager = new MySqlManager();
             MySqlCommand addExamCommand = new MySqlCommand($"INSERT INTO appointments (UUID, weight, subjectUUID, classUUID, school) VALUES ({UUID}, {weight}, {subjectUUID}, {_classUUID}, {school})", MySqlManager.con);
             addExamCommand.ExecuteNonQuery();
+            mySqlManager.con.Close();
+            mySqlManager = null;
         }
     }
 }
