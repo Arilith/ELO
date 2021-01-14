@@ -8,6 +8,9 @@ namespace ELO.SQLClasses
     {
         private MySqlManager mySqlManager;
         private UserMan userManager;
+
+        private UserSQL userSql;
+
         private string UUID;
 
         public SubjectSQL()
@@ -29,24 +32,11 @@ namespace ELO.SQLClasses
             if (reader.Read())
             {
                 string subjectName = reader["subjectName"].ToString();
-                string teachersCSV = reader["teacherUUIDs"].ToString();
                 string school = reader["school"].ToString();
                 string icon = reader["icon"].ToString();
                 reader.Close();
 
-                string[] teacherUUIDs = teachersCSV.Split(',');
-
-                List<Teacher> teachers = new List<Teacher>();
-
-                foreach (string teacherUUID in teacherUUIDs)
-                {
-                    teachers.Add((Teacher)userManager.FindUserInDataBase(teacherUUID));
-                }
-
                 Subject returnSubject = new Subject(subjectName, uuid, icon);
-
-                //TO IMPLEMENT
-                returnSubject.SetTeachers(teachers);
 
                 userManager = null;
 
@@ -59,16 +49,43 @@ namespace ELO.SQLClasses
             return null;
         }
 
-        public void AddSubject(string name, string teachers, string school, string icon)
+        public List<Teacher> GetTeachersBySubject(Subject subject)
         {
             mySqlManager = new MySqlManager();
-            MySqlCommand AddNewSubjectCommand = new MySqlCommand("INSERT INTO subjects (subjectUUID, subjectName, teacherUUIDs, school, icon) VALUES (@subjectUUID, @subjectName, @teacherUUIDs, @school, @icon)", mySqlManager.con);
+            userSql = new UserSQL();
+
+            MySqlCommand findTeachersCommand = new MySqlCommand($"SELECT * FROM users WHERE subjectUUID = '{subject.uuid}'", mySqlManager.con);
+
+            MySqlDataReader reader = findTeachersCommand.ExecuteReader();
+
+            List<Teacher> returnTeachers = new List<Teacher>();
+
+            while (reader.Read())
+            {
+                returnTeachers.Add(userSql.ConvertReaderToTeacher(reader));
+            }
+
+            mySqlManager.con.Close();
+            mySqlManager = null;
+            reader.Close();
+            return returnTeachers;
+        }
+
+        public void AddSubject(string name, string[] teachers, string school, string icon)
+        {
+            mySqlManager = new MySqlManager();
+            MySqlCommand AddNewSubjectCommand = new MySqlCommand("INSERT INTO subjects (subjectUUID, subjectName, school, icon) VALUES (@subjectUUID, @subjectName, @school, @icon)", mySqlManager.con);
 
             AddNewSubjectCommand.Parameters.AddWithValue("@subjectUUID", UUID);
             AddNewSubjectCommand.Parameters.AddWithValue("@subjectName", name);
-            AddNewSubjectCommand.Parameters.AddWithValue("@teacherUUIDs", teachers);
             AddNewSubjectCommand.Parameters.AddWithValue("@school", school);
             AddNewSubjectCommand.Parameters.AddWithValue("@icon", icon);
+
+            foreach (string teacherUUID in teachers)
+            {
+                MySqlCommand ChangeTeacherCommand = new MySqlCommand($"UPDATE users SET subjectUUID = '{UUID}' WHERE uuid = '{teacherUUID}'", mySqlManager.con);
+                ChangeTeacherCommand.ExecuteNonQuery();
+            }
 
             AddNewSubjectCommand.Prepare();
             AddNewSubjectCommand.ExecuteNonQuery();
@@ -103,26 +120,11 @@ namespace ELO.SQLClasses
             while (reader.Read())
             {
                 string subjectName = reader["subjectName"].ToString();
-                string teachersCSV = reader["teacherUUIDs"].ToString();
                 string subjectUUID = reader["subjectUUID"].ToString();
                 string icon = reader["icon"].ToString();
 
-                string[] teacherUUIDs = teachersCSV.Split(',');
-
-                List<Teacher> teachers = new List<Teacher>();
-                // userManager = new UserMan();
-                //
-                // foreach (string teacherUUID in teacherUUIDs)
-                // {
-                //     teachers.Add((Teacher)userManager.FindUserInDataBase(teacherUUID));
-                // }
-                //
-                // userManager = null;
                 Subject returnSubject = new Subject(subjectName, subjectUUID, icon);
-
-                //TO IMPLEMENT
-                returnSubject.SetTeachers(teachers);
-
+                
                 returnSubjects.Add(returnSubject);
             }
 

@@ -22,8 +22,8 @@
                         <b>W. Kortooms - KOW - OBA1</b>
                         <p>Huiswerk: Maak opdracht 15 en 16 en lees pagina 21 in het bronnenboek</p>
                     </div>
-                    </div>
                 </div>
+            </div>
             <div class="container-info2 normal">
                 <div class="container-title">Scheikunde <i class="fas fa-flask"></i></div>
                 <div class="container-content">
@@ -101,30 +101,24 @@
                 </div>
             </div>
         </div>
+        </div>
     <div class="row">
-       
-<%--         <div class="col-lg-6"> --%>
-<%--             <% foreach (Subject subject in Manager.subjectMan.GetSubjectList()) { %> --%>
-<%--                 Lerarenlijst voor <%: subject.Name %> --%>
-<%--                 <table class="table-striped table-bordered "> --%>
-<%--                     <thead> --%>
-<%--                     <tr> --%>
-<%--                         <th>Naam leraar</th> --%>
-<%--                         <th>School leraar</th> --%>
-<%--                     </tr> --%>
-<%--                     </thead> --%>
-<%--                     <tbody> --%>
-<%--                     <% foreach (Teacher teacher in Manager.subjectMan.GetTeacherListBySubject(subject)) --%>
-<%--                        { %>  --%>
-<%--                         <tr> --%>
-<%--                             <td><%: teacher.Name %></td> --%>
-<%--                             <td><%: teacher.School %></td> --%>
-<%--                         </tr>      --%>
-<%--                     <% } %> --%>
-<%--                     </tbody> --%>
-<%--                 </table><br /><br /> --%>
-<%--             <% }  %> --%>
-<%--         </div> --%>
+    <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School)) { %>
+        <div class="col-lg-4">
+            <div class="container-info2 normal">
+                <div class="container-title"><%: subject.Name %> <i class="fas <%: subject.icon %>"></i></div>
+                <div class="container-content">
+                    <div class="row">
+                        <% foreach (Teacher teacher in subjectManager.GetTeachersBySubject(subject))
+                           {  %>
+                            <b><%: teacher.Name %> - <%: teacher.Name.Substring(0, 3) %> <% if(loggedInStudent != null) { %>- <%: loggedInStudent.PartOfClass.Name %> <% } %></b><br/>
+                           <% } %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }  %>
     </div>
     
 </asp:Content>

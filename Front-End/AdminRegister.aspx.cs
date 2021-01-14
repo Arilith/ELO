@@ -21,7 +21,7 @@ namespace Front_End
 
             if (IsPostBack)
             {
-                results = userManager.AddSysAdminToDataBase(Request.Form["username"], Request.Form["password"], Request.Form["school"], Request.Form["name"], Request.Form["email"], Convert.ToInt32(Request.Form["exp"]));
+                results = userManager.AddSysAdminToDataBase(Request.Form["username"], Request.Form["password"], Request.Form["school"], Request.Form["name"], Request.Form["email"]);
                 if (results.Name != null)
                 {
                     MessageLabel.Text = "Nieuw beheeraccount succesvol aangemaakt!";

@@ -62,7 +62,9 @@
                    </style> 
             <% } %>
             <div class="topnav">
-                <div class="pull-right">
+                <a class="pull-right">
+                    <a href="Battlepass.aspx"><p>Volgend huiswerk: Nederlands <i class="fas fa-bicycle"></i> - Maak opdracht 15 en 16 - 15 punten</p></a>
+                <a href="Battlepass.aspx"><p>Puntentotaal: 69 punten</p></a>
                     <a href="#" style="padding: 0px;"><img src="Content/Pictures/neds.jpg" style="height: 52px;" /></a>
                     <a href="#" class="active"><%: loggedInPerson.Name %></a>
                     <% if(loggedInPerson.Type == "Student") { %><a href="#"><%: loggedInStudent.LeerlingNummer %></a> <% } %>

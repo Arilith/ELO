@@ -8,7 +8,7 @@
     </meta>
     <div class="row">
         <div class="col-lg-4">
-            <a href="Schedule.aspx"><div class="container-info">
+            <div class="container-info">
                 <div class="container-title">Volgend uur</div>
                 <div class="container-content">
                     <div class="row">
@@ -20,8 +20,6 @@
                     </div>
                 </div>
             </div>
-                </a>
-            <a href="UploadFile.aspx">
             <div class="container-info">
                 <div class="container-title">Opdrachten</div>
                  <div class="container-content">
@@ -45,10 +43,8 @@
                     </div>
                 </div>
             </div>
-                </a>
         </div>
         <div class="col-lg-4">
-            <a href="Gradelist.aspx">
             <div class="container-info">
                 <div class="container-title">Laatste cijfers</div>
                 <div class="container-content">
@@ -87,8 +83,6 @@
                     </div>
                 </div>
             </div>
-                </a>
-            <a href="HomeworkList.aspx">
             <div class="container-info">
                 <div class="container-title">3 toetsen deze week</div>
                 <div class="container-content">
@@ -99,10 +93,8 @@
                     </div>
                 </div>
                 </div>
-                </a>
         </div>
         <div class="col-lg-4">
-            <a href="#">
             <div class="container-info">
                 <div class="container-title">Meldingen</div>
                 <div class="container-content">
@@ -118,7 +110,6 @@
                     </div>
                 </div>
             </div>
-                </a>
         </div>
     </div>
 </asp:Content>

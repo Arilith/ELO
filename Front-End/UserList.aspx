@@ -47,6 +47,7 @@
                 <th>UserID</th>
                 <th>Vak</th>
                 <th>Mentor Klas</th>
+                <th>Bewerken</th>
             </tr>
         </thead>
         <tbody>
@@ -59,6 +60,7 @@
                     <td><%: teacher.UserId %></td>
                     <td><% if(teacher.Subject != null) { %> <%: teacher.Subject.Name %> <% }  %></td>
                     <td><% if(teacher.MentorForClass != null) { %> <%: teacher.MentorForClass.Name %> <% }  %></td>
+                    <td><a href="ManageUser?uuid=<%: teacher.UserId %>" class="btn btn-info">Bewerken</a></td>
                 </tr>
             <% } %>
         </tbody>

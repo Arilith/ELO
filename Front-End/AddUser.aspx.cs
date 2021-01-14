@@ -31,7 +31,7 @@ namespace Front_End
                 int leerlingnummer = Convert.ToInt32(Request.Form["leerlingnummer"]);
                 string postClass = Request.Form["class"];
                 int exp = Convert.ToInt32(Request.Form["exp"]);
-                ErrorLabel.Text = userManager.AddStudentToDataBase(leerlingnummer, password, studentName, email, postClass, loggedInUser, exp);
+                ErrorLabel.Text = userManager.AddStudentToDataBase(leerlingnummer, password, studentName, email, postClass, loggedInUser);
             }
         }
 

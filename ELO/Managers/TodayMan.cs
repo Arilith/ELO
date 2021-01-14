@@ -37,8 +37,8 @@ namespace ELO
             classManager = new ClassManager();
 
             // omzetten van string naar object
-            Teacher insertTeacher = userMan.GetTeacher(teacherUUID);
-            Subject insertSubject = subjectManager.FindSubject(subjectUUID);
+            Teacher insertTeacher = (Teacher)userMan.FindUserInDataBase(teacherUUID);
+            Subject insertSubject = subjectManager.FindSubjectInDatabase(subjectUUID);
             Class insertClass = classManager.GetClassFromDatabase(classUUID);
 
             appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateAndTime, classroomUUID, classUUID, school, UUID);

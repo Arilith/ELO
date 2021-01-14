@@ -31,6 +31,7 @@ namespace ELO.SQLClasses
 
             ClassroomReader.Close();
             MySqlManager.con.Close();
+            MySqlManager = null;
             return returnList;
         }
 
@@ -40,6 +41,7 @@ namespace ELO.SQLClasses
             MySqlCommand addClassroomCommand = new MySqlCommand($"INSERT INTO classrooms (name, floor, available, UUID) VALUES ({name}, {floor}, {available}, {UUID})", MySqlManager.con);
             addClassroomCommand.ExecuteNonQuery();
             MySqlManager.con.Close();
+            MySqlManager = null;
         }
     }
 }
