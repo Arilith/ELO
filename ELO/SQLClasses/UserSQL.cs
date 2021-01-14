@@ -218,8 +218,8 @@ namespace ELO.SQLClasses
                 Teacher returnTeacher = (Teacher)FindUserInDataBase(returnMentorUUID);
                 Subject returnSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
 
-                //mySqlManager.con.Close();
-                //mySqlManager = null;
+                mySqlManager.con.Close();
+                mySqlManager = null;
 
                 if (returnType == "Student")
                     return new Student(returnName, returnAge, returnSchool, "Student", returnClass, returnTeacher, returnUserId, returnLeerlingnummer, returnRegistrationdate, returnUsername, returnEmail, returnExp);
@@ -259,7 +259,7 @@ namespace ELO.SQLClasses
                     string returnUserId = Convert.ToString(reader["uuid"]);
                     string returnRegistrationdate = reader["registrationdate"].ToString();
                     string email = reader["email"].ToString();
-                    
+
                     //TO BE DONE
                     string mentorClass = reader["classUUID"].ToString();
                     //string subject = reader["subjectUUID"].ToString();

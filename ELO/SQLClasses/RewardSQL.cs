@@ -39,6 +39,7 @@ namespace ELO.SQLClasses
 
                 returnList.Add(newReward);
             }
+            mySqlManager.con.Close();
             mySqlManager = null;
             return returnList;
         }
@@ -56,6 +57,7 @@ namespace ELO.SQLClasses
             addRewardCommand.Prepare();
 
             addRewardCommand.ExecuteNonQuery();
+            mySqlManager.con.Close();
             mySqlManager = null;
         }
 
@@ -78,6 +80,7 @@ namespace ELO.SQLClasses
                 return returnReward;
             }
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             return null;
         }

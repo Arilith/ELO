@@ -42,6 +42,7 @@ namespace ELO.SQLClasses
 
             addGradeCommand.Prepare();
             addGradeCommand.ExecuteNonQuery();
+            _mySqlManager.con.Close();
             _mySqlManager = null;
         }
 
@@ -74,6 +75,7 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, gradeSubjectObj, weight, year, homework));
             }
 
+            _mySqlManager.con.Close();
             _mySqlManager = null;
             userManager = null;
             classManager = null;
@@ -110,6 +112,7 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year, homework));
             }
 
+            _mySqlManager.con.Close();
             _mySqlManager = null;
             userManager = null;
             classManager = null;
@@ -148,6 +151,7 @@ namespace ELO.SQLClasses
                 returnGrades.Add(new Grade(studentObj, gradeClassObj, grade, date, returnSubject, weight, year, homework));
             }
 
+            _mySqlManager.con.Close();
             _mySqlManager = null;
             userManager = null;
             classManager = null;
@@ -183,13 +187,15 @@ namespace ELO.SQLClasses
 
                 returnGrade = new Grade(studentObj, gradeClassObj, grade, date, subjectObj, weight, year, homework);
 
-                userManager = null;
+                _mySqlManager.con.Close();
+                _mySqlManager = null;
                 classManager = null;
                 subjectManager = null;
 
                 return returnGrade;
             }
 
+            _mySqlManager.con.Close();
             _mySqlManager = null;
             userManager = null;
             classManager = null;

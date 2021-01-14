@@ -53,6 +53,7 @@ namespace ELO.SQLClasses
                 return returnSubject;
             }
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             reader.Close();
             return null;
@@ -71,6 +72,7 @@ namespace ELO.SQLClasses
 
             AddNewSubjectCommand.Prepare();
             AddNewSubjectCommand.ExecuteNonQuery();
+            mySqlManager.con.Close();
             mySqlManager = null;
         }
 
@@ -83,6 +85,7 @@ namespace ELO.SQLClasses
 
             UpdateTeachersCommand.Prepare();
             UpdateTeachersCommand.ExecuteNonQuery();
+            mySqlManager.con.Close();
             mySqlManager = null;
         }
 
@@ -123,6 +126,7 @@ namespace ELO.SQLClasses
                 returnSubjects.Add(returnSubject);
             }
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             reader.Close();
             return returnSubjects;

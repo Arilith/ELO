@@ -45,6 +45,7 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
@@ -88,6 +89,8 @@ namespace ELO.SQLClasses
 
             classManager = null;
             subjectManager = null;
+            mySqlManager.con.Close();
+            mySqlManager = null;
 
             return returnList;
         }
@@ -126,6 +129,7 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
@@ -156,6 +160,7 @@ namespace ELO.SQLClasses
             addHomeworkCommand.Prepare();
             addHomeworkCommand.ExecuteNonQuery();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
         }
 
@@ -194,6 +199,7 @@ namespace ELO.SQLClasses
             }
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
