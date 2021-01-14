@@ -12,9 +12,13 @@ namespace Front_End
     {
         public Person loggedInPerson;
         public Student loggedInStudent;
+        public SubjectManager subjectManager;
+        public HwMan homeworkMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            subjectManager = new SubjectManager();
+            homeworkMan = new HwMan();
             if (Session["person"] != null)
             {
                 loggedInPerson = (Person) Session["person"];

@@ -19,6 +19,9 @@ namespace Front_End
         protected void Page_Load(object sender, EventArgs e)
         {
             loggedInStudent = (Student) Session["person"];
+            homeworkMan = new HwMan();
+            gradeMan = new GradeMan();
+            subjectMan = new SubjectManager();
         }
     }
 }
