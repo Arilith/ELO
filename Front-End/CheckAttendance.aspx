@@ -44,12 +44,12 @@
                     </tr>
                     </thead>
                     <tbody>
+                    $items = $pages->get(1)->children();
                     <% foreach (Student student in classManager.GetStudentsInClass(Request.Form["class"])){ %> 
                     <tr>
-                        <% string RButton = student.Name;%>
                         <td><%: student.Name %></td>
-                        <td> <input type="radio" id="present" name=student.Name value="present"></td>
-                        <td> <input type="radio" id="absent" name="RButton" value="absent"></td>
+                        <td> <input type="radio" id="present" name="items" value="present"></td>
+                        <td> <input type="radio" id="absent" name="items" value="absent"></td>
                         <td> <input type="radio" id="leave" name="RButton" value="leave"></td>
                         <td> <input type="radio" id="late" name="RButton" value="late"></td>
                         <td> <input type="radio" id="lateAllow" name="RButton" value="lateAllow"></td>
