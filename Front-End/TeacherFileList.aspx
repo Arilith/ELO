@@ -22,14 +22,19 @@
         </tr>
         </thead>
         <tbody>
-        <% foreach (File file in FileManager.GetFileListForSubject(loggedInTeacher.Subject)){ %> 
-            <tr>
-                <td><%: file.FileName %></td>
-                <td><%: file.UploadDate %></td>
-                <td><%: file.Student.Name %></td>
-                <td><a href="<%: file.FilePath %>" class="btn btn-primary" style="border-radius:0px!important">Downloaden</a></td>
-                <td><a href="gradeFile?homeworkUUID=<%: file.Homework.UUID %>&userUUID=<%: file.Student.UserId %>" class="btn btn-warning" style="border-radius:0px!important">Beoordelen</a></td>
-            </tr>     
+        <% if(loggedInTeacher.Subject != null) {
+               foreach (File file in FileManager.GetFileListForSubject(loggedInTeacher.Subject)){ %> 
+                <tr>
+                    <td><%: file.FileName %></td>
+                    <td><%: file.UploadDate %></td>
+                    <td><%: file.Student.Name %></td>
+                    <td><a href="<%: file.FilePath %>" class="btn btn-primary" style="border-radius:0px!important">Downloaden</a></td>
+                    <td><a href="gradeFile?homeworkUUID=<%: file.Homework.UUID %>&userUUID=<%: file.Student.UserId %>" class="btn btn-warning" style="border-radius:0px!important">Beoordelen</a></td>
+                </tr>     
+            <% }
+
+           } else { %>
+            Je bent een leraar zonder vak, laat eerst door een systeembeheerder een vak toevoegen!
         <% } %>
         </tbody>
     </table>
