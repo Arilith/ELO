@@ -10,6 +10,7 @@ namespace Front_End.Content
 {
     public partial class GradeFile : System.Web.UI.Page
     {
+
         public Homework FoundHomework { get; private set; }
 
         public Student FoundStudent { get; private set; }
@@ -20,16 +21,19 @@ namespace Front_End.Content
 
         private UserMan userManager;
 
+        private Person loggedInPerson;
+
+        private GradeMan gradeManager;
+
         private string getHomeworkUUID;
         private string getUserUUID;
-
-        private Person loggedInPerson;
 
         protected void Page_load(object sender, EventArgs e)
         {
             homeworkManager = new HwMan();
             fileManager = new FileManager();
             userManager = new UserMan();
+            gradeManager = new GradeMan();
 
             getHomeworkUUID = Request["homeworkUUID"];
             FoundHomework = homeworkManager.GetHomeworkFromDB(getHomeworkUUID);
@@ -39,6 +43,19 @@ namespace Front_End.Content
 
             loggedInPerson = (Person)Session["person"];
 
+            if(IsPostBack)
+                ConvertAndInsertData();
+
+        }
+
+        private void ConvertAndInsertData()
+        {
+
+            string school = loggedInPerson.School;
+            decimal weight = Convert.ToDecimal(Request.Form["weight"]);
+            double grade = Convert.ToDouble(Request.Form["grade"]);
+
+            gradeManager.AddGradeToDatabase(school, getUserUUID, grade, weight, getHomeworkUUID);
         }
     }
 }

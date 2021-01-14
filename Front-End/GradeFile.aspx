@@ -6,8 +6,16 @@
         <%: FoundHomework.Content %> <br/>
         <i>Te verdienen XP: </i> <%: FoundHomework.Exp %> <br/>
     </p><br/><br/>
-    <p>We</p>
+    <p>Hieronder kunt u het cijfer invullen voor deze huiswerkopdracht.</p>
     <form method="post" id="form1" enctype="multipart/form-data" action="../UploadFile.aspx">
-        
+        <div class="jelly-form" style="width:356px">
+            <label for="weight">Weging</label><br/>
+            <input id="weight" class="form-control" name="weight" type="text" required/>  <br/>
+
+            <label for="grade">Cijfer</label><br/>
+            <input id="grade" class="form-control" name="grade" type="text" required/><br/>
+            <br/>
+            <button style="width: auto" type="submit" class="btn btn-success">Invoeren</button>
+        </div>
     </form>
 </asp:Content>
