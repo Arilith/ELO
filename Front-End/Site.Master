@@ -76,7 +76,7 @@
                                 string insertDueDate = homework.DueDate;
                                 string insertHomeworkDescription = homework.Content;
 
-                                %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: insertHomeworkDescription %> - <%: homework.Exp %> punten</p></a><%
+                                %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: homework.Exp %> punten</p></a><%
                             }
                         }
                     } %>

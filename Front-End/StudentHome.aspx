@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Hoofdpagina" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentHome.aspx.cs" Inherits="Front_End.StudentHome" %>
 <%@ Import Namespace="ELO" %>
 <%@ Import Namespace="Newtonsoft.Json.Linq" %>
+<%@ Import Namespace="Org.BouncyCastle.Crypto.Digests" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
     <meta name=vs_targetSchema content="[!output DEFAULT_TARGET_SCHEMA]">
@@ -9,36 +10,38 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="container-info">
-                <div class="container-title">Volgend uur</div>
+                <div class="container-title">Vandaag</div>
                 <div class="container-content">
                     <div class="row">
-                        <div class="col-lg-3"><img src="Content/Pictures/Hoofd_leraar.jpg" style="border-radius:50%; width: 65px; "/></div>
-                        <div class="col-lg-9">
-                            Engels <i class="fas fa-flag-usa"></i> - E16<br/>
-                            <b>HW: Opdracht 5 tm 8<% %></b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-info">
-                <div class="container-title">Opdrachten</div>
-                 <div class="container-content">
-                    <div class="row">
                         <%
-                            if (homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1).Count != 0)
+                            DateTime today = DateTime.Today;
+                            if (todayMan.GetAppointmentsOfToday(loggedInStudent, today).Count != 0)
                             {
-                                List<Homework> thisStudentsHomeWorkList = homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1);
-                                foreach (Homework homework in thisStudentsHomeWorkList)
+                                List<Appointment> todaysLessons = todayMan.GetAppointmentsOfToday(loggedInStudent, today);
+                                foreach (Appointment appointment in todaysLessons)
                                 {
-                                    Subject returnSubject = subjectMan.FindSubjectInDatabase(homework.Subject.uuid);
+                                    string insertHomeworkTitle;
+                                    Subject returnSubject = appointment.subject;
+                                    Homework returnHomework = appointment.homework;
+
+                                    string insertClassroom = appointment.classroom;
                                     string insertSubjectName = returnSubject.Name;
                                     string insertSubjectIcon = returnSubject.icon;
-                                    string insertDueDate = homework.DueDate;
-                                    string insertHomeworkDescription = homework.Content;
 
-                                    %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%:insertSubjectName %> <i class="fas <%:insertSubjectIcon %>"></i> - <%:insertHomeworkDescription %> - <%:homework.Exp %> punten</p></a><%
+                                    if (appointment.homework == null)
+                                    {
+                                        insertHomeworkTitle = "Geen huiswerk";
+                                    }
+                                    else {insertHomeworkTitle = returnHomework.Title;}
+
+                        %><div class="col-lg-12"><%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: insertClassroom %><br/><b>HW: <%: insertHomeworkTitle %><% %></b><br/></div><%
+
                                 }
-                            } %>
+                            }
+                            else
+                            {
+                                %> Je hebt vandaag geen les. <%
+                            }%>
                     </div>
                 </div>
             </div>
