@@ -89,13 +89,14 @@
         </div>
         </div>
         </div>
+    <div class="outer">
         <%
             Dictionary<Level, Reward>.KeyCollection levelKeys = GetBattlePass(loggedInPerson.School).Keys;
             foreach (Level level in levelKeys)
             {
 
         %>     
-            <div class="container-info2 normal horizontal">       
+            <div class="container-info2 normal">       
             <div class="container-title">Level <%: level.LevelNumber %></div><br />
             <div class="container-content">
                     <div class="row">
@@ -109,4 +110,5 @@
           
            
     <% } %>
+        </div>
 </asp:Content>

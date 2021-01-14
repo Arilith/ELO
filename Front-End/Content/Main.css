@@ -564,3 +564,21 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.outer {
+    white-space: nowrap;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.outer div {
+    width: 30%!important;
+    background-color: #eee;
+    float: none;
+    height: 100%;
+    margin: 1% 0.25%;
+    display: inline-block;
+    zoom: 1;
+}
