@@ -103,21 +103,21 @@
                         <% } else if (loggedInPerson.Type == "SysAdmin") { %>
                             <a runat="server" href="~/Home">Home</a>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Klassen<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <span class="navigator-heading">Klassen</span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddClass">Klas Invoeren</a>
                                     <a runat="server" href="~/ClassList">Klassenlijst</a>
                                 </div>
                             </div> 
                             <div class="navigator-category">
-                                <span class="navigator-heading">Roosters<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <span class="navigator-heading">Roosters</span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
                                     <a runat="server" href="~/Schedule">Rooster</a>
                                 </div>
                             </div>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Gebruikers<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <span class="navigator-heading">Gebruikers</span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddTeacher">Leraar Invoeren</a>
                                     <a runat="server" href="~/AddUser">Leerling Invoeren</a>
@@ -125,14 +125,22 @@
                                 </div>
                             </div>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Battlepass<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <span class="navigator-heading">Vakken</span>
                                 <div class="navigator-category-content">
-                                    <a runat="server" href="~/AddSeason">Seizoenen toevoegen</a>
-                                    <a runat="server" href="~/AddRewards">Beloningen toevoegen</a>
+                                    <a runat="server" href="~/AddSubject">Vak Toevoegen</a>
+                                    <a runat="server" href="~/SubjectList">Vakkenlijst</a>
                                 </div>
                             </div>
                             <div class="navigator-category">
-                                <span class="navigator-heading">Overig<i class="fa fa-caret-down" style="margin-left: 10px;"></i></span>
+                                <span class="navigator-heading">Battlepass</span>
+                                <div class="navigator-category-content">
+                                    <a runat="server" href="~/AddSeason">Seizoenen toevoegen</a>
+                                    <a runat="server" href="~/AddRewards">Beloningen toevoegen</a>
+                                    <a runat="server" href="~/AddLevel">Level toevoegen</a>
+                                </div>
+                            </div>
+                            <div class="navigator-category">
+                                <span class="navigator-heading">Overig</span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddLeermiddel">Leermiddel Toevoegen</a>
                                     <a runat="server" href="~/StudentsByClass">Mentor & Leerlingen</a>
