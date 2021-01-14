@@ -111,7 +111,6 @@
                                 <span class="navigator-heading">Roosters</span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddSchedule">Rooster toevoegen</a>
-                                    <a runat="server" href="~/Schedule">Rooster</a>
                                 </div>
                             </div>
                             <div class="navigator-category">
@@ -126,7 +125,6 @@
                                 <span class="navigator-heading">Vakken</span>
                                 <div class="navigator-category-content">
                                     <a runat="server" href="~/AddSubject">Vak Toevoegen</a>
-                                    <a runat="server" href="~/SubjectList">Vakkenlijst</a>
                                 </div>
                             </div>
                             <div class="navigator-category">
