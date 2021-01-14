@@ -241,6 +241,7 @@ namespace ELO.SQLClasses
         public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school, string type)
         {
             mySqlManager = new MySqlManager();
+            subjectManager = new SubjectManager();
 
             password = password.CreateMD5();
 
@@ -264,7 +265,10 @@ namespace ELO.SQLClasses
 
                     //TO BE DONE
                     string mentorClass = reader["classUUID"].ToString();
-                    //string subject = reader["subjectUUID"].ToString();
+                    string subjectUUID = reader["subjectUUID"].ToString();
+
+                    Subject returnSubject = subjectManager.FindSubjectInDatabase(subjectUUID);
+
                     int returnExp = Convert.ToInt32(reader["exp"]);
 
                     reader.Close();
@@ -273,12 +277,13 @@ namespace ELO.SQLClasses
                     if (returnType == "SysAdmin")
                         return new SysAdmin(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email, returnExp);
                     else if (returnType == "Teacher")
-                        return new Teacher(returnName, returnAge, returnSchool, returnType, returnUserId, returnRegistrationdate, returnUsername, email, returnExp);
+                        return new Teacher(returnName, returnAge, returnSchool, returnType, returnSubject, returnUserId, returnRegistrationdate, returnUsername, email, returnExp);
                 }
 
                 reader.Close();
                 mySqlManager.con.Close();
                 mySqlManager = null;
+                subjectManager = null;
             }
             else if (type == "Student")
             {
