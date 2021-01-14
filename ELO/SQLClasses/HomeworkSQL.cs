@@ -45,6 +45,7 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
@@ -86,6 +87,8 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
+            mySqlManager = null;
             classManager = null;
             subjectManager = null;
 
@@ -126,6 +129,7 @@ namespace ELO.SQLClasses
 
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
@@ -156,6 +160,7 @@ namespace ELO.SQLClasses
             addHomeworkCommand.Prepare();
             addHomeworkCommand.ExecuteNonQuery();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
         }
 
@@ -187,6 +192,8 @@ namespace ELO.SQLClasses
                 Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubject);
                 Class insertClass = classManager.GetClassFromDatabase(returnClass);
 
+                mySqlManager.con.Close();
+                mySqlManager = null;
                 classManager = null;
                 subjectManager = null;
 
@@ -194,6 +201,7 @@ namespace ELO.SQLClasses
             }
             homeworkReader.Close();
 
+            mySqlManager.con.Close();
             mySqlManager = null;
             classManager = null;
             subjectManager = null;
