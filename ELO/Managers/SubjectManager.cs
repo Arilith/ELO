@@ -23,8 +23,7 @@ namespace ELO
             return subjectSql.GetTeachersBySubject(subject);
             subjectSql = null;
         }
-        
-        
+
         public void AddNewSubjectToDataBase(string subjectName, string school, string teachers, string icon)
         {
             subjectSql = new SubjectSQL();
