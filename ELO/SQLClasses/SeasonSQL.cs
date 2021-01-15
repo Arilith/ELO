@@ -17,7 +17,7 @@ namespace ELO.SQLClasses
         public void AddSeasonToDatabase(string startDate, string endDate, string seasonName)
         {
             mySqlManager = new MySqlManager();
-            MySqlCommand addSeasonCommand = new MySqlCommand($"insert into seasons (name, endDate, startDate, UUID) values (@name, @endDate, @startDate, @UUID)", mySqlManager.con);
+            MySqlCommand addSeasonCommand = new MySqlCommand($"INSERT INTO seasons (name, endDate, startDate, UUID) values (@name, @endDate, @startDate, @UUID)", mySqlManager.con);
 
             addSeasonCommand.Parameters.AddWithValue("@name", seasonName);
             addSeasonCommand.Parameters.AddWithValue("@endDate", endDate);
