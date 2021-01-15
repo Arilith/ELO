@@ -15,7 +15,7 @@
                     <br/>
                     <label for="season">Seizoen</label><br/>
                     <select id="season" class="form-control" name="season" required>
-                        <option selected disabled hidden>Seizoen 1</option>
+                        <option selected disabled hidden>Selecteer een seizoen</option>
                         <% foreach (Season season in seasonManager.getSeasonListFromDB(loggedInPerson.School))
                            { %>
                             <option value="<%: season.UUID %>"><%: season.SeasonName %>(<%:season.StartDate %> t/m <%:season.EndDate %>)</option>

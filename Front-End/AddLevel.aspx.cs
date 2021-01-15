@@ -25,7 +25,7 @@ namespace Front_End
             {
                 int levelNummer = Convert.ToInt32(Request.Form["levelnummer"]);
                 int requiredExp = Convert.ToInt32(Request.Form["requiredexp"]);
-                string seizoen = Convert.ToString(Request.Form["seizoen"]);
+                string seizoen = Convert.ToString(Request.Form["season"]);
 
                 levelManager.AddLevel(levelNummer, requiredExp, seizoen);
             }

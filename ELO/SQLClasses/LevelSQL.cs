@@ -55,6 +55,7 @@ namespace ELO.SQLClasses
 
         public void AddLevelToDatabase(int levelNummer, int requiredExp, string seizoen)
         {
+            
         }
 
         public Level FindLevel(string levelUUID)
