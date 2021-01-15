@@ -23,14 +23,14 @@
                         <select name="subject" id="subject" class="form-control">
                         <option value="">Geen vak</option>
                         <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School)) { %>
-                            <option><%: subject.Name %></option>
+                            <option value="<%: subject.uuid %>"><%: subject.Name %></option>
                         <% } %>
                     </select>
                    <label for="class">Mentorklas</label><br/>
                     <select id="class" class="form-control" name="class">
                         <option value="">Geen klas</option>
                         <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School)) { %>
-                            <option><%: _class.Name %></option>
+                            <option value="<%: _class.UUID %>"><%: _class.Name %></option>
                         <% } %>
                     </select>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>

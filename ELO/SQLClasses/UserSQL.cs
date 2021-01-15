@@ -19,7 +19,7 @@ namespace ELO.SQLClasses
             subjectManager = new SubjectManager();
 
             date = DateTime.Now.ToString();
-            userUUID = new Random().Next().ToString() + DateTime.Now.ToString("O");
+            userUUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
         public List<Person> GetList(string school, string type)
@@ -181,8 +181,6 @@ namespace ELO.SQLClasses
             Teacher mentorTeacher = (Teacher)FindUserInDataBase(mentorUUID);
 
             classManager = null;
-            mySqlManager.con.Close();
-            mySqlManager = null;
 
             return new Student(name, 0, school, "Student", returnClass, mentorTeacher, userUUID, leerlingnummer, date, username, email, exp);
         }
