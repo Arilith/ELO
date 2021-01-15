@@ -4,17 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ELO;
 using ELO.Managers;
 
 namespace Front_End
 {
 	public partial class AddRewards : System.Web.UI.Page
 	{
-		RewardMan rewardMan;
+		public RewardMan rewardMan;
+        public LevelMan levelManager;
+
+        public Person loggedInPerson;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			rewardMan = new RewardMan();
+			levelManager = new LevelMan();
+
+            loggedInPerson = (Person)Session["person"];
+
 			if (IsPostBack)
 			{
 				string title = Request.Form["title"];

@@ -33,7 +33,7 @@
                         <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School)) { %>
                             <option value="<%: _class.UUID %>"><%: _class.Name %></option>
                         <% } %>
-                    </select>
+                    </select><br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                         </div>
                 </form>

@@ -6,12 +6,13 @@ namespace ELO.SQLClasses
 {
     public class RewardSQL
     {
-        private string UUID = "Reward";
+        private string UUID;
 
         private MySqlManager mySqlManager;
 
         public RewardSQL()
         {
+            UUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
         public List<Reward> GetRewardFromDB(string school)
