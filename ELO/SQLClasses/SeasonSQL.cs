@@ -33,7 +33,7 @@ namespace ELO.SQLClasses
         {
             mySqlManager = new MySqlManager();
             List<Season> returnList = new List<Season>();
-            MySqlCommand ReadSeasonSqlCommand = new MySqlCommand($"SELECT * FROM seasons WHERE school = {school}", mySqlManager.con);
+            MySqlCommand ReadSeasonSqlCommand = new MySqlCommand($"SELECT * FROM seasons WHERE school = '{school}'", mySqlManager.con);
             MySqlDataReader readSeasonDataReader = ReadSeasonSqlCommand.ExecuteReader();
             while (readSeasonDataReader.Read())
             {
