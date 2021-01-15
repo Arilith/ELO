@@ -25,9 +25,9 @@ namespace ELO.Managers
             return Seasons.Find(x => x.UUID == seasonUUID);
         }
 
-        public void getSeasonListFromDB(string school)
+        public List<Season> getSeasonListFromDB(string school)
         {
-            seasonSQL.GetSeasonListFromDB(school);
+            return seasonSQL.GetSeasonListFromDB(school);
         }
     }
 }
