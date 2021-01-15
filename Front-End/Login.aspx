@@ -59,7 +59,7 @@
                     </div>
 
                     <div>
-                        <input id="username" type="text" name="leerlingnummer" class="input-control" required />
+                        <input id="username" type="number" name="leerlingnummer" class="input-control" required />
                         <span class="floating-label">Leerlingnummer</span>
                     </div>
                     <div>
