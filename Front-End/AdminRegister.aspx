@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="Front_End.AdminLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminRegister.aspx.cs" Inherits="Front_End.AdminRegister" %>
 <%@ Import Namespace="ELO" %>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        
+
         <div class="login-container-register">
             <div class="login-picture"></div>
             <div class="top">
@@ -88,8 +88,8 @@
                 <% } %>
 
             <br/><br/>
-            
-            
+
+
             <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
     </form>
 </body>

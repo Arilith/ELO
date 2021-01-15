@@ -71,7 +71,6 @@
                         <button type="submit" class="btn btn-success" style="margin-right: 80px; display:inline-block">Log in</button>
                     </div>
                 </form>
-                
                 <% if (results != null) { %>
                     <meta http-equiv="refresh" content="0;url=StudentHome.aspx" />
                 <% } else if (Session["person"] != null) { %>

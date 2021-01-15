@@ -157,6 +157,7 @@
     <Content Include="AddGrade.aspx" />
     <Content Include="AddHomework.aspx" />
     <Content Include="AddLeermiddel.aspx" />
+    <Content Include="AddLevel.aspx" />
     <Content Include="AddRewards.aspx" />
     <Content Include="AddSeason.aspx" />
     <Content Include="AddSubject.aspx" />
@@ -276,6 +277,13 @@
     </Compile>
     <Compile Include="AddLeermiddel.aspx.designer.cs">
       <DependentUpon>AddLeermiddel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddLevel.aspx.cs">
+      <DependentUpon>AddLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddLevel.aspx.designer.cs">
+      <DependentUpon>AddLevel.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddRewards.aspx.cs">
       <DependentUpon>AddRewards.aspx</DependentUpon>

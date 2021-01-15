@@ -25,7 +25,8 @@
                         <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School)) { %>
                             <option value="<%: subject.uuid %>"><%: subject.Name %></option>
                         <% } %>
-                    </select>
+                        </select>
+                        <br/>
                    <label for="class">Mentorklas</label><br/>
                     <select id="class" class="form-control" name="class">
                         <option value="">Geen klas</option>
