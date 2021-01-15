@@ -6,11 +6,12 @@ namespace ELO.SQLClasses
 {
     public class SeasonSQL
     {
-        private string UUID = "lul";
+        private string UUID;
         private MySqlManager mySqlManager;
 
         public SeasonSQL()
         {
+            UUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
         public void AddSeasonToDatabase(string startDate, string endDate, string seasonName)

@@ -16,8 +16,12 @@
                         <label for="imageURL">Afbeelding URL</label><br/>
                     <input id="imageURL" class="form-control" name="imageURL" type="text" /><br/>
 
-                        <label for="requiredLevel">Op welk level krijg je het</label><br/>
-                    <input id="requiredLevel" class="form-control" name="requiredLevel" type="number" /><br/>
+                        <label for="requiredLevel">Gekoppeld Level</label><br/>
+                    <select>
+                        <% foreach(Level level in levelManager.GetLevelListFromDB(loggedInPerson.School)) { %>
+                            <option value="<%: level.UUID %>"><%: level.LevelNumber %> (Seizoen: <%: level.ThisSeason %>)</option>
+                        <% } %>
+                    </select>
                     <br/>
                     <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                     </div>
