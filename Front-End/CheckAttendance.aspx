@@ -43,21 +43,29 @@
 
                     </tr>
                     </thead>
-                    <tbody>
-                    $items = $pages->get(1)->children();
-                    <% foreach (Student student in classManager.GetStudentsInClass(Request.Form["class"])){ %> 
-                    <tr>
-                        <td><%: student.Name %></td>
-                        <td> <input type="radio" id="present" name="items" value="present"></td>
-                        <td> <input type="radio" id="absent" name="items" value="absent"></td>
-                        <td> <input type="radio" id="leave" name="RButton" value="leave"></td>
-                        <td> <input type="radio" id="late" name="RButton" value="late"></td>
-                        <td> <input type="radio" id="lateAllow" name="RButton" value="lateAllow"></td>
-                        <td> <input type="checkbox" id="forgot" name="forgot" value="forgot"></td>
-                        <td> <input type="checkbox" id="expelled" name="expelled" value="expelled"></td>
-                       </tr>     
-                    <% } %>
-                    </tbody>
+					<tbody>
+						$items = $pages->get(1)->children();
+                    <% foreach (Student student in classManager.GetStudentsInClass(Request.Form["class"]))
+						{ %>
+						<tr>
+							<td><%: student.Name %></td>
+							<td>
+								<input type="radio" id="present" name="items" value="present"></td>
+							<td>
+								<input type="radio" id="absent" name="items" value="absent"></td>
+							<td>
+								<input type="radio" id="leave" name="RButton" value="leave"></td>
+							<td>
+								<input type="radio" id="late" name="RButton" value="late"></td>
+							<td>
+								<input type="radio" id="lateAllow" name="RButton" value="lateAllow"></td>
+							<td>
+								<input type="checkbox" id="forgot" name="forgot" value="forgot"></td>
+							<td>
+								<input type="checkbox" id="expelled" name="expelled" value="expelled"></td>
+						</tr>
+						<% } %>
+					</tbody>
                 </table>
             </div>
             <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
