@@ -1,21 +1,34 @@
 ﻿<%@ Page Title="Mentor & Leerlingen" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StudentsByClass.aspx.cs" Inherits="Front_End.StudentsByClass" %>
 <%@ Import Namespace="ELO" %>
+<%@ Import Namespace="Org.BouncyCastle.Ocsp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% if (!IsPostBack) { %>
+    <% if (!IsPostBack && Request["class"] == null) { %>
     <form method="post" id="classform" name="classform">
         <div class="jelly-form" style="width:356px">
         <label for="class">Selecteer een klas</label>
-        <select id="class" name="class" class="form-control">
+            <select id="class" name="class" class="form-control">
             <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School))
                { %>
-                <option value="<%: _class.UUID %>"><%: _class.Name %></option>
+                <option <% if(Request["class"] == _class.UUID) { %>selected <% } %>value="<%: _class.UUID %>"><%: _class.Name %></option>
             <% } %>
         </select><br/><br/>
         <button class="btn btn-success" type="submit">Verstuur</button></div>
     </form>
     <% } %>
-    <% if (IsPostBack && Request.Form["mentor"] == null) { %>
+    <% if (IsPostBack && Request.Form["mentor"] == null || Request["class"] != null)
+       {
+           string requestedClass;
+           if (Request["class"] != null)
+           {
+               requestedClass = Request["class"];
+           }
+           else
+           {
+               requestedClass = Request.Form["class"];
+           }
+    
+    %>
         <div class="row">
             <div class="col-lg-9">
                 <style>
@@ -27,7 +40,7 @@
                     }
                 </style>
         
-                <h2>Klassenlijst van klas: <%: classManager.GetClassFromDatabase(Request.Form["class"]).Name %></h2>
+                <h2>Klassenlijst van klas: <%: classManager.GetClassFromDatabase(requestedClass).Name %></h2>
                 <table class="table-striped table-bordered styled-table">
                     <thead>
                     <tr>
@@ -41,7 +54,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% foreach (Student student in classManager.GetStudentsInClass(Request.Form["class"])){ %> 
+                    <% foreach (Student student in classManager.GetStudentsInClass(requestedClass)){ %> 
                         <tr>
                             <td><%: student.Name %></td>
                             <td><%: student.Age %></td>
@@ -59,11 +72,11 @@
                 <h2>Mentor veranderen</h2>
                 <form method="post" name="addmentor" id="addmentor">
                     <div class="jelly-form" style="width:356px">
-                    <input type="hidden" value="<%: Request.Form["class"] %>" name="class" id="class" class="form-control"/>
+                    <input type="hidden" value="<%: requestedClass %>" name="class" id="class" class="form-control"/>
                     <label for="mentor">Mentor</label><br/>
                     <select name="mentor" id="mentor" class="form-control">
-                        <% foreach (Teacher mentor in userManager.GetPersonList("Teacher", loggedInPerson.School)) { %>
-                            <option value="<%: mentor.UserId %>"><%: mentor.Name %></option>    
+                        <% Class foundClass = classManager.GetClassFromDatabase(requestedClass); foreach (Teacher mentor in userManager.GetPersonList("Teacher", loggedInPerson.School)) { %>
+                            <option <% if(foundClass.Mentor != null && mentor.UserId == foundClass.Mentor.UserId) { %>selected <% } %> value="<%: mentor.UserId %>"><%: mentor.Name %></option>    
                         <% } %>
                     </select><br/>
                     <button type="submit" class="btn btn-info">Verander</button></div>

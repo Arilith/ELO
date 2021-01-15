@@ -73,7 +73,7 @@
             <th>Cluster</th>
             <th>Mentor</th>
             <th>Jaargang</th>
-            <th>Veranderen</th>
+            <th>Bewerken</th>
         </tr>
         </thead>
         <tbody>

@@ -20,6 +20,7 @@
             <th>Leshuis</th>
             <th>Cluster</th>
             <th>Leerjaar</th>
+            <th>Bewerken</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +32,7 @@
                 <td><%: _class.LesHuis %></td>
                 <td><%: _class.Cluster %></td>
                 <td><%: _class.StudyYear %></td>
-               
+                <td><a href="StudentsByClass?class=<%: _class.UUID %>" class="btn btn-primary">Mentor veranderen</a></td>
             </tr>     
         <% } %>
         </tbody>
