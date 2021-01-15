@@ -125,10 +125,14 @@ namespace ELO.SQLClasses
         {
             mySqlManager = new MySqlManager();
 
-            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school, exp, subjectUUID, classUUID) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school, @exp, @subjectUUID, @classUUID)";
+            string addTeacherSQL = "INSERT INTO users(username, password, email, registrationdate, role, name, uuid, school, exp, subjectUUID) VALUES (@username, @password, @email, @registrationdate, @role, @name, @uuid, @school, @exp, @subjectUUID)";
+            string changeMentorSQL = $"UPDATE classes SET mentorUUID = '{userUUID}' WHERE uuid = '{classUUID}'";
+
             MySqlCommand addTeacherCommand;
+            MySqlCommand changeMentorCommand;
 
             addTeacherCommand = new MySqlCommand(addTeacherSQL, mySqlManager.con);
+            changeMentorCommand = new MySqlCommand(changeMentorSQL, mySqlManager.con);
 
             addTeacherCommand.Parameters.AddWithValue("@username", username);
             addTeacherCommand.Parameters.AddWithValue("@password", password.CreateMD5());
@@ -144,6 +148,8 @@ namespace ELO.SQLClasses
 
             addTeacherCommand.Prepare();
             addTeacherCommand.ExecuteNonQuery();
+
+            changeMentorCommand.ExecuteNonQuery();
 
             mySqlManager.con.Close();
             mySqlManager = null;
