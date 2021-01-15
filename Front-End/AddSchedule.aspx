@@ -9,7 +9,7 @@
         <%-- selectievak leraar --%>
         <div class="jelly-form" style="width:356px">
         <select id="teacherName" class="form-control" name="teacherName" required>
-            <option selected disabled hidden>Abdhulla Klapstulla</option>
+            <option selected disabled hidden>Niet Abdhulla Klapstulla</option>
             <% foreach (Teacher teacher in userMan.GetPersonListFromDB(loggedInPerson.School, "Teacher"))
                { %>
                 <option value="<%: teacher.UserId %>"><%: teacher.UserName %></option>
@@ -19,7 +19,7 @@
         <%-- selectievak vak --%>
         <label for="subjectName">Subject</label><br/>
         <select id="subjectName" class="form-control" name="subjectName" required>
-            <option selected disabled hidden>Klapstoelvouwen</option>
+            <option selected disabled hidden>Niet Klapstoelvouwen</option>
             <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School))
                { %>
                 <option value="<%: subject.uuid %>"><%: subject.Name %></option>
@@ -33,7 +33,7 @@
         <%-- selectievak klas --%>
         <label for="_class">Class</label><br/>
         <select id="_class" class="form-control" name="_class" required>
-            <option selected disabled hidden>5H3</option>
+            <option selected disabled hidden>Niet 5H3</option>
             <% foreach (Class _class in classManager.GetClassListFromDatabase(loggedInPerson.School))
                { %>
                 <option value="<%: _class.UUID %>"><%: _class.Name %></option>

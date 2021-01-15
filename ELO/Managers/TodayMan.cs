@@ -96,5 +96,24 @@ namespace ELO
 
             return appointmentsPerDay;
         }
+
+        public List<Appointment> GetAppointmentsOfToday(Student loggedInStudent, DateTime dateOfToday)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            List<Appointment> returnList = new List<Appointment>();
+            if (loggedInStudent != null)
+                appointments = GetAppointmentListFromDatabase(loggedInStudent.School, loggedInStudent.PartOfClass.UUID);
+
+            foreach (Appointment appointment in appointments)
+            {
+                string dateWithoutTime = appointment.dateAndTime.ToString("dd/MM/yyyy");
+                string dateOfTodayString = dateOfToday.ToString("dd/MM/yyyy");
+;                if (dateWithoutTime == dateOfTodayString)
+                {
+                    returnList.Add(appointment);
+                }
+            }
+            return returnList;
+        }
     }
 }

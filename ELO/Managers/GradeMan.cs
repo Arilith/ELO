@@ -51,7 +51,7 @@ namespace ELO
             Homework homework = homeworkManager.GetHomeworkFromDB(homeworkUUID);
             Subject subject = homework.Subject;
 
-            int xpToAdd = Convert.ToInt32(Math.Round(homework.Exp * (grade / 10)));
+            int xpToAdd = Convert.ToInt32(Math.Round(homework.Exp * (grade / 100)));
 
             userMan = null;
             subjectManager = null;

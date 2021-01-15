@@ -15,6 +15,7 @@ namespace Front_End
         public GradeMan gradeMan;
         public SubjectManager subjectMan;
         public HwMan homeworkMan;
+        public TodayMan todayMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,6 +23,7 @@ namespace Front_End
             homeworkMan = new HwMan();
             gradeMan = new GradeMan();
             subjectMan = new SubjectManager();
+            todayMan = new TodayMan();
         }
     }
 }
