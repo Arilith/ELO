@@ -9,16 +9,20 @@ namespace Front_End
     public partial class BattlePass : System.Web.UI.Page
     {
         public Person loggedInPerson;
+        public Student loggedInStudent;
         public RewardMan rewardMan;
         public LevelMan levelMan;
         public BattlePassManager battlePassMan;
+        public UserMan userMan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             loggedInPerson = (Person)Session["person"];
+            loggedInStudent = (Student) loggedInPerson;
             rewardMan = new RewardMan();
             levelMan = new LevelMan();
             battlePassMan = new BattlePassManager();
+            userMan = new UserMan();
         }
 
         // dit moet in de front end komen in de loop
