@@ -16,15 +16,9 @@ namespace ELO.Managers
             levelSql = new LevelSQL();
         }
 
-        public void AddLevel(int amoundOfLevels, int maxExp, string seizoen)
+        public void AddLevel(int amoundOfLevels, int maxExp, string seizoen, string school)
         {
-            int expPerLevel = Convert.ToInt32(maxExp / amoundOfLevels);
-            int requiredExp = expPerLevel;
-            for (int i = 0; i < amoundOfLevels; i++)
-            {
-                requiredExp += expPerLevel;
-                levelSql.AddLevelToDatabase(i, requiredExp, seizoen);
-            }
+           levelSql.AddLevelToDatabase(amoundOfLevels, maxExp, seizoen, school);
         }
 
         public List<Level> GetLevelListFromDB(string school)

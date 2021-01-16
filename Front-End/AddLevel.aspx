@@ -5,7 +5,7 @@
     <div class="container-form">
         <h2><%: Title %></h2>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <form method="post" id="addteacher" name="addlevel">
                     <label for="levelnummer">Aantal levels</label><br/>
                     <input id="levelnummer" class="form-control" name="levelnummer" type="number" placeholder="1 t/m 100" min="1" max="100" required/>

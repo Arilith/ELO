@@ -10,8 +10,11 @@ namespace ELO.SQLClasses
         private MySqlManager mySqlManager;
         private SeasonMan seasonMan;
 
+        private string UUID;
+
         public LevelSQL()
         {
+            UUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
         public List<Level> GetLevelsFromDB(string school)
@@ -53,9 +56,27 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
-        public void AddLevelToDatabase(int levelNummer, int requiredExp, string seizoen)
+        public void AddLevelToDatabase(int amountOfLevels, int maxExp, string seizoen, string school)
         {
-            
+            mySqlManager = new MySqlManager();
+
+            string AddLevelsSQL = "";
+
+            int expPerLevel = Convert.ToInt32(maxExp / amountOfLevels);
+            int requiredExp = 0;
+            for (int i = 1; i <= amountOfLevels; i++)
+            {
+                requiredExp += expPerLevel;
+                AddLevelsSQL +=
+                    $"INSERT INTO levels (requiredExp, seasonUUID, levelNumber, UUID, school) VALUES ('{requiredExp}', '{seizoen}', '{i}', RAND(), '{school}');";
+            }
+
+            MySqlCommand addLevelsToDatabase = new MySqlCommand(AddLevelsSQL, mySqlManager.con);
+
+            addLevelsToDatabase.ExecuteNonQuery();
+
+            mySqlManager.con.Close();
+            mySqlManager = null;
         }
 
         public Level FindLevel(string levelUUID)
