@@ -45,19 +45,21 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
-        public void AddRewardToDB(string reward, string rewardDescription, string imageURL, int requiredLevel)
+        public void AddRewardToDB(string title, string rewardDescription, string imageURL, string levelUUID)
         {
             mySqlManager = new MySqlManager();
-            MySqlCommand addRewardCommand = new MySqlCommand($"Insert into rewards (requiredLevel, reward, description, imageURL, UUID) values (@requiredLevel, @reward, @description, @imageURL, @UUID)", mySqlManager.con);
+            MySqlCommand addRewardCommand = new MySqlCommand($"Insert into rewards (title, description, imageURL, UUID) values (@title, @description, @imageURL, @UUID)", mySqlManager.con);
+            MySqlCommand changeLevelCommand = new MySqlCommand($"UPDATE levels SET rewardUUID = '{UUID}' WHERE uuid = '{levelUUID}'");
 
-            addRewardCommand.Parameters.AddWithValue("@requiredLevel", requiredLevel);
-            addRewardCommand.Parameters.AddWithValue("@reward", reward);
+            addRewardCommand.Parameters.AddWithValue("@title", title);
             addRewardCommand.Parameters.AddWithValue("@description", rewardDescription);
             addRewardCommand.Parameters.AddWithValue("@imageURL", imageURL);
             addRewardCommand.Parameters.AddWithValue("@UUID", UUID);
             addRewardCommand.Prepare();
 
             addRewardCommand.ExecuteNonQuery();
+            changeLevelCommand.ExecuteNonQuery();
+
             mySqlManager.con.Close();
             mySqlManager = null;
         }

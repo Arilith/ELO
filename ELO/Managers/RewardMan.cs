@@ -13,9 +13,9 @@ namespace ELO.Managers
 		{
 			rewardSQL = new RewardSQL();
 		}
-		public void AddReward(string title, string rewardDescription, string imageURL, int requiredLevel)
+		public void AddReward(string title, string rewardDescription, string imageURL, string levelUUID)
 		{
-			rewardSQL.AddRewardToDB(title, rewardDescription, imageURL, requiredLevel);
+			rewardSQL.AddRewardToDB(title, rewardDescription, imageURL, levelUUID);
 		}
 
 		public void GetRewardListFromDB(string school)
