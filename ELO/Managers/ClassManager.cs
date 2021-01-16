@@ -39,6 +39,12 @@ namespace ELO
         {
             return classSql.GetClassList(school);
         }
+
+        public Class GetClassFromClassList(string school, string className)
+        {
+            return classSql.GetClassList(school).Find(x => x.Name == className);
+        }
+
         public int GetAmountOfStudentsInClass(string classUUID)
         {
 

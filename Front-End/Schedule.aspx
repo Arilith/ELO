@@ -43,28 +43,40 @@
         %>
             
         <div class="col-lg-2">
-            <%: datum %>
+            <%: DateTime.ParseExact(datum.ToString(), "MM-dd-yyyy", null).ToString("dddd dd-MM-yyyy") %>
             <div class="list-group">
                 <%-- Loop door alle lesuren mogelijk. --%>
                 <% for(int i = 1; i < TodayMan.LesUren.Count + 1; i++) { %>
                     <% Appointment foundAppointment = AppointmentsPerDay[datum].Find(x => x.LesUur == i); if(foundAppointment != null) { %>
-                        <a href="#" class="list-group-item" style="background-color: green; color: lightgreen">
+                        <a href="#" class="list-group-item" style="height: 70px; background-color: green; color: lightgreen">
                             <h4 class="list-group-item-heading" ></h4>
                             <p class="list-group-item-text">
-                                <b><%: i %>
-                                    <%: foundAppointment.subject %> |
-                                    <%: foundAppointment.classroom %>
-                                    <br />
-                                    <%: foundAppointment.teacher %>
+                                <b><div class="pull-left">
+                                        <%: foundAppointment.subject %> |
+                                        <%: foundAppointment.classroom %>
+                                        <br />
+                                        <%: foundAppointment.teacher %> |
+                                        <%: TodayMan.LesUren[i] %>
+                                    </div>
+                                    <div class="pull-right" style="font-size: 30px;">
+                                        <%: i %> 
+                                    </div>
                                 </b>
                             </p>
                         </a>
                         <br />
                     <% } else { %>
-                        <a href="#" class="list-group-item">
+                        <a href="#" class="list-group-item" style="height: 50px;">
                             <h4 class="list-group-item-heading"></h4>
                             <p class="list-group-item-text">
-                                <b><%: i %> Geen les</b><br />
+                                <b>
+                                    <div class="pull-left">
+                                        <%: TodayMan.LesUren[i] %> Geen les
+                                    </div>
+                                    <div class="pull-right">
+                                        <%: i %>
+                                    </div>
+                                </b><br />
                             </p>
                         </a> <br/>
                     <% } %>
@@ -72,21 +84,27 @@
             </div>
         </div>
         <% } %>
-        <% for (int j = amountOfDays; j < 5; j++)
-           {
-               int amountOfDaysToAdd = 1; %>
+        <% int amountOfDaysToAdd = 0; for (int j = amountOfDays; j < 5; j++)
+           { amountOfDaysToAdd++; %>
             <div class="col-lg-2">
-                <%: DateTime.ParseExact(lastDate.ToString(), "MM-dd-yyyy", System.Globalization.CultureInfo.GetCultureInfo("nl-NL").DateTimeFormat).AddDays(amountOfDaysToAdd).ToString("dd-MM-yyy") %>
+                <%: DateTime.ParseExact(lastDate.ToString(), "MM-dd-yyyy", null).AddDays(amountOfDaysToAdd).ToString("dddd dd-MM-yyyy") %>
                 <% for(int k = 1; k < TodayMan.LesUren.Count + 1; k++) { %>
-                    <a href="#" class="list-group-item">
+                    <a href="#" class="list-group-item" style="height: 50px;">
                         <h4 class="list-group-item-heading"></h4>
                         <p class="list-group-item-text">
-                            <b><%: k %> Geen les</b><br />
+                            <b>
+                                <div class="pull-left">
+                                    <%: TodayMan.LesUren[k] %> Geen les
+                                </div>
+                                <div class="pull-right">
+                                    <%: k %>
+                                </div>
+                            </b><br />
                         </p>
                     </a> <br/>
                 <% } %>
             </div>
-        <% amountOfDaysToAdd++; } %>
+        <%  } %>
         <div class="col-lg-1"></div>
     </div>
 </asp:Content>

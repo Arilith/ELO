@@ -24,8 +24,15 @@ namespace Front_End
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            startDate = DateTime.Now.ToString("dd/MM/yyyy");
-            endDate = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy");
+            int daysToAdd = 0;
+
+            if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday)
+                daysToAdd = 2;
+            else if (DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+                daysToAdd = 1;
+
+            startDate = DateTime.Now.AddDays(daysToAdd).ToString("dd/MM/yyyy");
+            endDate = DateTime.Now.AddDays(daysToAdd + 5).ToString("dd/MM/yyyy");
 
             //Haal ingelogde persoon uit de sessie.
             loggedInPerson = (Person)Session["person"];

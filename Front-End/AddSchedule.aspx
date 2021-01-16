@@ -12,7 +12,7 @@
             <option selected disabled hidden>Niet Abdhulla Klapstulla</option>
             <% foreach (Teacher teacher in userMan.GetPersonListFromDB(loggedInPerson.School, "Teacher"))
                { %>
-                <option ><%: teacher.UserName %></option>
+                <option ><%: teacher.Name %></option>
             <% } %>
         </select><br/>
 

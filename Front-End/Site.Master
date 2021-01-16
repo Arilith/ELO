@@ -76,17 +76,17 @@
                                 string insertDueDate = homework.DueDate;
                                 string insertHomeworkDescription = homework.Content;
 
-                                %><a href="Battlepass.aspx"><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: homework.Exp %> punten</p></a><%
+                                %><a href="/UploadFile.aspx?homeworkUUID=<%:homework.UUID %>" ><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: homework.Exp %> punten</p></a><%
                             }
                         }
                         %>
-                        <a href="Battlepass.aspx"><p>Puntentotaal: <%:loggedInPerson.Exp %> punten</p></a>
+                        <%-- <a href="Battlepass.aspx"><p>Puntentotaal: <%:loggedInPerson.Exp %> punten</p></a> --%>
                     <% } %>
 
                 </div>
                 <div class="pull-right">
                     <a href="#" style="padding: 0px;"><img src="https://pbs.twimg.com/profile_images/740272510420258817/sd2e6kJy_400x400.jpg" style="height: 52px;" /></a>
-                    <a href="~/UserInfo" runat="server"><%: loggedInPerson.Name %></a>
+                    <a href="~/UserInfo" runat="server"><%: loggedInPerson.Name %> (<%: loggedInPerson.Exp %> punten)</a>
                     <% if(loggedInPerson.Type == "Student") { %><a href="~/UserInfo" runat="server"><%: loggedInStudent.LeerlingNummer %></a> <% } %>
                     <a href="#"><%: loggedInPerson.Email %></a>
                     <a href="~/Logout" runat="server">Uitloggen</a>
@@ -100,7 +100,7 @@
                         <img src="Content/Pictures/logo-ELO.png" class="logo"/>
                         <div class="user-info">
                             <a href="#" style="padding: 0px;"><img src="https://pbs.twimg.com/profile_images/740272510420258817/sd2e6kJy_400x400.jpg" class="ned"/></a>
-                            <a href="#" class="active"><b><%: loggedInPerson.Name %></b></a>
+                            <a href="#" class="active"><b><%: loggedInPerson.Name %> (<%: loggedInPerson.Exp %> punten)</b></a>
                             <% if(loggedInPerson.Type == "Student") { %><a href="~/UserInfo" runat="server"><b><%: loggedInStudent.LeerlingNummer %></b></a><% } %>
                             <a href="#"><b><%: loggedInPerson.Email %></b></a>
                             <a href="~/Logout" runat="server" class="logout-button-side">Uitloggen</a>
