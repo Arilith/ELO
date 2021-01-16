@@ -29,14 +29,12 @@ namespace ELO.SQLClasses
             while (readRewardDataReader.Read())
             {
                 //Alles uit de DB is string, dus omzetten naar wat je nodig hebt
-                int returnRequiredLevel = Convert.ToInt32(readRewardDataReader["requiredLevel"]);
-
                 string returnTitle = Convert.ToString(readRewardDataReader["title"]);
                 string returnDescription = Convert.ToString(readRewardDataReader["description"]);
                 string returnImageURL = Convert.ToString(readRewardDataReader["imageURL"]);
                 string returnUUID = readRewardDataReader["UUID"].ToString();
 
-                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnRequiredLevel, returnUUID);
+                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnUUID);
 
                 returnList.Add(newReward);
             }
@@ -83,10 +81,9 @@ namespace ELO.SQLClasses
                 string returnTitle = readRewardReader["title"].ToString();
                 string rewardDescription = readRewardReader["description"].ToString();
                 string imageUrl = readRewardReader["imageURL"].ToString();
-                int requiredLevel = Convert.ToInt32(readRewardReader["requiredLevel"]);
                 string returnUUID = readRewardReader["UUID"].ToString();
                 //met die data een nieuw level maken in de returnlijst
-                Reward returnReward = new Reward(returnTitle, rewardDescription, imageUrl, requiredLevel, returnUUID);
+                Reward returnReward = new Reward(returnTitle, rewardDescription, imageUrl, returnUUID);
 
                 return returnReward;
             }

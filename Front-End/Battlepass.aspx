@@ -50,16 +50,13 @@
             </div>
         </div>
         <div class="col-lg-4" style="margin-left: 10%">
-            <%
-                Dictionary<Level, Reward>.KeyCollection rewardKeys = GetBattlePass(loggedInPerson.School).Keys;
-                foreach (Level level in rewardKeys)
-                {
-
-            %>
             <div class="container-info2">
                 <div class="container-title">Rewards</div>
                 <div class="container-content">
                     <div class="row">
+                        <% Dictionary<Level, Reward>.KeyCollection rewardKeys = GetBattlePass(loggedInPerson.School).Keys;
+                           foreach (Level level in rewardKeys)
+                           { %>
                         <input type="checkbox" checked="checked">
                         <label>50% korting op een product bij de cafetaria van school - 150 punten</label>
                         <br>
