@@ -80,9 +80,9 @@
                             }
                         }
                         %>
-                        <a href="Battlepass.aspx"><p>Puntentotaal: 69 punten</p></a>
+                        <a href="Battlepass.aspx"><p>Puntentotaal: <%:loggedInPerson.Exp %> punten</p></a>
                     <% } %>
-                    
+
                 </div>
                 <div class="pull-right">
                     <a href="#" style="padding: 0px;"><img src="https://pbs.twimg.com/profile_images/740272510420258817/sd2e6kJy_400x400.jpg" style="height: 52px;" /></a>
