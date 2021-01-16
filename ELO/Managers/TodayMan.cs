@@ -15,6 +15,33 @@ namespace ELO
 
         private AppointmentSQL appointmentSql;
 
+
+        // enum Timeslots : String
+        // {
+        //     Negen = 1,
+        //     Tien = 2,
+        //     Elf = 3,
+        //     Twaalf = 0,
+        //     Een = 4,
+        //     Twee = 5,
+        //     Drie = 6,
+        //     Vier = 7,
+        //     Vijf = 8
+        // }
+
+        public static Dictionary<int, string> LesUren = new Dictionary<Int32, String>()
+        {
+            {1, "9:00"},
+            {2, "10:00"},
+            {3, "11:00"},
+            {4, "12:00"},
+            {5, "13:00"},
+            {6, "14:00"},
+            {7, "15:00"},
+            {8, "16:00"},
+            {9, "17:00"},
+        };
+
         public TodayMan()
         {
             // lijst van appointments, uuid generator, appointmentsql connectie

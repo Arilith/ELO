@@ -4,7 +4,7 @@
     <%@ Import Namespace="System.Globalization" %>
     <%@ Import Namespace="ELO" %>
     <h2 draggable="auto">Rooster</h2>
-    <h3><%: startDate %> t/m <%: endDate %></h3>
+    <h3><%: startDate %> t/m <%: endDate %></h3><%: TodayMan.LesUren[1] %>
     <style>
         td {
             padding: 10px;
