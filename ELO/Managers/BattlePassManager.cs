@@ -12,8 +12,6 @@ namespace ELO.Managers
         {
             LevelSQL levelSql = new LevelSQL();
             RewardSQL rewardSql = new RewardSQL();
-            LevelMan levelMan = new LevelMan();
-            RewardMan rewardMan = new RewardMan();
             Dictionary<Level, Reward> returnDictionary = new Dictionary<Level, Reward>();
 
             foreach (Level level in levelSql.GetLevelsFromDB(schoolUUID))
@@ -25,8 +23,6 @@ namespace ELO.Managers
 
             levelSql = null;
             rewardSql = null;
-            levelMan = null;
-            rewardMan = null;
 
             return returnDictionary;
             // alle levels uit database
