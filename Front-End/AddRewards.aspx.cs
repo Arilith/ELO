@@ -28,10 +28,10 @@ namespace Front_End
 				string title = Request.Form["title"];
 				string rewardDescription = Request.Form["rewardDescription"];
 				string imageURL = Request.Form["imageURL"];
-				int requiredLevel = Convert.ToInt32(Request.Form["requiredLevel"]);
+				string levelUUID = Request.Form["levelUUID"];
 
-				rewardMan.AddReward(title, rewardDescription, imageURL, requiredLevel);
-
+				rewardMan.AddReward(title, rewardDescription, imageURL, levelUUID);
+				
 				OutputLabel.Text = "Beloning toegevoegd!";
 			}
 		}

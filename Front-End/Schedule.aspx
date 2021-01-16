@@ -22,7 +22,7 @@
         <div class="col-lg-1"></div>
         <%
             int amountOfDays = 0; Dictionary<string, List<Appointment>>.KeyCollection datumKeys = AppointmentsPerDay.Keys;
-            
+            string lastDate = "";
             foreach (string datum in datumKeys)
             {
                 if (AppointmentsPerDay[datum][0].Date < DateTime.Parse(startDate) || AppointmentsPerDay[datum][0].Date > DateTime.Parse(endDate))
@@ -32,12 +32,14 @@
                 else
                 {
                     amountOfDays++;
+                    
                     if (amountOfDays > 5)
                     {
                         break;
                     }
                 }
-                
+
+                lastDate = datum;
         %>
             
         <div class="col-lg-2">
@@ -70,6 +72,21 @@
             </div>
         </div>
         <% } %>
+        <% for (int j = amountOfDays; j < 5; j++)
+           {
+               int amountOfDaysToAdd = 1; %>
+            <div class="col-lg-2">
+                <%: DateTime.ParseExact(lastDate.ToString(), "MM-dd-yyyy", System.Globalization.CultureInfo.GetCultureInfo("nl-NL").DateTimeFormat).AddDays(amountOfDaysToAdd).ToString("dd-MM-yyy") %>
+                <% for(int k = 1; k < TodayMan.LesUren.Count + 1; k++) { %>
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading"></h4>
+                        <p class="list-group-item-text">
+                            <b><%: k %> Geen les</b><br />
+                        </p>
+                    </a> <br/>
+                <% } %>
+            </div>
+        <% amountOfDaysToAdd++; } %>
         <div class="col-lg-1"></div>
     </div>
 </asp:Content>

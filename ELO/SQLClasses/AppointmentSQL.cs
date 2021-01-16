@@ -83,7 +83,7 @@ namespace ELO.SQLClasses
         {
             mySqlManager = new MySqlManager();
 
-            string sql = "INSERT INTO appointments (teacher, subject, dateandTime, classroomUUID, class, school, UUID, lesuur) VALUES (@teacher, @subject, @dateandTime, @classroom, @class, @school, @UUID, @lesUur)";
+            string sql = "INSERT INTO appointments (teacher, subject, dateandTime, classroom, classUUID, school, UUID, lesuur) VALUES (@teacher, @subject, @dateandTime, @classroom, @classUUID, @school, @UUID, @lesUur)";
 
             MySqlCommand addAppointmentCommand = new MySqlCommand(sql, mySqlManager.con);
 
@@ -92,7 +92,7 @@ namespace ELO.SQLClasses
             addAppointmentCommand.Parameters.AddWithValue("@subject", subject);
             addAppointmentCommand.Parameters.AddWithValue("@dateandTime", dateTime);
             addAppointmentCommand.Parameters.AddWithValue("@classroom", classroom);
-            addAppointmentCommand.Parameters.AddWithValue("@class", classUUID);
+            addAppointmentCommand.Parameters.AddWithValue("@classUUID", classUUID);
             addAppointmentCommand.Parameters.AddWithValue("@school", school);
             addAppointmentCommand.Parameters.AddWithValue("@UUID", UUID);
             addAppointmentCommand.Parameters.AddWithValue("@lesuur", lesUur);
