@@ -13,13 +13,15 @@
                         <input id="rewardDescription" class="form-control" name="rewardDescription" type="text" placeholder="10% korting op een broodje" required/><br/>
                         <label for="imageURL">Afbeelding URL</label><br/>
                         <input id="imageURL" class="form-control" name="imageURL" type="text" /><br/>
+                        <label for="same">Voor alle levels hetzelfde?</label><br/>
+                        <input type="checkbox" class="bigger" name="same" id="same" /><br/>
                         <label for="requiredLevel">Gekoppeld Level</label><br/>
                         <select id="levelUUID" name="levelUUID" class="form-control">
                             <% foreach(Level level in levelManager.GetLevelListFromDB(loggedInPerson.School)) { %>
-                                <option value="<%: level.UUID %>"><%: level.LevelNumber %> (Seizoen: <%: level.ThisSeason %>)</option>
+                                <option value="<%: level.UUID %>"><%: level.LevelNumber %></option>
                             <% } %>
-                        </select>
-                        <br/>
+                        </select><br/>
+                        
                         <button style="width: auto" type="submit" class="btn btn-success">Verstuur</button>
                     </div>
                 </form>

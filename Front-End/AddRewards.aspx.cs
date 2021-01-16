@@ -30,7 +30,10 @@ namespace Front_End
 				string imageURL = Request.Form["imageURL"];
 				string levelUUID = Request.Form["levelUUID"];
 
-				rewardMan.AddReward(title, rewardDescription, imageURL, levelUUID);
+                string isSameStr = Request.Form["same"];
+                bool isSame = isSameStr == "on";
+
+				rewardMan.AddReward(title, rewardDescription, imageURL, levelUUID, isSame);
 				
 				OutputLabel.Text = "Beloning toegevoegd!";
 			}
