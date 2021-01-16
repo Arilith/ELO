@@ -21,12 +21,11 @@
                                 foreach (Appointment appointment in todaysLessons)
                                 {
                                     string insertHomeworkTitle;
-                                    Subject returnSubject = appointment.subject;
                                     Homework returnHomework = appointment.homework;
 
                                     string insertClassroom = appointment.classroom;
-                                    string insertSubjectName = returnSubject.Name;
-                                    string insertSubjectIcon = returnSubject.icon;
+                                    string insertSubjectName = appointment.subject;
+
 
                                     if (appointment.homework == null)
                                     {
@@ -34,7 +33,7 @@
                                     }
                                     else {insertHomeworkTitle = returnHomework.Title;}
 
-                        %><div class="col-lg-12"><%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: insertClassroom %><br/><b>HW: <%: insertHomeworkTitle %><% %></b><br/></div><%
+                        %><div class="col-lg-12"><%: insertSubjectName %>  - <%: insertClassroom %><br/><b>HW: <%: insertHomeworkTitle %><% %></b><br/></div><%
 
                                 }
                             }

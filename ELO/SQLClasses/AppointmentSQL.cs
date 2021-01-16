@@ -37,31 +37,28 @@ namespace ELO.SQLClasses
             while (appointmentReader.Read())
             {
                 // gelezen data opslaan in variabelen
-                string returnTeacherUUID = appointmentReader["teacherUUID"].ToString();
-                string returnSubjectUUID = appointmentReader["subjectUUID"].ToString();
+                string returnTeacher = appointmentReader["teacher"].ToString();
+                string returnSubject = appointmentReader["subject"].ToString();
                 string returndateAndTime = appointmentReader["dateAndTime"].ToString();
-                string returnClassroom = appointmentReader["classroomUUID"].ToString();
-                string returnClassUUID = appointmentReader["classUUID"].ToString();
+                string returnClassroom = appointmentReader["classroom"].ToString();
+                string returnClass = appointmentReader["classUUID"].ToString();
                 string returnSchool = appointmentReader["school"].ToString();
-                string returnHomeworkUUID = appointmentReader["homeworkUUID"].ToString();
                 bool returnCancelled = Convert.ToBoolean(appointmentReader["cancelled"]);
                 string returnExamUUID = appointmentReader["ExamUUID"].ToString();
                 string returnUUID = appointmentReader["UUID"].ToString();
+                int returnLesUur = Convert.ToInt32(appointmentReader["lesuur"]);
+
 
                 // variabelen omzetten naar objecten waar nodig
-                Teacher insertTeacher = (Teacher)userManager.FindUserInDataBase(returnTeacherUUID);
-                Subject insertSubject = subjectManager.FindSubjectInDatabase(returnSubjectUUID);
                 string classRoom = returnClassroom;
-                Class insertClass = classManager.GetClassFromDatabase(returnClassUUID);
-                Homework insertHomework = homeworkManager.GetHomeworkFromDB(returnHomeworkUUID);
                 //Exam insertExam = examManager.GetExam(returnExamUUID);
 
                 DateTime dateTime = DateTime.Parse(returndateAndTime);
 
                 // met alle data het object appointment maken
-                Appointment returnAppointment = new Appointment(insertTeacher, insertSubject, dateTime,
-                    classRoom, insertClass, returnSchool, insertHomework, returnCancelled,
-                    returnUUID);
+                Appointment returnAppointment = new Appointment(returnTeacher, returnSubject, dateTime,
+                    classRoom, returnClass, returnSchool, returnCancelled,
+                    returnUUID, returnLesUur);
 
                 returnList.Add(returnAppointment);
             }
@@ -82,22 +79,23 @@ namespace ELO.SQLClasses
         }
 
         // appointment aan database toevoegen
-        public void AddAppointmentToDatabase(string teacherUUID, string subjectUUID, string dateTime, string classroomUUID, string classUUID, string school, string UUID)
+        public void AddAppointmentToDatabase(string teacher, string subject, string dateTime, string classroom, string classUUID, string school, string UUID, int lesUur)
         {
             mySqlManager = new MySqlManager();
 
-            string sql = "INSERT INTO appointments (teacherUUID, subjectUUID, dateandTime, classroomUUID, classUUID, school, UUID) VALUES (@teacherUUID, @subjectUUID, @dateandTime, @classroomUUID, @classUUID, @school, @UUID)";
+            string sql = "INSERT INTO appointments (teacher, subject, dateandTime, classroomUUID, class, school, UUID, lesuur) VALUES (@teacher, @subject, @dateandTime, @classroom, @class, @school, @UUID, @lesUur)";
 
             MySqlCommand addAppointmentCommand = new MySqlCommand(sql, mySqlManager.con);
 
             // de variabelen aan de goede kolom in de database linken
-            addAppointmentCommand.Parameters.AddWithValue("@teacherUUID", teacherUUID);
-            addAppointmentCommand.Parameters.AddWithValue("@subjectUUID", subjectUUID);
+            addAppointmentCommand.Parameters.AddWithValue("@teacher", teacher);
+            addAppointmentCommand.Parameters.AddWithValue("@subject", subject);
             addAppointmentCommand.Parameters.AddWithValue("@dateandTime", dateTime);
-            addAppointmentCommand.Parameters.AddWithValue("@classroomUUID", classroomUUID);
-            addAppointmentCommand.Parameters.AddWithValue("@classUUID", classUUID);
+            addAppointmentCommand.Parameters.AddWithValue("@classroom", classroom);
+            addAppointmentCommand.Parameters.AddWithValue("@class", classUUID);
             addAppointmentCommand.Parameters.AddWithValue("@school", school);
             addAppointmentCommand.Parameters.AddWithValue("@UUID", UUID);
+            addAppointmentCommand.Parameters.AddWithValue("@lesuur", lesUur);
 
             // de data invoeren in de database
             addAppointmentCommand.Prepare();

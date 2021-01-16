@@ -7,71 +7,75 @@ namespace ELO
     public class Appointment
     {
         //properties
-        public Teacher teacher { get; private set; }
-        public Subject subject { get; private set; }
-        public DateTime dateAndTime { get; private set; }
+        public string teacher { get; private set; }
+        public string subject { get; private set; }
+        public DateTime Date { get; private set; }
         public string classroom { get; private set; }
-        public Class _class { get; private set; }
+        public string _class { get; private set; }
         public string school { get; private set; }
         public Homework homework { get; private set; }
         public bool cancelled { get; private set; }
-        public Exam exam { get; private set; }
+
         public string uuid { get; private set; }
 
+        public int LesUur { get; private set; }
+
         //constructor met alles er op en er aan
-        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, Homework homework, bool cancelled, Exam exam, string uuid)
+        public Appointment(string teacher, string subject, DateTime date, string classroom, string _class, string school, Homework homework, bool cancelled, Exam exam, string uuid, int lesUur)
         {
             this.teacher = teacher;
             this.subject = subject;
-            this.dateAndTime = dateAndTime;
+            this.Date = date;
             this.classroom = classroom;
             this._class = _class;
             this.school = school;
             this.homework = homework;
             this.cancelled = cancelled;
-            this.exam = exam;
             this.uuid = uuid;
+            this.LesUur = lesUur;
         }
 
         //zonder exam
-        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, Homework homework, bool cancelled, string uuid)
+        public Appointment(string teacher, string subject, DateTime date, string classroom, string _class, string school, Homework homework, bool cancelled, string uuid, int lesUur)
         {
             this.teacher = teacher;
             this.subject = subject;
-            this.dateAndTime = dateAndTime;
+            this.Date = date;
             this.classroom = classroom;
             this._class = _class;
             this.school = school;
             this.homework = homework;
             this.cancelled = cancelled;
             this.uuid = uuid;
+            this.LesUur = lesUur;
         }
 
         //zonder homework
-        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, Exam exam, bool cancelled, string uuid)
+        public Appointment(string teacher, string subject, DateTime date, string classroom, string _class, string school, Exam exam, bool cancelled, string uuid, int lesUur)
         {
             this.teacher = teacher;
             this.subject = subject;
-            this.dateAndTime = dateAndTime;
+            this.Date = date;
             this.classroom = classroom;
             this._class = _class;
             this.school = school;
-            this.exam = exam;
             this.cancelled = cancelled;
             this.uuid = uuid;
+            this.LesUur = lesUur;
         }
 
         //zonder homework en exam
-        public Appointment(Teacher teacher, Subject subject, DateTime dateAndTime, string classroom, Class _class, string school, bool cancelled, string uuid)
+        public Appointment(string teacher, string subject, DateTime date, string classroom, string _class, string school, bool cancelled, string uuid, int lesUur)
         {
             this.teacher = teacher;
             this.subject = subject;
-            this.dateAndTime = dateAndTime;
+            this.Date = date;
             this.classroom = classroom;
             this._class = _class;
             this.school = school;
             this.cancelled = cancelled;
             this.uuid = uuid;
+            this.LesUur = lesUur;
         }
     }
 }

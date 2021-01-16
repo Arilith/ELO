@@ -50,25 +50,15 @@ namespace ELO
             appointmentSql = new AppointmentSQL();
         }
 
-        public void AddAppointment(Teacher teacher, Subject subject, string dateAndTime, Classroom classroom, Class _class, Homework homework, bool cancelled, Exam exam)
-        {
-            // Appointment Appointment = new Appointment(teacher, subject, dateAndTime, classroom, _class, homework, cancelled, exam);
-            //AppointmentList.Add(Appointment);
-        }
 
         //functie voor het toevoegen van een appointment aan de database
-        public void AddAppointment(string teacherUUID, string subjectUUID, string dateAndTime, string classroomUUID, string classUUID, string school)
+        public void AddAppointment(string teacher, string subject, string dateAndTime, string classroom, string classUUID, string school, int lesUur)
         {
             subjectManager = new SubjectManager();
             userMan = new UserMan();
             classManager = new ClassManager();
-
-            // omzetten van string naar object
-            Teacher insertTeacher = (Teacher)userMan.FindUserInDataBase(teacherUUID);
-            Subject insertSubject = subjectManager.FindSubjectInDatabase(subjectUUID);
-            Class insertClass = classManager.GetClassFromDatabase(classUUID);
-
-            appointmentSql.AddAppointmentToDatabase(teacherUUID, subjectUUID, dateAndTime, classroomUUID, classUUID, school, UUID);
+            
+            appointmentSql.AddAppointmentToDatabase(teacher, subject, dateAndTime, classroom, classUUID, school, UUID, lesUur);
         }
 
         public List<Appointment> GetAppointmentListFromDatabase(string school, string _classUUID)
@@ -98,7 +88,7 @@ namespace ELO
             foreach (Appointment appointment in appointments)
             {
                 //Zet de "string" datum uit de database om naar DateTime, ipv string (2021-01-06 11:00:00)
-                DateTime newDate = Convert.ToDateTime(appointment.dateAndTime);
+                DateTime newDate = Convert.ToDateTime(appointment.Date);
 
                 //Zet de datum om naar datum zonder tijd (01/06/2021)
                 string dateWithoutTime = newDate.ToString("MM/dd/yyyy");
@@ -133,7 +123,7 @@ namespace ELO
 
             foreach (Appointment appointment in appointments)
             {
-                string dateWithoutTime = appointment.dateAndTime.ToString("dd/MM/yyyy");
+                string dateWithoutTime = appointment.Date.ToString("dd/MM/yyyy");
                 string dateOfTodayString = dateOfToday.ToString("dd/MM/yyyy");
 ;                if (dateWithoutTime == dateOfTodayString)
                 {

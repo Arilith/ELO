@@ -12,7 +12,7 @@
             <option selected disabled hidden>Niet Abdhulla Klapstulla</option>
             <% foreach (Teacher teacher in userMan.GetPersonListFromDB(loggedInPerson.School, "Teacher"))
                { %>
-                <option value="<%: teacher.UserId %>"><%: teacher.UserName %></option>
+                <option ><%: teacher.UserName %></option>
             <% } %>
         </select><br/>
 
@@ -22,7 +22,7 @@
             <option selected disabled hidden>Niet Klapstoelvouwen</option>
             <% foreach (Subject subject in subjectManager.GetSubjectList(loggedInPerson.School))
                { %>
-                <option value="<%: subject.uuid %>"><%: subject.Name %></option>
+                <option ><%: subject.Name %></option>
             <% } %>
         </select><br/>
 
@@ -41,10 +41,19 @@
         </select><br/>
 
         <%-- selectievak datum en tijd --%>
-        <label for="dateAndTime">Date+Time</label><br/>
-        <input id="dateAndTime" class="form-control" name="dateAndTime" type="datetime-local" required/><br/>
+        <label for="date">Date</label><br/>
+        <input id="date" class="form-control" name="date" type="date" required/><br/>
 
-        <button style="width: auto" type="submit" class="btn btn-success">Voeg Toe</button></div><br/><br/><br/>
+            <%-- <%Selectievak Lesuur %> --%>
+            <label for="lesuur">Lesuur</label><br/>
+        <select id="lesuur" class="form-control" name="lesuur" required>
+            <%
+                for (int i = 1; i <= TodayMan.LesUren.Count; i++)
+                { %>
+                      <option value="<%: i%>">Lesuur <%:i %> (<%: TodayMan.LesUren[i] %>)</option><%
+                } %>
+                </select>
+            <button style="width: auto" type="submit" class="btn btn-success">Voeg Toe</button></div><br/><br/><br/>
         <br />
     </div>
     <div><asp:Label ID="OutputLabelSchedule" runat="server"></asp:Label></div>

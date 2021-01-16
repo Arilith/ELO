@@ -35,15 +35,16 @@ namespace Front_End
         private void ConvertAndInsertData()
         {
             //data uit form opslaan in variabelen
-            string returnTeacherUUID = Request.Form["teacherName"];
-            string returnSubjectUUID = Request.Form["subjectName"];
-            string returnDateAndTime = Request.Form["dateAndTime"];
+            string returnTeacher = Request.Form["teacherName"];
+            string returnSubject = Request.Form["subjectName"];
+            string returnDate = Request.Form["date"];
+            int returnHour = Convert.ToInt32(Request.Form["lesuur"]);
             string returnClassUUID = Request.Form["_class"];
             string returnClassroom = Request.Form["classroom"];
             string returnSchool = loggedInPerson.School;
 
             // die variabelen in de database zetten
-            todayMan.AddAppointment(returnTeacherUUID, returnSubjectUUID, returnDateAndTime, returnClassroom, returnClassUUID, returnSchool);
+            todayMan.AddAppointment(returnTeacher, returnSubject, returnDate, returnClassroom, returnClassUUID, returnSchool, returnHour);
 
             OutputLabelSchedule.Text = "Item Succesvol toegevoegd!";
         }
