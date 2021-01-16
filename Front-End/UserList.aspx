@@ -15,10 +15,8 @@
         <thead>
             <tr>
                 <th>Naam</th>
-                <th>Datum</th>
-                <th>School</th>
-                <th>Rol</th>
-                <th>UserID</th>
+                <th>Leerlingnummer</th>
+                <th>Email</th>
                 <th>Mentor</th>
                 <th>Klasnaam</th>
             </tr>
@@ -27,10 +25,8 @@
             <% foreach (Student student in usermanager.GetPersonListFromDB(loggedInPerson.School, "Student")){ %> 
                 <tr>
                     <td><%: student.Name %></td>
-                    <td><%: student.RegistrationDate %></td>
-                    <td><%: student.School %></td>
-                    <td><%: student.Type %></td>
-                    <td><%: student.UserId %></td>
+                    <td><%: student.LeerlingNummer %></td>
+                    <td><%: student.Email %></td>
                     <td><% if(student.Mentor != null) { %><%: student.Mentor.Name %> <% } else { %>Onbekend <% } %></td>
                     <td><% if(student.PartOfClass != null) { %><%: student.PartOfClass.Name %> <% } else { %>Onbekend <% } %></td>
                 </tr>     

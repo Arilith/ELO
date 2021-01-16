@@ -16,12 +16,13 @@ namespace ELO.Managers
 
     public class CSVManager
     {
-        public void ReadCSV(string fileLocation)
+        public List<CSVStudent> ReadCSV(string fileLocation)
         {
             var reader = new StreamReader(fileLocation);
             var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             csv.Configuration.Delimiter = ";";
-           
+            
+            return csv.GetRecords<CSVStudent>().ToList();
         }
 
     }

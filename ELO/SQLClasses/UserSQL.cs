@@ -8,6 +8,7 @@ namespace ELO.SQLClasses
     {
 
         private UserMan userManager;
+        private ClassManager classManager;
         private SubjectManager subjectManager;
         private MySqlManager mySqlManager;
         private string date;
@@ -66,6 +67,41 @@ namespace ELO.SQLClasses
             mySqlManager = null;
 
             return returnList;
+        }
+
+        public void AddStudents(List<CSVStudent> students, string school)
+        {
+            classManager = new ClassManager();
+            mySqlManager = new MySqlManager();
+
+            string AddStudentsSql = "";
+
+            for (int i = 0; i < students.Count; i++)
+            {
+                string studentName = students[i].naam;
+                int leerlingNummer = students[i].leerlingnummer;
+                string klas = students[i].klas;
+                Class foundClass = classManager.GetClassFromClassList(school, klas);
+                string klasUUID = foundClass.Name;
+                string schoolDomain = school.Replace(" ", "");
+                string email = $"{leerlingNummer}@{schoolDomain}.nl";
+                string password = leerlingNummer.ToString();
+                string mentorUUID = foundClass.Mentor.UserId;
+                string username = studentName.Replace(" ", "");
+                int leerjaar = students[i].leerjaar;
+
+                AddStudentsSql +=
+                    $"INSERT INTO users(username, leerlingnummer, password, email, registrationdate, role, name, uuid, school, classUUID, mentorUUID, exp, leerjaar) VALUES ('{username}', {leerlingNummer}, '{password}', '{email}', '{date}', 'Student', '{studentName}', RAND(), '{school}', '{foundClass.UUID}', '{mentorUUID}', 0, {leerjaar});";
+            }
+
+            MySqlCommand addStudentsCommand = new MySqlCommand(AddStudentsSql, mySqlManager.con);
+
+            addStudentsCommand.ExecuteNonQuery();
+
+            classManager = null;
+            mySqlManager.con.Close();
+            mySqlManager = null;
+
         }
 
         public List<Person> GetUserList(string type, string school)

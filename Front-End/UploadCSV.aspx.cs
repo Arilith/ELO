@@ -15,9 +15,16 @@ namespace Front_End
     {
         private CSVManager csvManager;
 
+        private UserMan userManager;
+
+        private Person loggedInPerson;
+
         protected void Page_load(object sender, EventArgs e)
         {
             csvManager = new CSVManager();
+            userManager = new UserMan();
+
+            loggedInPerson = (Person) Session["person"];
 
         }
 
@@ -36,7 +43,7 @@ namespace Front_End
 
 
 
-            folder = Server.MapPath("./UploadedFiles/CSV");
+            folder = Server.MapPath("./UploadedFiles/CSV/");
 
             fileName = uploadedFile.PostedFile.FileName;
             fileName = Path.GetFileName(fileName);
@@ -59,7 +66,7 @@ namespace Front_End
                     uploadedFile.PostedFile.SaveAs(filePath);
 
                     //Voeg het toe aan de database.
-                    csvManager.ReadCSV(filePath);
+                    userManager.AddStudentsToDatabase(csvManager.ReadCSV(filePath), loggedInPerson.School);
 
 
                     //Manager.fileMan.AddFile(new ELO.File(fileName, filePath, currentDateTime));

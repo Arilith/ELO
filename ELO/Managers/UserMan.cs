@@ -12,49 +12,14 @@ namespace ELO
 
         private ClassManager classMan;
 
-        public static List<Person> personList { get; private set; }
-
         public UserMan()
         {
             userSQL = new UserSQL();
-            personList = new List<Person>();
-
         }
 
-        // public void AddStudentToPersonList(string name, int age, string school, Class _class, Teacher mentor)
-        // {
-        //     personList.Add(new Student(name, age, school, "Student", _class, mentor));
-        // }
-        //
-        // public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, Subject subject, Class _class)
-        // {
-        //     personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject, _class));
-        // }
-        //
-        // public void AddTeacherToPersonList(string name, int age, string school, bool hasGroup, Subject subject)
-        // {
-        //     personList.Add(new Teacher(name, age, school, "Teacher", hasGroup, subject));
-        // }
-        //
-        // public void AddAdminToPersonList(string name, int age, string school)
-        // {
-        //     personList.Add(new SysAdmin(name, age, school, "SysAdmin"));
-        // }
-
-
-
-        public List<Person> GetPersonList()
-        {
-            return personList;
-        }
         public List<Person> GetPersonListFromDB(string school, string type)
         {
             return userSQL.GetList(school, type);
-        }
-
-        public List<Student> GetStudentList()
-        {
-            return personList.OfType<Student>().ToList();
         }
 
         public List<Person> GetPersonList(string type, string school)
@@ -62,31 +27,11 @@ namespace ELO
             return userSQL.GetUserList(type, school);
         }
 
-        public List<SysAdmin> GetAdminList()
+        public void AddStudentsToDatabase(List<CSVStudent> students, string school)
         {
-            return personList.OfType<SysAdmin>().ToList();
+            userSQL.AddStudents(students, school);
         }
-
-        public Teacher GetTeacher(string name)
-        {
-            return (Teacher)GetPersonList().Find(x => x.Name == name);
-        }
-
-        public Student GetStudent(string name)
-        {
-            return (Student)GetPersonList().Find(x => x.Name == name);
-        }
-
-        public SysAdmin GetAdmin(string name)
-        {
-            return (SysAdmin)GetPersonList().Find(x => x.Name == name);
-        }
-
-        public Person GetPerson(string name)
-        {
-            return GetPersonList().Find(x => x.Name == name);
-        }
-
+        
         public Person FindUserInDataBase(string username, string password, int leerlingnummer, string school, string type)
         {
             return userSQL.FindUserInDataBase(username, password, leerlingnummer, school, type);

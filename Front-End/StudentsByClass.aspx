@@ -45,24 +45,16 @@
                     <thead>
                     <tr>
                         <th>Naam</th>
-                        <th>Leeftijd</th>
-                        <th>Datum</th>
-                        <th>School</th>
-                        <th>Rol</th>
-                        <th>UserID</th>
-                        <th>Mentor</th>
+                        <th>Leerlignummer</th>
+                        <th>Email</th>
                     </tr>
                     </thead>
                     <tbody>
                     <% foreach (Student student in classManager.GetStudentsInClass(requestedClass)){ %> 
                         <tr>
                             <td><%: student.Name %></td>
-                            <td><%: student.Age %></td>
-                            <td><%: student.RegistrationDate %></td>
-                            <td><%: student.School %></td>
-                            <td><%: student.Type %></td>
-                            <td><%: student.UserId %></td>
-                            <td><% if(student.Mentor != null) { %><%: student.Mentor.Name %> <% } else { %>Onbekend <% } %></td>
+                            <td><%: student.LeerlingNummer %></td>
+                            <td><%: student.Email %></td>
                         </tr>     
                     <% } %>
                     </tbody>

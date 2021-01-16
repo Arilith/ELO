@@ -6,6 +6,8 @@
     <h2><%: Title %></h2>
     <div class="row">
         <div class="col-lg-6">
+            Wil je meerdere studenten in een keer toevoegen?
+            Upload dan op <a href="~/UploadCSV" runat="server">deze</a> pagina een CSV-bestand.<br/><br/>
             <form method="post" id="addstudent" name="addstudent">
                 <div class="jelly-form" style="width:356px">
                 <label for="name">Naam</label><br/>
