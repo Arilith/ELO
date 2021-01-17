@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Cijferlijst" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GradeList.aspx.cs" Inherits="Front_End.GradeList" %>
 <%@ Import Namespace="ELO" %>
-    
+<%@ Import Namespace="Microsoft.Ajax.Utilities" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <link id="link1" rel="stylesheet" href="~/Content/StyleSheet1.css" type="text/css" runat="server" />
          <script src="https://kit.fontawesome.com/11f866fbe1.js" crossorigin="anonymous"></script>
@@ -132,18 +133,50 @@
                 <th>8,3</th> 
             </tr>
         </tbody>
-        <tbody>
-            <% foreach (Grade grade in gradeMan.GetGradeListFromDatabase(LoggedInPerson.UserId)){ %> 
-                <tr>
-                    <td><%: grade.student.Name %></td>
-                    <td><%: grade.subject.Name %></td>
-                    <td><%: grade.date %></td>
-                    <td><%: grade.weight %></td>
-                    <td><% if (grade.grade < 55) { %><i style="color: darkred; "><%: grade.grade/10 %></i> <% } else { %><i style="color: green; "><%: grade.grade/10 %></i><% } %></td>
-                </tr>     
-            <% } %>
-        </tbody>
+    </table>
+    <%
+        List<Grade> gradeList = gradeMan.GetGradeListFromDatabase(LoggedInPerson.UserId);
 
-</table>
+        List<Grade> distinctSubjects = new List<Grade>();
+
+        distinctSubjects = gradeList.DistinctBy(x => x.subject.Name).ToList();
+
+        foreach (Grade grade in distinctSubjects)
+        { %>
+        <h2><%: grade.subject.Name %> <i class="fa <%: grade.subject.icon %>"></i></h2>
+        <table class="styled-table">
+            <thead>
+            <tr class="head-table">
+                <th>Cijfer</th>
+                <th>Datum</th>
+                <th>Huiswerk</th>
+                <th>Verdiend XP</th>
+                <th>Weging</th>
+                <th>Gemiddelde na cijfer</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% int totalweight = 0;
+                   double totalGrade = 0;
+                   double totalGradesWithWeight = 0; foreach(Grade fetchedGrade in gradeList) {
+                    if(fetchedGrade.subject.Name == grade.subject.Name) {
+                        int i = 0;
+                        totalGradesWithWeight += fetchedGrade.grade * fetchedGrade.weight;
+                        totalweight += fetchedGrade.weight;
+                %>
+                        <tr class="<%: i % 2 == 0 ? "Odd" : "" %>">
+                            <td class="<%: fetchedGrade.grade < 55 ? "red" : ""  %>"><%: fetchedGrade.grade / 10 %></td>
+                            <td><%: fetchedGrade.date %></td>
+                            <td><%: fetchedGrade.Homework.Title %></td>
+                            <td><b><%: fetchedGrade.Homework.Exp * (fetchedGrade.grade / 100) %></b></td>
+                            <td><%: fetchedGrade.weight %></td>
+                            <td><div class="pull-right"></div><%: Math.Round((totalGradesWithWeight / totalweight) / 10, 2) %></td>
+                        </tr>
+                    <% i++; } %>
+                <% } %>
+            </tbody>
+        </table>        
+    <% } %>
+    
 </asp:Content>
 

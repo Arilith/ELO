@@ -81,9 +81,9 @@ namespace ELO
 
         }
 
-        public List<Student> GetStudentsOfClass(string classUUID)
+        public List<Student> GetStudentsOfClass(string classUUID, int limit)
         {
-            return userSQL.FindStudentsInClass(classUUID);
+            return userSQL.FindStudentsInClass(classUUID, limit);
         }
 
     }

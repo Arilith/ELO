@@ -30,9 +30,19 @@ namespace ELO.Managers
             return returnReward;
 		}
 
+        public List<Reward> GetStudentRewards(string studentUUID)
+        {
+            return rewardSQL.GetStudentRewards(studentUUID);
+        }
+
 		public List<Reward> GetRewardList()
         {
             return rewardList;
+        }
+
+        public void ClaimReward(string studentUUID, string rewardUUID)
+        {
+			rewardSQL.ClaimReward(studentUUID, rewardUUID);
         }
 	}
 

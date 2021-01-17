@@ -14,7 +14,7 @@ body {
     bottom: -20px;
     left: -20px;
     right: -20px;
-    background-image: url("https://cdn.discordapp.com/attachments/788383809133215754/797125793629077574/unknown.png");
+    background-image: url("https://cdn.discordapp.com/attachments/788383809133215754/797125896279556157/unknown.png");
     background-size: cover;
     filter: blur(10px);
     transform: scaleX(-1);
@@ -40,10 +40,10 @@ body {
     position: absolute;
     height: 450px;
     width: 55vw;
-    left: 15%;
+    left: 20%;
     top: 25%;
 
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.42);
     border-radius: 8px;
 
     color: white;
@@ -183,7 +183,7 @@ option {
 
 .login-container-register {
     position: absolute;
-    height: 565px!important;
+    height: 600px!important;
     width: 55vw!important;
     left: 15%;
     top: 15%!important;
@@ -197,7 +197,7 @@ option {
     border-radius: 8px 0px 0px 8px;
     height: 100%;
     width: 60%;
-    background: url("https://media.discordapp.net/attachments/788383809133215754/797126237113286696/unknown.png?width=555&height=676") no-repeat 0px -100px;
+    background: url("https://media.discordapp.net/attachments/788383809133215754/797126237113286696/unknown.png?width=555&height=676") no-repeat 0px 0px;
 }
 
 

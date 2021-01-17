@@ -63,23 +63,37 @@
             <div class="topnav">
                 <div class="pull-left">
                 <%
+
                     if (loggedInPerson.Type == "Student")
                     {
-                        if (homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1).Count != 0)
+                        List<Object> homeworkInSession = (List<Object>) Session["nextHomework"];
+                        if (homeworkInSession.Count == 0)
                         {
-                            List<Homework> thisStudentsHomeWorkList = homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1);
-                            foreach (Homework homework in thisStudentsHomeWorkList)
-                            {
-                                Subject returnSubject = subjectManager.FindSubjectInDatabase(homework.Subject.uuid);
-                                string insertSubjectName = returnSubject.Name;
-                                string insertSubjectIcon = returnSubject.icon;
-                                string insertDueDate = homework.DueDate;
-                                string insertHomeworkDescription = homework.Content;
+                            List<Homework> lastHomework = homeworkMan.GetHomeworkOfStudentFromDatabase(loggedInStudent.PartOfClass.UUID, 1);
 
-                                %><a href="/UploadFile.aspx?homeworkUUID=<%:homework.UUID %>" ><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: homework.Exp %> punten</p></a><%
+                            if (lastHomework.Count != 0)
+                            {
+                                List<Homework> thisStudentsHomeWorkList = lastHomework;
+                                foreach (Homework homework in thisStudentsHomeWorkList)
+                                {
+                                    homeworkInSession.Add(homework);
+                                    Subject returnSubject = subjectManager.FindSubjectInDatabase(homework.Subject.uuid);
+                                    homeworkInSession.Add(returnSubject);
+                                    string insertSubjectName = returnSubject.Name;
+                                    string insertSubjectIcon = returnSubject.icon;
+                                    string insertDueDate = homework.DueDate;
+                                    string insertHomeworkDescription = homework.Content;
+                                    %><a href="/UploadFile.aspx?homeworkUUID=<%:homework.UUID %>" ><p>Volgend huiswerk: <%: insertSubjectName %> <i class="fas <%: insertSubjectIcon %>"></i> - <%: homework.Exp %> punten</p></a><%
+                                }
+                                Session["nextHomework"] = homeworkInSession;
                             }
                         }
-                        %>
+                        else
+                        {
+                            Homework homework = (Homework)homeworkInSession[0];
+                            Subject subject = (Subject) homeworkInSession[1]; %>
+                            <a href="/UploadFile.aspx?homeworkUUID=<%:homework.UUID %>" ><p>Volgend huiswerk: <%: subject.Name %> <i class="fas <%: subject.icon %>"></i> - <%: homework.Exp %> punten</p></a>
+                        <% } %>
                         <%-- <a href="Battlepass.aspx"><p>Puntentotaal: <%:loggedInPerson.Exp %> punten</p></a> --%>
                     <% } %>
 

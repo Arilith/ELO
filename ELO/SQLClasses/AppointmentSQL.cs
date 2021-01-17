@@ -23,11 +23,6 @@ namespace ELO.SQLClasses
             mySqlManager = new MySqlManager();
 
             // connecties met de dadabase aanmaken
-            subjectManager = new SubjectManager();
-            classManager = new ClassManager();
-            userManager = new UserMan();
-            homeworkManager = new HwMan();
-            examManager = new ExamMan();
 
             MySqlCommand getAppointmentCommand = new MySqlCommand($"SELECT * FROM appointments WHERE school = '{school}' AND classUUID = '{_classUUID}'", mySqlManager.con);
             MySqlDataReader appointmentReader = getAppointmentCommand.ExecuteReader();
@@ -64,14 +59,7 @@ namespace ELO.SQLClasses
             }
 
             // connecties sluiten na gebruik
-            subjectManager = null;
-            classManager = null;
-            userManager = null;
-            homeworkManager = null;
-            //examManager = null;
-
             appointmentReader.Close();
-
             mySqlManager.con.Close();
             mySqlManager = null;
 

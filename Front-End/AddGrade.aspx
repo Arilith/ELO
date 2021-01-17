@@ -26,7 +26,7 @@
                         <input type="hidden" value="<%: Request.Form["_class"] %>" name="_class" id="_class" class="form-control"/>
                         <label for="studentName">Naam student</label><br/>
                         <select id="studentName" class="form-control" name="studentName">
-                            <% foreach (Student student in userMan.GetStudentsOfClass(Request.Form["_class"]))
+                            <% foreach (Student student in userMan.GetStudentsOfClass(Request.Form["_class"], 1000))
                                { %>
                                 <option value="<%: student.UserId %>"><%: student.Name %></option>
                             <% } %>

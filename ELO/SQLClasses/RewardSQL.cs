@@ -43,6 +43,51 @@ namespace ELO.SQLClasses
             return returnList;
         }
 
+        public void ClaimReward(string studentUUID, string rewardUUID)
+        {
+            mySqlManager = new MySqlManager();
+
+            MySqlCommand claimRewardCommand = new MySqlCommand($"INSERT INTO claimedrewards (userUUID, rewardUUID) VALUES (@studentUUID, @rewardUUID)", mySqlManager.con);
+
+            claimRewardCommand.Parameters.AddWithValue("@studentUUID", studentUUID);
+            claimRewardCommand.Parameters.AddWithValue("@rewardUUID", rewardUUID);
+
+            claimRewardCommand.Prepare();
+            claimRewardCommand.ExecuteNonQuery();
+
+            mySqlManager.con.Close();
+            mySqlManager = null;
+
+        }
+
+        public List<Reward> GetStudentRewards(string studentUUID)
+        {
+            mySqlManager = new MySqlManager();
+            //Lijst voor Rewards die gelezen worden
+            List<Reward> returnList = new List<Reward>();
+
+            // Filteren van rijen in de DB en de gefilterde rijen lezen
+            // De variabele school wordt loggedInPerson.School
+            MySqlCommand readRewardSqlCommand = new MySqlCommand(cmdText: $"SELECT r.*, c.* FROM claimedrewards AS c LEFT JOIN rewards AS r ON c.rewardUUID = r.UUID WHERE c.userUUID = '{studentUUID}' ORDER BY c.Id DESC", mySqlManager.con);
+            MySqlDataReader readRewardDataReader = readRewardSqlCommand.ExecuteReader();
+
+            while (readRewardDataReader.Read())
+            {
+                //Alles uit de DB is string, dus omzetten naar wat je nodig hebt
+                string returnTitle = Convert.ToString(readRewardDataReader["title"]);
+                string returnDescription = Convert.ToString(readRewardDataReader["description"]);
+                string returnImageURL = Convert.ToString(readRewardDataReader["imageURL"]);
+                string returnUUID = readRewardDataReader["UUID"].ToString();
+
+                Reward newReward = new Reward(returnTitle, returnDescription, returnImageURL, returnUUID);
+
+                returnList.Add(newReward);
+            }
+            mySqlManager.con.Close();
+            mySqlManager = null;
+            return returnList;
+        }
+
         public void AddRewardToDB(string title, string rewardDescription, string imageURL, string levelUUID, bool isSame)
         {
             mySqlManager = new MySqlManager();

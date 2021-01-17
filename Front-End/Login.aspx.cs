@@ -26,6 +26,8 @@ namespace Front_End
             {
                 results = userManager.FindUserInDataBase("", Request.Form["password"], Convert.ToInt32(Request.Form["leerlingnummer"]), Request.Form["school"], "Student");
                 Session["person"] = results;
+                Session["rewardsTohide"] = new List<string>();
+                Session["nextHomework"] = new List<Object>();
             }
 
         }

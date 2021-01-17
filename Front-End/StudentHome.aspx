@@ -15,9 +15,12 @@
                     <div class="row">
                         <%
                             DateTime today = DateTime.Today;
-                            if (todayMan.GetAppointmentsOfToday(loggedInStudent, today).Count != 0)
+
+                            List<Appointment> todaysAppointments = todayMan.GetAppointmentsOfToday(loggedInStudent, today);
+
+                            if (todaysAppointments.Count != 0)
                             {
-                                List<Appointment> todaysLessons = todayMan.GetAppointmentsOfToday(loggedInStudent, today);
+                                List<Appointment> todaysLessons = todaysAppointments;
                                 foreach (Appointment appointment in todaysLessons)
                                 {
                                     string insertHomeworkTitle;
@@ -44,12 +47,23 @@
                     </div>
                 </div>
             </div>
+            <div class="container-info">
+                <div class="container-title">3 toetsen deze week</div>
+                <div class="container-content">
+                    <div class="row">
+                        <b class="middle">Duits <i class="fas fa-beer"></i></b> <br/> Boektoets! Denk aan het meenemen van het boek!<br /><br />
+                        <b class="middle">Geschiedenis <i class="fas fa-landmark"></i> </b><br/> SO tweede wereldoorlog<br /><br />
+                        <b class="middle">Natuurkunde <i class="fas fa-broadcast-tower"></i></b> <br/> Toets optica<br />
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-4">
             <div class="container-info">
                 <div class="container-title">Laatste cijfers</div>
                 <div class="container-content">
                     <div class="row">
+                        <ul class="list-group">
                         <%
                             // deze loop laat d ingelogde student zijn/haar 3 laatst behaalde cijfers zien
                             List<Grade> getRecentGradeList = gradeMan.GetRecentGrades(loggedInStudent.UserId, 3);
@@ -71,26 +85,22 @@
                                     string insertIcon = returnSubject.icon;
 
 %>
-                                <b class="middle"><%: gradeSubject %> <i class="fas <%: insertIcon %>"></i> - <%: gradeDescription %> - <%: gradeGrade %></b><br />
+                                <li class="list-group-item">
+                                    <h4><i class="fa <%: grade.subject.icon %>"></i> <%: grade.subject.Name %><div class="pull-right"><span class="label label-<% if (grade.grade < 55) { %>danger<% } else { %>success<% } %>"><%: grade.grade / 10 %></span></div></h4>
+                                   <i> <%: grade.Homework.Content %> </i> - <%: grade.Homework.Exp * (grade.grade / 100) %> XP behaald!
+                                </li>
                             <% } %>
                         <% } %>
                             <%else
                             {%>
-                                <b>Je hebt nog geen cijfers behaald.</b>
+                                <li class="list-group-item">
+                                    Je hebt nog geen cijfers behaald!
+                                </li>
                         <% }%>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="container-info">
-                <div class="container-title">3 toetsen deze week</div>
-                <div class="container-content">
-                    <div class="row">
-                            <b class="middle">Duits <i class="fas fa-beer"></i> - Boektoets! Denk aan het meenemen van het boek!</b><br /><br />
-                            <b class="middle">Geschiedenis <i class="fas fa-landmark"></i> - SO tweede wereldoorlog</b><br /><br />
-                            <b class="middle">Natuurkunde <i class="fas fa-broadcast-tower"></i> - Toets optica</b><br />
-                    </div>
-                </div>
-                </div>
         </div>
         <div class="col-lg-4">
             <div class="container-info">

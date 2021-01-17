@@ -14,15 +14,16 @@ namespace ELO.SQLClasses
             UUID = new Random().Next().ToString() + DateTime.Now.ToString("s");
         }
 
-        public void AddSeasonToDatabase(string startDate, string endDate, string seasonName)
+        public void AddSeasonToDatabase(string startDate, string endDate, string seasonName, string school)
         {
             mySqlManager = new MySqlManager();
-            MySqlCommand addSeasonCommand = new MySqlCommand($"INSERT INTO seasons (name, endDate, startDate, UUID) values (@name, @endDate, @startDate, @UUID)", mySqlManager.con);
+            MySqlCommand addSeasonCommand = new MySqlCommand($"INSERT INTO seasons (name, endDate, startDate, UUID, school) values (@name, @endDate, @startDate, @UUID, @school)", mySqlManager.con);
 
             addSeasonCommand.Parameters.AddWithValue("@name", seasonName);
             addSeasonCommand.Parameters.AddWithValue("@endDate", endDate);
             addSeasonCommand.Parameters.AddWithValue("@startDate", startDate);
             addSeasonCommand.Parameters.AddWithValue("@UUID", UUID);
+            addSeasonCommand.Parameters.AddWithValue("@school", school);
             addSeasonCommand.Prepare();
 
             addSeasonCommand.ExecuteNonQuery();

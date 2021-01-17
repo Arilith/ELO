@@ -15,9 +15,9 @@ namespace ELO.Managers
             seasonSQL = new SeasonSQL();
             Seasons = new List<Season>();
         }
-        public void AddSeason(string startDate, string endDate, string seasonName)
+        public void AddSeason(string startDate, string endDate, string seasonName, string school)
         {
-            seasonSQL.AddSeasonToDatabase(startDate, endDate, seasonName);
+            seasonSQL.AddSeasonToDatabase(startDate, endDate, seasonName, school);
         }
 
         public Season FindSeasonInDB(string seasonUUID)

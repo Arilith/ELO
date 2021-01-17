@@ -14,7 +14,7 @@ namespace Front_End
         public LevelMan levelMan;
         public BattlePassManager battlePassMan;
         public UserMan userMan;
-
+        public List<string> rewardsToHide;
         protected void Page_Load(object sender, EventArgs e)
         {
             loggedInPerson = (Person)Session["person"];
@@ -23,6 +23,13 @@ namespace Front_End
             levelMan = new LevelMan();
             battlePassMan = new BattlePassManager();
             userMan = new UserMan();
+
+            rewardsToHide = (List<string>) Session["rewardsTohide"];
+            
+            if (IsPostBack)
+            {
+                ClaimReward();
+            }
         }
 
         // dit moet in de front end komen in de loop
@@ -31,6 +38,18 @@ namespace Front_End
             // returned uit de database een dictionary van een reward die bij een level hoort
             Dictionary<Level, Reward> battlePassItems = new Dictionary<Level, Reward>(battlePassMan.GetBattlePassLevelsBySchool(schoolUUID));
             return battlePassItems;
+        }
+
+        public void ClaimReward()
+        {
+            string rewardUUID = Request.Form["rewardUUID"];
+            string rewardID = Request.Form["rewardID"];
+
+            rewardsToHide.Add(rewardID);
+            Session["rewardsTohide"] = rewardsToHide;
+
+            rewardMan.ClaimReward(loggedInPerson.UserId, rewardUUID);
+
         }
     }
 }

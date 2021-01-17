@@ -369,12 +369,12 @@ namespace ELO.SQLClasses
             return null;
         }
 
-        public List<Student> FindStudentsInClass(string classUUID)
+        public List<Student> FindStudentsInClass(string classUUID, int limit)
         {
             mySqlManager = new MySqlManager();
 
             ClassManager classManager = new ClassManager();
-            string findStudents = $"SELECT * FROM users WHERE classUUID='{classUUID}'";
+            string findStudents = $"SELECT * FROM users WHERE classUUID='{classUUID}' LIMIT {limit}";
             MySqlCommand findStudentsCommand = new MySqlCommand(findStudents, mySqlManager.con);
 
             // reader activeren
