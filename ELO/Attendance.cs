@@ -7,6 +7,6 @@ namespace ELO
 {
 	public class Attendance
 	{
-		
+		//Test
 	}
 }
