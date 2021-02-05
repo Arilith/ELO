@@ -1,4 +1,4 @@
 # ELO
 
-This is a local school project trying to make an improved Electronic Learning Environment. 
+This is a local school project trying to make an improved Electronic Study Environment. 
 Proftaak group 34
